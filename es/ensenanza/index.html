@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Enseñanza · Idiomas — Nazar Omelianenko</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand-link" href="index.html">Nazar Omelianenko</a>
+
+    <nav class="nav">
+      <a href="./">Inicio</a>
+<a href="ensenanza.html">Enseñanza</a>
+<a href="desarrollo.html">Desarrollo</a>
+<a href="sobre-mi.html">Sobre mí</a>
+<a href="contacto.html">Contacto</a>
+
+<a href="../es/">ES</a>
+<a href="../en/">EN</a>
+<a href="../ru/">RU</a>
+
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <section class="container page-hero">
+    <h1>Enseñanza · Idiomas</h1>
+    <p class="lead">
+      Trabajo con personas que buscan un aprendizaje serio,
+      adaptado a su ritmo y con atención al proceso.
+    </p>
+  </section>
+
+  <section class="container page-grid">
+    <div class="card">
+      <h2>Qué imparto</h2>
+      <p>Imparto clases de <strong>español</strong> y <strong>valenciano</strong>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">© Nazar Omelianenko</div>
+</footer>
+
+<!-- JS -->
+<script src="../lang-switch.js"></script>
+
+<script>
+(function () {
+  const file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  document.querySelectorAll(".nav-link").forEach(a => {
+    if (a.getAttribute("href") === file) a.classList.add("active");
+  });
+})();
+</script>
+
+</body>
+</html>
 
