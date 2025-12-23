@@ -10,9 +10,18 @@ async function includeHTML() {
     fetch("/components/footer.html", { cache: "no-store" })
   ]);
 
-  if (headerSlot && headerRes.ok) headerSlot.innerHTML = await headerRes.text();
-  if (footerSlot && footerRes.ok) footerSlot.innerHTML = await footerRes.text();
+  if (headerSlot && headerRes.ok) {
+    headerSlot.innerHTML = await headerRes.text();
+  }
+  
+  if (footerSlot && footerRes.ok) {
+    footerSlot.innerHTML = await footerRes.text();
+  }
+
+  // Una vez cargado el header, disparamos un evento para que lang-switch.js actúe
+  window.dispatchEvent(new Event('componentsLoaded'));
 
   document.documentElement.classList.remove("is-loading");
 }
 
+document.addEventListener("DOMContentLoaded", includeHTML);
