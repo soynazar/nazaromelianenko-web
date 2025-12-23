@@ -15,11 +15,11 @@ body{
   line-height: 1.65;
 }
 
-/* Layout */
-.container{
-  max-width: 960px;
+/* Shared centered layout */
+.container {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 24px;
 }
 
 main.container{
@@ -28,17 +28,17 @@ main.container{
 }
 
 /* Header */
-.site-header{
-  border-bottom: 1px solid var(--line);
-  background: var(--bg);
+.site-header {
+  border-bottom: 1px solid #eee;
+  background: #fff;
 }
 
-.header-inner{
+
+.header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 0;
-  gap: 2rem;
+  height: 72px;
 }
 
 .brand-link{
