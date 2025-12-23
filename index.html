@@ -93,6 +93,24 @@
   <div class="container footer-inner">© Nazar Omelianenko</div>
 </footer>
 
+<script>
+(function () {
+  const saved = localStorage.getItem("site_lang");
+  if (saved) {
+    window.location.replace("./" + saved + "/index.html");
+    return;
+  }
+
+  const lang = (navigator.language || "es").toLowerCase();
+
+  let target = "es";
+  if (lang.startsWith("ru")) target = "ru";
+  else if (lang.startsWith("en")) target = "en";
+
+  localStorage.setItem("site_lang", target);
+  window.location.replace("./" + target + "/index.html");
+})();
+</script>
 
 </body>
 </html>
