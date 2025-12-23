@@ -1,33 +1,23 @@
 window.addEventListener('componentsLoaded', () => {
-  // Definimos pathParts dentro para que esté disponible al cargar los componentes
   const pathParts = window.location.pathname.split("/").filter(Boolean);
   
-  // Detectamos el idioma actual (es, en o ru)
+  // 1. Identificar idioma y página actual
   const currentLang = ["es", "en", "ru"].includes(pathParts[0]) ? pathParts[0] : null;
   
-  // Obtenemos el nombre de la página (sin el idioma)
   let currentPage = "index";
-  
   if (currentLang && pathParts.length > 1) {
     currentPage = pathParts[pathParts.length - 1].replace(".html", "");
   } else if (!currentLang && pathParts.length > 0) {
     currentPage = pathParts[0].replace(".html", "");
   }
 
+  // 2. Configurar el selector de idiomas (ES, EN, RU)
   document.querySelectorAll(".lang-switch a[data-lang]").forEach((a) => {
     const targetLang = a.dataset.lang;
-
-    // Construimos la URL limpia
-    let newPath = "";
-    if (currentPage === "index") {
-      newPath = `/${targetLang}/`;
-    } else {
-      newPath = `/${targetLang}/${currentPage}`;
-    }
+    let newPath = (currentPage === "index") ? `/${targetLang}/` : `/${targetLang}/${currentPage}`;
 
     a.href = newPath;
 
-    // Marcar idioma activo
     const isActive = (currentLang === targetLang) || (!currentLang && targetLang === "es");
     if (isActive) {
       a.classList.add("active");
@@ -35,9 +25,20 @@ window.addEventListener('componentsLoaded', () => {
       a.classList.remove("active");
     }
 
-    // Guardar preferencia
     a.addEventListener("click", () => {
       localStorage.setItem("site_lang", targetLang);
     });
+  });
+
+  // 3. Actualizar enlaces del menú principal según el idioma activo
+  document.querySelectorAll(".nav a[data-link]").forEach((link) => {
+    const page = link.dataset.link;
+    const lang = currentLang || "es"; 
+    
+    if (page === "index") {
+      link.href = `/${lang}/`;
+    } else {
+      link.href = `/${lang}/${page}`;
+    }
   });
 });
