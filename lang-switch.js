@@ -25,6 +25,12 @@
     if (currentLang === targetLang || (!currentLang && targetLang === "es")) {
       a.classList.add("active");
     }
+    document.addEventListener("click", (e) => {
+  const link = e.target.closest(".lang-switch a[data-lang]");
+  if (!link) return;
+  localStorage.setItem("site_lang", link.dataset.lang);
+});
+
   });
 })();
 
