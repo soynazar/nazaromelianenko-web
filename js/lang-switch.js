@@ -1,28 +1,43 @@
 (function () {
   const pathParts = window.location.pathname.split("/").filter(Boolean);
-
+  
+  // Detectamos el idioma actual (es, en o ru)
   const currentLang = ["es", "en", "ru"].includes(pathParts[0]) ? pathParts[0] : null;
-  const file = pathParts[pathParts.length - 1]?.endsWith(".html") ? pathParts[pathParts.length - 1] : "index.html";
+  
+  // Obtenemos el nombre de la página (sin el idioma)
+  // Si no hay página (estamos en la raíz), por defecto es "index"
+  let currentPage = "index";
+  
+  if (currentLang && pathParts.length > 1) {
+    currentPage = pathParts[pathParts.length - 1].replace(".html", "");
+  } else if (!currentLang && pathParts.length > 0) {
+    currentPage = pathParts[0].replace(".html", "");
+  }
 
   document.querySelectorAll(".lang-switch a[data-lang]").forEach((a) => {
     const targetLang = a.dataset.lang;
 
-    // Si estás en /es/... -> /en/<mismo archivo>
-    // Si estás en raíz -> /en/index.html (o el archivo actual)
-    const href = currentLang
-      ? `/${targetLang}/${file}`
-      : `/${targetLang}/${file}`;
+    // Construimos la URL limpia: /idioma/pagina (evitamos index en la URL por estética)
+    let newPath = "";
+    if (currentPage === "index") {
+      newPath = `/${targetLang}/`;
+    } else {
+      newPath = `/${targetLang}/${currentPage}`;
+    }
 
-    a.href = href;
+    a.href = newPath;
 
-    // Marcar activo
-    const isActive = (currentLang && currentLang === targetLang) || (!currentLang && targetLang === "es");
-    if (isActive) a.classList.add("active");
+    // Marcar idioma activo
+    const isActive = (currentLang === targetLang) || (!currentLang && targetLang === "es");
+    if (isActive) {
+      a.classList.add("active");
+    } else {
+      a.classList.remove("active");
+    }
 
-    // Guardar preferencia al hacer click
+    // Guardar preferencia
     a.addEventListener("click", () => {
       localStorage.setItem("site_lang", targetLang);
     });
   });
 })();
-
