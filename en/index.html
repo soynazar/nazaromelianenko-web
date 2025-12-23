@@ -9,15 +9,7 @@
 
 </head>
 
-  <script>
-(function () {
-  const file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-  document.querySelectorAll(".nav-link").forEach(a => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === file) a.classList.add("active");
-  });
-})();
-</script>
+ 
 
 <body>
 
@@ -81,7 +73,15 @@
 </footer>
 
 
-
+ <script>
+(function () {
+  const file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  document.querySelectorAll(".nav-link").forEach(a => {
+    const href = (a.getAttribute("href") || "").toLowerCase();
+    if (href === file) a.classList.add("active");
+  });
+})();
+</script>
 </body>
 </html>
 
