@@ -1,87 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Nazar Omelianenko — Education & Technology</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nazar Omelianenko</title>
-<link rel="stylesheet" href="/styles.css" />
-
-
+  
+  <link rel="stylesheet" href="/styles.css" />
+  
+  <script src="/js/include.js" defer></script>
+  <script src="/js/lang-switch.js" defer></script>
 </head>
 
- 
+<body class="is-loading">
 
-<body>
+  <div id="header-slot"></div>
 
- <header class="site-header">
-  <div class="container header-inner">
-    <a class="brand-link" href="index.html">Nazar Omelianenko</a>
-
-    <nav class="nav">
-    <a href="index.html">Inicio</a>
-<a href="ensenanza.html">Enseñanza</a>
-<a href="desarrollo.html">Desarrollo</a>
-<a href="sobre-mi.html">Sobre mí</a>
-<a href="contacto.html">Contacto</a>
-
-
-      
-    </nav>
-  </div>
-</header>
-
-  <script src="../lang-switch.js"></script>
-
-
-  <main class="container">
-
-    <!-- HERO -->
-    <section class="hero">
-      <h1>
-        Trabajo en educación y tecnología,<br />
-        integrando aprendizaje y construcción con criterio.
-      </h1>
+  <main class="page">
+    <section class="container page-hero">
+      <h1>I work in education and technology, integrating learning and development with critical thinking.</h1>
     </section>
 
-    <!-- BIFURCACIÓN -->
-    <section class="split">
-
+    <section class="container page-grid">
       <article class="card">
-        <h2>Enseñanza · Idiomas</h2>
+        <h2>Teaching · Languages</h2>
         <p>
-          Trabajo con personas que buscan un aprendizaje serio,<br />
-          adaptado a su ritmo y con atención al proceso.
+          I work with individuals seeking serious learning, 
+          tailored to their pace with a focus on the deep process.
         </p>
-        <a href="ensenanza.html" class="link">Enseñanza e idiomas</a>
+        <a href="/en/teaching" class="button">Teaching & Languages</a>
       </article>
 
       <article class="card">
-        <h2>Desarrollo · Tecnología</h2>
+        <h2>Development · Technology</h2>
         <p>
-          Desarrollo proyectos que requieren soluciones claras,<br />
-          con criterios sólidos y centrados en lo esencial.
+          I build projects that require clear solutions, 
+          grounded in solid criteria and focused on the essentials.
         </p>
-        <a href="desarrollo.html" class="link">Desarrollo y tecnología</a>
+        <a href="/en/development" class="button">Development & Tech</a>
       </article>
-
     </section>
-
   </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">© Nazar Omelianenko</div>
-</footer>
+  <div id="footer-slot"></div>
 
-
- <script>
-(function () {
-  const file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-  document.querySelectorAll(".nav-link").forEach(a => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === file) a.classList.add("active");
-  });
-})();
-</script>
 </body>
 </html>
-
