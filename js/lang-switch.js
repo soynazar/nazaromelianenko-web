@@ -1,11 +1,11 @@
-(function () {
+window.addEventListener('componentsLoaded', () => {
+  // Definimos pathParts dentro para que esté disponible al cargar los componentes
   const pathParts = window.location.pathname.split("/").filter(Boolean);
   
   // Detectamos el idioma actual (es, en o ru)
   const currentLang = ["es", "en", "ru"].includes(pathParts[0]) ? pathParts[0] : null;
   
   // Obtenemos el nombre de la página (sin el idioma)
-  // Si no hay página (estamos en la raíz), por defecto es "index"
   let currentPage = "index";
   
   if (currentLang && pathParts.length > 1) {
@@ -17,7 +17,7 @@
   document.querySelectorAll(".lang-switch a[data-lang]").forEach((a) => {
     const targetLang = a.dataset.lang;
 
-    // Construimos la URL limpia: /idioma/pagina (evitamos index en la URL por estética)
+    // Construimos la URL limpia
     let newPath = "";
     if (currentPage === "index") {
       newPath = `/${targetLang}/`;
@@ -40,4 +40,4 @@
       localStorage.setItem("site_lang", targetLang);
     });
   });
-})();
+});
