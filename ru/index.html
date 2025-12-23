@@ -1,86 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
+  <title>Назар Омельяненко — Образование и Технологии</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nazar Omelianenko</title>
-<link rel="stylesheet" href="/styles.css" />
-
-
-</head>
-<body>
-
- <header class="site-header">
-  <div class="container header-inner">
-    <a class="brand-link" href="index.html">Nazar Omelianenko</a>
-
-    <nav class="nav">
-    <a href="index.html">Inicio</a>
-<a href="ensenanza.html">Enseñanza</a>
-<a href="desarrollo.html">Desarrollo</a>
-<a href="sobre-mi.html">Sobre mí</a>
-<a href="contacto.html">Contacto</a>
-
-
-      
-    </nav>
-  </div>
-</header>
-
-  <script src="../lang-switch.js"></script>
-
-
-
-  <main class="container">
-
-    <!-- HERO -->
-    <section class="hero">
-      <h1>
-        Trabajo en educación y tecnología,<br />
-        integrando aprendizaje y construcción con criterio.
-      </h1>
-    </section>
-
-    <!-- BIFURCACIÓN -->
-    <section class="split">
-
-      <article class="card">
-        <h2>Enseñanza · Idiomas</h2>
-        <p>
-          Trabajo con personas que buscan un aprendizaje serio,<br />
-          adaptado a su ritmo y con atención al proceso.
-        </p>
-        <a href="ensenanza.html" class="link">Enseñanza e idiomas</a>
-      </article>
-
-      <article class="card">
-        <h2>Desarrollo · Tecnología</h2>
-        <p>
-          Desarrollo proyectos que requieren soluciones claras,<br />
-          con criterios sólidos y centrados en lo esencial.
-        </p>
-        <a href="desarrollo.html" class="link">Desarrollo y tecnología</a>
-      </article>
-
-    </section>
-
-  </main>
   
-<footer class="site-footer">
-  <div class="container footer-inner">© Nazar Omelianenko</div>
-</footer>
+  <link rel="stylesheet" href="/styles.css" />
+  
+  <script src="/js/include.js" defer></script>
+  <script src="/js/lang-switch.js" defer></script>
+</head>
 
-<script>
-(function () {
-  const file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-  document.querySelectorAll(".nav-link").forEach(a => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === file) a.classList.add("active");
-  });
-})();
-</script>
+<body class="is-loading">
 
+  <div id="header-slot"></div>
+
+  <main class="page">
+    <section class="container page-hero">
+      <h1>Я работаю в сфере образования и технологий, объединяя обучение и разработку на основе четких критериев.</h1>
+    </section>
+
+    <section class="container page-grid">
+      <article class="card">
+        <h2>Обучение · Языки</h2>
+        <p>
+          Я работаю с теми, кто нацелен на серьезное обучение, 
+          адаптированное под личный темп и глубокое понимание процесса.
+        </p>
+        <a href="/ru/ensenanza" class="button">Преподавание и языки</a>
+      </article>
+
+      <article class="card">
+        <h2>Разработка · Технологии</h2>
+        <p>
+          Я создаю проекты, требующие ясных решений, 
+          основанных на надежных критериях и внимании к сути.
+        </p>
+        <a href="/ru/desarrollo" class="button">Разработка и технологии</a>
+      </article>
+    </section>
+  </main>
+
+  <div id="footer-slot"></div>
 
 </body>
 </html>
-
