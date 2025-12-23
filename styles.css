@@ -284,6 +284,74 @@ main.container{
 .mini-cta{
   margin-top: 1.5rem;
 }
+.site-header {
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 24px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand-link {
+  font-weight: 600;
+  text-decoration: none;
+  color: #111;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #222;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+  padding-left: 14px;
+  border-left: 1px solid #eee;
+}
+
+.lang-item {
+  font-size: 14px;
+  text-decoration: none;
+  color: #444;
+}
+
+.lang-item.is-active {
+  color: #111;
+  font-weight: 600;
+}
+
+.footer {
+  border-top: 1px solid #eee;
+  padding: 18px 24px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
 
 /* Responsive */
 @media (max-width: 640px){
