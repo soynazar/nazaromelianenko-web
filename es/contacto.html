@@ -2,134 +2,46 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Contacto — Nazar Omelianenko</title>
+  <title>Nazar Omelianenko — Educación y Tecnología</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="../styles.css" />
-<script src="../lang-switch.js"></script>
-
+  
+  <link rel="stylesheet" href="/styles.css" />
+  
+  <script src="/js/include.js" defer></script>
+  <script src="/js/lang-switch.js" defer></script>
 </head>
 
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="index.html" class="brand-link">Nazar Omelianenko</a>
-      </div>
+<body class="is-loading">
 
-      <nav class="nav">
-       
-<a href="ensenanza/">Enseñanza</a>
-<a href="desarrollo/">Desarrollo</a>
-<a href="sobre-mi/">Sobre mí</a>
-<a href="contacto/">Contacto</a>
-<a href="./">Inicio</a>
-
-
-      </nav>
-    </div>
-  </header>
-
-  <script src="../lang-switch.js"></script>
+  <div id="header-slot"></div>
 
   <main class="page">
     <section class="container page-hero">
-      <h1>Contacto</h1>
-      <p class="lead">
-        Si quieres hablar sobre clases, preparación DELE/EOI o un proyecto web,
-        escríbeme y lo enfocamos con claridad.
-      </p>
+      <h1>Trabajo en educación y tecnología, integrando aprendizaje y construcción con criterio.</h1>
     </section>
 
     <section class="container page-grid">
-      <div class="card">
-        <h2>Mensaje rápido</h2>
-        <p class="muted">
-          Cuéntame en 3 líneas qué necesitas y en qué plazo.
+      <article class="card">
+        <h2>Enseñanza · Idiomas</h2>
+        <p>
+          Trabajo con personas que buscan un aprendizaje serio,
+          adaptado a su ritmo y con atención al proceso.
         </p>
+        <a href="/es/ensenanza" class="button">Enseñanza e idiomas</a>
+      </article>
 
-        <form class="form" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
-          <label class="label" for="name">Nombre</label>
-          <input class="input" id="name" name="Nombre" type="text" placeholder="Tu nombre" required />
-
-          <label class="label" for="email">Email</label>
-          <input class="input" id="email" name="Email" type="email" placeholder="tu@email.com" required />
-
-          <label class="label" for="topic">Tema</label>
-          <select class="input" id="topic" name="Tema" required>
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option>Clases de español</option>
-            <option>Clases de valenciano</option>
-            <option>Preparación DELE</option>
-            <option>Preparación EOI</option>
-            <option>Proyecto web</option>
-            <option>Otro</option>
-          </select>
-
-          <label class="label" for="message">Mensaje</label>
-          <textarea class="input textarea" id="message" name="Mensaje" rows="6"
-            placeholder="Objetivo, nivel (si es idiomas), horario aproximado, contexto, plazo…"
-            required></textarea>
-
-          <button class="button" type="submit">Enviar</button>
-          <p class="form-note muted">
-            Este formulario abre tu cliente de correo. Si prefieres, usa los enlaces de abajo.
-          </p>
-        </form>
-      </div>
-
-      <div class="card">
-        <h2>Contacto directo</h2>
-        <p class="muted">Opciones sencillas, sin rodeos.</p>
-
-        <div class="contact-list">
-          <div class="contact-item">
-            <h3>Email</h3>
-            <p><a class="link" href="mailto:nazar.dezign@gmail.com">nazar.dezign@gmail.com</a></p>
-          </div>
-
-          <div class="contact-item">
-            <h3>Calendario (opcional)</h3>
-            <p class="muted">Si luego quieres, añadimos un enlace a reservas.</p>
-            <p><a class="link" href="#" onclick="return false;">Añadir enlace</a></p>
-          </div>
-
-          <div class="contact-item">
-            <h3>Redes (opcional)</h3>
-            <p class="muted">Pon aquí tus enlaces cuando quieras.</p>
-            <p>
-              <a class="link" href="#" onclick="return false;">YouTube</a> ·
-              <a class="link" href="#" onclick="return false;">Instagram</a> ·
-              <a class="link" href="#" onclick="return false;">LinkedIn</a>
-            </p>
-          </div>
-
-          <div class="contact-item">
-            <h3>Idioma del primer mensaje</h3>
-            <p class="muted">
-              Puedes escribirme en español o ruso. Me adapto desde el primer contacto.
-            </p>
-          </div>
-        </div>
-
-        <div class="mini-cta">
-          <a class="button secondary" href="index.html">Volver al inicio</a>
-        </div>
-      </div>
+      <article class="card">
+        <h2>Desarrollo · Tecnología</h2>
+        <p>
+          Desarrollo proyectos que requieren soluciones claras,
+          con criterios sólidos y centrados en lo esencial.
+        </p>
+        <a href="/es/desarrollo" class="button">Desarrollo y tecnología</a>
+      </article>
     </section>
   </main>
 
- <footer class="site-footer">
-  <div class="container footer-inner">© Nazar Omelianenko</div>
-</footer>
-<script>
-(function () {
-  const file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-  document.querySelectorAll(".nav-link").forEach(a => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === file) a.classList.add("active");
-  });
-})();
-</script>
+  <div id="footer-slot"></div>
+
 </body>
 </html>
-
