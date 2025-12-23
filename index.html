@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nazar Omelianenko</title>
   <link rel="stylesheet" href="styles.css" />
+
+  <script>
+(function () {
+  // Evita redirecciones infinitas
+  if (localStorage.getItem('langSelected')) return;
+
+  const lang = navigator.language || navigator.userLanguage;
+
+  if (lang.startsWith('es')) {
+    localStorage.setItem('langSelected', 'es');
+    window.location.href = '/es/';
+  } else if (lang.startsWith('ru') || lang.startsWith('uk')) {
+    localStorage.setItem('langSelected', 'ru');
+    window.location.href = '/ru/';
+  } else if (lang.startsWith('en')) {
+    localStorage.setItem('langSelected', 'en');
+    window.location.href = '/en/';
+  }
+})();
+</script>
+
+  
 </head>
 <body>
 
