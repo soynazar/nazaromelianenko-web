@@ -74,13 +74,16 @@ main.container{
 .site-footer{
   border-top: 1px solid var(--line);
   padding: 2rem 0;
+  margin-top: 4rem;   /* ← AÑADIR */
 }
 
 .footer-inner{
   display: flex;
   justify-content: center;
   color: var(--muted);
+  font-size: 0.875rem; /* ← AÑADIR (14px aprox) */
 }
+
 
 /* HOME */
 .hero{
