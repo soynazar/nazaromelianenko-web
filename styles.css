@@ -27,6 +27,12 @@ main.container{
   padding-bottom: 4rem;
 }
 
+/* Evita parpadeo al inyectar header/footer */
+.is-loading #header-slot,
+.is-loading #footer-slot {
+  visibility: hidden;
+}
+
 /* Header */
 .site-header {
   border-bottom: 1px solid #eee;
