@@ -1,33 +1,44 @@
+const pageMap = {
+    // de -> a
+    'teaching.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html' },
+    'ensenanza.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html' },
+    'development.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html' },
+    'desarrollo.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html' },
+    'about-me.html': { es: 'sobre-mi.html', ru: 'sobre-mi.html', en: 'about-me.html' },
+    'sobre-mi.html': { es: 'sobre-mi.html', ru: 'sobre-mi.html', en: 'about-me.html' },
+    'contact.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html' },
+    'contacto.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html' },
+    'index.html': { es: 'index.html', ru: 'index.html', en: 'index.html' }
+};
+
 const initLanguageSwitch = () => {
     const langLinks = document.querySelectorAll('.lang-switch a');
-    
-    // Si no encuentra los enlaces en el HTML inyectado, sale para no dar error
     if (langLinks.length === 0) return;
 
     const currentPath = window.location.pathname;
-    const currentLang = currentPath.split('/')[1] || 'es';
+    const pathParts = currentPath.split('/');
+    const currentLang = pathParts[1] || 'es';
+    const currentPage = pathParts.pop() || 'index.html';
 
+    // 1. Corregir los enlaces del menú según el idioma actual
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && pageMap[href]) {
+            link.href = `/${currentLang}/${pageMap[href][currentLang]}`;
+        }
+    });
+
+    // 2. Configurar el selector de idiomas
     langLinks.forEach(link => {
         const targetLang = link.getAttribute('data-lang');
-        
-        // Marca visualmente el idioma en el que estamos
-        if (targetLang === currentLang) {
-            link.classList.add('active');
-        }
+        if (targetLang === currentLang) link.classList.add('active');
 
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            // Mantiene al usuario en la misma página pero cambia la carpeta de idioma
-            const pageName = currentPath.split('/').pop() || 'index.html';
-            window.location.href = `/${targetLang}/${pageName}`;
+            const translatedPage = pageMap[currentPage] ? pageMap[currentPage][targetLang] : 'index.html';
+            window.location.href = `/${targetLang}/${translatedPage}`;
         });
     });
 };
 
-// Se activa en cuanto include.js avisa que ha terminado
 window.addEventListener('componentsLoaded', initLanguageSwitch);
-
-// Comprobación de seguridad por si el script carga después de los componentes
-if (document.getElementById('header-slot')?.innerHTML.trim() !== "") {
-    initLanguageSwitch();
-}
