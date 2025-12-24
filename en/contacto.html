@@ -4,35 +4,16 @@
   <meta charset="UTF-8" />
   <title>Contacto — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <link rel="stylesheet" href="/styles.css" />
+  
+  <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
-
 </head>
 
+<body class="is-loading">
 
-<body>
-  
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="index.html" class="brand-link">Nazar Omelianenko</a>
-      </div>
+  <div id="header-slot"></div>
 
-      <nav class="nav">
-       <a href="index.html">Inicio</a>
-<a href="ensenanza.html">Enseñanza</a>
-<a href="desarrollo.html">Desarrollo</a>
-<a href="sobre-mi.html">Sobre mí</a>
-<a href="contacto.html">Contacto</a>
-
-      </nav>
-    </div>
-  </header>
-
-<script src="../lang-switch.js"></script>
-
-  
   <main class="page">
     <section class="container page-hero">
       <h1>Contacto</h1>
@@ -114,25 +95,13 @@
         </div>
 
         <div class="mini-cta">
-          <a class="button secondary" href="index.html">Volver al inicio</a>
+          <a class="button secondary" href="/es/">Volver al inicio</a>
         </div>
       </div>
     </section>
   </main>
   
-<footer class="site-footer">
-  <div class="container footer-inner">© Nazar Omelianenko</div>
-</footer>
-<script>
-(function () {
-  const file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-  document.querySelectorAll(".nav-link").forEach(a => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === file) a.classList.add("active");
-  });
-})();
-</script>
+  <div id="footer-slot"></div>
 
 </body>
 </html>
-
