@@ -1,85 +1,68 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Contacto — Nazar Omelianenko</title>
+  <title>Контакты — Назар Омельяненко</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="/styles.css" />
+  
+  <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
-
 </head>
 
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="index.html" class="brand-link">Nazar Omelianenko</a>
-      </div>
+<body class="is-loading">
 
-      <nav class="nav">
-       <a href="index.html">Inicio</a>
-<a href="ensenanza.html">Enseñanza</a>
-<a href="desarrollo.html">Desarrollo</a>
-<a href="sobre-mi.html">Sobre mí</a>
-<a href="contacto.html">Contacto</a>
-
-      </nav>
-    </div>
-  </header>
-
-  <script src="../lang-switch.js"></script>
-
+  <div id="header-slot"></div>
 
   <main class="page">
     <section class="container page-hero">
-      <h1>Contacto</h1>
+      <h1>Контакты</h1>
       <p class="lead">
-        Si quieres hablar sobre clases, preparación DELE/EOI o un proyecto web,
-        escríbeme y lo enfocamos con claridad.
+        Если вы хотите обсудить занятия, подготовку к экзаменам DELE/EOI или веб-проект, 
+        напишите мне, и мы детально все обсудим.
       </p>
     </section>
 
     <section class="container page-grid">
       <div class="card">
-        <h2>Mensaje rápido</h2>
+        <h2>Быстрое сообщение</h2>
         <p class="muted">
-          Cuéntame en 3 líneas qué necesitas y en qué plazo.
+          Коротко опишите вашу задачу и желаемые сроки.
         </p>
 
         <form class="form" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
-          <label class="label" for="name">Nombre</label>
-          <input class="input" id="name" name="Nombre" type="text" placeholder="Tu nombre" required />
+          <label class="label" for="name">Имя</label>
+          <input class="input" id="name" name="Name" type="text" placeholder="Ваше имя" required />
 
           <label class="label" for="email">Email</label>
-          <input class="input" id="email" name="Email" type="email" placeholder="tu@email.com" required />
+          <input class="input" id="email" name="Email" type="email" placeholder="email@example.com" required />
 
-          <label class="label" for="topic">Tema</label>
-          <select class="input" id="topic" name="Tema" required>
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option>Clases de español</option>
-            <option>Clases de valenciano</option>
-            <option>Preparación DELE</option>
-            <option>Preparación EOI</option>
-            <option>Proyecto web</option>
-            <option>Otro</option>
+          <label class="label" for="topic">Тема</label>
+          <select class="input" id="topic" name="Subject" required>
+            <option value="" disabled selected>Выберите вариант</option>
+            <option>Уроки испанского</option>
+            <option>Уроки валенсийского</option>
+            <option>Подготовка к DELE</option>
+            <option>Подготовка к EOI</option>
+            <option>Веб-проект</option>
+            <option>Другое</option>
           </select>
 
-          <label class="label" for="message">Mensaje</label>
-          <textarea class="input textarea" id="message" name="Mensaje" rows="6"
-            placeholder="Objetivo, nivel (si es idiomas), horario aproximado, contexto, plazo…"
+          <label class="label" for="message">Сообщение</label>
+          <textarea class="input textarea" id="message" name="Message" rows="6"
+            placeholder="Цель, текущий уровень (для языков), примерный график, контекст, сроки..."
             required></textarea>
 
-          <button class="button" type="submit">Enviar</button>
+          <button class="button" type="submit">Отправить</button>
           <p class="form-note muted">
-            Este formulario abre tu cliente de correo. Si prefieres, usa los enlaces de abajo.
+            Эта форма откроет ваш почтовый клиент. Также вы можете использовать прямые ссылки ниже.
           </p>
         </form>
       </div>
 
       <div class="card">
-        <h2>Contacto directo</h2>
-        <p class="muted">Opciones sencillas, sin rodeos.</p>
+        <h2>Прямая связь</h2>
+        <p class="muted">Простые способы связаться без посредников.</p>
 
         <div class="contact-list">
           <div class="contact-item">
@@ -88,14 +71,14 @@
           </div>
 
           <div class="contact-item">
-            <h3>Calendario (opcional)</h3>
-            <p class="muted">Si luego quieres, añadimos un enlace a reservas.</p>
-            <p><a class="link" href="#" onclick="return false;">Añadir enlace</a></p>
+            <h3>Календарь (опционально)</h3>
+            <p class="muted">Позже здесь можно будет добавить ссылку для бронирования времени.</p>
+            <p><a class="link" href="#" onclick="return false;">Добавить ссылку</a></p>
           </div>
 
           <div class="contact-item">
-            <h3>Redes (opcional)</h3>
-            <p class="muted">Pon aquí tus enlaces cuando quieras.</p>
+            <h3>Соцсети (опционально)</h3>
+            <p class="muted">Ваши профессиональные профили.</p>
             <p>
               <a class="link" href="#" onclick="return false;">YouTube</a> ·
               <a class="link" href="#" onclick="return false;">Instagram</a> ·
@@ -104,33 +87,21 @@
           </div>
 
           <div class="contact-item">
-            <h3>Idioma del primer mensaje</h3>
+            <h3>Язык общения</h3>
             <p class="muted">
-              Puedes escribirme en español o ruso. Me adapto desde el primer contacto.
+              Вы можете писать мне на русском или испанском. Я адаптируюсь под ваш запрос с первого сообщения.
             </p>
           </div>
         </div>
 
         <div class="mini-cta">
-          <a class="button secondary" href="index.html">Volver al inicio</a>
+          <a class="button secondary" href="/ru/">На главную</a>
         </div>
       </div>
     </section>
   </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">© Nazar Omelianenko</div>
-</footer>
-<script>
-(function () {
-  const file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-  document.querySelectorAll(".nav-link").forEach(a => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === file) a.classList.add("active");
-  });
-})();
-</script>
+  <div id="footer-slot"></div>
 
 </body>
 </html>
-
