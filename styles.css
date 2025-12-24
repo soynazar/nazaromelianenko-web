@@ -72,7 +72,23 @@ main.container{
   opacity: 0.85;
   transition: opacity 0.2s ease;
 }
+/* Asegura que el contenedor del header sea visible */
+#header-slot {
+    display: block;
+    min-height: 70px; /* Evita que colapse antes de cargar */
+}
 
+/* Fuerza la visibilidad del selector por si el JS tarda */
+.lang-switch {
+    display: flex !important;
+    gap: 10px;
+    visibility: visible !important;
+}
+
+/* Evita que el body oculto por is-loading se quede así */
+html:not(.is-loading) body {
+    opacity: 1;
+}
 .nav a:hover { opacity: 1; }
 
 /* Esta clase la añade tu lang-switch.js automáticamente */
