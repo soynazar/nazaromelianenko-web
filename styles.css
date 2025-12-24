@@ -20,6 +20,20 @@ body{
 main {
   flex: 1; /* Empuja al footer hacia abajo */
 }
+/* Asegura que el header tenga espacio y sea visible */
+#header-slot {
+  display: block;
+  width: 100%;
+  background: #ffffff; /* O el color de tu diseño */
+  z-index: 1000;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
 /* Shared centered layout */
 .container {
   max-width: 1100px;
