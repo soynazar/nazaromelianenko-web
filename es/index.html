@@ -4,24 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nazar Omelianenko</title>
-<link rel="stylesheet" href="/styles.css" />
+  
+  <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
-
-
-
 </head>
-<body>
 
- <div id="header-slot"></div>
+<body class="is-loading">
 
-  <script src="../lang-switch.js"></script>
-
-
+  <div id="header-slot"></div>
 
   <main class="container">
-
-    <!-- HERO -->
     <section class="hero">
       <h1>
         Trabajo en educación y tecnología,<br />
@@ -29,16 +22,14 @@
       </h1>
     </section>
 
-    <!-- BIFURCACIÓN -->
     <section class="split">
-
       <article class="card">
         <h2>Enseñanza · Idiomas</h2>
         <p>
           Trabajo con personas que buscan un aprendizaje serio,<br />
           adaptado a su ritmo y con atención al proceso.
         </p>
-        <a href="ensenanza.html" class="link">Enseñanza e idiomas</a>
+        <a href="/es/ensenanza" class="link">Enseñanza e idiomas</a>
       </article>
 
       <article class="card">
@@ -47,27 +38,12 @@
           Desarrollo proyectos que requieren soluciones claras,<br />
           con criterios sólidos y centrados en lo esencial.
         </p>
-        <a href="desarrollo.html" class="link">Desarrollo y tecnología</a>
+        <a href="/es/desarrollo" class="link">Desarrollo y tecnología</a>
       </article>
-
     </section>
-
   </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">© Nazar Omelianenko</div>
-</footer>
-<script>
-(function () {
-  const file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-  document.querySelectorAll(".nav-link").forEach(a => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === file) a.classList.add("active");
-  });
-})();
-</script>
-
+  <div id="footer-slot"></div>
 
 </body>
 </html>
-
