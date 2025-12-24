@@ -4,24 +4,88 @@
   <meta charset="UTF-8" />
   <title>Contact — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
 </head>
+
 <body class="is-loading">
+
   <div id="header-slot"></div>
+
   <main class="page">
     <section class="container page-hero">
       <h1>Contact</h1>
-      <p class="lead">Feel free to reach out to discuss language coaching or web projects.</p>
+      <p class="lead">
+        If you would like to discuss language coaching, DELE/EOI preparation, or a web project, 
+        feel free to reach out and we can define the best approach.
+      </p>
     </section>
+
     <section class="container page-grid">
       <div class="card">
-        <h2>Email</h2>
-        <p><a href="mailto:nazar.dezign@gmail.com">nazar.dezign@gmail.com</a></p>
+        <h2>Quick Message</h2>
+        <p class="muted">
+          Briefly describe what you need and your expected timeframe.
+        </p>
+
+        <form class="form" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
+          <label class="label" for="name">Name</label>
+          <input class="input" id="name" name="Name" type="text" placeholder="Your name" required />
+
+          <label class="label" for="email">Email</label>
+          <input class="input" id="email" name="Email" type="email" placeholder="your@email.com" required />
+
+          <label class="label" for="topic">Subject</label>
+          <select class="input" id="topic" name="Subject" required>
+            <option value="" disabled selected>Select an option</option>
+            <option>Spanish Lessons</option>
+            <option>Valencian Lessons</option>
+            <option>DELE Preparation</option>
+            <option>EOI Preparation</option>
+            <option>Web Project</option>
+            <option>Other</option>
+          </select>
+
+          <label class="label" for="message">Message</label>
+          <textarea class="input textarea" id="message" name="Message" rows="6"
+            placeholder="Goal, current level (for languages), preferred schedule, context, deadline..."
+            required></textarea>
+
+          <button class="button" type="submit">Send Message</button>
+          <p class="form-note muted">
+            This form will open your default email client. Alternatively, use the direct links.
+          </p>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Direct Contact</h2>
+        <p class="muted">Simple, straightforward options.</p>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <h3>Email</h3>
+            <p><a class="link" href="mailto:nazar.dezign@gmail.com">nazar.dezign@gmail.com</a></p>
+          </div>
+
+          <div class="contact-item">
+            <h3>Communication Language</h3>
+            <p class="muted">
+              You can write to me in English, Spanish, or Russian. I will adapt from our first contact.
+            </p>
+          </div>
+        </div>
+
+        <div class="mini-cta">
+          <a class="button secondary" href="/en/index.html">Back to home</a>
+        </div>
       </div>
     </section>
   </main>
+  
   <div id="footer-slot"></div>
+
 </body>
 </html>
