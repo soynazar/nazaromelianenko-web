@@ -4,34 +4,15 @@
   <meta charset="UTF-8" />
   <title>Desarrollo · Tecnología — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="/styles.css" />
+  
+  <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
-
-
 </head>
 
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="index.html" class="brand-link">Nazar Omelianenko</a>
-      </div>
+<body class="is-loading">
 
-      <nav class="nav">
-      
-<a href="ensenanza/">Enseñanza</a>
-<a href="desarrollo/">Desarrollo</a>
-<a href="sobre-mi/">Sobre mí</a>
-<a href="contacto/">Contacto</a>
-<a href="./">Inicio</a>
-
-      </nav>
-    </div>
-  </header>
-
-  <script src="../lang-switch.js"></script>
-
+  <div id="header-slot"></div>
 
   <main class="page">
     <section class="container page-hero">
@@ -123,27 +104,14 @@
           escríbeme y lo hablamos con calma.
         </p>
         <div class="cta-actions">
-          <a class="button" href="contacto.html">Contactar</a>
-          <a class="button secondary" href="index.html">Volver al inicio</a>
+          <a class="button" href="/es/contacto">Contactar</a>
+          <a class="button secondary" href="/es/">Volver al inicio</a>
         </div>
       </div>
     </section>
   </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">© Nazar Omelianenko</div>
-</footer>
-<script>
-(function () {
-  const file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-  document.querySelectorAll(".nav-link").forEach(a => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === file) a.classList.add("active");
-  });
-})();
-</script>
+  <div id="footer-slot"></div>
 
 </body>
 </html>
-
-
