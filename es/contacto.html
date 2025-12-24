@@ -2,42 +2,78 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Nazar Omelianenko — Educación y Tecnología</title>
+  <title>Contacto — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <link rel="stylesheet" href="/styles.css" />
-  
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
 </head>
-  
+
 <body class="is-loading">
 
   <div id="header-slot"></div>
 
   <main class="page">
     <section class="container page-hero">
-      <h1>Trabajo en educación y tecnología, integrando aprendizaje y construcción con criterio.</h1>
+      <h1>Contacto</h1>
+      <p class="lead">
+        Si quieres hablar sobre clases, preparación DELE/EOI o un proyecto web, 
+        escríbeme y lo enfocamos con claridad.
+      </p>
     </section>
 
     <section class="container page-grid">
-      <article class="card">
-        <h2>Enseñanza · Idiomas</h2>
-        <p>
-          Trabajo con personas que buscan un aprendizaje serio,
-          adaptado a su ritmo y con atención al proceso.
+      <div class="card">
+        <h2>Mensaje rápido</h2>
+        <p class="muted">
+          Cuéntame brevemente qué necesitas y en qué plazo.
         </p>
-        <a href="/es/ensenanza" class="button">Enseñanza e idiomas</a>
-      </article>
 
-      <article class="card">
-        <h2>Desarrollo · Tecnología</h2>
-        <p>
-          Desarrollo proyectos que requieren soluciones claras,
-          con criterios sólidos y centrados en lo esencial.
-        </p>
-        <a href="/es/desarrollo" class="button">Desarrollo y tecnología</a>
-      </article>
+        <form class="form" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
+          <label class="label" for="name">Nombre</label>
+          <input class="input" id="name" name="Nombre" type="text" placeholder="Tu nombre" required />
+
+          <label class="label" for="email">Email</label>
+          <input class="input" id="email" name="Email" type="email" placeholder="tu@email.com" required />
+
+          <label class="label" for="topic">Tema</label>
+          <select class="input" id="topic" name="Tema" required>
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option>Clases de español</option>
+            <option>Clases de valenciano</option>
+            <option>Preparación DELE</option>
+            <option>Preparación EOI</option>
+            <option>Proyecto web</option>
+            <option>Otro</option>
+          </select>
+
+          <label class="label" for="message">Mensaje</label>
+          <textarea class="input textarea" id="message" name="Mensaje" rows="6"
+            placeholder="Objetivo, nivel, horario aproximado, contexto..." required></textarea>
+
+          <button class="button" type="submit">Enviar mensaje</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Contacto directo</h2>
+        <p class="muted">Opciones directas para una comunicación sencilla.</p>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <h3>Email</h3>
+            <p><a class="link" href="mailto:nazar.dezign@gmail.com">nazar.dezign@gmail.com</a></p>
+          </div>
+
+          <div class="contact-item">
+            <h3>Idioma de contacto</h3>
+            <p class="muted">
+              Puedes escribirme en español, ruso o inglés. Adaptaré mi respuesta desde el primer momento.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
