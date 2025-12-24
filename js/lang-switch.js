@@ -1,5 +1,4 @@
 const pageMap = {
-    // de -> a
     'teaching.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html' },
     'ensenanza.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html' },
     'development.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html' },
@@ -11,6 +10,30 @@ const pageMap = {
     'index.html': { es: 'index.html', ru: 'index.html', en: 'index.html' }
 };
 
+const uiStrings = {
+    es: {
+        home: "Inicio",
+        teaching: "Enseñanza",
+        dev: "Desarrollo",
+        about: "Sobre mí",
+        contact: "Contacto"
+    },
+    en: {
+        home: "Home",
+        teaching: "Teaching",
+        dev: "Development",
+        about: "About me",
+        contact: "Contact"
+    },
+    ru: {
+        home: "Главная",
+        teaching: "Обучение",
+        dev: "Разработка",
+        about: "Обо мне",
+        contact: "Контакт"
+    }
+};
+
 const initLanguageSwitch = () => {
     const langLinks = document.querySelectorAll('.lang-switch a');
     if (langLinks.length === 0) return;
@@ -20,8 +43,16 @@ const initLanguageSwitch = () => {
     const currentLang = pathParts[1] || 'es';
     const currentPage = pathParts.pop() || 'index.html';
 
-    // 1. Corregir los enlaces del menú según el idioma actual
-    document.querySelectorAll('.nav-link').forEach(link => {
+    // 1. Traducir los textos del menú y corregir enlaces
+    const navLinks = document.querySelectorAll('.nav-link');
+    const strings = uiStrings[currentLang];
+
+    navLinks.forEach(link => {
+        const key = link.getAttribute('data-key');
+        if (key && strings[key]) {
+            link.textContent = strings[key];
+        }
+        
         const href = link.getAttribute('href');
         if (href && pageMap[href]) {
             link.href = `/${currentLang}/${pageMap[href][currentLang]}`;
