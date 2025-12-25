@@ -221,6 +221,16 @@ h1, h2, h3 {
     justify-content: center;
     text-align: center;
 }
+/* Ajuste para que la filosofía ocupe el hueco si falta materiales */
+.bento-philosophy {
+    grid-column: span 1;
+}
+
+/* Si quieres que en las versiones de 3 bloques la frase sea más ancha 
+   y el diseño se vea equilibrado, usa esta regla: */
+body:not([lang="ru"]) .bento-philosophy {
+    grid-column: span 2; /* En ES, EN y CA ocupará todo el ancho inferior derecho */
+}
 
 .bento-philosophy .quote {
     font-family: var(--font-header);
