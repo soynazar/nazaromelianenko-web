@@ -23,6 +23,17 @@ const uiStrings = {
     ca: { home: "Inici", teaching: "Ensenyança", dev: "Desenvolupament", about: "Sobre mi", contact: "Contacte" }
 };
 const initLanguageSwitch = () => {
+
+    // Dentro de initLanguageSwitch, después de definir currentLang
+const materialsLink = document.querySelector('.nav-link[data-key="materials"]');
+
+if (materialsLink) {
+    if (currentLang === 'ru') {
+        materialsLink.style.display = 'inline-block'; // Solo se ve en ruso
+    } else {
+        materialsLink.style.display = 'none'; // Oculto en ES, EN, CA
+    }
+}
     const langLinks = document.querySelectorAll('.lang-switch a');
     if (langLinks.length === 0) return;
 
