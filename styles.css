@@ -43,7 +43,75 @@ main { flex: 1; }
 /* =========================================
    Logo Imponente: Más grande y compacto
    ========================================= */
+/* Configuración de la Rejilla Bento */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+  margin-top: var(--spacing-lg);
+}
 
+/* Estilos base de los items */
+.bento-item {
+  background: white;
+  padding: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); /* Motion design premium */
+}
+
+/* Jerarquía de tamaños (Layout Modular) */
+.bento-hero-service {
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: var(--color-arena); /* Contraste suave */
+}
+
+.bento-dev {
+  grid-column: span 2;
+}
+
+.bento-materials, .bento-philosophy {
+  grid-column: span 1;
+}
+
+/* Estética de los textos */
+.bento-item h2, .bento-item h3 {
+  font-family: var(--font-header);
+  color: var(--color-charcoal);
+  margin-bottom: 1rem;
+}
+
+.bento-item p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.bento-philosophy {
+  background-color: var(--color-charcoal);
+  color: var(--color-arena);
+  justify-content: center;
+  text-align: center;
+}
+
+.bento-philosophy .quote {
+  font-family: var(--font-header);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-arena);
+  opacity: 0.9;
+}
+
+/* Micro-interacción: Elevación sutil */
+.bento-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+  border-color: var(--color-terracotta);
+}
 .brand-link {
   display: flex;
   align-items: center;
