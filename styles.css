@@ -152,7 +152,7 @@ h1, h2, h3 {
    ========================================= */
 .bento-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Evita que las columnas colapsen */
     gap: 1.5rem;
     margin-top: var(--spacing-lg);
 }
@@ -173,40 +173,36 @@ h1, h2, h3 {
     border-color: var(--color-terracotta);
 }
 
-/* Hero Service (Split Layout) */
+/* 2. Ajuste Premium para el Hero (Foto + Texto) */
 .bento-hero-service {
     grid-column: span 2;
     grid-row: span 2;
-    padding: 0; 
-    overflow: hidden;
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    min-height: 450px;
+    flex-direction: row; /* Foto a la izquierda siempre en PC */
+    min-height: 500px; /* Forzamos altura suficiente para el retrato */
+    background: white;
 }
 
 .bento-hero-image-container {
-    flex: 0 0 40%;
+    flex: 0 0 45%; /* La foto ocupará siempre el 45%, pase lo que pase con el texto */
     position: relative;
-    background-color: var(--color-charcoal);
+    overflow: hidden;
 }
 
 .bento-hero-img {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%;
+    object-position: center 20%; /* Ajuste para que se vea tu cara y no solo el pelo */
 }
 
 .bento-hero-content {
-    flex: 1;
-    padding: 3rem; 
+    flex: 1; /* El texto se queda con el 55% restante */
+    padding: 2.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-width: 0; /* Truco de DAM: evita que el texto desborde su contenedor */
 }
 
 /* Otros bloques Bento */
@@ -290,15 +286,15 @@ h1, h2, h3 {
         grid-template-columns: 1fr;
     }
 
-    .bento-hero-service {
-        flex-direction: column;
+   .bento-hero-service {
+        flex-direction: column; /* Foto arriba, texto abajo */
         min-height: auto;
         grid-column: span 1;
     }
 
-    .bento-hero-image-container {
-        width: 100%;
-        height: 250px;
+  .bento-hero-image-container {
+        height: 300px; /* Altura fija para que la foto no sea una tira fina */
+        flex: none;
     }
     
     .bento-hero-content {
