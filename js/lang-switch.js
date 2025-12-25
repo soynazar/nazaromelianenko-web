@@ -1,56 +1,44 @@
 const pageMap = {
     'teaching.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyança.html' },
     'ensenanza.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyança.html' },
-    'ensenyança.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyança.html' }, // <--- AÑADIR ESTA
-    
+    'ensenyança.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyança.html' },
     'development.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
     'desarrollo.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
-    'desenvolupament.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' }, // <--- AÑADIR ESTA
-    
+    'desenvolupament.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
     'contact.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html', ca: 'contacte.html' },
     'contacto.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html', ca: 'contacte.html' },
-    'contacte.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html', ca: 'contacte.html' }, // <--- AÑADIR ESTA
-    
+    'contacte.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html', ca: 'contacte.html' },
     'about-me.html': { es: 'sobre-mi.html', ru: 'sobre-mi.html', en: 'about-me.html', ca: 'sobre-mi.html' },
     'sobre-mi.html': { es: 'sobre-mi.html', ru: 'sobre-mi.html', en: 'about-me.html', ca: 'sobre-mi.html' },
-    'index.html': { es: 'index.html', ru: 'index.html', en: 'index.html', ca: 'index.html' }
+    'index.html': { es: 'index.html', ru: 'index.html', en: 'index.html', ca: 'index.html' },
+    'materiales.html': { es: 'index.html', ru: 'materiales.html', en: 'index.html', ca: 'index.html' }
 };
 
 const uiStrings = {
-    es: { home: "Inicio", teaching: "Enseñanza", dev: "Desarrollo", about: "Sobre mí", contact: "Contacto" },
-    en: { home: "Home", teaching: "Teaching", dev: "Development", about: "About me", contact: "Contact" },
-    ru: { home: "Главная", teaching: "Обучение", dev: "Разработка",materials: "Материалы", about: "Обо мне", contact: "Контакт" },
-    ca: { home: "Inici", teaching: "Ensenyança", dev: "Desenvolupament", about: "Sobre mi", contact: "Contacte" }
+    es: { home: "Inicio", teaching: "Enseñanza", dev: "Desarrollo", about: "Sobre mí", contact: "Contacto", materials: "Materiales" },
+    en: { home: "Home", teaching: "Teaching", dev: "Development", about: "About me", contact: "Contact", materials: "Materials" },
+    ru: { home: "Главная", teaching: "Обучение", dev: "Разработка", about: "Обо мне", contact: "Контакт", materials: "Материалы" },
+    ca: { home: "Inici", teaching: "Ensenyança", dev: "Desenvolupament", about: "Sobre mi", contact: "Contacte", materials: "Materials" }
 };
+
 const initLanguageSwitch = () => {
-
-   // ... dentro de initLanguageSwitch ...
-const currentLang = pathParts[1] || 'es';
-const currentPage = pathParts.pop() || 'index.html';
-
-// BUSCAR EL LINK DE MATERIALES
-const materialsLink = document.querySelector('.nav-link[data-key="materials"]');
-
-// Solo intentamos cambiar el estilo si el link realmente existe en el DOM
-if (materialsLink) {
-    if (currentLang === 'ru') {
-        materialsLink.style.display = 'inline-block';
-    } else {
-        materialsLink.style.display = 'none';
-    }
-}
     const langLinks = document.querySelectorAll('.lang-switch a');
-    if (langLinks.length === 0) return;
-
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Detectar idioma y página actual
     const currentPath = window.location.pathname;
     const pathParts = currentPath.split('/');
     const currentLang = pathParts[1] || 'es';
     const currentPage = pathParts.pop() || 'index.html';
 
-    // 1. Traducir los textos del menú y corregir enlaces
-    const navLinks = document.querySelectorAll('.nav-link');
-    const strings = uiStrings[currentLang];
+    // 1. Control de visibilidad del botón Materiales
+    const materialsLink = document.querySelector('.nav-link[data-key="materials"]');
+    if (materialsLink) {
+        materialsLink.style.display = (currentLang === 'ru') ? 'inline-block' : 'none';
+    }
 
+    // 2. Traducir textos y corregir enlaces del menú
+    const strings = uiStrings[currentLang] || uiStrings.es;
     navLinks.forEach(link => {
         const key = link.getAttribute('data-key');
         if (key && strings[key]) {
@@ -63,12 +51,16 @@ if (materialsLink) {
         }
     });
 
-    // 2. Configurar el selector de idiomas
+    // 3. Configurar clics del selector de idiomas
     langLinks.forEach(link => {
         const targetLang = link.getAttribute('data-lang');
         if (targetLang === currentLang) link.classList.add('active');
 
-        link.addEventListener('click', (e) => {
+        // Clonar para evitar múltiples listeners si el evento se dispara dos veces
+        const newLink = link.cloneNode(true);
+        link.parentNode.replaceChild(newLink, link);
+
+        newLink.addEventListener('click', (e) => {
             e.preventDefault();
             const translatedPage = pageMap[currentPage] ? pageMap[currentPage][targetLang] : 'index.html';
             window.location.href = `/${targetLang}/${translatedPage}`;
@@ -76,4 +68,5 @@ if (materialsLink) {
     });
 };
 
+// Escuchar el evento de carga de componentes
 window.addEventListener('componentsLoaded', initLanguageSwitch);
