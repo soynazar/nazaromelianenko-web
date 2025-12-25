@@ -175,7 +175,9 @@ html:not(.is-loading) body {
 }
 
 .card{
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ocupa todo el alto disponible */
 }
 
 .card h2{
@@ -184,9 +186,8 @@ html:not(.is-loading) body {
   margin-bottom: 1rem;
 }
 
-.card p{
-  margin-bottom: 1.2rem;
-  max-width: 520px;
+.card p{flex-grow: 1; 
+  margin-bottom: 2rem;
 }
 
 .link{
@@ -219,10 +220,10 @@ html:not(.is-loading) body {
 }
 
 .page-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3rem;
-  padding: 2rem 0 1rem;
+ display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  align-items: stretch; /* Estira las tarjetas para que midan lo mismo */
 }
 
 .page-section{
