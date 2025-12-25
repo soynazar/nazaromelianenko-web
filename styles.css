@@ -357,7 +357,55 @@ html:not(.is-loading) body {
   margin-bottom: 0.35rem;
 }
 
- 
+ /* Estilos específicos para materiales */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-width: 2px; /* Un poco más grueso para destacar */
+}
+
+.product-badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.product-features {
+  margin: 1.5rem 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.product-features li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.product-features li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #000;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
 
 /* Responsive */
 @media (max-width: 640px){
