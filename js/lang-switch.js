@@ -24,14 +24,19 @@ const uiStrings = {
 };
 const initLanguageSwitch = () => {
 
-    // Dentro de initLanguageSwitch, después de definir currentLang
+   // ... dentro de initLanguageSwitch ...
+const currentLang = pathParts[1] || 'es';
+const currentPage = pathParts.pop() || 'index.html';
+
+// BUSCAR EL LINK DE MATERIALES
 const materialsLink = document.querySelector('.nav-link[data-key="materials"]');
 
+// Solo intentamos cambiar el estilo si el link realmente existe en el DOM
 if (materialsLink) {
     if (currentLang === 'ru') {
-        materialsLink.style.display = 'inline-block'; // Solo se ve en ruso
+        materialsLink.style.display = 'inline-block';
     } else {
-        materialsLink.style.display = 'none'; // Oculto en ES, EN, CA
+        materialsLink.style.display = 'none';
     }
 }
     const langLinks = document.querySelectorAll('.lang-switch a');
