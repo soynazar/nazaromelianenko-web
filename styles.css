@@ -50,8 +50,9 @@ main {
    ========================================= */
 
 .brand-link {
-  display: flex;
+ display: flex;
   align-items: center;
+  gap: 0.75rem; /* Separación elegante */
   text-decoration: none;
   gap: 0.75rem; /* Un poco más de espacio entre icono y texto queda más elegante */
 }
@@ -59,9 +60,20 @@ main {
  
 /* Estilos para el nuevo icono SVG */
 .brand-icon {
-  /* Aumentamos el tamaño físico para compensar la verticalidad */
-  height: 4.5rem; 
+  /* ¡Importante!: La altura debe ser generosa para compensar la verticalidad del logo */
+  height: 3.5rem !important; 
   width: auto;
+  
+  /* Color del Brand Book 2025 */
+  color: var(--color-terracotta) !important; 
+  
+  /* Alineación física */
+  vertical-align: middle;
+  flex-shrink: 0;
+  
+  /* Micro-animación sutil */
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
   
   /* Color vinculado a tu variable de marca */
   color: var(--color-terracotta); 
