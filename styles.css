@@ -3,26 +3,27 @@
 
 :root{
 
-  /* Paleta Brand Book 2025 */
-  --color-charcoal: #1A1A1A;
-  --color-arena: #F2F1EF;
-  --color-terracotta: #E2725B;
-  --color-slate: #4A5D50;
+/* Paleta de Colores 2025 */
+  --color-charcoal: #1A1A1A;     /* Sobriedad y Criterio */
+  --color-arena: #F2F1EF;        /* Humanidad y Calidez */
+  --color-terracotta: #E2725B;   /* El acento emocional */
+  --color-slate: #4A5D50;        /* Soporte orgánico */
 
-  /* Tipografía */
-  --font-primary: 'Fraunces', serif; /* Criterio */
-  --font-secondary: 'Inter', sans-serif; /* Humanidad */
-  --bg: #fafafa;
-  --text: #1a1a1a;
-  --muted: #666;
-  --line: #e5e5e5;
+ /* Tipografía */
+  --font-header: 'Fraunces', serif; /* Para títulos (Criterio) */
+  --font-body: 'Inter', sans-serif;  /* Para lectura (Claridad) */
+  
+  /* Espaciado */
+  --spacing-lg: 4rem;
+  --spacing-md: 2rem;
 }
 
 body{
-
-  background-color: var(--color-arena);
+background-color: var(--color-arena);
   color: var(--color-charcoal);
-  font-family: var(--font-secondary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  margin: 0;
   
   display: flex;
   flex-direction: column;
@@ -170,7 +171,11 @@ html:not(.is-loading) body {
   font-size: 0.875rem;
 }
 
-
+h1, h2, h3 {
+  font-family: var(--font-header);
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
 
 /* HOME */
 .hero{
@@ -190,11 +195,16 @@ html:not(.is-loading) body {
 }
 
 .card{
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Ocupa todo el alto disponible */
+ background: white; /* O un tono muy suave de Arena */
+  border: 1px solid rgba(26, 26, 26, 0.05); /* Borde casi invisible */
+  padding: var(--spacing-md);
+  border-radius: 4px; /* Esquinas sutilmente suavizadas */
+  transition: transform 0.3s ease;
 }
 
+.card:hover {
+  transform: translateY(-5px); /* Animación sutil de "Criterio" */
+}
 .card h2{
   font-size: 1.2rem;
   font-weight: 500;
@@ -306,14 +316,22 @@ html:not(.is-loading) body {
 }
 
 /* Botones */
-.button{
- background-color: var(--color-terracotta);
-  transition: transform 0.3s ease;
+/* Botón Terracotta con estilo Premium */
+.button {
+  display: inline-block;
+  background-color: var(--color-terracotta);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
 }
 
-.button:hover{
-  background: var(--text);
-  color: var(--bg);
+.button:hover {
+  background-color: #c95d48; /* Un tono más oscuro de Terracotta */
 }
 
 .button.secondary{
