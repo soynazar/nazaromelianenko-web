@@ -59,11 +59,25 @@ main {
  
 /* Estilos para el nuevo icono SVG */
 .brand-icon {
+  /* Aumentamos el tamaño físico para compensar la verticalidad */
+  height: 4.5rem; 
   width: auto;
-  height: 2.8rem; /* Ajuste para que el isotipo sea legible pero sobrio */
-  color: var(--color-terracotta); /* Color de la marca */
-  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); /* Curva elegante de movimiento */
-  cursor: pointer;
+  
+  /* Color vinculado a tu variable de marca */
+  color: var(--color-terracotta); 
+  
+  /* Alineación: lo bajamos un poco para que el centro visual coincida con el nombre */
+  vertical-align: middle;
+  margin-top: -0.5rem; 
+  
+  flex-shrink: 0;
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Reducimos el espacio para que actúen como una unidad */
+  text-decoration: none;
 }
 
 /* LA MICRO-ANIMACIÓN */
