@@ -1,10 +1,13 @@
-/* DICCIONARIO DE RUTAS: Para traducir los enlaces del menú automáticamente */
+/* =============================================================
+   CONFIGURACIÓN DE RUTAS (DICCIONARIO)
+   Aquí definimos cómo se llama cada página en cada idioma
+   ============================================================= */
 const siteRoutes = {
     es: {
         home: 'index.html',
         teaching: 'ensenanza.html',
         dev: 'desarrollo.html',
-        materials: 'materiales.html', // Crea este archivo si no existe en ES
+        materials: 'materiales.html',
         about: 'sobre-mi.html',
         contact: 'contacto.html'
     },
@@ -26,7 +29,7 @@ const siteRoutes = {
     },
     ru: {
         home: 'index.html',
-        teaching: 'ensenanza.html', // Ojo: Revisa si en la carpeta RU se llaman así
+        teaching: 'ensenanza.html', // Asegúrate que estos nombres coincidan con tus archivos en /ru/
         dev: 'desarrollo.html',
         materials: 'materiales.html',
         about: 'sobre-mi.html',
@@ -34,69 +37,84 @@ const siteRoutes = {
     }
 };
 
+/* =============================================================
+   LÓGICA PRINCIPAL
+   ============================================================= */
+
+// 1. Detectar idioma actual basado en la URL
 function getCurrentLanguage() {
     const path = window.location.pathname;
     if (path.includes('/es/')) return 'es';
     if (path.includes('/en/')) return 'en';
     if (path.includes('/ca/')) return 'ca';
     if (path.includes('/ru/')) return 'ru';
-    return 'es'; // Idioma por defecto
+    return 'es'; // Idioma por defecto si estamos en la raíz
 }
 
+// 2. Encontrar qué página ("Key") estamos viendo actualmente
+// Ejemplo: si estoy en "teaching.html" (en), la key es "teaching"
+function getCurrentPageKey(currentLang) {
+    const path = window.location.pathname;
+    const currentFile = path.split("/").pop() || 'index.html'; // Si es carpeta raíz, asume index.html
+    
+    const routes = siteRoutes[currentLang];
+    
+    // Buscamos el nombre del archivo en el objeto del idioma actual
+    for (const [key, file] of Object.entries(routes)) {
+        if (file === currentFile) {
+            return key;
+        }
+    }
+    return 'home'; // Si no encuentra la página (ej: 404), manda al home
+}
+
+// 3. Inyectar HTML y Configurar Enlaces
 async function includeHTML() {
     const headerSlot = document.getElementById("header-slot");
     const footerSlot = document.getElementById("footer-slot");
     const currentLang = getCurrentLanguage();
 
     try {
-        // Cargar HTML
+        // Cargar Header y Footer
         const [headerRes, footerRes] = await Promise.all([
             fetch("/components/header.html", { cache: "no-store" }),
             fetch("/components/footer.html", { cache: "no-store" })
         ]);
 
+        // --- PROCESAR HEADER ---
         if (headerSlot && headerRes.ok) {
             headerSlot.innerHTML = await headerRes.text();
             
-            // --- CORRECCIÓN DE ENLACES (MAGIA) ---
+            // A) Configurar Menú de Navegación (Pone href correcto y clase active)
             const navLinks = headerSlot.querySelectorAll('.nav-link');
             const routes = siteRoutes[currentLang];
+            const currentPageKey = getCurrentPageKey(currentLang);
             
             navLinks.forEach(link => {
-                const key = link.dataset.key; // lee data-key="teaching"
+                const key = link.dataset.key; 
                 if (routes[key]) {
-                    link.href = routes[key]; // asigna "ensenanza.html"
+                    // Construye ruta: /es/ensenanza.html
+                    link.href = `/${currentLang}/${routes[key]}`; 
                     
-                    // Marcar activo si coincide con la URL actual
-                    const currentFile = window.location.pathname.split("/").pop();
-                    if(routes[key] === currentFile) {
+                    // Marcar activo
+                    if(key === currentPageKey) {
                         link.classList.add('active');
                     }
                 }
             });
 
-            // Configurar Logo para que vaya al index del idioma actual
+            // B) Configurar Logo
             const logoLink = headerSlot.querySelector('#logo-link');
-            if(logoLink) logoLink.href = "index.html"; 
-            
-            // Configurar Switcher de Idiomas (lang-switch.js debería encargarse, 
-            // pero esto asegura que los links se vean bien)
-            const langLinks = headerSlot.querySelectorAll('.lang-switch a');
-            langLinks.forEach(l => {
-                if(l.dataset.lang === currentLang) l.classList.add('active');
-            });
+            if(logoLink) logoLink.href = `/${currentLang}/index.html`; 
+
+            // C) Configurar Selector de Idioma (LA PARTE CRÍTICA)
+            setupLanguageSwitcher(currentLang, currentPageKey);
         }
         
+        // --- PROCESAR FOOTER ---
         if (footerSlot && footerRes.ok) {
             footerSlot.innerHTML = await footerRes.text();
         }
 
     } catch (err) {
-        console.error("Error cargando componentes:", err);
-    } finally {
-        document.documentElement.classList.remove("is-loading");
-        document.body.classList.remove("is-loading");
-    }
-}
-
-document.addEventListener("DOMContentLoaded", includeHTML);
+        consol
