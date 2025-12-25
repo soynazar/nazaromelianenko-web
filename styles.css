@@ -408,10 +408,10 @@ html:not(.is-loading) body {
 }
 
 .methodology-box {
-  margin-top: 2rem;
+  margin-top: 3rem; /* Esto crea un espacio limpio de 3 unidades sobre el bloque */
   padding: 1.5rem;
-  background-color: #f9f9f9; /* Un gris muy suave para diferenciarlo */
-  border-left: 3px solid #000; /* Una línea elegante a la izquierda */
+  background-color: #f9f9f9;
+  border-left: 3px solid #000;
   max-width: 800px;
   line-height: 1.6;
 }
