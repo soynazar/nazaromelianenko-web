@@ -64,17 +64,41 @@ main { flex: 1; }
 }
 
 /* Jerarquía de tamaños (Layout Modular) */
+/* Contenedor de la imagen (Lado Izquierdo) */
 .bento-hero-image-container {
-  width: 100%;
-  height: 250px; /* Controla aquí el tamaño visual */
-  overflow: hidden;
+  flex: 0 0 40%; /* Ocupa el 40% del ancho de la tarjeta */
+  height: auto; /* La altura se ajusta automáticamente al contenedor padre */
+  min-height: 300px; /* Altura mínima para asegurar presencia */
+  background-color: var(--color-charcoal);
+  position: relative; /* Necesario para que la imagen absoluta se posicione aquí */
 }
+/* Contenedor del Texto (Lado Derecho) */
+.bento-hero-content {
+  flex: 1; /* Ocupa el 60% restante del espacio */
+  padding: 2.5rem; /* Un poco más de aire para elegancia */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra el texto verticalmente */
+}
+/* El contenedor principal ahora es una fila flexible */
 .bento-hero-service {
-  grid-column: span 2;
-  grid-row: span 2;
-  background-color: var(--color-arena); /* Contraste suave */
+  padding: 0; 
+  overflow: hidden;
+  display: flex; /* Activa Flexbox */
+  flex-direction: row; /* Pone los elementos lado a lado en PC */
+  align-items: stretch; /* Hace que ambas partes tengan la misma altura */
 }
 
+/* La imagen misma */
+.bento-hero-img {
+  position: absolute; /* La sacamos del flujo para que llene el contenedor */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ahora sí, cubrirá el área de 40% perfectamente sin recortes locos */
+  object-position: center center; /* Centramos el foco */
+}
 .bento-dev {
   grid-column: span 2;
 }
@@ -266,4 +290,19 @@ main { flex: 1; }
 @media (max-width: 768px) {
   .header-inner { flex-direction: column; height: auto; padding: 1rem; }
   .brand-icon { height: 2.8rem !important; }
+  /* En móviles, volvemos a apilar uno sobre otro */
+  .bento-hero-service {
+    flex-direction: column; 
+  }
+
+  /* La imagen vuelve a ser un banner superior, pero con altura controlada */
+  .bento-hero-image-container {
+    width: 100%;
+    flex: none; /* Anulamos el 40% */
+    height: 250px; /* Altura fija para móvil */
+  }
+  
+  .bento-hero-content {
+    padding: 1.5rem;
+  }
 }
