@@ -407,6 +407,23 @@ html:not(.is-loading) body {
   font-weight: bold;
 }
 
+.methodology-box {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f9f9f9; /* Un gris muy suave para diferenciarlo */
+  border-left: 3px solid #000; /* Una línea elegante a la izquierda */
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+.methodology-box strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
 /* Responsive */
 @media (max-width: 640px){
   .hero h1{ font-size: 1.7rem; }
