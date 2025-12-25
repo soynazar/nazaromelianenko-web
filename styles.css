@@ -87,7 +87,10 @@ main { flex: 1; }
 .brand-link:hover .brand-name {
   color: var(--color-terracotta);
 }
-
+#header-slot {
+    background-color: var(--color-arena); /* En lugar de blanco puro */
+    border-bottom: 1px solid var(--line);
+}
 /* =========================================
    Layout y Componentes (Header/Nav)
    ========================================= */
