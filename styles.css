@@ -3,6 +3,10 @@
 
 :root{
 
+  /* Tipografía del Brand Book 2025 */
+  --font-header: 'Fraunces', serif; /* La voz del Sabio Contemporáneo */
+  --font-body: 'Inter', sans-serif;  /* La voz del facilitador */
+
 /* Paleta de Colores 2025 */
   --color-charcoal: #1A1A1A;     /* Sobriedad y Criterio */
   --color-arena: #F2F1EF;        /* Humanidad y Calidez */
@@ -19,6 +23,10 @@
 }
 
 body{
+  font-family: var(--font-body);
+  background-color: var(--color-arena);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased; /* Mejora la nitidez en pantallas */
 background-color: var(--color-arena);
   color: var(--color-charcoal);
   font-family: var(--font-body);
