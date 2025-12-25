@@ -1,70 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>About me — Nazar Omelianenko</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css" />
-    <script src="/js/include.js" defer></script>
-    <script src="/js/lang-switch.js" defer></script>
+  <meta charset="UTF-8" />
+  <title>About me — Nazar Omelianenko</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/js/include.js" defer></script>
+  <script src="/js/lang-switch.js" defer></script>
 </head>
+
 <body class="is-loading">
-    <header class="site-header">
-  <div class="header-inner container">
-    <div class="header-left">
-      <div class="brand">
-        <a href="/en/index.html" class="brand-link">
-          <svg class="brand-icon" viewBox="0 0 300 411" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-            <g transform="translate(0.000000,411.000000) scale(0.100000,-0.100000)" fill="currentColor">
-              <path d="M1406 2504 c-73 -18 -183 -75 -240 -125 l-44 -39 -53 83 -53 83 -88 2 c-53 1 -88 -2 -88 -8 0 -5 15 -10 34 -10 71 0 66 36 66 -461 0 -433 -1 -449 -19 -459 -11 -5 -33 -10 -50 -10 -17 0 -31 -5 -31 -10 0 -6 45 -9 119 -8 l119 2 66 -61 c73 -69 175 -124 276 -149 85 -21 239 -15 330 15 188 60 358 234 405 416 34 134 9 316 -62 444 -55 99 -162 200 -265 249 -45 22 -107 45 -136 51 -72 15 -214 12 -286 -5z m140 -31 c9 -19 13 -803 4 -803 -3 0 -25 33 -49 73 -25 39 -116 184 -203 321 -87 136 -158 251 -158 255 2 13 98 83 156 112 113 56 234 76 250 42z m168 1 c148 -38 300 -164 368 -304 55 -116 58 -134 10 -80 -22 25 -66 59 -97 75 -48 24 -70 29 -134 29 -68 1 -85 -3 -145 -33 -50 -24 -76 -45 -99 -78 l-32 -45 -3 206 c-1 131 1 214 8 226 13 24 42 25 124 4z m-570 -302 c287 -451 407 -632 422 -632 11 0 14 19 14 83 l0 82 19 -31 c29 -47 99 -102 154 -120 69 -23 191 -16 242 15 21 12 39 20 41 18 8 -7 -106 -113 -160 -149 -169 -110 -409 -120 -591 -25 -87 45 -214 174 -253 258 -54 113 -61 165 -64 482 -2 158 -1 287 2 286 3 0 81 -120 174 -267z m844 -36 c106 -54 158 -152 150 -287 -8 -142 -80 -239 -205 -275 -131 -38 -279 28 -334 150 -24 52 -27 219 -5 271 64 152 245 216 394 141z m-950 -534 c29 -39 28 -42 -11 -42 -49 0 -57 14 -57 105 l0 80 24 -56 c12 -31 32 -70 44 -87z"/>
-            </g>
-          </svg>
-          <span class="brand-name">Nazar Omelianenko</span>
-        </a>
+
+  <div id="header-slot"></div>
+  
+  <main class="page">
+    <section class="container page-hero">
+      <h1>About me</h1>
+      <p class="lead">
+        My professional path has been built at the intersection of education and technology—two 
+        distinct fields that share a common requirement: understanding deeply in order to advance with purpose.
+      </p>
+    </section>
+
+    <section class="container page-grid">
+      <div class="card">
+        <h2>How I work</h2>
+        <p>
+          I work with respect for established processes, responsibility in every decision, 
+          and direct communication.
+        </p>
+        <p>
+          I value structure, consistency, and high-quality work as the foundation 
+          for any meaningful progress.
+        </p>
       </div>
-      <nav class="nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="teaching.html" class="nav-link">Teaching</a>
-        <a href="development.html" class="nav-link">Development</a>
-        <a href="about-me.html" class="nav-link">About me</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </nav>
-    </div>
-    <div class="lang-switch">
-      <a data-lang="es" href="/es/index.html">ES</a>
-      <a data-lang="en" href="/en/index.html" class="active">EN</a>
-      <a data-lang="ru" href="/ru/index.html">RU</a>
-      <a data-lang="ca" href="/ca/index.html">CAT</a>
-    </div>
-  </div>
-</header>
-    <main class="page container">
-        <section class="page-hero"><h1>Education, technology, and linguistic mediation.</h1></section>
-        <section class="page-grid-balanced">
-            <article class="card card-featured">
-                <div class="card-image-wrapper"><img src="/images/nazar-perfil.webp" alt="Nazar" class="card-img"></div>
-                <div class="card-content">
-                    <span class="product-badge">Linguistics</span>
-                    <h2>Cognitive Methodology</h2>
-                    <p>I explain grammar through modern cognitive models, prioritizing understanding.</p>
-                </div>
-            </article>
-            <div class="right-column-stack">
-                <article class="card card-short">
-                    <div class="card-content">
-                        <h3>DAM</h3>
-                        <p>Multiplatform Application Development for an international world.</p>
-                    </div>
-                </article>
-                <article class="card card-short philosophy-card">
-                    <p class="quote">"My work is simultaneously educational and informative."</p>
-                </article>
-            </div>
-        </section>
-    </main>
-    <div id="footer-slot"></div>
-</body>
-</html>
+
+      <div class="card">
+        <h2>Education</h2>
+        <p>
+          I teach Spanish and Valencian to adults, with a specialized focus on 
+          learners coming from diverse linguistic and cultural backgrounds.
+        </p>
+        <p>
+          My approach integrates Social-Emotional Learning (SEL) strategies within a 
+          Positive Learning Environment: ensuring safety, clarity, and a sustainable pace.
+        </p>
+        <p>
+          I also specialize in preparing students for official certifications like 
+          DELE and EOI, embedding test prep within a solid overall learning journey.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Technology</h2>
+        <p>
+          I develop web projects focused on real utility, user experience (UX), 
+          and clean code that is easy to understand and evolve.
+        </p>
+        <p>
+          I am currently pursuing professional training in Application Development (DAM) 
+          while building personal projects to refine my technical criteria and practice.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Values</h2>
+        <p>
+          I believe in relationships based on trust and in using clear criteria as a 
+          form of respect toward people and the work itself.
+        </p>
+        <p>
+          I am interested in what is built with intention: step by step, 
+          with consistency and high standards.
+        </p>
+      </div>
+    </section>
+
+    <section class="container page-section">
+      <div class="section-header">
+        <h2>At a glance</h2>
+        <p class="muted">A quick summary of my profile.</p>
+      </div>
+
+      <div class="list-grid">
+        <div class="list-item">
+          <h3>Location</h3>
+          <p>Spain · Working online and in-person depending on the project.</p>
+        </div>
+        <div class="list-item">
+          <h3>Languages</h3>
+          <p>Spanish, Valencian/Catalan, Russian, Ukrainian, and English.</p>
+        </div>
+        <div class="list-item">
+          <h3>Expertise</h3>
