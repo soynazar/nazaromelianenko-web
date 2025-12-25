@@ -1,39 +1,19 @@
 const pageMap = {
-    'teaching.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html' },
-    'ensenanza.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html' },
-    'development.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html' },
-    'desarrollo.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html' },
-    'about-me.html': { es: 'sobre-mi.html', ru: 'sobre-mi.html', en: 'about-me.html' },
-    'sobre-mi.html': { es: 'sobre-mi.html', ru: 'sobre-mi.html', en: 'about-me.html' },
-    'contact.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html' },
-    'contacto.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html' },
-    'index.html': { es: 'index.html', ru: 'index.html', en: 'index.html' }
+    'teaching.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyança.html' },
+    'ensenanza.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyança.html' },
+    'development.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
+    'desarrollo.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
+    'about-me.html': { es: 'sobre-mi.html', ru: 'sobre-mi.html', en: 'about-me.html', ca: 'sobre-mi.html' },
+    'contact.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html', ca: 'contacte.html' },
+    'index.html': { es: 'index.html', ru: 'index.html', en: 'index.html', ca: 'index.html' }
 };
 
 const uiStrings = {
-    es: {
-        home: "Inicio",
-        teaching: "Enseñanza",
-        dev: "Desarrollo",
-        about: "Sobre mí",
-        contact: "Contacto"
-    },
-    en: {
-        home: "Home",
-        teaching: "Teaching",
-        dev: "Development",
-        about: "About me",
-        contact: "Contact"
-    },
-    ru: {
-        home: "Главная",
-        teaching: "Обучение",
-        dev: "Разработка",
-        about: "Обо мне",
-        contact: "Контакт"
-    }
+    es: { home: "Inicio", teaching: "Enseñanza", dev: "Desarrollo", about: "Sobre mí", contact: "Contacto" },
+    en: { home: "Home", teaching: "Teaching", dev: "Development", about: "About me", contact: "Contact" },
+    ru: { home: "Главная", teaching: "Обучение", dev: "Разработка", about: "Обо мне", contact: "Контакт" },
+    ca: { home: "Inici", teaching: "Ensenyança", dev: "Desenvolupament", about: "Sobre mi", contact: "Contacte" }
 };
-
 const initLanguageSwitch = () => {
     const langLinks = document.querySelectorAll('.lang-switch a');
     if (langLinks.length === 0) return;
