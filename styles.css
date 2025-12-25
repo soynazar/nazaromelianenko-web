@@ -95,7 +95,29 @@ main.container{
   text-decoration: none;
   color: inherit;
 }
+/* Estilos para el nuevo logo de texto */
+.brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-charcoal); /* Usa tu variable de color */
+}
 
+.brand-monogram {
+  font-family: var(--font-header); /* Usa Fraunces */
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-terracotta); /* El toque de acento */
+  margin-right: 0.5rem;
+  letter-spacing: -0.05em;
+}
+
+.brand-name {
+  font-family: var(--font-header); /* Usa Fraunces */
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
 /* Nav */
 .nav{
   display: flex;
