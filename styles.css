@@ -18,6 +18,7 @@ body {
     background-color: var(--color-arena);
     color: var(--color-charcoal);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* =========================================
@@ -41,7 +42,7 @@ body {
 .header-left {
     display: flex;
     align-items: center;
-    gap: 3rem; /* Espacio entre Logo y Menú */
+    gap: 3rem;
 }
 
 .nav {
@@ -97,27 +98,43 @@ body {
 }
 
 /* =========================================
-   3. GRID DE LA HOME (2 COLUMNAS)
+   3. GRID Y TARJETAS (CON ANIMACIÓN)
    ========================================= */
 .page-grid-balanced {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    align-items: stretch; /* Para que las columnas midan lo mismo */
+    align-items: start;
     margin-top: var(--spacing-lg);
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 24px;
 }
 
-/* Columna Izquierda: Tarjeta con Foto Arriba */
-.card-featured {
+/* Base de todas las tarjetas */
+.card {
     background: white;
     border: 1px solid var(--line);
+    border-radius: 4px;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); /* LA ANIMACIÓN CHULA */
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    border-color: var(--color-terracotta);
+}
+
+/* Tarjeta de Enseñanza (Foto arriba) */
+.card-featured {
     display: flex;
     flex-direction: column;
 }
 
 .card-image-wrapper {
     width: 100%;
-    height: 480px; /* Altura generosa para el retrato */
+    height: 380px; /* Tamaño controlado, no gigante */
     overflow: hidden;
 }
 
@@ -125,24 +142,22 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 20%; /* Enfoca los ojos, evita cortar frente */
+    object-position: center 20%;
 }
 
-/* Columna Derecha: Stack de Tarjetas Cortas */
-.card-stack {
+.card-content {
+    padding: 2.5rem;
+}
+
+/* Columna Derecha (Stack) */
+.right-column-stack {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
 .card-short {
-    background: white;
-    border: 1px solid var(--line);
-    flex: 1; /* Se estiran para llenar el hueco */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2.5rem;
+    padding: 2rem;
 }
 
 .philosophy-card {
@@ -151,16 +166,13 @@ body {
     text-align: center;
 }
 
-/* =========================================
-   4. COMPONENTES (BOTONES, TEXTOS)
-   ========================================= */
-.card-content {
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.philosophy-card .quote {
+    font-family: var(--font-header);
+    font-style: italic;
+    font-size: 1.1rem;
 }
 
+/* Botones y Badges */
 .button {
     display: inline-block;
     background-color: var(--color-terracotta);
@@ -168,19 +180,19 @@ body {
     padding: 0.8rem 1.5rem;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 0.85rem;
-    text-align: center;
-    margin-top: auto;
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
 }
 
 .product-badge {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    color: var(--muted);
+    color: #888;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
     .page-grid-balanced { grid-template-columns: 1fr; }
-    .header-inner { flex-direction: column; height: auto; padding: 20px; gap: 15px; }
-    .header-left { flex-direction: column; gap: 10px; }
 }
