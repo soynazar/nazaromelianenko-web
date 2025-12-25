@@ -1,117 +1,41 @@
 /* =========================================
    1. RESET & VARIABLES
    ========================================= */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    /* Tipografía del Brand Book 2025 */
     --font-header: 'Fraunces', serif;
     --font-body: 'Inter', sans-serif;
-
-    /* Paleta de Colores Earthy Luxury */
     --color-charcoal: #1A1A1A;
     --color-arena: #F2F1EF;
     --color-terracotta: #E2725B;
-    --color-slate: #4A5D50;
-    
-    /* Variables de Apoyo */
-    --text: var(--color-charcoal);
-    --bg: var(--color-arena);
     --line: rgba(26, 26, 26, 0.1);
-    --muted: #666666;
-
-    /* Espaciado */
     --spacing-lg: 4rem;
-    --spacing-md: 2rem;
 }
 
-/* =========================================
-   2. BASE STYLES
-   ========================================= */
 body {
     font-family: var(--font-body);
     background-color: var(--color-arena);
     color: var(--color-charcoal);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-main { 
-    flex: 1; 
-}
-
-h1, h2, h3 {
-    font-family: var(--font-header);
-    color: var(--color-charcoal);
+    line-height: 1.6;
 }
 
 /* =========================================
-   3. SISTEMA DE IDENTIDAD (LOGO)
+   2. HEADER (Logo/Menú Izquierda - Idiomas Derecha)
    ========================================= */
-.brand-link {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem; 
-    text-decoration: none;
-    padding: 0.5rem 0; 
-}
-
-.brand-icon {
-    height: 5.5rem !important; 
-    width: auto;
-    color: var(--color-terracotta) !important;
-    flex-shrink: 0;
-    margin-top: -0.2rem; 
-    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.brand-name {
-    font-family: var(--font-header);
-    font-weight: 600;
-    font-size: 1.4rem;
-    color: var(--color-charcoal);
-    letter-spacing: -0.03em;
-    line-height: 1;
-    transition: color 0.3s ease;
-}
-
-.brand-link:hover .brand-icon {
-    transform: scale(1.08) rotate(-2deg);
-    color: var(--color-charcoal) !important;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
-}
-
-.brand-link:hover .brand-name {
-    color: var(--color-terracotta);
-}
-
-/* =========================================
-   4. LAYOUT & NAVEGACIÓN (CABECERA 2025)
-   ========================================= */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
 .site-header {
     border-bottom: 1px solid var(--line);
     background-color: var(--color-arena);
-    z-index: 1000;
 }
 
 .header-inner {
     display: flex;
-    justify-content: space-between; /* Menú izquierda, Idiomas derecha */
+    justify-content: space-between;
     align-items: center;
     height: 90px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
 .header-left {
@@ -122,21 +46,34 @@ h1, h2, h3 {
 
 .nav {
     display: flex;
-    align-items: center;
     gap: 1.5rem;
 }
 
 .nav a {
     text-decoration: none;
-    color: var(--text);
-    opacity: 0.8;
+    color: var(--color-charcoal);
     font-size: 0.95rem;
-    transition: opacity 0.2s;
+    opacity: 0.8;
 }
 
-.nav a:hover, .nav a.active {
-    opacity: 1;
-    font-weight: 500;
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+}
+
+.brand-icon {
+    height: 5.5rem !important;
+    width: auto;
+    color: var(--color-terracotta);
+}
+
+.brand-name {
+    font-family: var(--font-header);
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: var(--color-charcoal);
 }
 
 .lang-switch {
@@ -148,7 +85,7 @@ h1, h2, h3 {
 
 .lang-switch a {
     text-decoration: none;
-    color: var(--text);
+    color: var(--color-charcoal);
     font-size: 0.9rem;
     opacity: 0.6;
 }
@@ -160,99 +97,68 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   5. HOME LAYOUT (BALANCED GRID)
+   3. GRID DE LA HOME (2 COLUMNAS)
    ========================================= */
 .page-grid-balanced {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas simétricas */
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    align-items: stretch; /* Estira las columnas para que midan lo mismo */
+    align-items: stretch; /* Para que las columnas midan lo mismo */
     margin-top: var(--spacing-lg);
 }
 
-/* Columna derecha: Pila de tarjetas cortas */
-.card-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-/* =========================================
-   6. COMPONENTES DE TARJETAS
-   ========================================= */
-.card {
+/* Columna Izquierda: Tarjeta con Foto Arriba */
+.card-featured {
     background: white;
     border: 1px solid var(--line);
-    transition: all 0.3s ease;
     display: flex;
-    flex-direction: column;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-/* Tarjeta destacada (Enseñanza con Foto arriba) */
-.card-featured {
     flex-direction: column;
 }
 
 .card-image-wrapper {
     width: 100%;
-    height: 420px; /* Altura del retrato */
+    height: 480px; /* Altura generosa para el retrato */
     overflow: hidden;
-    position: relative;
 }
 
 .card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 20%;
-    display: block;
+    object-position: center 20%; /* Enfoca los ojos, evita cortar frente */
 }
 
-.card-content {
-    padding: 2.5rem;
+/* Columna Derecha: Stack de Tarjetas Cortas */
+.card-stack {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    gap: 1.5rem;
 }
 
-/* Tarjetas cortas (Derecha) */
 .card-short {
-    flex: 1; /* Permite que las tarjetas se repartan el espacio */
-    padding: 0;
-}
-
-.card-short .card-content {
-    padding: 2rem;
+    background: white;
+    border: 1px solid var(--line);
+    flex: 1; /* Se estiran para llenar el hueco */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem;
 }
 
 .philosophy-card {
     background-color: var(--color-charcoal);
     color: var(--color-arena);
     text-align: center;
-    justify-content: center;
-}
-
-.philosophy-card .quote {
-    font-family: var(--font-header);
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--color-arena);
 }
 
 /* =========================================
-   7. ELEMENTOS DE UI
+   4. COMPONENTES (BOTONES, TEXTOS)
    ========================================= */
-.product-badge {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--muted);
-    margin-bottom: 1rem;
+.card-content {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .button {
@@ -261,64 +167,20 @@ h1, h2, h3 {
     color: white;
     padding: 0.8rem 1.5rem;
     text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
     text-transform: uppercase;
-    transition: background 0.3s ease;
-    margin-top: auto;
+    font-size: 0.85rem;
     text-align: center;
+    margin-top: auto;
 }
 
-.button:hover { 
-    background-color: #c95d48; 
+.product-badge {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--muted);
 }
 
-.link {
-    text-decoration: none;
-    color: var(--color-terracotta);
-    font-weight: 500;
-    font-size: 0.95rem;
-    margin-top: 1rem;
-}
-
-/* =========================================
-   8. LÓGICA DE IDIOMAS (MATERIALES)
-   ========================================= */
-/* Oculta el bloque de materiales por defecto en todos los idiomas */
-.card-materials {
-    display: none;
-}
-
-/* Lo muestra solo si el body tiene lang="ru" */
-body[lang="ru"] .card-materials {
-    display: flex;
-}
-
-/* =========================================
-   9. RESPONSIVE
-   ========================================= */
 @media (max-width: 768px) {
-    .header-inner { 
-        flex-direction: column; 
-        height: auto; 
-        padding: 1.5rem; 
-        gap: 1.5rem;
-    }
-
-    .header-left {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .brand-icon { 
-        height: 3.5rem !important; 
-    }
-
-    .page-grid-balanced {
-        grid-template-columns: 1fr;
-    }
-
-    .card-image-wrapper {
-        height: 300px;
-    }
+    .page-grid-balanced { grid-template-columns: 1fr; }
+    .header-inner { flex-direction: column; height: auto; padding: 20px; gap: 15px; }
+    .header-left { flex-direction: column; gap: 10px; }
 }
