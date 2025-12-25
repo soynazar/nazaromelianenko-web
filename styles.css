@@ -8,11 +8,11 @@
 }
 
 :root {
-    /* Tipografía del Brand Book 2025 */
+    /* Tipografía */
     --font-header: 'Fraunces', serif;
     --font-body: 'Inter', sans-serif;
 
-    /* Paleta de Colores Earthy Luxury */
+    /* Paleta de Colores */
     --color-charcoal: #1A1A1A;
     --color-arena: #F2F1EF;
     --color-terracotta: #E2725B;
@@ -41,6 +41,13 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Ocultar contenido mientras carga JS */
+body.is-loading {
+    opacity: 0; 
 }
 
 main { 
@@ -50,6 +57,12 @@ main {
 h1, h2, h3 {
     font-family: var(--font-header);
     color: var(--color-charcoal);
+    line-height: 1.2;
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }
 
 /* =========================================
@@ -63,30 +76,27 @@ h1, h2, h3 {
     padding: 0.5rem 0; 
 }
 
-/* CAMBIO REALIZADO: Aumento de tamaño del SVG */
 .brand-icon {
-    height: 7.5rem !important; 
+    height: 6rem; /* Ajustado: 7.5rem era muy grande para móviles */
     width: auto;
-    color: var(--color-terracotta) !important;
+    color: var(--color-terracotta);
     flex-shrink: 0;
-    margin-top: -0.2rem; 
     transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .brand-name {
     font-family: var(--font-header);
     font-weight: 600;
-    font-size: 1.6rem; /* Ligeramente más grande para equilibrar */
+    font-size: 1.5rem;
     color: var(--color-charcoal);
     letter-spacing: -0.03em;
     line-height: 1;
     transition: color 0.3s ease;
 }
 
-/* Micro-animación */
 .brand-link:hover .brand-icon {
     transform: scale(1.08) rotate(-2deg);
-    color: var(--color-charcoal) !important;
+    color: var(--color-charcoal);
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
 }
 
@@ -106,15 +116,18 @@ h1, h2, h3 {
 .site-header {
     border-bottom: 1px solid var(--line);
     background-color: var(--color-arena);
+    position: sticky; /* Menú pegajoso opcional */
+    top: 0;
     z-index: 1000;
 }
 
-/* CAMBIO REALIZADO: Altura aumentada para acomodar el logo */
 .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 125px; 
+    min-height: 100px; /* Cambiado de height fija a min-height */
+    padding: 1rem 0;
+    flex-wrap: wrap; /* Para móviles */
 }
 
 .nav {
@@ -134,24 +147,93 @@ h1, h2, h3 {
 .nav a:hover, .nav a.active {
     opacity: 1;
     font-weight: 500;
-}
-
-.lang-switch {
-    display: flex;
-    gap: 12px;
-    margin-left: 20px;
-    padding-left: 20px;
-    border-left: 1px solid var(--line);
-}
-
-.lang-switch a.active {
-    font-weight: 700;
-    border-bottom: 2px solid var(--color-terracotta);
+    color: var(--color-terracotta);
 }
 
 /* =========================================
-   5. BENTO GRID SYSTEM
+   5. COMPONENTES (Bento y Cards)
    ========================================= */
+/* Hero */
+.page-hero {
+    padding: var(--spacing-lg) 0;
+    max-width: 800px;
+}
+
+.page-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem); /* Tamaño adaptable */
+}
+
+/* Grid Principal */
+.page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Tarjetas */
+.card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.card-image-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background-color: var(--color-slate);
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.product-badge {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-terracotta);
+    font-weight: 700;
+}
+
+/* Botones */
+.button {
+    display: inline-block;
+    margin-top: auto;
+    text-decoration: none;
+    color: var(--color-charcoal);
+    font-weight: 500;
+    border-bottom: 1px solid var(--color-terracotta);
+    width: fit-content;
+    padding-bottom: 2px;
+}
+
+/* Bento Grid System (El que estaba cortado) */
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -166,4 +248,8 @@ h1, h2, h3 {
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2,
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
