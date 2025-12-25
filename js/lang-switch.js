@@ -19,7 +19,7 @@ const pageMap = {
 const uiStrings = {
     es: { home: "Inicio", teaching: "Enseñanza", dev: "Desarrollo", about: "Sobre mí", contact: "Contacto" },
     en: { home: "Home", teaching: "Teaching", dev: "Development", about: "About me", contact: "Contact" },
-    ru: { home: "Главная", teaching: "Обучение", dev: "Разработка", about: "Обо мне", contact: "Контакт" },
+    ru: { home: "Главная", teaching: "Обучение", dev: "Разработка",materials: "Материалы", about: "Обо мне", contact: "Контакт" },
     ca: { home: "Inici", teaching: "Ensenyança", dev: "Desenvolupament", about: "Sobre mi", contact: "Contacte" }
 };
 const initLanguageSwitch = () => {
