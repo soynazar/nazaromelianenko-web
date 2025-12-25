@@ -64,6 +64,11 @@ main { flex: 1; }
 }
 
 /* Jerarquía de tamaños (Layout Modular) */
+.bento-hero-image-container {
+  width: 100%;
+  height: 250px; /* Controla aquí el tamaño visual */
+  overflow: hidden;
+}
 .bento-hero-service {
   grid-column: span 2;
   grid-row: span 2;
