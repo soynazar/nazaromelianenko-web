@@ -59,19 +59,26 @@ main {
  
 /* Estilos para el nuevo icono SVG */
 .brand-icon {
-  width: 2.5rem;  /* Tamaño base ideal para el header */
-  height: 2.5rem;
-  flex-shrink: 0; /* Evita que el icono se aplaste si falta espacio */
-  transition: transform 0.3s ease; /* Preparamos una futura micro-interacción */
+  width: auto;
+  height: 2.8rem; /* Ajuste para que el isotipo sea legible pero sobrio */
+  color: var(--color-terracotta); /* Color de la marca */
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); /* Curva elegante de movimiento */
+  cursor: pointer;
+}
+
+/* LA MICRO-ANIMACIÓN */
+.brand-link:hover .brand-icon {
+  transform: scale(1.08) rotate(-2deg); /* Un pequeño giro y aumento para dar "vida" */
+  color: var(--color-charcoal); /* Cambio sutil hacia el tono sobrio */
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); /* Sombra muy suave */
 }
 
 .brand-name {
   font-family: var(--font-header);
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--color-charcoal);
-  letter-spacing: -0.02em;
-  line-height: 1.2; /* Asegura buen centrado vertical con el icono */
+  transition: color 0.3s ease;
+}
+.brand-link:hover .brand-name {
+  color: var(--color-terracotta); /* Inversión de colores sutil al pasar el mouse */
 }
 
 /* Asegura que el header tenga espacio y sea visible */
