@@ -64,13 +64,14 @@ main { flex: 1; }
 }
 
 /* Jerarquía de tamaños (Layout Modular) */
-/* Contenedor de la imagen (Lado Izquierdo) */
-.bento-hero-image-container {
-  flex: 0 0 40%; /* Ocupa el 40% del ancho de la tarjeta */
-  height: auto; /* La altura se ajusta automáticamente al contenedor padre */
-  min-height: 300px; /* Altura mínima para asegurar presencia */
-  background-color: var(--color-charcoal);
-  position: relative; /* Necesario para que la imagen absoluta se posicione aquí */
+ 
+/* Contenedor del Texto (Lado Derecho) */
+.bento-hero-content {
+  flex: 1; /* Ocupa el resto del espacio (60%) */
+  padding: 3rem; /* MÁS espacio interno para un look "Quiet Luxury" */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra el texto verticalmente en el nuevo espacio */
 }
 /* Contenedor del Texto (Lado Derecho) */
 .bento-hero-content {
@@ -80,13 +81,14 @@ main { flex: 1; }
   flex-direction: column;
   justify-content: center; /* Centra el texto verticalmente */
 }
-/* El contenedor principal ahora es una fila flexible */
+/* El contenedor principal */
 .bento-hero-service {
   padding: 0; 
   overflow: hidden;
-  display: flex; /* Activa Flexbox */
-  flex-direction: row; /* Pone los elementos lado a lado en PC */
-  align-items: stretch; /* Hace que ambas partes tengan la misma altura */
+  display: flex; /* Flexbox para ponerlos lado a lado */
+  flex-direction: row;
+  align-items: stretch; /* Obliga a ambas partes a tener la misma altura */
+  min-height: 450px; /* <-- ¡LA CLAVE! Altura mínima para que el retrato luzca */
 }
 
 /* La imagen misma */
@@ -96,8 +98,8 @@ main { flex: 1; }
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ahora sí, cubrirá el área de 40% perfectamente sin recortes locos */
-  object-position: center center; /* Centramos el foco */
+  object-fit: cover; /* Cubre el área sin deformarse */
+  object-position: center 30%; /* Ajuste fino para enfocar mejor los ojos en el retrato */
 }
 .bento-dev {
   grid-column: span 2;
@@ -291,18 +293,19 @@ main { flex: 1; }
   .header-inner { flex-direction: column; height: auto; padding: 1rem; }
   .brand-icon { height: 2.8rem !important; }
   /* En móviles, volvemos a apilar uno sobre otro */
-  .bento-hero-service {
-    flex-direction: column; 
+ .bento-hero-service {
+    flex-direction: column;
+    min-height: auto; /* En móvil reseteamos la altura mínima */
   }
 
-  /* La imagen vuelve a ser un banner superior, pero con altura controlada */
   .bento-hero-image-container {
     width: 100%;
-    flex: none; /* Anulamos el 40% */
-    height: 250px; /* Altura fija para móvil */
+    flex: none;
+    height: 250px; /* Altura fija tipo banner para móvil */
   }
   
   .bento-hero-content {
     padding: 1.5rem;
+    justify-content: flex-start;
   }
 }
