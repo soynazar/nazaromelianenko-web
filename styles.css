@@ -44,6 +44,35 @@ background-color: var(--color-arena);
 main {
   flex: 1; /* Empuja al footer hacia abajo */
 }
+
+/* =========================================
+   Nuevo Sistema de Logo Tipográfico
+   ========================================= */
+
+.brand-link {
+  display: flex; /* Alinea el monograma y el nombre horizontalmente */
+  align-items: center; /* Los centra verticalmente */
+  text-decoration: none; /* Quita el subrayado del enlace */
+  gap: 0.5rem; /* Espacio consistente entre NO y Nazar */
+}
+
+.brand-monogram {
+  font-family: var(--font-header); /* Usa Fraunces, la tipografía de "Criterio" */
+  font-weight: 800; /* Extra bold para que tenga peso de icono */
+  font-size: 1.5rem; /* Un poco más grande para destacar */
+  color: var(--color-terracotta); /* El color de acento "Humanidad" */
+  letter-spacing: -0.05em; /* Junta las letras para que parezcan un bloque */
+  line-height: 1; /* Evita espacios verticales extra */
+}
+
+.brand-name {
+  font-family: var(--font-header); /* También Fraunces para coherencia */
+  font-weight: 600; /* Semi-bold, elegante pero sólido */
+  font-size: 1.25rem;
+  color: var(--color-charcoal); /* El color sobrio principal */
+  letter-spacing: -0.02em; /* Un tracking sutilmente ajustado */
+}
+
 /* Asegura que el header tenga espacio y sea visible */
 #header-slot {
   display: block;
@@ -90,34 +119,8 @@ main.container{
   gap: 24px;
 }
 
-.brand-link{
-  font-weight: 600;
-  text-decoration: none;
-  color: inherit;
-}
-/* Estilos para el nuevo logo de texto */
-.brand-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: var(--color-charcoal); /* Usa tu variable de color */
-}
-
-.brand-monogram {
-  font-family: var(--font-header); /* Usa Fraunces */
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--color-terracotta); /* El toque de acento */
-  margin-right: 0.5rem;
-  letter-spacing: -0.05em;
-}
-
-.brand-name {
-  font-family: var(--font-header); /* Usa Fraunces */
-  font-weight: 600;
-  font-size: 1.2rem;
-  letter-spacing: -0.02em;
-}
+ /* Estilos para el nuevo logo de texto */
+ 
 /* Nav */
 .nav{
   display: flex;
@@ -486,6 +489,9 @@ h1, h2, h3 {
 
 /* Responsive */
 @media (max-width: 640px){
+  .brand-name {
+    font-size: 1.1rem;
+  }
   .hero h1{ font-size: 1.7rem; }
   .page-hero{ padding: 3rem 0 2rem; }
   .split{ gap: 3rem; }
