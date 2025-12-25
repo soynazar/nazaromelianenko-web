@@ -1,537 +1,181 @@
-/* Reset mínimo */
+/* Reset y Configuración Base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-:root{
-
+:root {
   /* Tipografía del Brand Book 2025 */
-  --font-header: 'Fraunces', serif; /* La voz del Sabio Contemporáneo */
-  --font-body: 'Inter', sans-serif;  /* La voz del facilitador */
+  --font-header: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
 
-/* Paleta de Colores 2025 */
-  --color-charcoal: #1A1A1A;     /* Sobriedad y Criterio */
-  --color-arena: #F2F1EF;        /* Humanidad y Calidez */
-  --color-terracotta: #E2725B;   /* El acento emocional */
-  --color-slate: #4A5D50;        /* Soporte orgánico */
-
- /* Tipografía */
-  --font-header: 'Fraunces', serif; /* Para títulos (Criterio) */
-  --font-body: 'Inter', sans-serif;  /* Para lectura (Claridad) */
+  /* Paleta de Colores Earthy Luxury */
+  --color-charcoal: #1A1A1A;
+  --color-arena: #F2F1EF;
+  --color-terracotta: #E2725B;
+  --color-slate: #4A5D50;
   
+  /* Variables de Apoyo (Para evitar errores de carga) */
+  --text: var(--color-charcoal);
+  --bg: var(--color-arena);
+  --line: rgba(26, 26, 26, 0.1);
+  --muted: #666666;
+
   /* Espaciado */
   --spacing-lg: 4rem;
   --spacing-md: 2rem;
 }
 
-body{
+body {
   font-family: var(--font-body);
   background-color: var(--color-arena);
   color: var(--color-charcoal);
-  -webkit-font-smoothing: antialiased; /* Mejora la nitidez en pantallas */
-background-color: var(--color-arena);
-  color: var(--color-charcoal);
-  font-family: var(--font-body);
-  line-height: 1.6;
-  margin: 0;
-  
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ocupa al menos el 100% de la altura de la ventana */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: var(--text);
-  background: var(--bg);
-  line-height: 1.65;
-}
-main {
-  flex: 1; /* Empuja al footer hacia abajo */
+  min-height: 100vh;
 }
 
+main { flex: 1; }
+
 /* =========================================
-   Nuevo Sistema de Logo Tipográfico
+   Sistema de Identidad (Logo)
    ========================================= */
 
 .brand-link {
- display: flex;
-  align-items: center;
-  gap: 0.75rem; /* Separación elegante */
-  text-decoration: none;
-  gap: 0.75rem; /* Un poco más de espacio entre icono y texto queda más elegante */
-}
-
- 
-/* Estilos para el nuevo icono SVG */
-.brand-icon {
-  /* ¡Importante!: La altura debe ser generosa para compensar la verticalidad del logo */
-  height: 3.5rem !important; 
-  width: auto;
-  
-  /* Color del Brand Book 2025 */
-  color: var(--color-terracotta) !important; 
-  
-  /* Alineación física */
-  vertical-align: middle;
-  flex-shrink: 0;
-  
-  /* Micro-animación sutil */
-  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-  
-  /* Color vinculado a tu variable de marca */
-  color: var(--color-terracotta); 
-  
-  /* Alineación: lo bajamos un poco para que el centro visual coincida con el nombre */
-  vertical-align: middle;
-  margin-top: -0.5rem; 
-  
-  flex-shrink: 0;
-  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.brand-link {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* Reducimos el espacio para que actúen como una unidad */
+  gap: 0.75rem;
   text-decoration: none;
 }
 
-/* LA MICRO-ANIMACIÓN */
-.brand-link:hover .brand-icon {
-  transform: scale(1.08) rotate(-2deg); /* Un pequeño giro y aumento para dar "vida" */
-  color: var(--color-charcoal); /* Cambio sutil hacia el tono sobrio */
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); /* Sombra muy suave */
+.brand-icon {
+  height: 3.5rem !important; /* Forzamos tamaño para compensar verticalidad */
+  width: auto;
+  color: var(--color-terracotta) !important;
+  vertical-align: middle;
+  flex-shrink: 0;
+  margin-top: -0.5rem;
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .brand-name {
   font-family: var(--font-header);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-charcoal);
   transition: color 0.3s ease;
 }
+
+/* Micro-animación de Humanidad */
+.brand-link:hover .brand-icon {
+  transform: scale(1.08) rotate(-2deg);
+  color: var(--color-charcoal) !important;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+}
+
 .brand-link:hover .brand-name {
-  color: var(--color-terracotta); /* Inversión de colores sutil al pasar el mouse */
+  color: var(--color-terracotta);
 }
 
-/* Asegura que el header tenga espacio y sea visible */
-#header-slot {
-  display: block;
-  width: 100%;
-  background: #ffffff; /* O el color de tu diseño */
-  z-index: 1000;
-}
+/* =========================================
+   Layout y Componentes (Header/Nav)
+   ========================================= */
 
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-}
-/* Shared centered layout */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-main.container{
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-/* Evita parpadeo al inyectar header/footer */
-.is-loading #header-slot,
-.is-loading #footer-slot {
-  visibility: hidden;
-}
-
-/* Header */
-.site-header{
+.site-header {
   border-bottom: 1px solid var(--line);
   background: #fff;
+  z-index: 1000;
 }
 
-.header-inner{
+.header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
-  gap: 24px;
+  height: 80px;
 }
 
- /* Estilos para el nuevo logo de texto */
- 
-/* Nav */
-.nav{
+.nav {
   display: flex;
   align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .nav a {
   text-decoration: none;
-  color: inherit;
-  opacity: 0.85;
-  transition: opacity 0.2s ease;
-}
-/* Asegura que el contenedor del header sea visible */
-#header-slot {
-    display: block;
-    min-height: 70px; /* Evita que colapse antes de cargar */
+  color: var(--text);
+  opacity: 0.8;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
 }
 
-/* Fuerza la visibilidad del selector por si el JS tarda */
-.lang-switch {
-    display: flex !important;
-    gap: 10px;
-    visibility: visible !important;
-}
-
-/* Evita que el body oculto por is-loading se quede así */
-html:not(.is-loading) body {
-    opacity: 1;
-}
-.nav a:hover { opacity: 1; }
-
-/* Esta clase la añade tu lang-switch.js automáticamente */
-.nav a.active {
+.nav a:hover, .nav a.active {
   opacity: 1;
-  text-decoration: underline;
-  text-underline-offset: 6px;
   font-weight: 500;
 }
 
-/* Language switch */
-.lang-switch{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 18px;
-  padding-left: 18px;
+.lang-switch {
+  display: flex;
+  gap: 12px;
+  margin-left: 20px;
+  padding-left: 20px;
   border-left: 1px solid var(--line);
 }
 
-.lang-switch a{
-  font-size: 13px;
-  letter-spacing: 0.02em;
-  opacity: 0.6;
-  text-decoration: none;
-  color: inherit;
-}
-
-.lang-switch a:hover{ opacity: 0.9; }
-
 .lang-switch a.active {
-  opacity: 1;
   font-weight: 700;
-  text-decoration: none; /* Quitamos el subrayado para que parezca un botón activo */
-  border-bottom: 2px solid var(--text);
-  padding-bottom: 2px;
+  border-bottom: 2px solid var(--color-terracotta);
 }
 
-/* Footer */
-.site-footer{
-  border-top: 1px solid var(--line);
-  padding: 2rem 0;
-  margin-top: 4rem;
-}
+/* =========================================
+   Tarjetas y Grid (Bento Style)
+   ========================================= */
 
-.footer-inner{
-  display: flex;
-  justify-content: center;
-  color: var(--muted);
-  font-size: 0.875rem;
-}
-
-h1, h2, h3 {
-  font-family: var(--font-header);
-  font-weight: 600;
-  color: var(--color-charcoal);
-}
-
-/* HOME */
-.hero{
-  margin-bottom: 6rem;
-}
-
-.hero h1{
-  font-size: 2rem;
-  font-weight: 400;
-  max-width: 760px;
-}
-
-.split{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 4rem;
-}
-
-.card{
- background: white; /* O un tono muy suave de Arena */
-  border: 1px solid rgba(26, 26, 26, 0.05); /* Borde casi invisible */
+.card {
+  background: white;
+  border: 1px solid var(--line);
   padding: var(--spacing-md);
-  border-radius: 4px; /* Esquinas sutilmente suavizadas */
-  transition: transform 0.3s ease;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
-  transform: translateY(-5px); /* Animación sutil de "Criterio" */
-}
-.card h2{
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-.card p{flex-grow: 1; 
-  margin-bottom: 2rem;
-}
-
-.link{
-  text-decoration: none;
-  font-size: 0.95rem;
-  color: var(--muted);
-}
-.link:hover{ color: var(--text); }
-
-/* PÁGINAS */
-.page{
-  padding: 4rem 0;
-}
-
-.page-hero{
-  padding: 4rem 0 3rem;
-}
-
-.page-hero h1{
-  font-size: 1.8rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.lead{
-  max-width: 760px;
-  color: var(--text);
-  opacity: 0.92;
-  font-size: 1.05rem;
-}
-
-.page-grid{
- display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  align-items: stretch; /* Estira las tarjetas para que midan lo mismo */
-}
-
-.page-section{
-  padding: 3rem 0 1rem;
-}
-
-.section-header{
-  margin-bottom: 1.5rem;
-}
-
-.section-header h2{
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 0.6rem;
-}
-
-.muted{
-  color: var(--muted);
-}
-
-/* Listas tipo “bloques” */
-.list-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-  padding: 1rem 0;
-}
-
-.list-item h3{
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-
-.list-item p{
-  color: var(--muted);
-}
-
-/* CTA */
-.page-cta{
-  padding: 3rem 0 4rem;
-}
-
-.cta-box{
-  border-top: 1px solid var(--line);
-  padding-top: 2rem;
-  max-width: 760px;
-}
-
-.cta-box h2{
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 0.75rem;
-}
-
-.cta-box p{
-  color: var(--muted);
-  margin-bottom: 1.25rem;
-}
-
-.cta-actions{
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* Botones */
-/* Botón Terracotta con estilo Premium */
 .button {
   display: inline-block;
   background-color: var(--color-terracotta);
   color: white;
   padding: 0.8rem 1.5rem;
   text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: #c95d48; /* Un tono más oscuro de Terracotta */
-}
-
-.button.secondary{
-  border-color: var(--line);
-  color: var(--muted);
-}
-.button.secondary:hover{
-  background: transparent;
-  color: var(--text);
-  border-color: var(--text);
-}
-
-/* Formulario */
-.form{
-  display: grid;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.label{
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-.input{
-  width: 100%;
-  padding: 0.7rem 0.8rem;
-  border: 1px solid var(--line);
-  background: #fff;
-  color: var(--text);
-  font-size: 1rem;
-}
-
-.textarea{
-  resize: vertical;
-}
-
-.form-note{
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-}
-
-/* Contacto */
-.contact-list{
-  display: grid;
-  gap: 1.25rem;
-  margin-top: 1rem;
-}
-
-.contact-item h3{
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 0.35rem;
-}
-
- /* Estilos específicos para materiales */
-.product-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-width: 2px; /* Un poco más grueso para destacar */
-}
-
-.product-badge {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #666;
-  margin-bottom: 1rem;
-}
-
-.product-features {
-  margin: 1.5rem 0;
-  padding: 0;
-  list-style: none;
-  font-size: 0.9rem;
-}
-
-.product-features li {
-  margin-bottom: 0.5rem;
-  padding-left: 1.5rem;
-  position: relative;
-}
-
-.product-features li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  color: #000;
-}
-
-.product-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #eee;
-}
-
-.price {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.methodology-box {
-  margin-top: 3rem; /* Esto crea un espacio limpio de 3 unidades sobre el bloque */
-  padding: 1.5rem;
-  background-color: #f9f9f9;
-  border-left: 3px solid #000;
-  max-width: 800px;
-  line-height: 1.6;
-}
-
-.methodology-box strong {
-  display: block;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+  margin-top: auto; /* Empuja el botón al final de la tarjeta */
 }
 
-/* Ajuste para móviles */
-@media (max-width: 480px) {
- .brand-icon {
-    width: 2rem; /* Ligeramente más pequeño en móviles */
-    height: 2rem;
-  }
-  .brand-name {
-    font-size: 1.1rem;
-  }
-  .hero h1{ font-size: 1.7rem; }
-  .page-hero{ padding: 3rem 0 2rem; }
-  .split{ gap: 3rem; }
-  .page-grid{ gap: 2rem; }
+.button:hover { background-color: #c95d48; }
+
+/* Especial Materiales */
+.methodology-box {
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: rgba(226, 114, 91, 0.05); /* Sutil toque terracota */
+  border-left: 4px solid var(--color-terracotta);
+  max-width: 800px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .header-inner { flex-direction: column; height: auto; padding: 1rem; }
+  .brand-icon { height: 2.8rem !important; }
 }
