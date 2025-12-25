@@ -50,27 +50,28 @@ main {
    ========================================= */
 
 .brand-link {
-  display: flex; /* Alinea el monograma y el nombre horizontalmente */
-  align-items: center; /* Los centra verticalmente */
-  text-decoration: none; /* Quita el subrayado del enlace */
-  gap: 0.5rem; /* Espacio consistente entre NO y Nazar */
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.75rem; /* Un poco más de espacio entre icono y texto queda más elegante */
 }
 
-.brand-monogram {
-  font-family: var(--font-header); /* Usa Fraunces, la tipografía de "Criterio" */
-  font-weight: 800; /* Extra bold para que tenga peso de icono */
-  font-size: 1.5rem; /* Un poco más grande para destacar */
-  color: var(--color-terracotta); /* El color de acento "Humanidad" */
-  letter-spacing: -0.05em; /* Junta las letras para que parezcan un bloque */
-  line-height: 1; /* Evita espacios verticales extra */
+ 
+/* Estilos para el nuevo icono SVG */
+.brand-icon {
+  width: 2.5rem;  /* Tamaño base ideal para el header */
+  height: 2.5rem;
+  flex-shrink: 0; /* Evita que el icono se aplaste si falta espacio */
+  transition: transform 0.3s ease; /* Preparamos una futura micro-interacción */
 }
 
 .brand-name {
-  font-family: var(--font-header); /* También Fraunces para coherencia */
-  font-weight: 600; /* Semi-bold, elegante pero sólido */
+  font-family: var(--font-header);
+  font-weight: 600;
   font-size: 1.25rem;
-  color: var(--color-charcoal); /* El color sobrio principal */
-  letter-spacing: -0.02em; /* Un tracking sutilmente ajustado */
+  color: var(--color-charcoal);
+  letter-spacing: -0.02em;
+  line-height: 1.2; /* Asegura buen centrado vertical con el icono */
 }
 
 /* Asegura que el header tenga espacio y sea visible */
@@ -487,8 +488,12 @@ h1, h2, h3 {
   letter-spacing: 0.05em;
 }
 
-/* Responsive */
-@media (max-width: 640px){
+/* Ajuste para móviles */
+@media (max-width: 480px) {
+ .brand-icon {
+    width: 2rem; /* Ligeramente más pequeño en móviles */
+    height: 2rem;
+  }
   .brand-name {
     font-size: 1.1rem;
   }
