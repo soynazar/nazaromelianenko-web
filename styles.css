@@ -48,17 +48,53 @@ p { margin-bottom: 1rem; }
 /* =========================================
    3. HEADER & NAV
    ========================================= */
-.site-header { border-bottom: 1px solid var(--line); background-color: var(--color-arena); position: sticky; top: 0; z-index: 1000; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.site-header { 
+    border-bottom: 1px solid var(--line); 
+    background-color: var(--color-arena); 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+}
+
+.container { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 0 24px; 
+}
 
 /* IMPORTANTE: Flex para separar logo y menú */
-.header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+/* IMPORTANTE: Aumentamos la altura de 80px a 110px para dar aire al logo */
+.header-inner { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    height: 110px; 
 
-.brand-link { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
-.brand-icon { height: 40px; width: auto; color: var(--color-terracotta); transition: transform 0.5s; }
-.brand-link:hover .brand-icon { transform: rotate(-10deg) scale(1.1); }
-.brand-name { font-family: var(--font-header); font-weight: 600; font-size: 1.2rem; color: var(--text); }
+/* --- LOGO Y NOMBRE (Aumentados) --- */
+.brand-link { 
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; /* Más espacio entre icono y texto */
+    text-decoration: none; 
+}
+.brand-icon { 
+    height: 68px; /* ANTES: 40px -> AHORA: 68px (Significativamente más grande) */
+    width: auto; 
+    color: var(--color-terracotta); 
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.brand-link:hover .brand-icon { 
+    transform: rotate(-10deg) scale(1.05); 
+}
+.brand-name { 
+    font-family: var(--font-header); 
+    font-weight: 600; 
+    font-size: 1.7rem; /* ANTES: 1.2rem -> AHORA: 1.7rem */
+    color: var(--text); 
+    letter-spacing: -0.02em; /* Hace que el texto grande se vea más compacto y elegante */
+}
 
+/* Navegación */
 .nav { display: flex; align-items: center; gap: 20px; }
 .nav-link { text-decoration: none; color: var(--text); opacity: 0.7; font-size: 0.95rem; transition: 0.3s; }
 .nav-link:hover, .nav-link.active { opacity: 1; font-weight: 600; color: var(--color-terracotta); }
