@@ -301,30 +301,68 @@ p { margin-bottom: 1rem; }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; }
 
 /* =========================================
-   7. RESPONSIVE
+   7. RESPONSIVE (Bloque Unificado y Definitivo)
    ========================================= */
 @media (max-width: 768px) {
-      .bento-hero-service {
-        flex-direction: column !important; /* Foto arriba, texto abajo */
-        height: auto;
-    }
-
- 
-    .bento-hero-image-container {
-        width: 100%;
-        height: 250px; /* Altura fija en móvil */
+    /* --- HEADER & NAV --- */
+    .header-inner { 
+        flex-direction: column; 
+        height: auto; 
+        padding: 1.5rem 0; 
+        gap: 1rem;
     }
     
-  .bento-hero-content {
+    .nav { 
+        gap: 15px; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+    }
+
+    /* Ajuste del Logo en móvil */
+    .brand-icon { height: 50px; } 
+    .brand-name { font-size: 1.4rem; }
+    
+    /* Selector de idioma centrado y sin bordes */
+    .lang-switch {
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+        margin-top: 1rem;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* --- GRIDS GENERALES --- */
+    .bento-grid, 
+    .page-grid, 
+    .list-grid { 
+        grid-template-columns: 1fr; /* Todo a una columna */
+    }
+
+    /* --- ARREGLO HERO EN MÓVIL --- */
+    .bento-hero-service {
+        flex-direction: column !important; /* Foto arriba, texto abajo obligatoriamente */
+        height: auto !important; /* Altura libre para que quepa el texto */
+        min-height: auto;
+    }
+
+    .bento-hero-image-container {
+        width: 100%; 
+        height: 300px; /* Altura fija para la foto en móvil (ni muy grande ni muy chica) */
+        flex: none;
+    }
+    
+    .bento-hero-content {
         width: 100%;
         padding: 2rem;
     }
-}
 
-    .bento-grid, .page-grid, .list-grid { grid-template-columns: 1fr; }
-    .bento-hero-service { flex-direction: column; grid-column: span 1; }
-    .bento-hero-image-container { width: 100%; height: 200px; }
-    .bento-hero-content { width: 100%; padding: 2rem; }
-    .bento-materials, .bento-philosophy { grid-column: span 1; }
-    .cta-actions { flex-direction: column; }
+    /* --- OTROS COMPONENTES --- */
+    .bento-materials, .bento-philosophy { 
+        grid-column: span 1; 
+    }
+    
+    .cta-actions { 
+        flex-direction: column; /* Botones uno encima de otro */
+    }
 }
