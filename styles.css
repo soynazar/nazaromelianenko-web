@@ -46,64 +46,50 @@ p { margin-bottom: 1rem; }
 .link:hover { border-bottom-color: var(--color-terracotta); }
 
 /* =========================================
-   3. HEADER & NAV (Versión Logo Grande)
+   3. HEADER & NAV (Ajuste Monograma)
    ========================================= */
 .site-header { 
     border-bottom: 1px solid var(--line); 
     background-color: var(--color-arena); 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
+    position: sticky; top: 0; z-index: 1000; 
 }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-.container { 
-    max-width: 1100px; 
-    margin: 0 auto; 
-    padding: 0 24px; 
-}
-
-/* AUMENTO DE ALTURA: De 110px pasamos a 130px para dar mucho aire */
+/* Altura generosa para que el monograma respire */
 .header-inner { 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
+    display: flex; align-items: center; justify-content: space-between; 
     height: 130px; 
 }
 
-/* --- LOGO Y NOMBRE --- */
+/* --- LOGO --- */
 .brand-link { 
-    display: flex; 
-    align-items: center; 
-    gap: 1.2rem; /* Más separación entre logo y texto */
-    text-decoration: none; 
+    display: flex; align-items: center; gap: 1.5rem; text-decoration: none; 
 }
 
-/* CLASE DEL LOGO (IMAGEN) */
 .brand-icon { 
-    /* ¡AQUÍ ESTÁ LA CLAVE! */
-    height: 90px; /* Tamaño mucho mayor (antes era 68px) */
-    width: auto;  /* Mantiene la proporción */
-    object-fit: contain;
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Como es un monograma recortado, le damos buen tamaño */
+    height: 100px; 
+    width: auto; 
+    display: block;
+    /* Esto asegura que si la imagen tiene un poco de aire, se ajuste bien */
+    object-fit: contain; 
+    transition: transform 0.5s ease;
 }
 
-.brand-link:hover .brand-icon { 
-    transform: scale(1.05); /* Efecto zoom sutil al pasar el ratón */
-}
+.brand-link:hover .brand-icon { transform: scale(1.05); }
 
 .brand-name { 
-    font-family: var(--font-header); 
-    font-weight: 600; 
-    font-size: 1.8rem; /* Texto más grande para equilibrar el logo */
-    color: var(--text); 
-    letter-spacing: -0.02em; 
-    line-height: 1.1;
+    font-family: var(--font-header); font-weight: 600; 
+    font-size: 1.8rem; color: var(--text); 
+    letter-spacing: -0.02em; line-height: 1.1;
 }
 
 /* Navegación */
 .nav { display: flex; align-items: center; gap: 20px; }
 .nav-link { text-decoration: none; color: var(--text); opacity: 0.7; font-size: 0.95rem; transition: 0.3s; }
-.nav-link:hover, .nav-link.active { opacity: 1; font-weight: 600; color: var(--color-terracotta); }/* =========================================
+.nav-link:hover, .nav-link.active { opacity: 1; font-weight: 600; color: var(--color-terracotta); }
+
+/* =========================================
    SELECTOR DE IDIOMA (Quiet Branding)
    ========================================= */
 .lang-switch { 
