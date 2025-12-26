@@ -62,23 +62,23 @@ p { margin-bottom: 1rem; }
     padding: 0 24px; 
 }
 
-/* IMPORTANTE: Flex para separar logo y menú */
-/* IMPORTANTE: Aumentamos la altura de 80px a 110px para dar aire al logo */
+/* IMPORTANTE: Altura aumentada a 110px */
 .header-inner { 
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
     height: 110px; 
+} /* <--- ¡AQUÍ FALTABA ESTA LLAVE DE CIERRE! */
 
 /* --- LOGO Y NOMBRE (Aumentados) --- */
 .brand-link { 
     display: flex; 
     align-items: center; 
-    gap: 1rem; /* Más espacio entre icono y texto */
+    gap: 1rem; 
     text-decoration: none; 
 }
 .brand-icon { 
-    height: 68px; /* ANTES: 40px -> AHORA: 68px (Significativamente más grande) */
+    height: 68px; 
     width: auto; 
     color: var(--color-terracotta); 
     transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -89,9 +89,9 @@ p { margin-bottom: 1rem; }
 .brand-name { 
     font-family: var(--font-header); 
     font-weight: 600; 
-    font-size: 1.7rem; /* ANTES: 1.2rem -> AHORA: 1.7rem */
+    font-size: 1.7rem; 
     color: var(--text); 
-    letter-spacing: -0.02em; /* Hace que el texto grande se vea más compacto y elegante */
+    letter-spacing: -0.02em; 
 }
 
 /* Navegación */
@@ -104,7 +104,7 @@ p { margin-bottom: 1rem; }
    ========================================= */
 .lang-switch { 
     display: flex; 
-    gap: 16px; /* Más aire entre idiomas */
+    gap: 16px; 
     border-left: 1px solid var(--line); 
     padding-left: 24px; 
     margin-left: 10px; 
@@ -113,28 +113,28 @@ p { margin-bottom: 1rem; }
 .lang-switch a { 
     text-decoration: none; 
     font-family: var(--font-body);
-    font-size: 0.75rem; /* Pequeño y sofisticado */
+    font-size: 0.75rem; 
     font-weight: 500;
-    letter-spacing: 0.05em; /* Aire entre letras */
-    color: var(--muted); /* Gris suave por defecto */
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* Animación sedosa */
+    letter-spacing: 0.05em; 
+    color: var(--muted); 
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
     position: relative;
 }
 
 /* Estado Hover (Humanidad) */
 .lang-switch a:hover { 
     color: var(--color-terracotta); 
-    transform: translateY(-1px); /* Elevación imperceptible */
+    transform: translateY(-1px); 
 }
 
 /* Estado Activo (Criterio) */
 .lang-switch a.active { 
     color: var(--color-charcoal); 
     font-weight: 700;
-    cursor: default; /* Indica que ya estás aquí */
+    cursor: default; 
 }
 
-/* Pequeño punto indicador para el activo (Opcional, muy sutil) */
+/* Pequeño punto indicador */
 .lang-switch a.active::after {
     content: '';
     position: absolute;
@@ -154,17 +154,17 @@ p { margin-bottom: 1rem; }
 .page-hero { padding: var(--spacing-lg) 0 3rem 0; }
 .page-hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
 
-/* Grid para tarjetas (Sobre mí, Enseñanza, etc) */
+/* Grid para tarjetas */
 .page-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: var(--spacing-lg); }
 .page-section { margin-bottom: var(--spacing-lg); }
 .section-header { margin-bottom: 2rem; border-bottom: 1px solid var(--line); padding-bottom: 1rem; }
 
-/* Grid para listas (Proyectos / En breve) */
+/* Grid para listas */
 .list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
 .list-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--color-terracotta); }
 
 /* =========================================
-   5. BENTO GRID (Corrección de Proporción Hero)
+   5. BENTO GRID (Corrección Blindada)
    ========================================= */
 .bento-grid {
     display: grid;
@@ -179,19 +179,16 @@ p { margin-bottom: 1rem; }
     grid-column: span 2;
     grid-row: span 2;
     
-    /* SOLUCIÓN LÍNEA NEGRA: */
-    /* Forzamos padding 0 para que la foto toque los bordes */
+    /* SOLUCIÓN LÍNEA NEGRA Y FOTO GIGANTE: */
     padding: 0 !important; 
-    border: none !important; /* Quitamos bordes que puedan verse oscuros */
+    border: none !important; 
     
-    /* Estructura Flex para poner foto y texto lado a lado */
     display: flex !important;
     flex-direction: row !important;
     
     overflow: hidden;
     background: white;
     border-radius: var(--radius);
-    /* Sombra suave para sustituir el borde */
     box-shadow: 0 0 0 1px var(--line); 
     
     min-height: 450px;
@@ -199,13 +196,13 @@ p { margin-bottom: 1rem; }
 
 /* Contenedor Izquierdo (Foto) */
 .bento-hero-image-container {
-    width: 45%; /* Ancho fijo */
+    width: 45%; 
     height: auto;
     position: relative;
     background-color: var(--color-charcoal);
     margin: 0; 
     padding: 0;
-    display: block; /* Evita espacios fantasma */
+    display: block; 
 }
 
 /* La Foto */
@@ -216,7 +213,7 @@ p { margin-bottom: 1rem; }
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 20%; /* Enfoca los ojos */
+    object-position: center 20%; 
     display: block;
 }
 
@@ -227,7 +224,7 @@ p { margin-bottom: 1rem; }
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: white; /* Asegura fondo blanco */
+    background-color: white; 
 }
 
 /* Badge (Metodología) */
@@ -301,7 +298,7 @@ p { margin-bottom: 1rem; }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; }
 
 /* =========================================
-   7. RESPONSIVE (Bloque Unificado y Definitivo)
+   7. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
     /* --- HEADER & NAV --- */
@@ -341,14 +338,14 @@ p { margin-bottom: 1rem; }
 
     /* --- ARREGLO HERO EN MÓVIL --- */
     .bento-hero-service {
-        flex-direction: column !important; /* Foto arriba, texto abajo obligatoriamente */
-        height: auto !important; /* Altura libre para que quepa el texto */
+        flex-direction: column !important; 
+        height: auto !important; 
         min-height: auto;
     }
 
     .bento-hero-image-container {
         width: 100%; 
-        height: 300px; /* Altura fija para la foto en móvil (ni muy grande ni muy chica) */
+        height: 300px; 
         flex: none;
     }
     
@@ -363,6 +360,6 @@ p { margin-bottom: 1rem; }
     }
     
     .cta-actions { 
-        flex-direction: column; /* Botones uno encima de otro */
+        flex-direction: column; 
     }
 }
