@@ -164,21 +164,107 @@ p { margin-bottom: 1rem; }
 .list-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--color-terracotta); }
 
 /* =========================================
-   5. BENTO GRID (Home)
+   5. BENTO GRID (Corrección de Proporción Hero)
    ========================================= */
-.bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: var(--spacing-lg); }
-.bento-item { background: white; padding: 2rem; border: 1px solid var(--line); border-radius: var(--radius); display: flex; flex-direction: column; transition: 0.3s; }
-.bento-item:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-color: var(--color-terracotta); }
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    gap: 1.5rem;
+    margin-top: 3rem; /* Espacio con el título H1 */
+}
 
-.bento-hero-service { grid-column: span 2; grid-row: span 2; padding: 0; overflow: hidden; display: flex; flex-direction: row; }
-.bento-hero-image-container { width: 45%; position: relative; background-color: var(--color-charcoal); }
-.bento-hero-img { width: 100%; height: 100%; object-fit: cover; }
-.bento-hero-content { width: 55%; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
-.product-badge { text-transform: uppercase; font-size: 0.75rem; font-weight: 700; color: var(--color-terracotta); margin-bottom: 0.5rem; }
+/* Tarjeta Principal (Foto + Texto) */
+.bento-hero-service {
+    grid-column: span 2;
+    grid-row: span 2;
+    padding: 0; 
+    
+    /* FLEXBOX: Esto es vital para que estén lado a lado */
+    display: flex; 
+    flex-direction: row; 
+    
+    overflow: hidden;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    
+    /* Control de Altura para que no sea gigante */
+    min-height: 450px; 
+    max-height: 550px; /* Límite máximo de altura */
+}
+
+/* Contenedor de la Imagen (Lado Izquierdo) */
+.bento-hero-image-container {
+    width: 45%; /* Ancho fijo estricto */
+    position: relative;
+    background-color: var(--color-charcoal);
+    overflow: hidden;
+    flex-shrink: 0; /* Evita que la imagen se aplaste */
+}
+
+/* La Imagen en sí */
+.bento-hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta sin deformar */
+    
+    /* ENCUADRE: Ajustamos para que se vean los ojos, no el pelo */
+    object-position: center 25%; 
+}
+
+/* Contenido de Texto (Lado Derecho) */
+.bento-hero-content {
+    width: 55%; 
+    padding: 3rem; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-badge { 
+    text-transform: uppercase; 
+    font-size: 0.75rem; 
+    letter-spacing: 0.1em;
+    font-weight: 700; 
+    color: var(--color-terracotta); 
+    margin-bottom: 0.5rem; 
+}
+
+/* Resto de items Bento */
+.bento-item {
+    background: white; 
+    padding: 2rem; 
+    border: 1px solid var(--line); 
+    border-radius: var(--radius); 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.bento-item:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    border-color: var(--color-terracotta); 
+}
 
 .bento-materials, .bento-philosophy { grid-column: span 1; }
-.bento-philosophy { background-color: var(--color-charcoal); color: var(--color-arena); justify-content: center; text-align: center; }
-.bento-philosophy .quote { font-family: var(--font-header); font-style: italic; font-size: 1.1rem; }
+
+.bento-philosophy { 
+    background-color: var(--color-charcoal); 
+    color: var(--color-arena); 
+    justify-content: center; 
+    text-align: center; 
+}
+.bento-philosophy .quote { 
+    font-family: var(--font-header); 
+    font-style: italic; 
+    font-size: 1.1rem; 
+}
 
 /* =========================================
    6. COMPONENTES (Card, Form, Footer)
@@ -212,26 +298,22 @@ p { margin-bottom: 1rem; }
    7. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-    .header-inner { 
-        flex-direction: column; 
-        height: auto; 
-        padding: 1.5rem 0; /* Un poco más de padding arriba/abajo */
-        gap: 1rem; 
+    .bento-hero-service {
+        flex-direction: column; /* Apilar verticalmente */
+        height: auto;
+        max-height: none; /* Quitar límite en móvil para que quepa el texto */
     }
-    /* En móvil lo reducimos un poco para que no sea gigante */
-    .brand-icon { height: 50px; } 
-    .brand-name { font-size: 1.4rem; }
-    .nav { flex-wrap: wrap; justify-content: center; }
+
+    .bento-hero-image-container {
+        width: 100%; /* Ancho completo */
+        height: 300px; /* Altura fija para la foto en móvil */
+    }
     
-    / /* Ajuste del selector de idioma */
-    .lang-switch {
-        border-left: none;
-        padding-left: 0;
-        margin-left: 0;
-        margin-top: 1rem;
-        justify-content: center;
+    .bento-hero-content {
         width: 100%;
+        padding: 2rem;
     }
+}
 
     .bento-grid, .page-grid, .list-grid { grid-template-columns: 1fr; }
     .bento-hero-service { flex-direction: column; grid-column: span 1; }
