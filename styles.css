@@ -171,67 +171,73 @@ p { margin-bottom: 1rem; }
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(200px, auto);
     gap: 1.5rem;
-    margin-top: 3rem; /* Espacio con el título H1 */
+    margin-top: 3rem;
 }
 
-/* Tarjeta Principal (Foto + Texto) */
+/* --- TARJETA HERO (Foto + Texto) --- */
 .bento-hero-service {
     grid-column: span 2;
     grid-row: span 2;
-    padding: 0; 
     
-    /* FLEXBOX: Esto es vital para que estén lado a lado */
-    display: flex; 
-    flex-direction: row; 
+    /* SOLUCIÓN LÍNEA NEGRA: */
+    /* Forzamos padding 0 para que la foto toque los bordes */
+    padding: 0 !important; 
+    border: none !important; /* Quitamos bordes que puedan verse oscuros */
+    
+    /* Estructura Flex para poner foto y texto lado a lado */
+    display: flex !important;
+    flex-direction: row !important;
     
     overflow: hidden;
     background: white;
-    border: 1px solid var(--line);
     border-radius: var(--radius);
+    /* Sombra suave para sustituir el borde */
+    box-shadow: 0 0 0 1px var(--line); 
     
-    /* Control de Altura para que no sea gigante */
-    min-height: 450px; 
-    max-height: 550px; /* Límite máximo de altura */
+    min-height: 450px;
 }
 
-/* Contenedor de la Imagen (Lado Izquierdo) */
+/* Contenedor Izquierdo (Foto) */
 .bento-hero-image-container {
-    width: 45%; /* Ancho fijo estricto */
+    width: 45%; /* Ancho fijo */
+    height: auto;
     position: relative;
     background-color: var(--color-charcoal);
-    overflow: hidden;
-    flex-shrink: 0; /* Evita que la imagen se aplaste */
+    margin: 0; 
+    padding: 0;
+    display: block; /* Evita espacios fantasma */
 }
 
-/* La Imagen en sí */
+/* La Foto */
 .bento-hero-img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Recorta sin deformar */
-    
-    /* ENCUADRE: Ajustamos para que se vean los ojos, no el pelo */
-    object-position: center 25%; 
+    object-fit: cover;
+    object-position: center 20%; /* Enfoca los ojos */
+    display: block;
 }
 
-/* Contenido de Texto (Lado Derecho) */
+/* Contenedor Derecho (Texto) */
 .bento-hero-content {
-    width: 55%; 
-    padding: 3rem; 
+    width: 55%;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: white; /* Asegura fondo blanco */
 }
 
-.product-badge { 
-    text-transform: uppercase; 
-    font-size: 0.75rem; 
+/* Badge (Metodología) */
+.product-badge {
+    text-transform: uppercase;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
-    font-weight: 700; 
-    color: var(--color-terracotta); 
-    margin-bottom: 0.5rem; 
+    font-weight: 700;
+    color: var(--color-terracotta);
+    margin-bottom: 0.5rem;
 }
 
 /* Resto de items Bento */
@@ -298,18 +304,18 @@ p { margin-bottom: 1rem; }
    7. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-    .bento-hero-service {
-        flex-direction: column; /* Apilar verticalmente */
+      .bento-hero-service {
+        flex-direction: column !important; /* Foto arriba, texto abajo */
         height: auto;
-        max-height: none; /* Quitar límite en móvil para que quepa el texto */
     }
 
+ 
     .bento-hero-image-container {
-        width: 100%; /* Ancho completo */
-        height: 300px; /* Altura fija para la foto en móvil */
+        width: 100%;
+        height: 250px; /* Altura fija en móvil */
     }
     
-    .bento-hero-content {
+  .bento-hero-content {
         width: 100%;
         padding: 2rem;
     }
