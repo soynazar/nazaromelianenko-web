@@ -23,24 +23,28 @@
     </section>
 
     <section class="container bento-grid">
-      <!-- Bloque 1: Hero Service (Ocupa 2 columnas) -->
-      <article class="bento-item bento-hero-service">
-        <div class="bento-hero-image-container">
-          <!-- Asegúrate de que la ruta de la imagen sea correcta -->
-          <img src="/images/nazar-perfil.webp" alt="Nazar Omelianenko" class="bento-hero-img">
+      
+      <!-- OPCIÓN 1: ENSEÑANZA (Mitad izquierda) -->
+      <article class="bento-item" style="grid-column: span 2; justify-content: space-between; align-items: flex-start; min-height: 300px;">
+        <div>
+            <h3>Enseñanza · Idiomas</h3>
+            <p style="margin-top: 1rem;">Trabajo con personas que buscan un aprendizaje serio, adaptado a su ritmo y con atención al proceso.</p>
         </div>
-        
-        <div class="bento-hero-content">
-          <div class="product-badge">Metodología</div>
-          <h2>Gramática Cognitiva</h2>
-          <p>Aprender a través de la comprensión de la lógica de los hablantes nativos. Pasamos de la memorización mecánica al dominio consciente del español.</p>
-          <a href="ensenanza.html" class="button">Saber más</a>
-        </div>
+        <a href="ensenanza.html" class="button">Enseñanza e Idiomas</a>
       </article>
 
-      <!-- Bloque 2: Filosofía (Ahora ocupa 2 columnas para rellenar el hueco de materiales) -->
-      <!-- He añadido style="grid-column: span 2;" inline para no afectar al CSS global de la versión rusa -->
-      <article class="bento-item bento-philosophy" style="grid-column: span 2;">
+      <!-- OPCIÓN 2: DESARROLLO (Mitad derecha) -->
+      <article class="bento-item" style="grid-column: span 2; justify-content: space-between; align-items: flex-start; min-height: 300px;">
+        <div>
+            <h3>Desarrollo · Tecnología</h3>
+            <p style="margin-top: 1rem;">Desarrollo proyectos que requieren soluciones claras, con criterios sólidos y centrados en lo esencial.</p>
+        </div>
+        <a href="desarrollo.html" class="button">Desarrollo y Tecnología</a>
+      </article>
+
+      <!-- FILOSOFÍA (Ancho completo abajo) -->
+      <!-- Ocupa las 4 columnas para cerrar el diseño con estética -->
+      <article class="bento-item bento-philosophy" style="grid-column: span 4;">
         <p class="quote">"La lengua no es un conjunto de reglas, sino una forma de ver el mundo."</p>
       </article>
 
