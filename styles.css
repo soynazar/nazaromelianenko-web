@@ -56,7 +56,19 @@ body::before {
 body.is-loading { opacity: 0; }
 
 main { flex: 1; padding-bottom: var(--spacing-lg); }
-h1, h2, h3 { font-family: var(--font-header); color: var(--color-charcoal); line-height: 1.2; }
+h1, h2, h3 {
+    font-family: var(--font-header);
+    color: var(--color-charcoal);
+    line-height: 1.15; /* Un poco más apretado verticalmente */
+    letter-spacing: -0.03em; /* ¡CLAVE! Junta las letras un poquito */
+}
+
+/* Ajuste específico para el H1 de la Hero */
+.page-hero h1 {
+    font-weight: 550; /* Un poco menos pesado que el bold normal */
+    font-size: 2.8rem; /* Un pelín más grande para imponer presencia */
+    max-width: 900px; /* Evita que las líneas sean eternas */
+}
 p { margin-bottom: 1rem; }
 .muted { color: var(--muted); font-size: 0.9rem; }
 .lead { font-size: 1.25rem; font-weight: 300; max-width: 800px; color: var(--color-slate); }
