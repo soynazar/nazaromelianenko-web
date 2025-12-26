@@ -212,10 +212,18 @@ p { margin-bottom: 1rem; }
    7. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-    .header-inner { flex-direction: column; height: auto; padding: 1rem 0; gap: 1rem; }
+    .header-inner { 
+        flex-direction: column; 
+        height: auto; 
+        padding: 1.5rem 0; /* Un poco más de padding arriba/abajo */
+        gap: 1rem; 
+    }
+    /* En móvil lo reducimos un poco para que no sea gigante */
+    .brand-icon { height: 50px; } 
+    .brand-name { font-size: 1.4rem; }
     .nav { flex-wrap: wrap; justify-content: center; }
     
-    /* Ajuste específico para el selector de idioma en móvil */
+    / /* Ajuste del selector de idioma */
     .lang-switch {
         border-left: none;
         padding-left: 0;
