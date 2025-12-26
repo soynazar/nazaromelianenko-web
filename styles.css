@@ -18,7 +18,7 @@
 
     --spacing-lg: 4rem;
     --spacing-md: 2rem;
-    --radius: 8px; /* Añadido para consistencia */
+    --radius: 8px;
 }
 
 /* =========================================
@@ -63,12 +63,57 @@ p { margin-bottom: 1rem; }
 .nav-link { text-decoration: none; color: var(--text); opacity: 0.7; font-size: 0.95rem; transition: 0.3s; }
 .nav-link:hover, .nav-link.active { opacity: 1; font-weight: 600; color: var(--color-terracotta); }
 
-.lang-switch { display: flex; gap: 10px; border-left: 1px solid var(--line); padding-left: 20px; margin-left: 10px; }
-.lang-switch a { text-decoration: none; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; }
-.lang-switch a.active { font-weight: bold; color: var(--color-terracotta); }
+/* =========================================
+   SELECTOR DE IDIOMA (Quiet Branding)
+   ========================================= */
+.lang-switch { 
+    display: flex; 
+    gap: 16px; /* Más aire entre idiomas */
+    border-left: 1px solid var(--line); 
+    padding-left: 24px; 
+    margin-left: 10px; 
+}
+
+.lang-switch a { 
+    text-decoration: none; 
+    font-family: var(--font-body);
+    font-size: 0.75rem; /* Pequeño y sofisticado */
+    font-weight: 500;
+    letter-spacing: 0.05em; /* Aire entre letras */
+    color: var(--muted); /* Gris suave por defecto */
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* Animación sedosa */
+    position: relative;
+}
+
+/* Estado Hover (Humanidad) */
+.lang-switch a:hover { 
+    color: var(--color-terracotta); 
+    transform: translateY(-1px); /* Elevación imperceptible */
+}
+
+/* Estado Activo (Criterio) */
+.lang-switch a.active { 
+    color: var(--color-charcoal); 
+    font-weight: 700;
+    cursor: default; /* Indica que ya estás aquí */
+}
+
+/* Pequeño punto indicador para el activo (Opcional, muy sutil) */
+.lang-switch a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 3px;
+    background-color: var(--color-terracotta);
+    border-radius: 50%;
+    opacity: 0.8;
+}
 
 /* =========================================
-   4. LAYOUTS INTERNOS (Faltaba esto)
+   4. LAYOUTS INTERNOS
    ========================================= */
 .page-hero { padding: var(--spacing-lg) 0 3rem 0; }
 .page-hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
@@ -133,6 +178,17 @@ p { margin-bottom: 1rem; }
 @media (max-width: 768px) {
     .header-inner { flex-direction: column; height: auto; padding: 1rem 0; gap: 1rem; }
     .nav { flex-wrap: wrap; justify-content: center; }
+    
+    /* Ajuste específico para el selector de idioma en móvil */
+    .lang-switch {
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+        margin-top: 1rem;
+        justify-content: center;
+        width: 100%;
+    }
+
     .bento-grid, .page-grid, .list-grid { grid-template-columns: 1fr; }
     .bento-hero-service { flex-direction: column; grid-column: span 1; }
     .bento-hero-image-container { width: 100%; height: 200px; }
