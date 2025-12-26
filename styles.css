@@ -284,8 +284,20 @@ p { margin-bottom: 1rem; }
 .contact-list { display: flex; flex-direction: column; gap: 1.5rem; }
 
 /* Footer */
-.site-footer { border-top: 1px solid var(--line); padding: 2rem 0; margin-top: auto; font-size: 0.9rem; color: var(--muted); }
-.footer-inner { display: flex; justify-content: space-between; align-items: center; }
+.site-footer { 
+    border-top: 1px solid var(--line); 
+    padding: 2rem 0; 
+    margin-top: auto; 
+    font-size: 0.85rem; /* Un pelín más pequeño para ser elegante */
+    color: var(--muted); 
+    text-align: center; /* Centrado de texto de seguridad */
+}
+.footer-inner { 
+    display: flex; 
+    justify-content: center; /* ¡ESTO ES LO QUE LO CENTRA! */
+    align-items: center; 
+    gap: 1.5rem; /* Si añades redes sociales en el futuro, tendrán espacio */
+}
 
 /* =========================================
    7. RESPONSIVE (Versión Corregida Solapamiento)
