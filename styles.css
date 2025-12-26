@@ -258,37 +258,49 @@ p { margin-bottom: 1rem; }
 }
 
 /* Resto de items Bento */
-.bento-item {
-    background: white; 
-    padding: 2rem; 
-    border: 1px solid var(--line); 
-    border-radius: var(--radius); 
-    display: flex; 
-    flex-direction: column; 
+.bento-item, .card {
+    background: white;
+    padding: 2.5rem; /* Un poco más de aire interior */
+    
+    /* Borde sutil en lugar de línea dura */
+    border: 1px solid rgba(26, 26, 26, 0.08); 
+    border-radius: 12px; /* Un poco más redondeado (más amable) */
+    
+    /* Sombra casi invisible, solo da profundidad */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02); 
+    
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.bento-item:hover { 
-    transform: translateY(-5px); 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-    border-color: var(--color-terracotta); 
+.bento-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-terracotta); /* El color aparece al tocar */
+    box-shadow: 0 12px 40px rgba(226, 114, 91, 0.1); /* Sombra con un toque de color terracota muy sutil */
 }
 
 .bento-materials, .bento-philosophy { grid-column: span 1; }
 
-.bento-philosophy { 
-    background-color: var(--color-charcoal); 
-    color: var(--color-arena); 
-    justify-content: center; 
-    text-align: center; 
-}
-.bento-philosophy .quote { 
-    font-family: var(--font-header); 
-    font-style: italic; 
-    font-size: 1.1rem; 
+.bento-philosophy {
+    background-color: var(--color-charcoal);
+    color: var(--color-arena);
+    justify-content: center;
+    text-align: center;
+    position: relative; /* Para decorar si queremos */
 }
 
+.bento-philosophy .quote {
+    font-family: var(--font-header);
+    font-style: italic; /* Ya lo tenías, perfecto */
+    font-size: 1.4rem; /* Más grande, es el alma de la web */
+    font-weight: 300; /* Más fino, más elegante */
+    line-height: 1.4;
+    opacity: 0.95;
+    max-width: 80%; /* Que no toque los bordes */
+    margin: 0 auto;
+}
 /* =========================================
    6. COMPONENTES (Card, Form, Footer)
    ========================================= */
