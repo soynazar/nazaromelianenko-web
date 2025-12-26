@@ -10,41 +10,44 @@
   
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
-   
+  <script src="/js/lang-switch.js" defer></script>
 </head>
 
 <body class="is-loading">
 
   <div id="header-slot"></div>
 
-  <main class="page container">
-  <section class="page-hero">
-    <h1>Trabajo en educación y tecnología, integrando aprendizaje y construcción con criterio.</h1>
-  </section>
+  <main class="page">
+    <section class="container page-hero">
+      <h1>Trabajo en educación y tecnología, integrando aprendizaje y construcción con criterio.</h1>
+    </section>
 
-  <section class="page-grid">
-    <article class="card card-featured">
-      <div class="card-image-wrapper">
-        <img src="/images/nazar-perfil.webp" alt="Nazar Omelianenko" class="card-img">
-      </div>
-      <div class="card-content">
-        <div class="product-badge">Metodología</div>
-        <h2>Enseñanza · Idiomas</h2>
-        <p>Trabajo con personas que buscan un aprendizaje serio, adaptado a su ritmo y con atención al proceso.</p>
-        <a href="ensenanza.html" class="button">Enseñanza e Idiomas</a>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-content">
-        <h2>Desarrollo · Tecnología</h2>
-        <p>Desarrollo proyectos que requieren soluciones claras, con criterios sólidos y centrados en lo esencial.</p>
-        <a href="desarrollo.html" class="button">Desarrollo y Tecnología</a>
-      </div>
-    </article>
-  </section>
-</main>
+  <section class="container bento-grid">
+<article class="bento-item bento-hero-service">
+  <div class="bento-hero-image-container">
+    <img src="/images/nazar-perfil.webp" alt="Nazar Omelianenko" class="bento-hero-img">
+  </div>
   
+  <div class="bento-hero-content">
+    <div class="product-badge">Metodología</div>
+    <h2>Gramática Cognitiva</h2>
+    <p>Aprender a través de la comprensión de la lógica de los hablantes nativos. Pasamos de la memorización mecánica al dominio consciente del español.</p>
+    <a href="ensenanza.html" class="button">Saber más</a>
+  </div>
+</article>
+
+  <article class="bento-item bento-materials">
+    <h3>Materiales</h3>
+    <p>Esquemas y guías visuales para el estudio autónomo de la lengua.</p>
+    <a href="materiales.html" class="link">Ir a la tienda</a>
+  </article>
+
+  <article class="bento-item bento-philosophy">
+    <p class="quote">"La lengua no es un conjunto de reglas, sino una forma de ver el mundo."</p>
+  </article>
+</section>
+  </main>
+
   <div id="footer-slot"></div>
 
 </body>
