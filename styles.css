@@ -366,7 +366,9 @@ p { margin-bottom: 1rem; }
         width: 100%;
         padding: 2rem;
     }
-    
+    /* Ajuste del Logo en móvil */
+    .brand-icon { height: 60px; } /* En móvil lo dejamos en 60px, que es bastante generoso */
+    .brand-name { font-size: 1.4rem; }
     .cta-actions { 
         flex-direction: column; 
     }
