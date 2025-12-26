@@ -1,15 +1,20 @@
+// IMPORTANTE: Asegúrate de que el archivo en la carpeta 'ca' se llame 'ensenyanca.html' (sin cedilla)
 const pageMap = {
-    'teaching.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyança.html' },
-    'ensenanza.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyança.html' },
-    'ensenyança.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyança.html' },
+    'teaching.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyanca.html' },
+    'ensenanza.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyanca.html' },
+    'ensenyanca.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyanca.html' },
+    
     'development.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
     'desarrollo.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
     'desenvolupament.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
+    
     'contact.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html', ca: 'contacte.html' },
     'contacto.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html', ca: 'contacte.html' },
     'contacte.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html', ca: 'contacte.html' },
+    
     'about-me.html': { es: 'sobre-mi.html', ru: 'sobre-mi.html', en: 'about-me.html', ca: 'sobre-mi.html' },
     'sobre-mi.html': { es: 'sobre-mi.html', ru: 'sobre-mi.html', en: 'about-me.html', ca: 'sobre-mi.html' },
+    
     'index.html': { es: 'index.html', ru: 'index.html', en: 'index.html', ca: 'index.html' },
     'materiales.html': { es: 'index.html', ru: 'materiales.html', en: 'index.html', ca: 'index.html' }
 };
@@ -45,9 +50,17 @@ const initLanguageSwitch = () => {
             link.textContent = strings[key];
         }
         
-        const href = link.getAttribute('href');
-        if (href && pageMap[href]) {
-            link.href = `/${currentLang}/${pageMap[href][currentLang]}`;
+        // Encontrar la página correspondiente en el idioma actual
+        const hrefOriginal = link.getAttribute('href'); 
+        if (hrefOriginal && pageMap[hrefOriginal]) {
+             // Buscamos cuál es el archivo correcto para este idioma
+             const targetFile = pageMap[hrefOriginal][currentLang];
+             link.href = `/${currentLang}/${targetFile}`;
+             
+             // Marcar activo si es la página actual
+             if (targetFile === currentPage) {
+                 link.classList.add('active');
+             }
         }
     });
 
@@ -56,7 +69,6 @@ const initLanguageSwitch = () => {
         const targetLang = link.getAttribute('data-lang');
         if (targetLang === currentLang) link.classList.add('active');
 
-        // Clonar para evitar múltiples listeners si el evento se dispara dos veces
         const newLink = link.cloneNode(true);
         link.parentNode.replaceChild(newLink, link);
 
@@ -68,5 +80,4 @@ const initLanguageSwitch = () => {
     });
 };
 
-// Escuchar el evento de carga de componentes
 window.addEventListener('componentsLoaded', initLanguageSwitch);
