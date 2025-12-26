@@ -298,7 +298,7 @@ p { margin-bottom: 1rem; }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; }
 
 /* =========================================
-   7. RESPONSIVE
+   7. RESPONSIVE (Versión Corregida Solapamiento)
    ========================================= */
 @media (max-width: 768px) {
     /* --- HEADER & NAV --- */
@@ -319,7 +319,7 @@ p { margin-bottom: 1rem; }
     .brand-icon { height: 50px; } 
     .brand-name { font-size: 1.4rem; }
     
-    /* Selector de idioma centrado y sin bordes */
+    /* Selector de idioma centrado */
     .lang-switch {
         border-left: none;
         padding-left: 0;
@@ -333,10 +333,19 @@ p { margin-bottom: 1rem; }
     .bento-grid, 
     .page-grid, 
     .list-grid { 
-        grid-template-columns: 1fr; /* Todo a una columna */
+        grid-template-columns: 1fr; /* 1 sola columna para todo */
+        gap: 1.5rem; /* Espacio entre tarjetas */
     }
 
-    /* --- ARREGLO HERO EN MÓVIL --- */
+    /* --- CORRECCIÓN CRÍTICA DEL SOLAPAMIENTO --- */
+    /* Usamos !important para anular el 'span 2' y 'span 4' que pusimos en el HTML */
+    .bento-item { 
+        grid-column: 1 / -1 !important; /* Ocupa todo el ancho disponible */
+        width: 100% !important;
+        margin-bottom: 0;
+    }
+
+    /* --- ARREGLO HERO EN MÓVIL (Por si vuelves a usarlo) --- */
     .bento-hero-service {
         flex-direction: column !important; 
         height: auto !important; 
@@ -352,11 +361,6 @@ p { margin-bottom: 1rem; }
     .bento-hero-content {
         width: 100%;
         padding: 2rem;
-    }
-
-    /* --- OTROS COMPONENTES --- */
-    .bento-materials, .bento-philosophy { 
-        grid-column: span 1; 
     }
     
     .cta-actions { 
