@@ -103,14 +103,19 @@ p { margin-bottom: 1.5rem; }
 /* =========================================
    4. LAYOUTS: HERO "MANIFIESTO"
    ========================================= */
-.page-hero { padding: 6rem 0 4rem 0; } /* Más aire arriba */
+.page-hero { padding: 6rem 0 4rem 0; } 
 
 .page-hero h1 { 
     font-size: 2.8rem; 
     max-width: 850px; 
-    /* El manifiesto no necesita ser gritado, sino afirmado */
     font-weight: 400; 
     letter-spacing: -0.03em;
+    
+    /* EL CAMBIO DE TENSIÓN VISUAL: */
+    /* Bajamos de 1.2 (heredado) a 1.12 para que el bloque sea más compacto */
+    line-height: 1.12; 
+    
+    margin-bottom: 1.5rem; /* Ajustamos el margen inferior para compensar */
 }
 
 /* =========================================
