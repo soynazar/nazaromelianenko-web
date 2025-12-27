@@ -5,8 +5,8 @@
   <title>Desarrollo · Tecnología — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
@@ -18,6 +18,8 @@
   <div id="header-slot"></div>
 
   <main class="page">
+    
+    <!-- HERO (Coherencia visual) -->
     <section class="container page-hero">
       <h1>Desarrollo · Tecnología</h1>
       <p class="lead">
@@ -26,8 +28,11 @@
       </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
+    <!-- CONTENIDO EDITORIAL (Sin cajas) -->
+    <section class="container reading-container">
+      
+      <!-- Bloque 1: Filosofía -->
+      <article class="editorial-block">
         <h2>Cómo trabajo</h2>
         <p>
           Me guío por decisiones técnicas justificadas, documentación mínima pero útil
@@ -35,23 +40,25 @@
         </p>
         <p>
           Priorizo el resultado práctico: que el producto sea cómodo, claro para el usuario
-          y fácil de evolucionar.
+          y <strong>fácil de evolucionar</strong>.
         </p>
-      </div>
+      </article>
 
-      <div class="card">
+      <!-- Bloque 2: Aportación -->
+      <article class="editorial-block">
         <h2>Qué puedo aportar</h2>
         <p>
-          Desarrollo web con foco en UX, rendimiento y organización del código.
+          Desarrollo web con foco en <strong>UX</strong>, rendimiento y <strong>organización del código</strong>.
           Me interesa especialmente lo que combina precisión técnica y utilidad real.
         </p>
         <p>
           Si el objetivo está bien definido, el trabajo se vuelve más simple,
           más medible y más fácil de mantener.
         </p>
-      </div>
+      </article>
 
-      <div class="card">
+      <!-- Bloque 3: Enfoque -->
+      <article class="editorial-block">
         <h2>Enfoque</h2>
         <p>
           Me gusta trabajar con criterios claros: estructura, coherencia,
@@ -61,57 +68,71 @@
           El desarrollo no es “hacer por hacer”, sino construir con intención
           y con respeto por quien lo usará y lo mantendrá.
         </p>
-      </div>
+      </article>
 
-      <div class="card">
+      <!-- Bloque 4: Estado Actual -->
+      <article class="editorial-block">
         <h2>Ahora mismo</h2>
         <p>
-          Estoy formándome en <strong>Desarrollo de Aplicaciones</strong> (FP),
+          Estoy formándome en <strong>Desarrollo de Aplicaciones (FP)</strong>,
           y construyendo proyectos propios para consolidar práctica y criterio técnico.
         </p>
         <p>
           Esta web también es parte del proceso: sencilla, sobria y cada vez más completa.
         </p>
-      </div>
+      </article>
+
     </section>
 
-    <section class="container page-section">
-      <div class="section-header">
-        <h2>Proyectos</h2>
-        <p class="muted">
-          Aquí irán proyectos seleccionados: breves, claros y con contexto (qué se hizo y por qué).
-        </p>
+    <!-- SECCIÓN PROYECTOS (Lista indentada estilo código) -->
+    <section class="container reading-container" style="margin-top: 4rem;">
+      <div class="section-header" style="border: none; padding-bottom: 0; margin-bottom: 3rem;">
+        <h2>Proyectos seleccionados</h2>
+        <p class="muted">Breves, claros y con contexto (qué se hizo y por qué).</p>
       </div>
 
-      <div class="list-grid">
-        <div class="list-item">
+      <div class="editorial-list">
+        <!-- Proyecto 1 -->
+        <div class="list-item-editorial">
           <h3>Web personal</h3>
           <p>Base estática, navegación clara y despliegue con dominio propio. Evolución por iteraciones.</p>
         </div>
-        <div class="list-item">
+
+        <!-- Proyecto 2 -->
+        <div class="list-item-editorial">
           <h3>Proyecto DAM</h3>
           <p>Espacio reservado para un proyecto completo con estructura, decisiones y resultados.</p>
         </div>
-        <div class="list-item">
+
+        <!-- Proyecto 3 -->
+        <div class="list-item-editorial">
           <h3>Automatizaciones</h3>
           <p>Pequeñas mejoras que ahorran tiempo: organización, plantillas y flujos repetibles.</p>
         </div>
       </div>
     </section>
 
-    <section class="container page-cta">
-      <div class="cta-box">
-        <h2>Si quieres contactarme</h2>
-        <p>
-          Si tienes una idea, una necesidad concreta o quieres ver ejemplos,
-          escríbeme y lo hablamos con calma.
-        </p>
-        <div class="cta-actions">
-          <a class="button" href="/es/contacto">Contactar</a>
-          <a class="button secondary" href="/es/">Volver al inicio</a>
-        </div>
+    <!-- CTA FINAL (Idéntico a Enseñanza) -->
+    <section class="container editorial-cta">
+      
+      <h2>Si quieres contactarme</h2>
+      <p>
+        Si tienes una idea, una necesidad concreta o quieres ver ejemplos,
+        escríbeme y lo hablamos con calma.
+      </p>
+      
+      <div class="cta-stack">
+        <a class="cta-link-primary" href="contacto.html">
+            Contactar ahora
+        </a>
+
+        <a class="cta-link-secondary" href="index.html">
+            ← Volver al inicio
+        </a>
       </div>
+
     </section>
+
   </main>
 
   <div id="footer-slot"></div>
