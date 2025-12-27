@@ -489,7 +489,105 @@ p { margin-bottom: 1.5rem; }
     /* Mismo estilo que los bloques editoriales */
     max-width: 800px;
 }
+/* =========================================
+   CONTACTO EDITORIAL (Hospitalidad UX)
+   ========================================= */
 
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Columna estrecha (Info) / Columna ancha (Form) */
+    gap: 6rem; /* Mucho aire entre ellas */
+    margin-top: 4rem;
+    align-items: start;
+}
+
+/* Columna Izquierda: Información Estática */
+.contact-info h3 {
+    font-family: var(--font-header);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--color-charcoal);
+}
+
+.contact-email {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--color-terracotta);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+    margin-bottom: 3rem;
+    display: inline-block;
+}
+
+.contact-email:hover {
+    border-bottom-color: var(--color-terracotta);
+}
+
+.contact-note {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+/* Columna Derecha: Formulario "Carta Abierta" */
+.form-editorial {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Espacio generoso entre preguntas */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-family: var(--font-header); /* Pregunta en Serif (Cálida) */
+    font-size: 1.1rem;
+    color: var(--color-charcoal);
+    font-weight: 500;
+}
+
+/* El Input "Línea" */
+.form-line {
+    border: none;
+    border-bottom: 1px solid var(--line); /* Línea gris suave */
+    background: transparent;
+    padding: 0.8rem 0; /* Padding vertical, 0 horizontal */
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-charcoal);
+    width: 100%;
+    transition: border-color 0.4s ease;
+    border-radius: 0; /* Evita bordes redondos en iOS */
+}
+
+.form-line:focus {
+    outline: none;
+    border-bottom-color: var(--color-terracotta); /* Feedback de color */
+}
+
+/* Ajuste específico para el Select */
+select.form-line {
+    cursor: pointer;
+    color: var(--color-charcoal);
+}
+
+/* Ajuste específico para el Textarea */
+textarea.form-line {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+}
+
+/* Mensaje de placeholder más suave */
+::placeholder {
+    color: rgba(26, 26, 26, 0.3);
+    font-weight: 300;
+}
  
 /* =========================================
    8. RESPONSIVE
@@ -499,7 +597,15 @@ p { margin-bottom: 1.5rem; }
         grid-template-columns: 1fr; /* Una columna en móvil */
         gap: 3rem;
     }
+    .contact-layout {
+        grid-template-columns: 1fr; /* Una columna */
+        gap: 4rem;
+    }
     
+    /* En móvil, ponemos el formulario PRIMERO, porque es la acción */
+    .form-editorial { order: 1; }
+    .contact-info { order: 2; margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 2rem; }
+}
     .bio-sidebar {
         border-top: none;
         border-bottom: 1px solid var(--line);
