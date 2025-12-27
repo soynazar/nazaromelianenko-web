@@ -20,9 +20,10 @@
     --line: rgba(26, 26, 26, 0.15); /* Líneas divisorias sutiles */
     --muted: #666666;
 
-    /* ESPACIADO (Más aire = Más lujo) */
-    --spacing-lg: 6rem; /* Aumentado para dar respiro */
+    /* ESPACIADO */
+    --spacing-lg: 6rem; 
     --spacing-md: 3rem;
+    --radius: 8px;
 }
 
 /* =========================================
@@ -32,19 +33,18 @@ body {
     font-family: var(--font-body);
     background-color: var(--color-arena);
     color: var(--color-charcoal);
-    line-height: 1.7; /* Lectura relajada */
+    line-height: 1.7; 
     -webkit-font-smoothing: antialiased;
     display: flex; flex-direction: column; min-height: 100vh;
     opacity: 1; transition: opacity 0.5s ease;
     position: relative;
 }
 
-/* TEXTURA DE PAPEL (Sutil y elegante) */
+/* TEXTURA DE PAPEL */
 body::before {
     content: "";
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: 9999;
-    /* Ruido fino y repetido para evitar pixelación */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 150px 150px;
@@ -55,33 +55,36 @@ body::before {
 body.is-loading { opacity: 0; }
 main { flex: 1; padding-bottom: var(--spacing-lg); }
 
-/* TIPOGRAFÍA JERÁRQUICA */
 h1, h2, h3 {
     font-family: var(--font-header);
     color: var(--color-charcoal);
     line-height: 1.2;
     letter-spacing: -0.02em;
-    font-weight: 500; /* Pesos medios, no bold agresivo */
+    font-weight: 500; 
 }
 
 p { margin-bottom: 1.5rem; }
 
-/* Enlaces generales */
 .link { color: var(--color-charcoal); text-decoration: underline; text-decoration-color: rgba(26,26,26,0.2); text-underline-offset: 4px; transition: 0.3s; }
 .link:hover { color: var(--color-terracotta); text-decoration-color: var(--color-terracotta); }
 
 /* =========================================
-   3. HEADER & NAV (Discreción)
+   3. HEADER & NAV (PC - Fila Horizontal)
    ========================================= */
 .site-header { 
-    /* Quitamos el borde inferior sólido, lo hacemos transparente o muy sutil */
     border-bottom: 1px solid rgba(26,26,26,0.05); 
     background-color: var(--color-arena); 
     position: sticky; top: 0; z-index: 1000; 
 }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
 
-.header-inner { display: flex; align-items: center; justify-content: space-between; height: 90px; }
+.header-inner { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    height: 90px;
+    flex-direction: row; /* Forzamos fila en PC */
+}
 
 /* LOGO */
 .brand-link { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
@@ -91,7 +94,7 @@ p { margin-bottom: 1.5rem; }
 
 /* NAV */
 .nav { display: flex; align-items: center; gap: 32px; }
-.nav-link { text-decoration: none; color: var(--text); opacity: 0.5; font-size: 0.9rem; transition: all 0.3s ease; font-weight: 400; }
+.nav-link { text-decoration: none; color: var(--text); opacity: 0.5; font-size: 0.9rem; transition: all 0.3s ease; font-weight: 400; white-space: nowrap; }
 .nav-link:hover, .nav-link.active { opacity: 1; color: var(--color-charcoal); }
 
 /* SELECTOR IDIOMA */
@@ -101,7 +104,7 @@ p { margin-bottom: 1.5rem; }
 .lang-switch a.active { color: var(--color-charcoal); font-weight: 700; opacity: 1; cursor: default; }
 
 /* =========================================
-   4. LAYOUTS: HERO "MANIFIESTO"
+   4. LAYOUTS: HERO
    ========================================= */
 .page-hero { padding: 6rem 0 4rem 0; } 
 
@@ -110,537 +113,191 @@ p { margin-bottom: 1.5rem; }
     max-width: 850px; 
     font-weight: 400; 
     letter-spacing: -0.03em;
-    
-    /* EL CAMBIO DE TENSIÓN VISUAL: */
-    /* Bajamos de 1.2 (heredado) a 1.12 para que el bloque sea más compacto */
     line-height: 1.12; 
-    
-    margin-bottom: 1.5rem; /* Ajustamos el margen inferior para compensar */
+    margin-bottom: 1.5rem; 
 }
 
 /* =========================================
-   5. ESTRUCTURA EDITORIAL (Ex-Bento)
+   5. ESTRUCTURA EDITORIAL (Home)
    ========================================= */
-/* Ya no es una rejilla de cajas, es una rejilla de contenido */
 .bento-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas maestras */
-    column-gap: 4rem; /* Mucho espacio entre columnas */
+    grid-template-columns: repeat(2, 1fr); 
+    column-gap: 4rem; 
     row-gap: 4rem;
     margin-top: 2rem;
     align-items: start;
     position: relative;
 }
 
-/* LÍNEA DIVISORIA CENTRAL (Sutil, solo decorativa) */
 .bento-grid::after {
     content: "";
     position: absolute;
     top: 0; bottom: 0; left: 50%;
     width: 1px;
     background: var(--line);
-    display: block; /* Se oculta en móvil */
+    display: block; 
 }
 
-/* ELEMENTOS (Desmaterializados) */
 .bento-item {
-    /* Eliminamos fondos, bordes y sombras */
     background: transparent;
-    padding: 2rem 0; /* Padding vertical solo */
+    padding: 2rem 0; 
     border: none;
     box-shadow: none;
-    
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: flex-start;
 }
 
-.bento-item h3 {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    font-weight: 400;
-}
-
-.bento-item p {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--muted);
-    max-width: 90%;
-}
-
-/* EXCEPCIÓN: Tarjetas internas (Sobre mí, etc) que SÍ necesitan contenedor */
-.card {
-    background: white;
-    padding: 2.5rem;
-    border: 1px solid rgba(26, 26, 26, 0.06);
-    border-radius: var(--radius);
-    margin-bottom: 2rem;
-}
+.bento-item h3 { font-size: 1.6rem; margin-bottom: 1rem; font-weight: 400; }
+.bento-item p { font-size: 1.05rem; line-height: 1.7; color: var(--muted); max-width: 90%; }
 
 /* =========================================
-   6. BOTONES -> INVITACIONES
+   6. BOTONES (Estilo Enlace)
    ========================================= */
-/* Transformamos el botón en un enlace editorial con flecha */
 .button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: transparent;
-    color: var(--color-charcoal);
-    padding: 0; /* Sin padding de caja */
-    border: none;
-    font-size: 0.95rem;
-    text-transform: none; /* Quitamos mayúsculas agresivas */
-    font-weight: 500;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(26,26,26,0.2); /* Subrayado fino */
-    padding-bottom: 2px;
-    margin-top: 1.5rem;
-    transition: all 0.3s ease;
-    align-self: flex-start;
-    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent; color: var(--color-charcoal);
+    padding: 0; border: none; font-size: 0.95rem; text-transform: none; font-weight: 500;
+    text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.2); 
+    padding-bottom: 2px; margin-top: 1.5rem; transition: all 0.3s ease;
+    align-self: flex-start; cursor: pointer;
 }
 
-/* La flecha aparece con CSS */
-.button::after {
-    content: "→";
-    display: inline-block;
-    transition: transform 0.3s ease;
-    color: var(--color-terracotta);
-}
-
-.button:hover {
-    color: var(--color-terracotta);
-    border-bottom-color: var(--color-terracotta);
-    background: transparent;
-}
-
-.button:hover::after {
-    transform: translateX(4px); /* La flecha se mueve sutilmente */
-}
+.button::after { content: "→"; display: inline-block; transition: transform 0.3s ease; color: var(--color-terracotta); }
+.button:hover { color: var(--color-terracotta); border-bottom-color: var(--color-terracotta); }
+.button:hover::after { transform: translateX(4px); }
 
 /* =========================================
-   7. SECCIÓN FILOSOFÍA & FOTO (Integración)
+   7. SECCIÓN FOTO Y FILOSOFÍA
    ========================================= */
-/* La foto se libera de la caja */
-.bento-hero-service { /* Reutilizamos la clase para la foto */
+.bento-hero-service { 
     grid-column: span 1 !important;
     background: transparent !important;
     border: none !important;
-    box-shadow: none !important;
     padding: 0 !important;
-    min-height: auto !important;
     display: block !important;
 }
 
 .bento-hero-image-container {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1/1.2; /* Proporción elegante */
-    overflow: hidden;
-    /* Borde muy sutil para delimitar si el fondo es claro */
-    border-radius: var(--radius); 
+    width: 100%; height: auto; aspect-ratio: 1/1.2; overflow: hidden; border-radius: var(--radius); 
 }
 
 .bento-hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 25%;
-    filter: grayscale(100%); /* Asegura B/N puro */
-    transition: transform 0.7s ease;
+    width: 100%; height: 100%; object-fit: cover; object-position: center 25%;
+    filter: grayscale(100%); transition: transform 0.7s ease;
 }
 
-/* Efecto sutil al pasar el mouse sobre la foto */
-.bento-hero-image-container:hover .bento-hero-img {
-    transform: scale(1.03);
-}
+.bento-hero-image-container:hover .bento-hero-img { transform: scale(1.03); }
 
-/* Cita Filosófica (Sin caja negra) */
 .bento-philosophy {
-    background: transparent; /* Transparente */
-    color: var(--color-charcoal); /* Texto oscuro */
-    text-align: left; /* Alineado a la izquierda (más editorial) */
-    padding: 2rem 0;
-    display: flex;
-    align-items: center;
+    background: transparent; color: var(--color-charcoal);
+    text-align: left; padding: 2rem 0; display: flex; align-items: center;
 }
 
 .bento-philosophy .quote {
-    font-family: var(--font-header);
-    font-style: italic;
-    font-size: 1.8rem; /* Grande, protagonista */
-    font-weight: 300;
-    line-height: 1.4;
-    color: var(--color-charcoal);
+    font-family: var(--font-header); font-style: italic; font-size: 1.8rem;
+    font-weight: 300; line-height: 1.4; color: var(--color-charcoal);
 }
+
 /* =========================================
-   ESTILOS EDITORIALES (Páginas Internas)
+   8. ESTILOS EDITORIALES (Páginas Internas)
    ========================================= */
+.reading-container { max-width: 800px; margin: 0 0 0 0; }
 
-/* Contenedor de lectura (centrado y ancho limitado para que el ojo no se canse) */
-.reading-container {
-    max-width: 800px; /* Ancho ideal de lectura */
-    margin: 0 0 0 0; /* Alineado a la izquierda (o '0 auto' si prefieres centrado) */
-    /* Nota: En diseño editorial moderno, a veces alinear a la izquierda
-       debajo del titular queda muy elegante. Si prefieres centro, pon '0 auto'. */
-}
+.editorial-block { margin-bottom: 6rem; position: relative; }
+.editorial-block h2 { font-family: var(--font-header); font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--color-charcoal); font-weight: 500; }
+.editorial-block p { font-size: 1.05rem; line-height: 1.8; color: var(--color-charcoal); margin-bottom: 1.5rem; }
+.editorial-block strong { color: var(--color-terracotta); font-weight: 500; }
 
-/* Bloque de texto limpio */
-.editorial-block {
-    margin-bottom: 6rem; /* El "Silencio" visual (aprox 100px) */
-    position: relative;
-}
-
-.editorial-block h2 {
-    font-family: var(--font-header);
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    color: var(--color-charcoal);
-    font-weight: 500;
-}
-
-.editorial-block p {
-    font-size: 1.05rem;
-    line-height: 1.8; /* Más aire entre líneas para lectura relajada */
-    color: var(--color-charcoal);
-    margin-bottom: 1.5rem;
-}
-
-/* El toque maestro: Negritas en Terracotta */
-.editorial-block strong {
-    color: var(--color-terracotta);
-    font-weight: 500; /* No muy grueso, solo color */
-}
-
-/* Separador sutil opcional (si sientes que flotan demasiado) */
-/* Descomenta si quieres una línea fina entre secciones
-.editorial-block::after {
-    content: "";
-    display: block;
-    width: 50px;
-    height: 1px;
-    background: var(--line);
-    margin-top: 4rem;
-}
-*/
 /* =========================================
-   CIERRE EDITORIAL (CTA)
+   9. CIERRE EDITORIAL (CTA)
    ========================================= */
+.editorial-cta { margin-top: 8rem; margin-bottom: 4rem; max-width: 800px; text-align: left; }
+.editorial-cta h2 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--color-charcoal); }
+.editorial-cta p { font-size: 1.1rem; color: var(--muted); margin-bottom: 2.5rem; }
 
-.editorial-cta {
-    margin-top: 8rem; /* Mucho aire antes del final */
-    margin-bottom: 4rem;
-    max-width: 800px;
-    /* Alineación izquierda para seguir la lectura natural */
-    text-align: left; 
-}
+.cta-stack { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; }
 
-.editorial-cta h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-charcoal);
-}
-
-.editorial-cta p {
-    font-size: 1.1rem;
-    color: var(--muted);
-    margin-bottom: 2.5rem;
-}
-
-/* Contenedor vertical de enlaces */
-.cta-stack {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Alineados a la izquierda */
-    gap: 1.5rem; /* Espacio entre el botón principal y el secundario */
-}
-
-/* 1. ENLACE PRINCIPAL (Contactar) */
-/* Grande, protagonista, con estilo de firma */
 .cta-link-primary {
-    font-family: var(--font-header); /* Serif para dar elegancia */
-    font-size: 1.4rem;
-    color: var(--color-charcoal);
-    text-decoration: none;
-    border-bottom: 1px solid var(--color-terracotta); /* Subrayado fino de color */
-    padding-bottom: 4px;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+    font-family: var(--font-header); font-size: 1.4rem; color: var(--color-charcoal);
+    text-decoration: none; border-bottom: 1px solid var(--color-terracotta); padding-bottom: 4px;
+    transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px;
 }
+.cta-link-primary::after { content: "→"; color: var(--color-terracotta); transition: transform 0.3s ease; }
+.cta-link-primary:hover { color: var(--color-terracotta); padding-right: 10px; }
+.cta-link-primary:hover::after { transform: translateX(5px); }
 
-.cta-link-primary::after {
-    content: "→";
-    color: var(--color-terracotta);
-    transition: transform 0.3s ease;
-}
-
-.cta-link-primary:hover {
-    color: var(--color-terracotta);
-    padding-right: 10px; /* Pequeño desplazamiento a la derecha */
-}
-.cta-link-primary:hover::after {
-    transform: translateX(5px);
-}
-
-/* 2. ENLACE SECUNDARIO (Volver) */
-/* Pequeño, gris, funcional */
-.cta-link-secondary {
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: var(--muted); /* Gris suave */
-    text-decoration: none;
-    transition: color 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.cta-link-secondary:hover {
-    color: var(--color-charcoal);
-    text-decoration: underline;
-}
+.cta-link-secondary { font-family: var(--font-body); font-size: 0.9rem; color: var(--muted); text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 6px; }
+.cta-link-secondary:hover { color: var(--color-charcoal); text-decoration: underline; }
 
 /* =========================================
-   LISTAS EDITORIALES (Proyectos)
+   10. LISTAS EDITORIALES (Proyectos)
    ========================================= */
-.editorial-list {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem; /* Espacio generoso entre proyectos */
-}
-
-.list-item-editorial {
-    padding-left: 2rem; /* La indentación clave */
-    border-left: 1px solid var(--line); /* Línea vertical sutil (opcional, como guía de indentación) */
-    transition: border-color 0.3s ease;
-}
-
-.list-item-editorial:hover {
-    border-left-color: var(--color-terracotta); /* Detalle interactivo fino */
-}
-
-.list-item-editorial h3 {
-    font-family: var(--font-header);
-    font-size: 1.3rem;
-    color: var(--color-charcoal);
-    margin-bottom: 0.5rem;
-}
-
-.list-item-editorial p {
-    font-size: 1rem;
-    color: var(--muted);
-    margin-bottom: 0;
-    line-height: 1.6;
-}
+.editorial-list { display: flex; flex-direction: column; gap: 3rem; }
+.list-item-editorial { padding-left: 2rem; border-left: 1px solid var(--line); transition: border-color 0.3s ease; }
+.list-item-editorial:hover { border-left-color: var(--color-terracotta); }
+.list-item-editorial h3 { font-family: var(--font-header); font-size: 1.3rem; color: var(--color-charcoal); margin-bottom: 0.5rem; }
+.list-item-editorial p { font-size: 1rem; color: var(--muted); margin-bottom: 0; line-height: 1.6; }
 
 /* =========================================
-   ESTILOS BIOGRAFÍA (Sobre Mí)
+   11. ESTILOS BIOGRAFÍA (Sobre Mí)
    ========================================= */
+.bio-grid { display: grid; grid-template-columns: 250px 1fr; gap: 4rem; align-items: start; margin-top: 2rem; }
+.bio-sidebar { border-top: 1px solid var(--line); padding-top: 1.5rem; position: sticky; top: 120px; }
+.sidebar-title { font-family: var(--font-header); font-size: 1.1rem; color: var(--color-charcoal); margin-bottom: 2rem; }
+.bio-data-item { margin-bottom: 2rem; }
+.bio-data-item strong { display: block; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-terracotta); margin-bottom: 0.5rem; }
+.bio-data-item p { font-size: 0.95rem; line-height: 1.5; color: var(--muted); margin: 0; }
+.bio-content { max-width: 800px; }
 
-.bio-grid {
-    display: grid;
-    grid-template-columns: 250px 1fr; /* Sidebar fija, contenido flexible */
-    gap: 4rem;
-    align-items: start;
-    margin-top: 2rem;
-}
-
-/* Sidebar (Datos) */
-.bio-sidebar {
-    border-top: 1px solid var(--line); /* Línea fina superior */
-    padding-top: 1.5rem;
-    position: sticky; /* Se queda fija al hacer scroll (opcional) */
-    top: 120px; 
-}
-
-.sidebar-title {
-    font-family: var(--font-header);
-    font-size: 1.1rem;
-    color: var(--color-charcoal);
-    margin-bottom: 2rem;
-}
-
-.bio-data-item {
-    margin-bottom: 2rem;
-}
-
-.bio-data-item strong {
-    display: block;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--color-terracotta);
-    margin-bottom: 0.5rem;
-}
-
-.bio-data-item p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--muted);
-    margin: 0;
-}
-
-/* Contenido Principal */
-.bio-content {
-    /* Mismo estilo que los bloques editoriales */
-    max-width: 800px;
-}
 /* =========================================
-   CONTACTO EDITORIAL (Hospitalidad UX)
+   12. CONTACTO EDITORIAL (Hospitalidad UX)
    ========================================= */
+.contact-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; margin-top: 4rem; align-items: start; }
+.contact-info h3 { font-family: var(--font-header); font-size: 1.2rem; margin-bottom: 1rem; color: var(--color-charcoal); }
+.contact-email { font-family: var(--font-body); font-size: 1.1rem; color: var(--color-terracotta); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; margin-bottom: 3rem; display: inline-block; }
+.contact-email:hover { border-bottom-color: var(--color-terracotta); }
+.contact-note { font-size: 0.95rem; color: var(--muted); line-height: 1.6; max-width: 300px; }
 
-.contact-layout {
-    display: grid;
-    grid-template-columns: 1fr 2fr; /* Columna estrecha (Info) / Columna ancha (Form) */
-    gap: 6rem; /* Mucho aire entre ellas */
-    margin-top: 4rem;
-    align-items: start;
-}
+.form-editorial { display: flex; flex-direction: column; gap: 2.5rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-label { font-family: var(--font-header); font-size: 1.1rem; color: var(--color-charcoal); font-weight: 500; }
+.form-line { border: none; border-bottom: 1px solid var(--line); background: transparent; padding: 0.8rem 0; font-family: var(--font-body); font-size: 1rem; color: var(--color-charcoal); width: 100%; transition: border-color 0.4s ease; border-radius: 0; }
+.form-line:focus { outline: none; border-bottom-color: var(--color-terracotta); }
+select.form-line { cursor: pointer; color: var(--color-charcoal); }
+textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
+::placeholder { color: rgba(26, 26, 26, 0.3); font-weight: 300; }
 
-/* Columna Izquierda: Información Estática */
-.contact-info h3 {
-    font-family: var(--font-header);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: var(--color-charcoal);
-}
+/* Footer */
+.site-footer { border-top: 1px solid var(--line); padding: 2rem 0; margin-top: auto; font-size: 0.85rem; color: var(--muted); text-align: center; }
+.footer-inner { display: flex; justify-content: center; align-items: center; gap: 1.5rem; }
 
-.contact-email {
-    font-family: var(--font-body);
-    font-size: 1.1rem;
-    color: var(--color-terracotta);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: all 0.3s ease;
-    margin-bottom: 3rem;
-    display: inline-block;
-}
-
-.contact-email:hover {
-    border-bottom-color: var(--color-terracotta);
-}
-
-.contact-note {
-    font-size: 0.95rem;
-    color: var(--muted);
-    line-height: 1.6;
-    max-width: 300px;
-}
-
-/* Columna Derecha: Formulario "Carta Abierta" */
-.form-editorial {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem; /* Espacio generoso entre preguntas */
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-label {
-    font-family: var(--font-header); /* Pregunta en Serif (Cálida) */
-    font-size: 1.1rem;
-    color: var(--color-charcoal);
-    font-weight: 500;
-}
-
-/* El Input "Línea" */
-.form-line {
-    border: none;
-    border-bottom: 1px solid var(--line); /* Línea gris suave */
-    background: transparent;
-    padding: 0.8rem 0; /* Padding vertical, 0 horizontal */
-    font-family: var(--font-body);
-    font-size: 1rem;
-    color: var(--color-charcoal);
-    width: 100%;
-    transition: border-color 0.4s ease;
-    border-radius: 0; /* Evita bordes redondos en iOS */
-}
-
-.form-line:focus {
-    outline: none;
-    border-bottom-color: var(--color-terracotta); /* Feedback de color */
-}
-
-/* Ajuste específico para el Select */
-select.form-line {
-    cursor: pointer;
-    color: var(--color-charcoal);
-}
-
-/* Ajuste específico para el Textarea */
-textarea.form-line {
-    resize: vertical;
-    min-height: 100px;
-    line-height: 1.6;
-}
-
-/* Mensaje de placeholder más suave */
-::placeholder {
-    color: rgba(26, 26, 26, 0.3);
-    font-weight: 300;
-}
- 
 /* =========================================
-   8. RESPONSIVE
+   13. RESPONSIVE (MÓVIL)
    ========================================= */
 @media (max-width: 768px) {
-    .bio-grid {
-        grid-template-columns: 1fr; /* Una columna en móvil */
-        gap: 3rem;
-    }
-    .contact-layout {
-        grid-template-columns: 1fr; /* Una columna */
-        gap: 4rem;
-    }
-    
-    /* En móvil, ponemos el formulario PRIMERO, porque es la acción */
-    .form-editorial { order: 1; }
-    .contact-info { order: 2; margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 2rem; }
-}
-    .bio-sidebar {
-        border-top: none;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 2rem;
-        position: static; /* Ya no es sticky */
-        order: 2; /* Opcional: Si quieres que los datos salgan AL FINAL, pon order: 2 */
-    }
-
-   .header-inner { flex-direction: column; height: auto; padding: 1.5rem 0; gap: 1rem; }
+    .header-inner { flex-direction: column; height: auto; padding: 1.5rem 0; gap: 1rem; }
     .nav { gap: 15px; flex-wrap: wrap; justify-content: center; }
     .brand-icon { height: 40px; } 
     .brand-name { font-size: 1.3rem; }
     .lang-switch { border-left: none; padding-left: 0; margin-left: 0; margin-top: 1rem; justify-content: center; width: 100%; }
 
-    /* En móvil quitamos la rejilla compleja */
-    .bento-grid { 
-        grid-template-columns: 1fr; /* 1 columna */
-        gap: 3rem;
-        margin-top: 1rem;
-    }
-    
-    .bento-grid::after { display: none; } /* Quitamos la línea divisoria vertical */
-
-    .bento-item, .bento-philosophy { 
-        grid-column: 1 / -1 !important; 
-        padding: 0;
-        text-align: left;
-    }
-    
-    .bento-hero-service {
-        grid-column: 1 / -1 !important;
-        margin-top: 2rem;
-    }
-
-    /* Ajuste tamaños */
+    /* Home en Móvil */
+    .bento-grid { grid-template-columns: 1fr; gap: 3rem; margin-top: 1rem; }
+    .bento-grid::after { display: none; }
+    .bento-item, .bento-philosophy { grid-column: 1 / -1 !important; padding: 0; text-align: left; }
+    .bento-hero-service { margin-top: 2rem; }
     .page-hero h1 { font-size: 2rem; }
     .bento-philosophy .quote { font-size: 1.4rem; }
-}
+
+    /* Bio en Móvil */
+    .bio-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .bio-sidebar { border-top: none; border-bottom: 1px solid var(--line); padding-bottom: 2rem; position: static; order: 2; }
+    
+    /* Contacto en Móvil */
+    .contact-layout { grid-template-columns: 1fr; gap: 4rem; }
+    .form-editorial { order: 1; }
+    .contact-info { order: 2; margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 2rem; }
+} /* <--- LLAVE FINAL OBLIGATORIA */
