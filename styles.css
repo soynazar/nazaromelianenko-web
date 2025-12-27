@@ -403,6 +403,39 @@ p { margin-bottom: 1.5rem; }
     color: var(--color-charcoal);
     text-decoration: underline;
 }
+
+/* =========================================
+   LISTAS EDITORIALES (Proyectos)
+   ========================================= */
+.editorial-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Espacio generoso entre proyectos */
+}
+
+.list-item-editorial {
+    padding-left: 2rem; /* La indentación clave */
+    border-left: 1px solid var(--line); /* Línea vertical sutil (opcional, como guía de indentación) */
+    transition: border-color 0.3s ease;
+}
+
+.list-item-editorial:hover {
+    border-left-color: var(--color-terracotta); /* Detalle interactivo fino */
+}
+
+.list-item-editorial h3 {
+    font-family: var(--font-header);
+    font-size: 1.3rem;
+    color: var(--color-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.list-item-editorial p {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 0;
+    line-height: 1.6;
+}
 /* =========================================
    8. RESPONSIVE
    ========================================= */
