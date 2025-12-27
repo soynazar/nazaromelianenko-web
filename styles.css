@@ -436,11 +436,79 @@ p { margin-bottom: 1.5rem; }
     margin-bottom: 0;
     line-height: 1.6;
 }
+
+/* =========================================
+   ESTILOS BIOGRAFÍA (Sobre Mí)
+   ========================================= */
+
+.bio-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Sidebar fija, contenido flexible */
+    gap: 4rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+/* Sidebar (Datos) */
+.bio-sidebar {
+    border-top: 1px solid var(--line); /* Línea fina superior */
+    padding-top: 1.5rem;
+    position: sticky; /* Se queda fija al hacer scroll (opcional) */
+    top: 120px; 
+}
+
+.sidebar-title {
+    font-family: var(--font-header);
+    font-size: 1.1rem;
+    color: var(--color-charcoal);
+    margin-bottom: 2rem;
+}
+
+.bio-data-item {
+    margin-bottom: 2rem;
+}
+
+.bio-data-item strong {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-terracotta);
+    margin-bottom: 0.5rem;
+}
+
+.bio-data-item p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* Contenido Principal */
+.bio-content {
+    /* Mismo estilo que los bloques editoriales */
+    max-width: 800px;
+}
+
+ 
 /* =========================================
    8. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-    .header-inner { flex-direction: column; height: auto; padding: 1.5rem 0; gap: 1rem; }
+    .bio-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+        gap: 3rem;
+    }
+    
+    .bio-sidebar {
+        border-top: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 2rem;
+        position: static; /* Ya no es sticky */
+        order: 2; /* Opcional: Si quieres que los datos salgan AL FINAL, pon order: 2 */
+    }
+
+   .header-inner { flex-direction: column; height: auto; padding: 1.5rem 0; gap: 1rem; }
     .nav { gap: 15px; flex-wrap: wrap; justify-content: center; }
     .brand-icon { height: 40px; } 
     .brand-name { font-size: 1.3rem; }
