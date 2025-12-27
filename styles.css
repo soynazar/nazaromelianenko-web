@@ -341,6 +341,95 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 } /* <--- LLAVE FINAL OBLIGATORIA */
 
 /* =========================================
+   VIDEO LINK (Estilo Editorial)
+   ========================================= */
+.video-card {
+    display: block;
+    text-decoration: none;
+    background-color: var(--color-charcoal); /* Fondo oscuro para contraste */
+    color: var(--color-arena);
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    margin-top: 1.5rem;
+    transition: transform 0.4s var(--ease-editorial);
+    group: video;
+}
+
+.video-card:hover {
+    transform: translateY(-4px);
+}
+
+.video-thumbnail-container {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Altura contenida */
+    overflow: hidden;
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.8;
+    transition: opacity 0.4s ease;
+}
+
+.video-card:hover .video-thumbnail {
+    opacity: 0.6;
+}
+
+/* El botón de Play minimalista */
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.4s ease;
+}
+
+.play-icon::after {
+    content: "";
+    display: block;
+    width: 0; 
+    height: 0; 
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 14px solid var(--color-arena);
+    margin-left: 4px; /* Ajuste visual óptico */
+}
+
+.video-card:hover .play-icon {
+    background: var(--color-terracotta);
+    border-color: var(--color-terracotta);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-caption {
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.video-caption strong {
+    display: block;
+    font-family: var(--font-header);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-arena);
+}
+
+/* =========================================
    14. MOTION DESIGN & ANIMACIONES (Quiet Luxury)
    ========================================= */
 
