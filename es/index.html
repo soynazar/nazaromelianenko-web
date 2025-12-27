@@ -17,46 +17,49 @@
 
   <div id="header-slot"></div>
 
-  <main class="page">
+ <main class="page">
     <section class="container page-hero">
       <h1>Trabajo en educación y tecnología, integrando aprendizaje y construcción con criterio.</h1>
     </section>
 
+    <!-- EL NUEVO GRID EDITORIAL (2 Columnas Maestras) -->
     <section class="container bento-grid">
       
-      <!-- OPCIÓN 1: ENSEÑANZA (Mitad izquierda) -->
-      <article class="bento-item" style="grid-column: span 2; justify-content: space-between; align-items: flex-start; min-height: 300px;">
+      <!-- COLUMNA 1: ENSEÑANZA -->
+      <article class="bento-item">
         <div>
             <h3>Enseñanza · Idiomas</h3>
-            <p style="margin-top: 1rem;">Trabajo con personas que buscan un aprendizaje serio, adaptado a su ritmo y con atención al proceso.</p>
+            <p>Trabajo con personas que buscan un aprendizaje serio, adaptado a su ritmo y con atención al proceso.</p>
         </div>
-        <a href="ensenanza.html" class="button">Enseñanza e Idiomas</a>
+        <!-- El botón ahora es un enlace elegante -->
+        <a href="ensenanza.html" class="button">Ver propuesta educativa</a>
       </article>
 
-      <!-- OPCIÓN 2: DESARROLLO (Mitad derecha) -->
-      <article class="bento-item" style="grid-column: span 2; justify-content: space-between; align-items: flex-start; min-height: 300px;">
+      <!-- COLUMNA 2: DESARROLLO -->
+      <article class="bento-item">
         <div>
             <h3>Desarrollo · Tecnología</h3>
-            <p style="margin-top: 1rem;">Desarrollo proyectos que requieren soluciones claras, con criterios sólidos y centrados en lo esencial.</p>
+            <p>Desarrollo proyectos que requieren soluciones claras, con criterios sólidos y centrados en lo esencial.</p>
         </div>
-        <a href="desarrollo.html" class="button">Desarrollo y Tecnología</a>
+        <a href="desarrollo.html" class="button">Consultar enfoque técnico</a>
       </article>
 
-      <!-- FILOSOFÍA (Ancho completo abajo) -->
-      <!-- Ocupa las 4 columnas para cerrar el diseño con estética -->
-     <!-- NUEVO BLOQUE: FOTO (Columna 1) -->
-      <article class="bento-item" style="grid-column: span 1; padding: 0; overflow: hidden; border: none;">
-        <img src="/images/nazar-perfil.webp" alt="Nazar Omelianenko" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+      <!-- SECCIÓN INFERIOR: FOTO Y CITA -->
+      <!-- Foto a la izquierda -->
+      <article class="bento-item bento-hero-service">
+        <div class="bento-hero-image-container">
+           <img src="/images/nazar-perfil.webp" alt="Nazar Omelianenko" class="bento-hero-img">
+        </div>
       </article>
 
-      <!-- BLOQUE CITA (Ahora ocupa 3 columnas) -->
-      <article class="bento-item bento-philosophy" style="grid-column: span 3; display: flex; align-items: center; justify-content: center;">
-        <p class="quote" style="font-size: 1.3rem;">"La lengua no es un conjunto de reglas, sino una forma de ver el mundo."</p>
+      <!-- Cita a la derecha (Sin fondo negro) -->
+      <article class="bento-item bento-philosophy">
+        <p class="quote">"La lengua no es un conjunto de reglas, sino una forma de ver el mundo."</p>
       </article>
 
     </section>
-  </main>
-
+</main>
+  
   <div id="footer-slot"></div>
 
 </body>
