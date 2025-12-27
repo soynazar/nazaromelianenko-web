@@ -5,8 +5,8 @@
   <title>Sobre mí — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
@@ -18,7 +18,9 @@
   <div id="header-slot"></div>
   
   <main class="page">
-    <section class="container page-hero">
+    
+    <!-- HERO INTRODUCTORIO (Ancho completo) -->
+    <section class="container page-hero" style="padding-bottom: 2rem;">
       <h1>Sobre mí</h1>
       <p class="lead">
         Mi recorrido se ha construido entre la educación y la tecnología,
@@ -27,95 +29,103 @@
       </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>Cómo trabajo</h2>
-        <p>
-          Trabajo con respeto por los procesos, responsabilidad en cada decisión
-          y una comunicación directa.
-        </p>
-        <p>
-          Valoro la estructura, la coherencia y el trabajo de calidad
-          como base de cualquier avance real.
-        </p>
-      </div>
+    <!-- ESTRUCTURA BIOGRÁFICA (Grid Asimétrico) -->
+    <section class="container bio-grid">
+      
+      <!-- COLUMNA IZQUIERDA: DATOS (La Ficha Técnica) -->
+      <aside class="bio-sidebar">
+        <!-- Título discreto -->
+        <h3 class="sidebar-title">En breve</h3>
+        
+        <div class="bio-data-item">
+          <strong>Ubicación</strong>
+          <p>España<br>Trabajo online y presencial</p>
+        </div>
 
-      <div class="card">
-        <h2>Educación</h2>
-        <p>
-          Imparto clases de español y valenciano a personas adultas,
-          con especial atención a quienes parten de otras lenguas y culturas.
-        </p>
-        <p>
-          Incluyo estrategias de aprendizaje socioemocional (SEL)
-          y un entorno de aprendizaje positivo: seguridad, claridad y ritmo sostenible.
-        </p>
-        <p>
-          Atención al enfoque en la preparación de certificaciones oficiales,
-          como DELE y EOI, integradas dentro de un proceso de aprendizaje sólido.
-        </p>
-      </div>
+        <div class="bio-data-item">
+          <strong>Idiomas</strong>
+          <p>Español, Valenciano/Catalán,<br>Ruso, Ucraniano, Inglés</p>
+        </div>
 
-      <div class="card">
-        <h2>Tecnología</h2>
-        <p>
-          Desarrollo proyectos web con foco en utilidad real, experiencia de usuario
-          y un código que se entiende y se puede evolucionar.
-        </p>
-        <p>
-          Estoy formándome en Desarrollo de Aplicaciones (FP) y construyendo proyectos
-          propios para consolidar práctica y criterio técnico.
-        </p>
-      </div>
+        <div class="bio-data-item">
+          <strong>Trabajo</strong>
+          <p>Enseñanza de idiomas +<br>Desarrollo web</p>
+        </div>
+      </aside>
 
-      <div class="card">
-        <h2>Valores</h2>
-        <p>
-          Creo en las relaciones basadas en la confianza
-          y en el criterio como forma de respeto hacia las personas y hacia el trabajo.
-        </p>
-        <p>
-          Me interesa lo que se construye con intención:
-          paso a paso, con constancia y con un estándar alto.
-        </p>
+      <!-- COLUMNA DERECHA: NARRATIVA (Sin cajas, puro texto) -->
+      <div class="bio-content">
+        
+        <!-- Bloque 1 -->
+        <article class="editorial-block">
+          <h2>Cómo trabajo</h2>
+          <p>
+            Trabajo con respeto por los procesos, responsabilidad en cada decisión
+            y una comunicación directa. Valoro la estructura, la coherencia y el 
+            trabajo de calidad como base de cualquier avance real.
+          </p>
+        </article>
+
+        <!-- Bloque 2 -->
+        <article class="editorial-block">
+          <h2>Educación</h2>
+          <p>
+            Imparto clases de español y valenciano a personas adultas,
+            con especial atención a quienes parten de otras lenguas y culturas.
+          </p>
+          <p>
+            Incluyo estrategias de aprendizaje socioemocional (<strong>SEL</strong>)
+            y un entorno de aprendizaje positivo: <strong>seguridad</strong>, claridad y ritmo sostenible.
+            Atención al enfoque en la preparación de certificaciones oficiales,
+            como <strong>DELE</strong> y <strong>EOI</strong>, integradas dentro de un proceso de <strong>aprendizaje sólido</strong>.
+          </p>
+        </article>
+
+        <!-- Bloque 3 -->
+        <article class="editorial-block">
+          <h2>Tecnología</h2>
+          <p>
+            Desarrollo proyectos web con foco en <strong>utilidad real</strong>, experiencia de usuario
+            y un <strong>código limpio</strong> que se entiende y se puede evolucionar.
+          </p>
+          <p>
+            Estoy formándome en Desarrollo de Aplicaciones (FP) y construyendo proyectos
+            propios para consolidar práctica y criterio técnico.
+          </p>
+        </article>
+
+        <!-- Bloque 4 (El cierre filosófico) -->
+        <article class="editorial-block">
+          <h2>Valores</h2>
+          <p>
+            Creo en las relaciones basadas en la <strong>confianza</strong>
+            y en el <strong>criterio</strong> como forma de respeto hacia las personas y hacia el trabajo.
+            Me interesa lo que se construye con intención:
+            paso a paso, con <strong>constancia</strong> y con un estándar alto.
+          </p>
+        </article>
+
       </div>
     </section>
 
-    <section class="container page-section">
-      <div class="section-header">
-        <h2>En breve</h2>
-        <p class="muted">Un resumen claro para situarte rápido.</p>
-      </div>
-
-      <div class="list-grid">
-        <div class="list-item">
-          <h3>Ubicación</h3>
-          <p>España · Trabajo online y presencial según el caso.</p>
-        </div>
-        <div class="list-item">
-          <h3>Idiomas</h3>
-          <p>Español, valenciano/catalán, ruso, ucraniano e inglés.</p>
-        </div>
-        <div class="list-item">
-          <h3>Trabajo</h3>
-          <p>Enseñanza de idiomas + desarrollo web, con criterio y enfoque práctico.</p>
-        </div>
+    <!-- CTA FINAL (Consistente) -->
+    <section class="container editorial-cta">
+      <h2>Si quieres hablar conmigo</h2>
+      <p>
+        Si buscas clases, una preparación seria, o un proyecto web con orden y criterio,
+        escríbeme y lo vemos.
+      </p>
+      
+      <div class="cta-stack">
+        <a class="cta-link-primary" href="contacto.html">
+            Contactar ahora
+        </a>
+        <a class="cta-link-secondary" href="index.html">
+            ← Volver al inicio
+        </a>
       </div>
     </section>
 
-    <section class="container page-cta">
-      <div class="cta-box">
-        <h2>Si quieres hablar conmigo</h2>
-        <p>
-          Si buscas clases, una preparación seria, o un proyecto web con orden y criterio,
-          escríbeme y lo vemos.
-        </p>
-        <div class="cta-actions">
-          <a class="button" href="/es/contacto">Contacto</a>
-          <a class="button secondary" href="/es/">Inicio</a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <div id="footer-slot"></div>
