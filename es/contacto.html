@@ -18,6 +18,8 @@
   <div id="header-slot"></div>
 
   <main class="page">
+    
+    <!-- HERO (Directo y Humano) -->
     <section class="container page-hero">
       <h1>Contacto</h1>
       <p class="lead">
@@ -26,61 +28,69 @@
       </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>Mensaje rápido</h2>
-        <p class="muted">
-          Cuéntame brevemente qué necesitas y en qué plazo.
+    <!-- ESTRUCTURA DE 2 COLUMNAS (Contexto + Acción) -->
+    <section class="container contact-layout">
+      
+      <!-- COLUMNA IZQUIERDA: Contexto -->
+      <div class="contact-info">
+        <h3>Contacto directo</h3>
+        <a href="mailto:nazar.dezign@gmail.com" class="contact-email">
+            nazar.dezign@gmail.com
+        </a>
+
+        <h3>Idioma</h3>
+        <p class="contact-note">
+            Puedes escribirme en <strong>español, ruso, inglés o catalán</strong>. 
+            Adaptaré mi respuesta a tu idioma desde el primer momento.
         </p>
-
-        <form class="form" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
-          <label class="label" for="name">Nombre</label>
-          <input class="input" id="name" name="Nombre" type="text" placeholder="Tu nombre" required />
-
-          <label class="label" for="email">Email</label>
-          <input class="input" id="email" name="Email" type="email" placeholder="tu@email.com" required />
-
-          <label class="label" for="topic">Tema</label>
-          <select class="input" id="topic" name="Tema" required>
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option>Clases de español</option>
-            <option>Clases de valenciano</option>
-            <option>Preparación DELE</option>
-            <option>Preparación EOI</option>
-            <option>Proyecto web</option>
-            <option>Otro</option>
-          </select>
-
-          <label class="label" for="message">Mensaje</label>
-          <textarea class="input textarea" id="message" name="Mensaje" rows="6"
-            placeholder="Objetivo, nivel, horario aproximado, contexto..." required></textarea>
-
-          <button class="button" type="submit">Enviar mensaje</button>
-        </form>
       </div>
 
-      <div class="card">
-        <h2>Contacto directo</h2>
-        <p class="muted">Opciones directas para una comunicación sencilla.</p>
-
-        <div class="contact-list">
-          <div class="contact-item">
-            <h3>Email</h3>
-            <p><a class="link" href="mailto:nazar.dezign@gmail.com">nazar.dezign@gmail.com</a></p>
-          </div>
-
-          <div class="contact-item">
-            <h3>Idioma de contacto</h3>
-            <p class="muted">
-              Puedes escribirme en español, ruso o inglés. Adaptaré mi respuesta desde el primer momento.
-            </p>
-          </div>
+      <!-- COLUMNA DERECHA: Formulario Editorial -->
+      <form class="form-editorial" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
+        
+        <!-- Nombre -->
+        <div class="form-group">
+            <label class="form-label" for="name">Tu nombre</label>
+            <input class="form-line" id="name" name="Nombre" type="text" placeholder="Cómo te llamas" required />
         </div>
-      </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label class="form-label" for="email">Tu email</label>
+            <input class="form-line" id="email" name="Email" type="email" placeholder="Para poder responderte" required />
+        </div>
+
+        <!-- Tema (Dropdown limpio) -->
+        <div class="form-group">
+            <label class="form-label" for="topic">¿Sobre qué quieres hablar?</label>
+            <select class="form-line" id="topic" name="Tema" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option>Clases de Español / Valenciano</option>
+                <option>Preparación Exámenes (DELE/EOI)</option>
+                <option>Proyecto Web / Desarrollo</option>
+                <option>Colaboración profesional</option>
+                <option>Otro asunto</option>
+            </select>
+        </div>
+
+        <!-- Mensaje -->
+        <div class="form-group">
+            <label class="form-label" for="message">Cuéntame detalles</label>
+            <textarea class="form-line" id="message" name="Mensaje" rows="4" 
+                placeholder="Objetivos, nivel actual, plazos o contexto del proyecto..." required></textarea>
+        </div>
+
+        <!-- Botón (Estilo Enlace con Flecha) -->
+        <button class="button" type="submit" style="margin-top: 1rem;">
+            Enviar mensaje
+        </button>
+
+      </form>
+
     </section>
+
   </main>
 
   <div id="footer-slot"></div>
 
-</body>
-</html>
+</body></html>
