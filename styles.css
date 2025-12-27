@@ -339,3 +339,107 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
     .form-editorial { order: 1; }
     .contact-info { order: 2; margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 2rem; }
 } /* <--- LLAVE FINAL OBLIGATORIA */
+
+/* =========================================
+   14. MOTION DESIGN & ANIMACIONES (Quiet Luxury)
+   ========================================= */
+
+/* 1. LA CURVA DE VELOCIDAD (La clave de la elegancia)
+   Empieza rápido, frena muy suavemente. Nada de movimientos robóticos. */
+:root {
+    --ease-editorial: cubic-bezier(0.2, 1, 0.4, 1);
+}
+
+/* Definición de la entrada (Fade Up) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Deslizamiento suave desde abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. ORQUESTACIÓN DE ENTRADA (Staggered)
+   Hacemos que los elementos no aparezcan a la vez, sino en cascada. */
+
+/* El Título principal (Aparece primero) */
+.page-hero h1 {
+    opacity: 0; /* Invisible al inicio */
+    animation: fadeInUp 1s var(--ease-editorial) forwards;
+    animation-delay: 0.2s; /* Pequeña pausa inicial */
+}
+
+/* El subtítulo/lead (Aparece después) */
+.page-hero .lead {
+    opacity: 0;
+    animation: fadeInUp 1s var(--ease-editorial) forwards;
+    animation-delay: 0.4s;
+}
+
+/* El Grid de contenido (Aparece al final) */
+.bento-grid, .bio-grid, .contact-layout {
+    opacity: 0;
+    animation: fadeInUp 1.2s var(--ease-editorial) forwards;
+    animation-delay: 0.6s;
+}
+
+/* 3. INTERACCIONES "MAGNÉTICAS" (Enlaces y Botones) */
+
+/* La flecha se mueve suavemente a la derecha al pasar el mouse */
+.button::after, 
+.cta-link-primary::after {
+    transition: transform 0.5s var(--ease-editorial);
+}
+
+.button:hover::after, 
+.cta-link-primary:hover::after {
+    transform: translateX(6px); /* Movimiento sutil pero evidente */
+}
+
+/* Los enlaces de texto del menú (Nav) */
+.nav-link {
+    transition: opacity 0.4s ease, color 0.4s ease;
+}
+
+/* 4. FORMULARIO "TINTA DIGITAL"
+   La línea se siente viva al hacer clic */
+.form-line {
+    transition: border-color 0.6s var(--ease-editorial);
+}
+
+/* 5. LA FOTO (Revelado Suave) 
+   Empieza un pelín pequeña y crece hasta su tamaño natural */
+@keyframes imageReveal {
+    from {
+        opacity: 0;
+        transform: scale(1.03); /* Empieza un 3% más grande */
+        filter: blur(5px); /* Un desenfoque muy sutil */
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+.bento-hero-img, 
+.bio-hero-img { /* Si usas foto en bio */
+    animation: imageReveal 1.5s var(--ease-editorial) forwards;
+    animation-delay: 0.5s; /* Espera a que el usuario se asiente */
+}
+
+/* =========================================
+   ACCESIBILIDAD (Respeto al usuario)
+   Si el usuario tiene desactivado el movimiento en su OS, lo respetamos.
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01s !important;
+        scroll-behavior: auto !important;
+    }
+}
