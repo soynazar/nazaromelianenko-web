@@ -275,6 +275,56 @@ p { margin-bottom: 1.5rem; }
     line-height: 1.4;
     color: var(--color-charcoal);
 }
+/* =========================================
+   ESTILOS EDITORIALES (Páginas Internas)
+   ========================================= */
+
+/* Contenedor de lectura (centrado y ancho limitado para que el ojo no se canse) */
+.reading-container {
+    max-width: 800px; /* Ancho ideal de lectura */
+    margin: 0 0 0 0; /* Alineado a la izquierda (o '0 auto' si prefieres centrado) */
+    /* Nota: En diseño editorial moderno, a veces alinear a la izquierda
+       debajo del titular queda muy elegante. Si prefieres centro, pon '0 auto'. */
+}
+
+/* Bloque de texto limpio */
+.editorial-block {
+    margin-bottom: 6rem; /* El "Silencio" visual (aprox 100px) */
+    position: relative;
+}
+
+.editorial-block h2 {
+    font-family: var(--font-header);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-charcoal);
+    font-weight: 500;
+}
+
+.editorial-block p {
+    font-size: 1.05rem;
+    line-height: 1.8; /* Más aire entre líneas para lectura relajada */
+    color: var(--color-charcoal);
+    margin-bottom: 1.5rem;
+}
+
+/* El toque maestro: Negritas en Terracotta */
+.editorial-block strong {
+    color: var(--color-terracotta);
+    font-weight: 500; /* No muy grueso, solo color */
+}
+
+/* Separador sutil opcional (si sientes que flotan demasiado) */
+/* Descomenta si quieres una línea fina entre secciones
+.editorial-block::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: var(--line);
+    margin-top: 4rem;
+}
+*/
 
 /* =========================================
    8. RESPONSIVE
