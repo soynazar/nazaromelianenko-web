@@ -379,8 +379,12 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
     animation-delay: 0.4s;
 }
 
-/* El Grid de contenido (Aparece al final) */
-.bento-grid, .bio-grid, .contact-layout {
+/* El Grid de contenido y Bloques de Texto (Aparece al final) */
+.bento-grid, 
+.bio-grid, 
+.contact-layout, 
+.reading-container, /* <--- AÑADIDO: Para Enseñanza y Desarrollo */
+.editorial-cta {    /* <--- AÑADIDO: Para el cierre final */
     opacity: 0;
     animation: fadeInUp 1.2s var(--ease-editorial) forwards;
     animation-delay: 0.6s;
