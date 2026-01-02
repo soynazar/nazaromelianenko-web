@@ -32,8 +32,8 @@
 
   <main class="page">
     
-    <!-- HERO (Coherencia visual) -->
-    <section class="container page-hero">
+    <!-- HERO -->
+    <section class="container page-hero" style="padding-bottom: 2rem;">
       <h1>Desarrollo · Tecnología</h1>
       <p class="lead">
         Desarrollo proyectos con estructura y criterio,
@@ -41,93 +41,85 @@
       </p>
     </section>
 
-    <!-- CONTENIDO EDITORIAL (Sin cajas) -->
-    <section class="container reading-container">
+    <!-- GRID ASIMÉTRICO -->
+    <section class="container bio-grid">
       
-      <!-- Bloque 1: Filosofía -->
-      <article class="editorial-block">
-        <h2>Cómo trabajo</h2>
-        <p>
-          Me guío por decisiones técnicas justificadas, documentación mínima pero útil
-          y un proceso ordenado: entender, diseñar, construir y revisar.
-        </p>
-        <p>
-          Priorizo el resultado práctico: que el producto sea cómodo, claro para el usuario
-          y <strong>fácil de evolucionar</strong>.
-        </p>
-      </article>
+      <!-- SIDEBAR: TECH SPECS -->
+      <aside class="bio-sidebar">
+        <h3 class="sidebar-title">Enfoque</h3>
+        
+        <div class="bio-data-item">
+          <strong>Filosofía</strong>
+          <p>Clean Code<br>Mantenibilidad<br>UX Cuidada</p>
+        </div>
 
-      <!-- Bloque 2: Aportación -->
-      <article class="editorial-block">
-        <h2>Qué puedo aportar</h2>
-        <p>
-          Desarrollo web con foco en <strong>UX</strong>, rendimiento y <strong>organización del código</strong>.
-          Me interesa especialmente lo que combina precisión técnica y utilidad real.
-        </p>
-        <p>
-          Si el objetivo está bien definido, el trabajo se vuelve más simple,
-          más medible y más fácil de mantener.
-        </p>
-      </article>
+        <div class="bio-data-item">
+          <strong>Estado</strong>
+          <p>En formación (DAM)<br>Desarrollando proyectos propios</p>
+        </div>
 
-      <!-- Bloque 3: Enfoque -->
-      <article class="editorial-block">
-        <h2>Enfoque</h2>
-        <p>
-          Me gusta trabajar con criterios claros: estructura, coherencia,
-          buen uso del tiempo y una comunicación directa.
-        </p>
-        <p>
-          El desarrollo no es “hacer por hacer”, sino construir con intención
-          y con respeto por quien lo usará y lo mantendrá.
-        </p>
-      </article>
+        <div class="bio-data-item">
+          <strong>Intereses</strong>
+          <p>Arquitectura web<br>Automatización</p>
+        </div>
+      </aside>
 
-      <!-- Bloque 4: Estado Actual -->
-      <article class="editorial-block">
-        <h2>Ahora mismo</h2>
-        <p>
-          Estoy formándome en <strong>Desarrollo de Aplicaciones (FP)</strong>,
-          y construyendo proyectos propios para consolidar práctica y criterio técnico.
-        </p>
-        <p>
-          Esta web también es parte del proceso: sencilla, sobria y cada vez más completa.
-        </p>
-      </article>
+      <!-- CONTENIDO NARRATIVO -->
+      <div class="bio-content">
+        
+        <article class="editorial-block">
+          <h2>Cómo trabajo</h2>
+          <p>
+            Me guío por decisiones técnicas justificadas, documentación mínima pero útil
+            y un proceso ordenado: entender, diseñar, construir y revisar.
+          </p>
+          <p>
+            Priorizo el resultado práctico: que el producto sea cómodo, claro para el usuario
+            y <strong>fácil de evolucionar</strong>.
+          </p>
+        </article>
 
+        <article class="editorial-block">
+          <h2>Qué puedo aportar</h2>
+          <p>
+            Desarrollo web con foco en <strong>UX</strong>, rendimiento y <strong>organización del código</strong>.
+            Me interesa especialmente lo que combina precisión técnica y utilidad real.
+          </p>
+          <p>
+            Si el objetivo está bien definido, el trabajo se vuelve más simple,
+            más medible y más fácil de mantener.
+          </p>
+        </article>
+
+        <!-- SECCIÓN PROYECTOS (Integrada en la columna derecha) -->
+        <div class="editorial-block" style="margin-top: 4rem;">
+            <h2 style="margin-bottom: 2rem; border-top: 1px solid var(--line); padding-top: 2rem;">
+                Proyectos seleccionados
+            </h2>
+            
+            <div class="editorial-list">
+                <div class="list-item-editorial">
+                  <h3>Web personal</h3>
+                  <p>Base estática, navegación clara y despliegue con dominio propio. Evolución por iteraciones.</p>
+                </div>
+
+                <div class="list-item-editorial">
+                  <h3>Proyecto DAM</h3>
+                  <p>Espacio reservado para un proyecto completo con estructura, decisiones y resultados.</p>
+                </div>
+
+                <div class="list-item-editorial">
+                  <h3>Automatizaciones</h3>
+                  <p>Pequeñas mejoras que ahorran tiempo: organización, plantillas y flujos repetibles.</p>
+                </div>
+            </div>
+        </div>
+
+      </div>
     </section>
 
-    <!-- SECCIÓN PROYECTOS (Lista indentada estilo código) -->
-     <!-- <section class="container reading-container" style="margin-top: 4rem;">
-      <div class="section-header" style="border: none; padding-bottom: 0; margin-bottom: 3rem;">
-        <h2>Proyectos seleccionados</h2>
-        <p class="muted">Breves, claros y con contexto (qué se hizo y por qué).</p>
-      </div>
-
-      <div class="editorial-list">
-        <!-- Proyecto 1 --> 
-      <!--  <div class="list-item-editorial">
-          <h3>Web personal</h3>
-          <p>Base estática, navegación clara y despliegue con dominio propio. Evolución por iteraciones.</p>
-        </div>
-
-        <!-- Proyecto 2 -->
-        <!--<div class="list-item-editorial">
-          <h3>Proyecto DAM</h3>
-          <p>Espacio reservado para un proyecto completo con estructura, decisiones y resultados.</p>
-        </div>
-
-        <!-- Proyecto 3 -->
-        <!--<div class="list-item-editorial">
-          <h3>Automatizaciones</h3>
-          <p>Pequeñas mejoras que ahorran tiempo: organización, plantillas y flujos repetibles.</p>
-        </div>
-      </div>
-    </section>   -->
-
-    <!-- CTA FINAL (Idéntico a Enseñanza) -->
+    <!-- CTA FINAL -->
     <section class="container editorial-cta">
-      
       <h2>Si quieres contactarme</h2>
       <p>
         Si tienes una idea, una necesidad concreta o quieres ver ejemplos,
@@ -135,15 +127,9 @@
       </p>
       
       <div class="cta-stack">
-        <a class="cta-link-primary" href="contacto.html">
-            Contactar ahora
-        </a>
-
-        <a class="cta-link-secondary" href="index.html">
-            ← Volver al inicio
-        </a>
+        <a class="cta-link-primary" href="contacto.html">Contactar ahora</a>
+        <a class="cta-link-secondary" href="index.html">← Volver al inicio</a>
       </div>
-
     </section>
 
   </main>
