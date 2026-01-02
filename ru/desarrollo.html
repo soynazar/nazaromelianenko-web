@@ -2,11 +2,25 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Разработка и технологии — Назар Омельяненко</title>
+  <title>Разработка · Технологии — Nazar Omelianenko</title>
+
+<!-- FAVICON & BRANDING -->
+  <!-- 1. El .ico de la raíz (red de seguridad) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  <!-- 2. Los PNGs en su carpeta correcta -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#f2f1ef">
+  <meta name="theme-color" content="#f2f1ef">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
@@ -17,102 +31,129 @@
   <div id="header-slot"></div>
 
   <main class="page">
+    
+    <!-- HERO (Coherencia visual) -->
     <section class="container page-hero">
       <h1>Разработка · Технологии</h1>
       <p class="lead">
-        Я разрабатываю проекты с четкой структурой и системным подходом, 
-        фокусируясь на главном и создавая решения, рассчитанные на долгосрочную поддержку.
+   Я разрабатываю проекты со структурой и чётким подходом,
+        сосредоточенные на главном и рассчитанные на долгосрочное развитие..
       </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
+    <!-- CONTENIDO EDITORIAL (Sin cajas) -->
+    <section class="container reading-container">
+      
+      <!-- Bloque 1: Filosofía -->
+      <article class="editorial-block">
         <h2>Как я работаю</h2>
         <p>
-          Я руководствуюсь обоснованными техническими решениями, минимальной, но полезной документацией 
-          и упорядоченным процессом: анализ, проектирование, разработка и проверка.
+ Я опираюсь на обоснованные технические решения, минимальную,
+          но полезную документацию и упорядоченный процесс:
+          понять, спроектировать, реализовать и проверить.
         </p>
         <p>
-          Для меня в приоритете практический результат: продукт должен быть удобным, 
-          понятным для пользователя и легким в развитии.
+      Я отдаю приоритет практическому результату: чтобы продукт был удобным,
+          понятным для пользователя и <strong>лёгким в дальнейшем развитии</strong>.
         </p>
-      </div>
+      </article>
 
-      <div class="card">
-        <h2>Что я предлагаю</h2>
+      <!-- Bloque 2: Aportación -->
+      <article class="editorial-block">
+        <h2>Что я могу предложить</h2>
         <p>
-          Веб-разработка с упором на UX, производительность и организацию кода. 
-          Меня особенно интересуют задачи, где сочетаются техническая точность и реальная польза.
+         Веб-разработка с фокусом на <strong>UX</strong>, производительность
+          и <strong>организацию кода</strong>.
+          Меня особенно интересуют проекты, где сочетаются техническая точность
+          и реальная практическая польза.
         </p>
         <p>
-          Когда цель четко определена, работа становится проще, 
-          результаты — измеримее, а поддержка — эффективнее.
+  Когда цель чётко определена, работа становится проще,
+          более измеримой и легче поддерживаемой.
         </p>
-      </div>
+      </article>
 
-      <div class="card">
-        <h2>Мой подход</h2>
+      <!-- Bloque 3: Enfoque -->
+      <article class="editorial-block">
+        <h2>Подход</h2>
         <p>
-          Мне нравится работать по ясным критериям: структура, последовательность, 
-          рациональное использование времени и прямое общение.
+  Мне близка работа с ясными критериями: структура, согласованность,
+          грамотное использование времени и прямая коммуникация.
         </p>
         <p>
-          Разработка — это не просто написание кода, а осознанное создание инструмента 
-          с уважением к тем, кто будет его использовать и поддерживать.
+      Разработка — это не «делать ради процесса», а осознанно создавать
+          с уважением к тем, кто будет использовать и сопровождать продукт.
         </p>
-      </div>
+      </article>
 
-      <div class="card">
-        <h2>Текущие цели</h2>
+      <!-- Bloque 4: Estado Actual -->
+      <article class="editorial-block">
+        <h2>В настоящий момент</h2>
         <p>
-          В данный момент я изучаю <strong>Разработку приложений (DAM)</strong> 
-          и создаю собственные проекты для закрепления практики и технических навыков.
+       В настоящее время я обучаюсь по направлению
+          <strong>разработка приложений (FP)</strong>
+          и создаю собственные проекты для закрепления практики
+          и формирования технического мышления.
         </p>
         <p>
-          Этот сайт — также часть процесса: простой, сдержанный и постоянно развивающийся.
+     Этот сайт также является частью процесса: простой, сдержанный
+          и постепенно становящийся более полным.
         </p>
-      </div>
+      </article>
+
     </section>
 
-    <section class="container page-section">
-      <div class="section-header">
-        <h2>Проекты</h2>
-        <p class="muted">
-          Здесь будут представлены избранные работы: кратко, ясно и с контекстом (что было сделано и зачем).
-        </p>
+    <!-- SECCIÓN PROYECTOS (Lista indentada estilo código) -->
+     <!-- <section class="container reading-container" style="margin-top: 4rem;">
+      <div class="section-header" style="border: none; padding-bottom: 0; margin-bottom: 3rem;">
+        <h2>Proyectos seleccionados</h2>
+        <p class="muted">Breves, claros y con contexto (qué se hizo y por qué).</p>
       </div>
 
-      <div class="list-grid">
-        <div class="list-item">
-          <h3>Личный сайт</h3>
-          <p>Статическая база, понятная навигация и деплой на собственном домене. Итеративное развитие.</p>
+      <div class="editorial-list">
+        <!-- Proyecto 1 --> 
+      <!--  <div class="list-item-editorial">
+          <h3>Web personal</h3>
+          <p>Base estática, navegación clara y despliegue con dominio propio. Evolución por iteraciones.</p>
         </div>
-        <div class="list-item">
-          <h3>Проект DAM</h3>
-          <p>Место зарезервировано для полноценного проекта с описанием архитектуры, решений и результатов.</p>
+
+        <!-- Proyecto 2 -->
+        <!--<div class="list-item-editorial">
+          <h3>Proyecto DAM</h3>
+          <p>Espacio reservado para un proyecto completo con estructura, decisiones y resultados.</p>
         </div>
-        <div class="list-item">
-          <h3>Автоматизация</h3>
-          <p>Небольшие улучшения, экономящие время: организация данных, шаблоны и повторяющиеся рабочие процессы.</p>
+
+        <!-- Proyecto 3 -->
+        <!--<div class="list-item-editorial">
+          <h3>Automatizaciones</h3>
+          <p>Pequeñas mejoras que ahorran tiempo: organización, plantillas y flujos repetibles.</p>
         </div>
       </div>
+    </section>   -->
+
+    <!-- CTA FINAL (Idéntico a Enseñanza) -->
+    <section class="container editorial-cta">
+      
+      <h2>Если вы хотите связаться со мной</h2>
+      <p>
+      Если у вас есть идея, конкретная задача или вы хотите увидеть примеры,
+        напишите мне — и мы всё обсудим.
+      </p>
+      
+      <div class="cta-stack">
+        <a class="cta-link-primary" href="contacto.html">
+           Связаться сейчас
+        </a>
+
+        <a class="cta-link-secondary" href="index.html">
+   ← Вернуться на главную
+        </a>
+      </div>
+
     </section>
 
-    <section class="container page-cta">
-      <div class="cta-box">
-        <h2>Связаться со мной</h2>
-        <p>
-          Если у вас есть идея, конкретная задача или вы хотите посмотреть примеры работ, 
-          напишите мне, и мы все обсудим.
-        </p>
-        <div class="cta-actions">
-          <a class="button" href="/ru/contact">Написать</a>
-          <a class="button secondary" href="/ru/">На главную</a>
-        </div>
-      </div>
-    </section>
   </main>
-  
+
   <div id="footer-slot"></div>
 
 </body>
