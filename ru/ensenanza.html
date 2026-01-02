@@ -3,56 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <title>Обучение · Языки — Nazar Omelianenko</title>
+ <!-- FAVICON & BRANDING -->
+  <!-- 1. El .ico de la raíz (red de seguridad) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  <!-- 2. Los PNGs en su carpeta correcta -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#f2f1ef">
+  <meta name="theme-color" content="#f2f1ef">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
 </head>
+
 <body class="is-loading">
+
   <div id="header-slot"></div>
+
   <main class="page">
+    
+    <!-- HERO (Mantenemos la coherencia con el Home) -->
     <section class="container page-hero">
       <h1>Обучение · Языки</h1>
-      <p class="lead">Я работаю с теми, кто нацелен на серьезное обучение, адаптированное к их темпу и с фокусом на глубоком понимании процесса.</p>
+      <p class="lead">
+         Я работаю с людьми, которые стремятся к серьёзному обучению, 
+        адаптированному к их темпу и с вниманием к самому процессу.
+      </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>Что я преподаю</h2>
-        <p>Я даю уроки <strong>испанского</strong> и <strong>валенсийского</strong> языков, уделяя особое внимание студентам, для которых эти языки и культуры являются новыми.</p>
-        <p>Обучение подходит как для начинающих, так и для тех, кому нужно закрепить знания и обрести уверенность в общении.</p>
-      </div>
-      <div class="card">
+    <!-- CONTENIDO EDITORIAL (Sin cajas, solo texto y aire) -->
+    <section class="container reading-container">
+      
+      <!-- Bloque 1 -->
+      <article class="editorial-block">
+        <h2>Чему я обучаю</h2>
+        <p>
+          Я преподаю <strong>испанский</strong> и <strong>валенсийский</strong> языки, 
+          используя специализированный подход для студентов из 
+          разных языковых и культурных сред.
+        </p>
+        <p>
+   Занятия подходят как для начинающих, так и для тех, 
+          кто хочет улучшить беглость речи и уверенность в общении.
+        </p>
+      </article>
+
+      <!-- Bloque 2 -->
+      <article class="editorial-block">
         <h2>Методология</h2>
-        <p>Мой метод сочетает в себе структуру, полезную практику и сопровождение процесса с заботой об атмосфере: <strong>позитивная среда обучения</strong> и применение принципов <strong>социально-эмоционального интеллекта (SEL)</strong>.</p>
-      </div>
-    </section>
+        <p>
+      Мой метод сочетает структуру, практическое применение и сопровождение, 
+          основанное на <strong>позитивной образовательной среде</strong> и принципах 
+          <strong>эмоционального интеллекта (SEL)</strong>.
+        </p>
+        <p>
+     Это означает обучение без стресса, но с реальными требованиями, 
+          преодоление барьеров и поддержание устойчивой мотивации.
+        </p>
+      </article>
 
-    <section class="container page-grid">
-      <div class="card">
+      <!-- Bloque 3 -->
+      <article class="editorial-block">
         <h2>Подготовка к экзаменам</h2>
-        <p>Я специализируюсь на подготовке к официальным сертификациям, таким как <strong>DELE</strong> и <strong>EOI</strong>, интегрируя их в общий процесс основательного изучения языка.</p>
-      </div>
-      <div class="card">
-        <h2>Формат</h2>
-        <p>Онлайн-занятия и вспомогательные материалы. Работа по целям, с регулярным отслеживанием прогресса и реалистичным учебным планом.</p>
-      </div>
+        <p>
+             Я специализируюсь на подготовке к официальным сертификациям, таким как 
+          <strong>DELE</strong> и <strong>EOI</strong>, интегрируя экзаменационную 
+          подготовку в реальный процесс освоения языка.
+        </p>
+      </article>
+
+      <!-- Bloque 4 -->
+      <article class="editorial-block">
+        <h2>Формат занятий</h2>
+        <p>
+           Онлайн-занятия с персонализированными учебными материалами. Работаю по целям, 
+          с регулярным отслеживанием прогресса и реалистичным учебным планом.
+        </p>
+      </article>
+
     </section>
 
-    <section class="container page-cta">
-      <div class="cta-box">
-        <h2>Хотите начать?</h2>
-        <p>Сообщите мне ваш текущий уровень, цель и график занятий.</p>
-        <div class="cta-actions">
-          <a class="button" href="contacto.html">Контакт</a>
-          <a class="button secondary" href="index.html">На главную</a>
-        </div>
+   <!-- CTA FINAL (Editorial y Jerárquico) -->
+    <section class="container editorial-cta">
+      
+      <h2>Хотите начать?</h2>
+      <p>Расскажите мне о вашем текущем уровне, цели и доступном времени.</p>
+      
+      <div class="cta-stack">
+        <!-- Acción Principal: Grande y Clara -->
+        <a class="cta-link-primary" href="contacto.html">
+            Связаться
+        </a>
+
+        <!-- Acción Secundaria: Discreta -->
+        <a class="cta-link-secondary" href="index.html">
+            ← Вернуться на главную
+        </a>
       </div>
+
     </section>
+
   </main>
+
   <div id="footer-slot"></div>
+
 </body>
 </html>
