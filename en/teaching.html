@@ -3,57 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <title>Teaching · Languages — Nazar Omelianenko</title>
+ <!-- FAVICON & BRANDING -->
+  <!-- 1. El .ico de la raíz (red de seguridad) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  <!-- 2. Los PNGs en su carpeta correcta -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#f2f1ef">
+  <meta name="theme-color" content="#f2f1ef">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
 </head>
+
 <body class="is-loading">
+
   <div id="header-slot"></div>
+
   <main class="page">
+    
+    <!-- HERO (Mantenemos la coherencia con el Home) -->
     <section class="container page-hero">
       <h1>Teaching · Languages</h1>
-      <p class="lead">I work with individuals seeking serious learning, tailored to their pace with a focus on the deep process.</p>
+      <p class="lead">
+         I work with people who seek serious learning, 
+        adapted to their pace and with close attention to the learning process.
+      </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>Subjects</h2>
-        <p>I teach <strong>Spanish</strong> and <strong>Valencian</strong>, with a specialized focus on learners coming from different linguistic and cultural backgrounds.</p>
-        <p>Lessons are ideal for beginners as well as those looking to refine their fluency and confidence in speaking.</p>
-      </div>
-      <div class="card">
+    <!-- CONTENIDO EDITORIAL (Sin cajas, solo texto y aire) -->
+    <section class="container reading-container">
+      
+      <!-- Bloque 1 -->
+      <article class="editorial-block">
+        <h2>What I teach</h2>
+        <p>
+         I teach <strong>Spanish</strong> and <strong>Valencian</strong>, 
+          with a specialized approach for students coming from 
+          different linguistic and cultural backgrounds.
+        </p>
+        <p>
+          Classes are suitable both for beginners and for those 
+          who want to refine their fluency and confidence when speaking.
+        </p>
+      </article>
+
+      <!-- Bloque 2 -->
+      <article class="editorial-block">
         <h2>Methodology</h2>
-        <p>My method combines structure, practical application, and a supportive environment through a <strong>Positive Learning Environment</strong> and <strong>Social-Emotional Learning (SEL)</strong>.</p>
-        <p>This means learning in a stress-free but high-standard atmosphere, overcoming barriers while maintaining steady motivation.</p>
-      </div>
-    </section>
+        <p>
+    My method combines structure, practical application, and close guidance, 
+          based on a <strong>Positive Learning Environment</strong> and principles of 
+          <strong>Social and Emotional Learning (SEL)</strong>.
+        </p>
+        <p>
+          This means learning without stress but with real expectations, 
+          overcoming barriers while maintaining consistent motivation.
+        </p>
+      </article>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>Exam Preparation</h2>
-        <p>I specialize in preparing for official certifications such as <strong>DELE</strong> and <strong>EOI</strong>, integrating exam training into the actual language learning process.</p>
-      </div>
-      <div class="card">
+      <!-- Bloque 3 -->
+      <article class="editorial-block">
+        <h2>Exam preparation</h2>
+        <p>
+          I specialize in preparing students for official certifications such as 
+          <strong>DELE</strong> and <strong>EOI</strong>, integrating exam preparation 
+          into the real process of language acquisition.
+        </p>
+      </article>
+
+      <!-- Bloque 4 -->
+      <article class="editorial-block">
         <h2>Format</h2>
-        <p>Online lessons with personalized support materials. I work by goals, with regular progress tracking and a realistic study plan.</p>
-      </div>
+        <p>
+         Online classes with personalized support materials. I work with clear objectives, 
+          regular progress tracking, and a realistic study plan.
+        </p>
+      </article>
+
     </section>
 
-    <section class="container page-cta">
-      <div class="cta-box">
-        <h2>Interested in starting?</h2>
-        <p>Let me know your current level, your goal, and your availability.</p>
-        <div class="cta-actions">
-          <a class="button" href="contact.html">Contact me</a>
-          <a class="button secondary" href="index.html">Back to home</a>
-        </div>
+   <!-- CTA FINAL (Editorial y Jerárquico) -->
+    <section class="container editorial-cta">
+      
+      <h2>Interested in getting started?</h2>
+      <p>Tell me about your current level, your goals, and your availability..</p>
+      
+      <div class="cta-stack">
+        <!-- Acción Principal: Grande y Clara -->
+        <a class="cta-link-primary" href="contacto.html">
+          Contact now
+        </a>
+
+        <!-- Acción Secundaria: Discreta -->
+        <a class="cta-link-secondary" href="index.html">
+            ← Back to home
+        </a>
       </div>
+
     </section>
+
   </main>
+
   <div id="footer-slot"></div>
+
 </body>
 </html>
