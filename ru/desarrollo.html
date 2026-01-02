@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Разработка · Технологии — Nazar Omelianenko</title>
+  <title>Разработка · Технологии — Назар Омельяненко</title>
 
 <!-- FAVICON & BRANDING -->
   <!-- 1. El .ico de la raíz (red de seguridad) -->
@@ -32,124 +32,104 @@
 
   <main class="page">
     
-    <!-- HERO (Coherencia visual) -->
-    <section class="container page-hero">
+    <!-- HERO -->
+    <section class="container page-hero" style="padding-bottom: 2rem;">
       <h1>Разработка · Технологии</h1>
       <p class="lead">
-   Я разрабатываю проекты со структурой и чётким подходом,
-        сосредоточенные на главном и рассчитанные на долгосрочное развитие..
+       Я разрабатываю проекты со структурой и обоснованным подходом,
+сфокусированные на главном и рассчитанные на долгосрочное развитие.
       </p>
     </section>
 
-    <!-- CONTENIDO EDITORIAL (Sin cajas) -->
-    <section class="container reading-container">
+    <!-- GRID ASIMÉTRICO -->
+    <section class="container bio-grid">
       
-      <!-- Bloque 1: Filosofía -->
-      <article class="editorial-block">
-        <h2>Как я работаю</h2>
-        <p>
- Я опираюсь на обоснованные технические решения, минимальную,
-          но полезную документацию и упорядоченный процесс:
-          понять, спроектировать, реализовать и проверить.
-        </p>
-        <p>
-      Я отдаю приоритет практическому результату: чтобы продукт был удобным,
-          понятным для пользователя и <strong>лёгким в дальнейшем развитии</strong>.
-        </p>
-      </article>
+      <!-- SIDEBAR: TECH SPECS -->
+      <aside class="bio-sidebar">
+        <h3 class="sidebar-title">Подход</h3>
+        
+        <div class="bio-data-item">
+          <strong>Философия</strong>
+          <p>Чистый код<br>Поддерживаемость<br>Продуманный UX</p>
+        </div>
 
-      <!-- Bloque 2: Aportación -->
-      <article class="editorial-block">
-        <h2>Что я могу предложить</h2>
-        <p>
-         Веб-разработка с фокусом на <strong>UX</strong>, производительность
-          и <strong>организацию кода</strong>.
-          Меня особенно интересуют проекты, где сочетаются техническая точность
-          и реальная практическая польза.
-        </p>
-        <p>
-  Когда цель чётко определена, работа становится проще,
-          более измеримой и легче поддерживаемой.
-        </p>
-      </article>
+        <div class="bio-data-item">
+          <strong>Статус</strong>
+          <p>В процессе обучения (DAM)<br>Разрабатываю собственные проекты</p>
+        </div>
 
-      <!-- Bloque 3: Enfoque -->
-      <article class="editorial-block">
-        <h2>Подход</h2>
-        <p>
-  Мне близка работа с ясными критериями: структура, согласованность,
-          грамотное использование времени и прямая коммуникация.
-        </p>
-        <p>
-      Разработка — это не «делать ради процесса», а осознанно создавать
-          с уважением к тем, кто будет использовать и сопровождать продукт.
-        </p>
-      </article>
+        <div class="bio-data-item">
+          <strong>Интересы</strong>
+          <p>Веб-архитектура<br>Автоматизация</p>
+        </div>
+      </aside>
 
-      <!-- Bloque 4: Estado Actual -->
-      <article class="editorial-block">
-        <h2>В настоящий момент</h2>
-        <p>
-       В настоящее время я обучаюсь по направлению
-          <strong>разработка приложений (FP)</strong>
-          и создаю собственные проекты для закрепления практики
-          и формирования технического мышления.
-        </p>
-        <p>
-     Этот сайт также является частью процесса: простой, сдержанный
-          и постепенно становящийся более полным.
-        </p>
-      </article>
+      <!-- CONTENIDO NARRATIVO -->
+      <div class="bio-content">
+        
+        <article class="editorial-block">
+          <h2>Как я работаю</h2>
+          <p>
+          Я опираюсь на обоснованные технические решения, минимальную, но полезную документацию
+и упорядоченный процесс: понять, спроектировать, реализовать и проверить.
+          </p>
+          <p>
+            Я ставлю на первое место практический результат: чтобы продукт был удобным,
+понятным для пользователя и <strong>легко развиваемым</strong>.
+          </p>
+        </article>
 
+        <article class="editorial-block">
+          <h2>Что я могу предложить</h2>
+          <p>
+            Веб-разработка с акцентом на <strong>UX</strong>, производительность и <strong>организацию кода</strong>.
+            Меня особенно интересуют решения, сочетающие техническую точность и реальную пользу.
+          </p>
+          <p>
+           Когда цель чётко определена, работа становится проще,
+более измеримой и легче поддерживаемой.
+          </p>
+        </article>
+
+        <!-- SECCIÓN PROYECTOS (Integrada en la columna derecha) -->
+        <div class="editorial-block" style="margin-top: 4rem;">
+            <h2 style="margin-bottom: 2rem; border-top: 1px solid var(--line); padding-top: 2rem;">
+                Избранные проекты
+            </h2>
+            
+            <div class="editorial-list">
+                <div class="list-item-editorial">
+                  <h3>Личный сайт</h3>
+                  <p>Статическая основа, понятная навигация и развёртывание на собственном домене. Итеративное развитие.</p>
+                </div>
+
+                <div class="list-item-editorial">
+                  <h3>Проект DAM</h3>
+                  <p>Зарезервированное место для полноценного проекта со структурой, решениями и результатами.</p>
+                </div>
+
+                <div class="list-item-editorial">
+                  <h3>Автоматизация</h3>
+                  <p>Небольшие улучшения, экономящие время: организация, шаблоны и повторяемые процессы.</p>
+                </div>
+            </div>
+        </div>
+
+      </div>
     </section>
 
-    <!-- SECCIÓN PROYECTOS (Lista indentada estilo código) -->
-     <!-- <section class="container reading-container" style="margin-top: 4rem;">
-      <div class="section-header" style="border: none; padding-bottom: 0; margin-bottom: 3rem;">
-        <h2>Proyectos seleccionados</h2>
-        <p class="muted">Breves, claros y con contexto (qué se hizo y por qué).</p>
-      </div>
-
-      <div class="editorial-list">
-        <!-- Proyecto 1 --> 
-      <!--  <div class="list-item-editorial">
-          <h3>Web personal</h3>
-          <p>Base estática, navegación clara y despliegue con dominio propio. Evolución por iteraciones.</p>
-        </div>
-
-        <!-- Proyecto 2 -->
-        <!--<div class="list-item-editorial">
-          <h3>Proyecto DAM</h3>
-          <p>Espacio reservado para un proyecto completo con estructura, decisiones y resultados.</p>
-        </div>
-
-        <!-- Proyecto 3 -->
-        <!--<div class="list-item-editorial">
-          <h3>Automatizaciones</h3>
-          <p>Pequeñas mejoras que ahorran tiempo: organización, plantillas y flujos repetibles.</p>
-        </div>
-      </div>
-    </section>   -->
-
-    <!-- CTA FINAL (Idéntico a Enseñanza) -->
+    <!-- CTA FINAL -->
     <section class="container editorial-cta">
-      
       <h2>Если вы хотите связаться со мной</h2>
       <p>
-      Если у вас есть идея, конкретная задача или вы хотите увидеть примеры,
-        напишите мне — и мы всё обсудим.
+  Если у вас есть идея, конкретная задача или вы хотите увидеть примеры,
+напишите мне — всё обсудим.
       </p>
       
       <div class="cta-stack">
-        <a class="cta-link-primary" href="contacto.html">
-           Связаться сейчас
-        </a>
-
-        <a class="cta-link-secondary" href="index.html">
-   ← Вернуться на главную
-        </a>
+        <a class="cta-link-primary" href="contacto.html">Связаться сейчас</a>
+        <a class="cta-link-secondary" href="index.html">← Вернуться на главную</a>
       </div>
-
     </section>
 
   </main>
