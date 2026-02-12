@@ -22,61 +22,99 @@
 
   <div id="header-slot"></div>
 
-  <main class="page">
+<main class="page">
     
     <section class="container page-hero">
       <h1>Учебные материалы</h1>
       <p class="lead">
-        Инструменты для тех, кто хочет учиться самостоятельно, но с правильной структурой.
+        Авторские методички, объясняющие грамматику через логику носителя, а не через зубрежку правил.
       </p>
     </section>
 
-    <!-- GRID DE PRODUCTOS -->
-    <section class="container bento-grid">
+    <!-- LISTA DE PRODUCTOS EDITORIAL -->
+    <section class="container reading-container">
       
-      <!-- PRODUCTO 1 (El Lead Magnet) -->
-      <!-- Usamos span 2 para darle importancia -->
-      <article class="bento-item" style="grid-column: span 2; display: flex; flex-direction: row; gap: 2rem; align-items: center; padding: 0; overflow: hidden;">
+      <!-- 1. PRODUCTO GRATUITO (El Gancho) -->
+      <article class="editorial-block" style="border-bottom: 1px solid var(--line); padding-bottom: 4rem;">
+        <div class="product-badge">Бесплатно</div> <!-- Gratis -->
+        <h2 style="margin-top: 0.5rem;">SER vs ESTAR: Логика, а не правила</h2>
         
-        <!-- Imagen del producto (Izquierda) -->
-        <div style="width: 40%; height: 100%; background: #e5e5e5; min-height: 300px;">
-            <!-- Pon aquí una imagen de la portada de tu PDF -->
-            <img src="/images/material-cover.jpg" alt="Guía PDF" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-
-        <!-- Info del producto (Derecha) -->
-        <div style="width: 60%; padding: 2rem; display: flex; flex-direction: column; justify-content: center;">
-            <div class="product-badge">PDF Guide</div>
-            <h2 style="margin-bottom: 0.5rem;">Guía Visual de Gramática (Demo)</h2>
-            <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 1.5rem;">
-                Эксклюзивный материал, объясняющий сложные концепции через логику носителя. Идеально для уровня A2-B1.
-            </p>
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+            <!-- Imagen Portada (Sube una imagen cuadrada a /images/) -->
+            <div style="flex: 0 0 150px; height: 200px; background-color: #eee; border-radius: 4px; overflow: hidden;">
+                 <img src="/images/cover-ser-estar.jpg" alt="Portada PDF" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
             
-            <!-- PRECIO Y BOTÓN -->
-            <div style="display: flex; align-items: center; gap: 1.5rem;">
-                <span style="font-family: var(--font-header); font-size: 1.2rem; color: var(--color-terracotta);">
-                    Бесплатно <!-- Gratis -->
-                </span>
+            <div style="flex: 1;">
+                <p>
+                    Почему мы говорим "Soy feliz" и "Estoy feliz"? Перестаньте угадывать. 
+                    В этом гиде я разбираю <strong>фундаментальную разницу</strong> восприятия реальности испанцами.
+                </p>
+                <ul style="list-style: none; padding: 0; margin-bottom: 2rem; color: var(--muted); font-size: 0.95rem;">
+                    <li>✓ Визуальная схема (Mental Map)</li>
+                    <li>✓ Разбор частых ошибок русскоязычных</li>
+                    <li>✓ PDF формат, 5 страниц</li>
+                </ul>
                 
-                <!-- ENLACE DE DESCARGA DIRECTA -->
-                <!-- Sube tu PDF a la carpeta /downloads/ o /images/ -->
-                <a href="/downloads/guia-demo.pdf" download class="button">
-                    Скачать PDF
+                <!-- ENLACE GUMROAD (Producto Gratis) -->
+                <!-- Cambia el href por tu enlace real de Gumroad -->
+                <a href="https://gumroad.com/l/TU_PRODUCTO_GRATIS" target="_blank" class="button">
+                    Скачать бесплатно
                 </a>
             </div>
         </div>
       </article>
 
-      <!-- PRÓXIMAMENTE (Para llenar hueco y crear expectación) -->
-      <article class="bento-item" style="grid-column: span 2; justify-content: center; align-items: center; background-color: rgba(26,26,26,0.03); border-style: dashed;">
-        <h3 style="color: var(--muted);">Скоро в продаже</h3>
-        <p style="text-align: center; font-size: 0.9rem;">Полный курс подготовки к DELE</p>
+      <!-- 2. PRODUCTO DE PAGO (La Estrella) -->
+      <article class="editorial-block" style="border-bottom: 1px solid var(--line); padding-bottom: 4rem;">
+        <div class="product-badge" style="color: var(--color-charcoal);">Premium</div>
+        <h2 style="margin-top: 0.5rem;">Алгоритм Прошлых Времен (Indefinido vs Imperfecto)</h2>
+        
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+            <!-- Imagen Portada -->
+            <div style="flex: 0 0 150px; height: 200px; background-color: var(--color-charcoal); border-radius: 4px; overflow: hidden;">
+                 <img src="/images/cover-pasados.jpg" alt="Portada Curso Pasados" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            
+            <div style="flex: 1;">
+                <p>
+                    Самая сложная тема для славян, объясненная через метафору <strong>"Сцена и Действие"</strong>. 
+                    Никаких таблиц с окончаниями, только понимание контекста.
+                </p>
+                <p>
+                    Включает разбор 50 реальных примеров и упражнения для закрепления автоматизма.
+                </p>
+                
+                <div style="display: flex; align-items: center; gap: 2rem; margin-top: 2rem;">
+                    <span style="font-family: var(--font-header); font-size: 1.5rem; color: var(--color-charcoal);">
+                        15€
+                    </span>
+                    <!-- ENLACE GUMROAD (Producto Pago) -->
+                    <a href="https://gumroad.com/l/TU_PRODUCTO_PAGO" target="_blank" class="button">
+                        Купить сейчас
+                    </a>
+                </div>
+            </div>
+        </div>
+      </article>
+
+      <!-- 3. PRÓXIMAMENTE (Fomentar Curiosidad) -->
+      <article class="editorial-block" style="opacity: 0.6;">
+        <h3 style="color: var(--muted); margin-bottom: 1rem;">Скоро в продаже</h3>
+        <div style="border: 1px dashed var(--line); padding: 2rem; border-radius: 8px; text-align: left;">
+            <h4 style="font-family: var(--font-header); font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--color-charcoal);">
+                Полный курс подготовки к DELE B2
+            </h4>
+            <p style="margin: 0; font-size: 0.95rem;">
+                Стратегии сдачи экзамена, шаблоны для устной части и разбор писем.
+                <br><em>Релиз запланирован на осень 2025.</em>
+            </p>
+        </div>
       </article>
 
     </section>
 
   </main>
-
   <div id="footer-slot"></div>
 
 </body>
