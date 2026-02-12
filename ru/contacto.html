@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Contacto — Nazar Omelianenko</title>
+  <title>Контакт — Nazar Omelianenko</title>
 
  <!-- FAVICON & BRANDING -->
-  <!-- 1. El .ico de la raíz (red de seguridad) -->
   <link rel="icon" href="/favicon.ico" sizes="any">
-
-  <!-- 2. Los PNGs en su carpeta correcta -->
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
   <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
@@ -19,8 +16,8 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
@@ -33,79 +30,74 @@
 
   <main class="page">
     
-    <!-- HERO (Directo y Humano) -->
+    <!-- HERO -->
     <section class="container page-hero">
-      <h1>Contacto</h1>
+      <h1>Контакт</h1>
       <p class="lead">
-        Si quieres hablar sobre clases, preparación DELE/EOI o un proyecto web, 
-        escríbeme y lo enfocamos con claridad.
+        Если вы хотите обсудить занятия, подготовку к DELE/EOI или веб-проект, 
+        напишите мне — и мы чётко определим формат работы.
       </p>
     </section>
 
-    <!-- ESTRUCTURA DE 2 COLUMNAS (Contexto + Acción) -->
     <section class="container contact-layout">
       
-      <!-- COLUMNA IZQUIERDA: Contexto -->
+      <!-- Левая колонка -->
       <div class="contact-info">
-        <h3>Contacto directo</h3>
+        <h3>Прямой контакт</h3>
         <a href="mailto:nazar.dezign@gmail.com" class="contact-email">
             nazar.dezign@gmail.com
         </a>
 
-        <h3>Idioma</h3>
+        <h3>Язык</h3>
         <p class="contact-note">
-            Puedes escribirme en <strong>español, ruso, inglés o catalán</strong>. 
-            Adaptaré mi respuesta a tu idioma desde el primer momento.
+            Вы можете написать мне на <strong>испанском, русском, английском или каталонском</strong>. 
+            Я отвечу на вашем языке с самого начала.
         </p>
+
         <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line);">
             <h3>Готовы начать?</h3>
             <p class="contact-note" style="margin-bottom: 1rem;">
-                Если вы уже определились с целью, можете забронировать урок сразу, без переписки.
+                Если вы уже определились с целью, можете сразу забронировать занятие — без переписки.
             </p>
             <a href="https://calendar.app.google/BnS9UF5h7zEvaQhH6" target="_blank" class="link" style="font-weight: 500; color: var(--color-terracotta);">
-                Записаться на урок →
+                Забронировать занятие →
             </a>
         </div>
       </div>
 
-      <!-- COLUMNA DERECHA: Formulario Editorial -->
+      <!-- Правая колонка -->
       <form class="form-editorial" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
         
-        <!-- Nombre -->
         <div class="form-group">
-            <label class="form-label" for="name">Tu nombre</label>
-            <input class="form-line" id="name" name="Nombre" type="text" placeholder="Cómo te llamas" required />
+            <label class="form-label" for="name">Ваше имя</label>
+            <input class="form-line" id="name" name="Имя" type="text" placeholder="Как вас зовут" required />
         </div>
 
-        <!-- Email -->
         <div class="form-group">
-            <label class="form-label" for="email">Tu email</label>
-            <input class="form-line" id="email" name="Email" type="email" placeholder="Para poder responderte" required />
+            <label class="form-label" for="email">Ваш email</label>
+            <input class="form-line" id="email" name="Email" type="email" placeholder="Чтобы я мог вам ответить" required />
         </div>
 
-        <!-- Tema (Dropdown limpio) -->
         <div class="form-group">
-            <label class="form-label" for="topic">¿Sobre qué quieres hablar?</label>
-            <select class="form-line" id="topic" name="Tema" required>
-                <option value="" disabled selected>Selecciona una opción</option>
-                <option>Clases de Español / Valenciano</option>
-                <option>Preparación Exámenes (DELE/EOI)</option>
-                <option>Proyecto Web / Desarrollo</option>
-                <option>Colaboración profesional</option>
-                <option>Otro asunto</option>
+            <label class="form-label" for="topic">О чём вы хотите поговорить?</label>
+            <select class="form-line" id="topic" name="Тема" required>
+                <option value="" disabled selected>Выберите вариант</option>
+                <option>Занятия по испанскому / валенсийскому</option>
+                <option>Подготовка к экзаменам (DELE/EOI)</option>
+                <option>Веб-проект / Разработка</option>
+                <option>Профессиональное сотрудничество</option>
+                <option>Другой вопрос</option>
             </select>
         </div>
 
-        <!-- Mensaje -->
         <div class="form-group">
-            <label class="form-label" for="message">Cuéntame detalles</label>
-            <textarea class="form-line" id="message" name="Mensaje" rows="4" 
-                placeholder="Objetivos, nivel actual, plazos o contexto del proyecto..." required></textarea>
+            <label class="form-label" for="message">Расскажите подробнее</label>
+            <textarea class="form-line" id="message" name="Сообщение" rows="4" 
+                placeholder="Цели, текущий уровень, сроки или контекст проекта..." required></textarea>
         </div>
 
-        <!-- Botón (Estilo Enlace con Flecha) -->
         <button class="button" type="submit" style="margin-top: 1rem;">
-            Enviar mensaje
+            Отправить сообщение
         </button>
 
       </form>
@@ -116,4 +108,5 @@
 
   <div id="footer-slot"></div>
 
-</body></html>
+</body>
+</html>
