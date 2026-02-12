@@ -107,42 +107,64 @@
       </div>
     </section>
 
-   <!-- PANEL DE ACCIÓN Y RESERVAS (RU) -->
-    <section class="container" style="margin-top: 6rem; margin-bottom: 6rem;">
+   <!-- PANEL DE ACCIÓN Y RESERVAS (RU) - VERSIÓN EDITORIAL LIMPIA -->
+    <section class="container" style="margin-top: 8rem; margin-bottom: 6rem;">
         
-        <h2 style="font-family: var(--font-header); font-size: 2rem; margin-bottom: 2rem; color: var(--color-charcoal);">
+        <h2 style="font-family: var(--font-header); font-size: 2rem; margin-bottom: 3rem; color: var(--color-charcoal); border-top: 1px solid var(--line); padding-top: 2rem;">
             Сделайте следующий шаг
         </h2>
 
-        <!-- Mini Bento Grid -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        <!-- Grid Editorial (Sin cajas, solo contenido) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
 
-            <!-- 1. RESERVA (Oscura/Premium) -->
-            <article class="bento-item" style="background-color: var(--color-charcoal); color: var(--color-arena); border: none;">
+            <!-- 1. RESERVA (El Protagonista) -->
+            <article class="bento-item" style="padding: 0;">
                 <div>
-                    <h3 style="color: var(--color-arena); margin-bottom: 0.5rem;">Забронировать урок</h3>
-                    <p style="color: rgba(242, 241, 239, 0.8); font-size: 0.95rem;">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: var(--color-charcoal);">
+                        Забронировать урок
+                    </h3>
+                    <p style="font-size: 1rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem;">
                         Доступ к моему календарю в реальном времени. Выберите удобное время и закрепите за собой место мгновенно.
                     </p>
                 </div>
-                <!-- Enlace a tu Calendar -->
-                <a href="https://calendar.app.google/BnS9UF5h7zEvaQhH6" target="_blank" class="button" style="border-color: rgba(255,255,255,0.3); color: white; margin-top: 2rem;">
-                    Выбрать время и записаться
+                <!-- Enlace estilo Firma (Más elegante que un botón) -->
+                <a href="https://calendar.app.google/BnS9UF5h7zEvaQhH6" target="_blank" class="cta-link-primary">
+                    Выбрать время
                 </a>
             </article>
 
-            <!-- 2. MATERIALES (El Lead Magnet) -->
-            <article class="bento-item" style="border-color: var(--color-terracotta);">
+            <!-- 2. MATERIALES -->
+            <article class="bento-item" style="padding: 0;">
                 <div>
-                    <div class="product-badge">Материалы</div>
-                    <h3>Полезные ресурсы</h3>
-                    <p style="font-size: 0.95rem;">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: var(--color-charcoal);">
+                        Материалы
+                    </h3>
+                    <p style="font-size: 1rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem;">
                         Визуальные гиды и схемы для самостоятельного изучения. Скачайте бесплатный образец.
                     </p>
                 </div>
-                <a href="materiales.html" class="button">Перейти к материалам</a>
+                <a href="materiales.html" class="button" style="margin-top: 0;">
+                    Перейти к материалам
+                </a>
             </article>
 
+            <!-- 3. CONTACTO -->
+            <article class="bento-item" style="padding: 0;">
+                <div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: var(--color-charcoal);">
+                        Есть вопросы?
+                    </h3>
+                    <p style="font-size: 1rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem;">
+                        Если вы не уверены в своем уровне или плане обучения, напишите мне перед бронированием.
+                    </p>
+                </div>
+                <a href="contacto.html" class="button" style="margin-top: 0;">
+                    Написать сообщение
+                </a>
+            </article>
+
+        </div>
+    </section>
             <!-- 3. CONTACTO (Dudas) -->
             <article class="bento-item">
                 <div>
