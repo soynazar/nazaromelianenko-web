@@ -1,73 +1,83 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <title>Материалы — Nazar Omelianenko</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ... TUS LINKS DE FUENTES Y CSS AQUÍ ... -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css" />
-
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
 </head>
 
 <body class="is-loading">
+
   <div id="header-slot"></div>
 
   <main class="page">
+    
     <section class="container page-hero">
-      <h1>Материалы</h1>
-      <p class="lead">Специализированные ресурсы для изучения испанского языка.</p>
-     
-    <div class="methodology-box">
-    <p>
-      <strong>Что такое когнитивная грамматика?</strong><br>
-      Это подход, при котором мы не просто зазубриваем правила, а понимаем логику носителей языка. 
-      Вместо списков исключений мы разбираем, какой смысл вы хотите передать и почему выбирается та или иная форма. 
-      Это делает изучение испанского осознанным, понятным и эффективным.
-    </p>
-  </div>
-</section>
-
-    <section class="container page-grid">
-      <article class="card product-card">
-        <div class="product-badge">Когнитивная грамматика</div>
-        <h2>El Subjuntivo: Логика и визуализация</h2>
-        
-        <ul class="product-features">
-          <li>Объяснения на русском и испанском языках</li>
-          <li>Когнитивные модели и наглядные схемы</li>
-          <li>Практические примеры из реальной жизни</li>
-        </ul>
-
-        <div class="product-footer">
-          <span class="price">15,00€</span>
-          <a href="#" class="button">Купить сейчас</a>
-        </div>
-      </article>
-
-      <article class="card product-card">
-        <div class="product-badge">Когнитивная грамматика</div>
-        <h2>Tiempos de Pasado: Система времен</h2>
-        
-        <ul class="product-features">
-          <li>Разбор разницы между Indefinido и Imperfecto</li>
-          <li>Логические маркеры и временные линии</li>
-          <li>Упражнения на основе реальных контекстов</li>
-        </ul>
-
-        <div class="product-footer">
-          <span class="price">15,00€</span>
-          <a href="#" class="button">Купить сейчас</a>
-        </div>
-      </article>
-      
+      <h1>Учебные материалы</h1>
+      <p class="lead">
+        Инструменты для тех, кто хочет учиться самостоятельно, но с правильной структурой.
+      </p>
     </section>
+
+    <!-- GRID DE PRODUCTOS -->
+    <section class="container bento-grid">
+      
+      <!-- PRODUCTO 1 (El Lead Magnet) -->
+      <!-- Usamos span 2 para darle importancia -->
+      <article class="bento-item" style="grid-column: span 2; display: flex; flex-direction: row; gap: 2rem; align-items: center; padding: 0; overflow: hidden;">
+        
+        <!-- Imagen del producto (Izquierda) -->
+        <div style="width: 40%; height: 100%; background: #e5e5e5; min-height: 300px;">
+            <!-- Pon aquí una imagen de la portada de tu PDF -->
+            <img src="/images/material-cover.jpg" alt="Guía PDF" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+
+        <!-- Info del producto (Derecha) -->
+        <div style="width: 60%; padding: 2rem; display: flex; flex-direction: column; justify-content: center;">
+            <div class="product-badge">PDF Guide</div>
+            <h2 style="margin-bottom: 0.5rem;">Guía Visual de Gramática (Demo)</h2>
+            <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 1.5rem;">
+                Эксклюзивный материал, объясняющий сложные концепции через логику носителя. Идеально для уровня A2-B1.
+            </p>
+            
+            <!-- PRECIO Y BOTÓN -->
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <span style="font-family: var(--font-header); font-size: 1.2rem; color: var(--color-terracotta);">
+                    Бесплатно <!-- Gratis -->
+                </span>
+                
+                <!-- ENLACE DE DESCARGA DIRECTA -->
+                <!-- Sube tu PDF a la carpeta /downloads/ o /images/ -->
+                <a href="/downloads/guia-demo.pdf" download class="button">
+                    Скачать PDF
+                </a>
+            </div>
+        </div>
+      </article>
+
+      <!-- PRÓXIMAMENTE (Para llenar hueco y crear expectación) -->
+      <article class="bento-item" style="grid-column: span 2; justify-content: center; align-items: center; background-color: rgba(26,26,26,0.03); border-style: dashed;">
+        <h3 style="color: var(--muted);">Скоро в продаже</h3>
+        <p style="text-align: center; font-size: 0.9rem;">Полный курс подготовки к DELE</p>
+      </article>
+
+    </section>
+
   </main>
 
   <div id="footer-slot"></div>
+
 </body>
 </html>
