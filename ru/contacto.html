@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Контакты — Назар Омельяненко</title>
+  <title>Contacto — Nazar Omelianenko</title>
+
+ <!-- FAVICON & BRANDING -->
+  <!-- 1. El .ico de la raíz (red de seguridad) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  <!-- 2. Los PNGs en su carpeta correcta -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  
+  <meta name="msapplication-TileColor" content="#f2f1ef">
+  <meta name="theme-color" content="#f2f1ef">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
@@ -17,93 +32,88 @@
   <div id="header-slot"></div>
 
   <main class="page">
+    
+    <!-- HERO (Directo y Humano) -->
     <section class="container page-hero">
-      <h1>Контакты</h1>
+      <h1>Contacto</h1>
       <p class="lead">
-        Если вы хотите обсудить занятия, подготовку к экзаменам DELE/EOI или веб-проект, 
-        напишите мне, и мы детально все обсудим.
+        Si quieres hablar sobre clases, preparación DELE/EOI o un proyecto web, 
+        escríbeme y lo enfocamos con claridad.
       </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>Быстрое сообщение</h2>
-        <p class="muted">
-          Коротко опишите вашу задачу и желаемые сроки.
+    <!-- ESTRUCTURA DE 2 COLUMNAS (Contexto + Acción) -->
+    <section class="container contact-layout">
+      
+      <!-- COLUMNA IZQUIERDA: Contexto -->
+      <div class="contact-info">
+        <h3>Contacto directo</h3>
+        <a href="mailto:nazar.dezign@gmail.com" class="contact-email">
+            nazar.dezign@gmail.com
+        </a>
+
+        <h3>Idioma</h3>
+        <p class="contact-note">
+            Puedes escribirme en <strong>español, ruso, inglés o catalán</strong>. 
+            Adaptaré mi respuesta a tu idioma desde el primer momento.
         </p>
-
-        <form class="form" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
-          <label class="label" for="name">Имя</label>
-          <input class="input" id="name" name="Name" type="text" placeholder="Ваше имя" required />
-
-          <label class="label" for="email">Email</label>
-          <input class="input" id="email" name="Email" type="email" placeholder="email@example.com" required />
-
-          <label class="label" for="topic">Тема</label>
-          <select class="input" id="topic" name="Subject" required>
-            <option value="" disabled selected>Выберите вариант</option>
-            <option>Уроки испанского</option>
-            <option>Уроки валенсийского</option>
-            <option>Подготовка к DELE</option>
-            <option>Подготовка к EOI</option>
-            <option>Веб-проект</option>
-            <option>Другое</option>
-          </select>
-
-          <label class="label" for="message">Сообщение</label>
-          <textarea class="input textarea" id="message" name="Message" rows="6"
-            placeholder="Цель, текущий уровень (для языков), примерный график, контекст, сроки..."
-            required></textarea>
-
-          <button class="button" type="submit">Отправить</button>
-          <p class="form-note muted">
-            Эта форма откроет ваш почтовый клиент. Также вы можете использовать прямые ссылки ниже.
-          </p>
-        </form>
-      </div>
-
-      <div class="card">
-        <h2>Прямая связь</h2>
-        <p class="muted">Простые способы связаться без посредников.</p>
-
-        <div class="contact-list">
-          <div class="contact-item">
-            <h3>Email</h3>
-            <p><a class="link" href="mailto:nazar.dezign@gmail.com">nazar.dezign@gmail.com</a></p>
-          </div>
-
-          <div class="contact-item">
-            <h3>Календарь (опционально)</h3>
-            <p class="muted">Позже здесь можно будет добавить ссылку для бронирования времени.</p>
-            <p><a class="link" href="#" onclick="return false;">Добавить ссылку</a></p>
-          </div>
-
-          <div class="contact-item">
-            <h3>Соцсети (опционально)</h3>
-            <p class="muted">Ваши профессиональные профили.</p>
-            <p>
-              <a class="link" href="#" onclick="return false;">YouTube</a> ·
-              <a class="link" href="#" onclick="return false;">Instagram</a> ·
-              <a class="link" href="#" onclick="return false;">LinkedIn</a>
+        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line);">
+            <h3>Готовы начать?</h3>
+            <p class="contact-note" style="margin-bottom: 1rem;">
+                Если вы уже определились с целью, можете забронировать урок сразу, без переписки.
             </p>
-          </div>
-
-          <div class="contact-item">
-            <h3>Язык общения</h3>
-            <p class="muted">
-              Вы можете писать мне на русском или испанском. Я адаптируюсь под ваш запрос с первого сообщения.
-            </p>
-          </div>
-        </div>
-
-        <div class="mini-cta">
-          <a class="button secondary" href="/ru/">На главную</a>
+            <a href="https://calendar.app.google/BnS9UF5h7zEvaQhH6" target="_blank" class="link" style="font-weight: 500; color: var(--color-terracotta);">
+                Записаться на урок →
+            </a>
         </div>
       </div>
+
+      <!-- COLUMNA DERECHA: Formulario Editorial -->
+      <form class="form-editorial" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
+        
+        <!-- Nombre -->
+        <div class="form-group">
+            <label class="form-label" for="name">Tu nombre</label>
+            <input class="form-line" id="name" name="Nombre" type="text" placeholder="Cómo te llamas" required />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label class="form-label" for="email">Tu email</label>
+            <input class="form-line" id="email" name="Email" type="email" placeholder="Para poder responderte" required />
+        </div>
+
+        <!-- Tema (Dropdown limpio) -->
+        <div class="form-group">
+            <label class="form-label" for="topic">¿Sobre qué quieres hablar?</label>
+            <select class="form-line" id="topic" name="Tema" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option>Clases de Español / Valenciano</option>
+                <option>Preparación Exámenes (DELE/EOI)</option>
+                <option>Proyecto Web / Desarrollo</option>
+                <option>Colaboración profesional</option>
+                <option>Otro asunto</option>
+            </select>
+        </div>
+
+        <!-- Mensaje -->
+        <div class="form-group">
+            <label class="form-label" for="message">Cuéntame detalles</label>
+            <textarea class="form-line" id="message" name="Mensaje" rows="4" 
+                placeholder="Objetivos, nivel actual, plazos o contexto del proyecto..." required></textarea>
+        </div>
+
+        <!-- Botón (Estilo Enlace con Flecha) -->
+        <button class="button" type="submit" style="margin-top: 1rem;">
+            Enviar mensaje
+        </button>
+
+      </form>
+
     </section>
+
   </main>
 
   <div id="footer-slot"></div>
 
-</body>
-</html>
+</body></html>
