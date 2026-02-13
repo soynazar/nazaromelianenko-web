@@ -22,100 +22,124 @@
 
   <div id="header-slot"></div>
 
-<main class="page">
+  <main class="page">
     
-    <section class="container page-hero">
+    <!-- HERO (Alineado y consistente) -->
+    <section class="container page-hero" style="padding-bottom: 2rem;">
       <h1>Учебные материалы</h1>
       <p class="lead">
-        Авторские материалы, объясняющие грамматику через логику носителя, а не через зубрежку правил.
+        Авторские методички, объясняющие грамматику через логику носителя, а не через зубрежку правил.
       </p>
     </section>
 
-    <!-- LISTA DE PRODUCTOS EDITORIAL -->
-    <section class="container reading-container">
+    <!-- GRID ASIMÉTRICO (Igual que Desarrollo/Enseñanza) -->
+    <section class="container bio-grid">
       
-      <!-- 1. PRODUCTO GRATUITO (El Gancho) -->
-      <article class="editorial-block" style="border-bottom: 1px solid var(--line); padding-bottom: 4rem;">
-        <div class="product-badge">Бесплатно</div> <!-- Gratis -->
-        <h2 style="margin-top: 0.5rem;">7 ОШИБОК, которые совершают русскоговорящие в испанском (и как исправить их, чтобы звучать профессионально)</h2>
+      <!-- COLUMNA IZQUIERDA: DATOS TÉCNICOS (Sidebar) -->
+      <aside class="bio-sidebar">
+        <h3 class="sidebar-title">Инфо</h3>
         
-        <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
-            <!-- Imagen Portada (Sube una imagen cuadrada a /images/) -->
-            <div style="flex: 0 0 150px; height: 200px; background-color: #eee; border-radius: 4px; overflow: hidden;">
-                 <img src="/images/cover-ser-estar.jpg" alt="Portada PDF" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            
-            <div style="flex: 1;">
-                <p>
-                    Как перестать переводить с русского и начать говорить используя структуры испанского языка. 
-                    В этом гиде я разбираю <strong>фундаментальную разницу</strong> восприятия реальности испанцами.
-                </p>
-                <ul style="list-style: none; padding: 0; margin-bottom: 2rem; color: var(--muted); font-size: 0.95rem;">
-                    <li>✓ Узнайте свой тип ошибки</li>
-                    <li>✓ Поймите, почему она возникает (логика славянских языков ≠ испанская логика)</li>
-                    <li>✓ Корркетные фразы</li>
-                    <li>✓ Мини-упражнения</li>
-                </ul>
-                
-                <!-- ENLACE GUMROAD (Producto Gratis) -->
-                <!-- Cambia el href por tu enlace real de Gumroad -->
-                <a href="https://gumroad.com/l/TU_PRODUCTO_GRATIS" target="_blank" class="button">
-                    Скачать бесплатно
-                </a>
-            </div>
+        <div class="bio-data-item">
+          <strong>Формат</strong>
+          <p>Digital (PDF)<br>Descarga inmediata</p>
         </div>
-      </article>
 
-      <!-- 2. PRODUCTO DE PAGO (La Estrella) -->
-      <article class="editorial-block" style="border-bottom: 1px solid var(--line); padding-bottom: 4rem;">
-        <div class="product-badge" style="color: var(--color-charcoal);">Premium</div>
-        <h2 style="margin-top: 0.5rem;">Алгоритм Прошлых Времен (Indefinido vs Imperfecto)</h2>
+        <div class="bio-data-item">
+          <strong>Оплата</strong>
+          <p>Tarjeta / Apple Pay<br>Seguro (via Gumroad)</p>
+        </div>
+
+        <div class="bio-data-item">
+          <strong>Язык</strong>
+          <p>Русский / Español</p>
+        </div>
+      </aside>
+
+      <!-- COLUMNA DERECHA: LOS PRODUCTOS -->
+      <div class="bio-content">
         
-        <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
-            <!-- Imagen Portada -->
-            <div style="flex: 0 0 150px; height: 200px; background-color: var(--color-charcoal); border-radius: 4px; overflow: hidden;">
-                 <img src="/images/cover-pasados.jpg" alt="Portada Curso Pasados" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
+        <!-- 1. PRODUCTO GRATUITO (Lead Magnet) -->
+        <article class="editorial-block" style="border-bottom: 1px solid var(--line); padding-bottom: 4rem;">
+            <div class="product-badge">Бесплатно</div>
+            <h2 style="margin-top: 0.5rem;">7 ОШИБОК, которые совершают русскоговорящие</h2>
             
-            <div style="flex: 1;">
-                <p>
-                    Самая сложная тема для славян, объясненная через метафору <strong>"Сцена и Действие"</strong>. 
-                    Никаких таблиц с окончаниями, только понимание контекста.
-                </p>
-                <p>
-                    Включает разбор 50 реальных примеров и упражнения для закрепления автоматизма.
-                </p>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                <!-- Imagen Portada -->
+                <div style="flex: 0 0 140px; height: 190px; background-color: #f4f4f4; border: 1px solid var(--line); overflow: hidden;">
+                     <!-- Asegúrate de tener la imagen o se verá gris -->
+                     <img src="/images/cover-7-errores.jpg" alt="PDF Cover" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
+                </div>
                 
-                <div style="display: flex; align-items: center; gap: 2rem; margin-top: 2rem;">
-                    <span style="font-family: var(--font-header); font-size: 1.5rem; color: var(--color-charcoal);">
-                        15€
-                    </span>
-                    <!-- ENLACE GUMROAD (Producto Pago) -->
-                    <a href="https://gumroad.com/l/TU_PRODUCTO_PAGO" target="_blank" class="button">
-                        Купить сейчас
+                <div style="flex: 1;">
+                    <p style="font-size: 1rem;">
+                        Как перестать переводить с русского и начать говорить, используя структуры испанского языка. 
+                        В этом гиде я разбираю <strong>фундаментальную разницу</strong> восприятия реальности.
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2rem; color: var(--muted); font-size: 0.9rem; line-height: 1.6;">
+                        <li>✓ Узнайте свой тип ошибки</li>
+                        <li>✓ Логика славянских языков ≠ испанская логика</li>
+                        <li>✓ Корректные фразы и мини-упражнения</li>
+                    </ul>
+                    
+                    <!-- Enlace Gumroad -->
+                    <a href="https://gumroad.com/l/TU_ENLACE_AQUI" target="_blank" class="button">
+                        Скачать бесплатно →
                     </a>
                 </div>
             </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- 3. PRÓXIMAMENTE (Fomentar Curiosidad) -->
-      <article class="editorial-block" style="opacity: 0.6;">
-        <h3 style="color: var(--muted); margin-bottom: 1rem;">Скоро в продаже</h3>
-        <div style="border: 1px dashed var(--line); padding: 2rem; border-radius: 8px; text-align: left;">
-            <h4 style="font-family: var(--font-header); font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--color-charcoal);">
-                Полный курс подготовки к DELE B2
-            </h4>
-            <p style="margin: 0; font-size: 0.95rem;">
-                Стратегии сдачи экзамена, шаблоны для устной части и разбор писем.
-                <br><em>Релиз запланирован на осень 2025.</em>
-            </p>
-        </div>
-      </article>
+        <!-- 2. PRODUCTO PREMIUM -->
+        <article class="editorial-block" style="border-bottom: 1px solid var(--line); padding-bottom: 4rem;">
+            <div class="product-badge" style="color: var(--color-charcoal);">Premium</div>
+            <h2 style="margin-top: 0.5rem;">Алгоритм Прошлых Времен (Indefinido vs Imperfecto)</h2>
+            
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                <!-- Imagen Portada Oscura -->
+                <div style="flex: 0 0 140px; height: 190px; background-color: var(--color-charcoal); overflow: hidden;">
+                     <img src="/images/cover-pasados.jpg" alt="Curso Pasados" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+                </div>
+                
+                <div style="flex: 1;">
+                    <p style="font-size: 1rem;">
+                        Самая сложная тема для славян, объясненная через метафору <strong>"Сцена и Действие"</strong>. 
+                        Никаких таблиц с окончаниями, только понимание контекста.
+                    </p>
+                    <p style="font-size: 1rem;">
+                        Включает разбор 50 реальных примеров и упражнения для закрепления автоматизма.
+                    </p>
+                    
+                    <div style="display: flex; align-items: center; gap: 2rem; margin-top: 2rem;">
+                        <span style="font-family: var(--font-header); font-size: 1.4rem; color: var(--color-charcoal);">
+                            15€
+                        </span>
+                        <a href="https://gumroad.com/l/TU_ENLACE_AQUI" target="_blank" class="button">
+                            Купить сейчас →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
 
+        <!-- 3. PRÓXIMAMENTE (Estilo Sutil) -->
+        <article class="editorial-block" style="opacity: 0.7;">
+            <h3 style="color: var(--muted); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Скоро в продаже</h3>
+            <div style="border: 1px dashed var(--line); padding: 2rem; border-radius: 8px;">
+                <h4 style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--color-charcoal);">
+                    Полный курс подготовки к DELE B2
+                </h4>
+                <p style="margin: 0; font-size: 0.95rem;">
+                    Стратегии сдачи экзамена, шаблоны для устной части и разбор писем.
+                    <br><em style="font-size: 0.85rem; color: var(--color-terracotta);">Релиз запланирован на осень 2025.</em>
+                </p>
+            </div>
+        </article>
+
+      </div>
     </section>
 
   </main>
+
   <div id="footer-slot"></div>
 
 </body>
