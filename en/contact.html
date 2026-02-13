@@ -5,10 +5,18 @@
   <title>Contact — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/styles.css" />
+  
+  <!-- FAVICON -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
 </head>
@@ -18,76 +26,90 @@
   <div id="header-slot"></div>
 
   <main class="page">
+    
+    <!-- HERO -->
     <section class="container page-hero">
       <h1>Contact</h1>
       <p class="lead">
-        If you would like to discuss language coaching, DELE/EOI preparation, or a web project, 
-        feel free to reach out and we can define the best approach.
+        If you want to discuss language coaching, DELE/EOI preparation, or a web project, 
+        write to me and we can define the best approach with clarity.
       </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>Quick Message</h2>
-        <p class="muted">
-          Briefly describe what you need and your expected timeframe.
+    <!-- 2-COLUMN STRUCTURE (Context + Action) -->
+    <section class="container contact-layout">
+      
+      <!-- LEFT COLUMN: Context -->
+      <div class="contact-info">
+        <h3>Direct contact</h3>
+        <a href="mailto:nazar.dezign@gmail.com" class="contact-email">
+            nazar.dezign@gmail.com
+        </a>
+
+        <h3>Language</h3>
+        <p class="contact-note">
+            You can write to me in <strong>English, Spanish, Russian, or Catalan</strong>. 
+            I will adapt to your language from the very first moment.
         </p>
 
-        <form class="form" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
-          <label class="label" for="name">Name</label>
-          <input class="input" id="name" name="Name" type="text" placeholder="Your name" required />
-
-          <label class="label" for="email">Email</label>
-          <input class="input" id="email" name="Email" type="email" placeholder="your@email.com" required />
-
-          <label class="label" for="topic">Subject</label>
-          <select class="input" id="topic" name="Subject" required>
-            <option value="" disabled selected>Select an option</option>
-            <option>Spanish Lessons</option>
-            <option>Valencian Lessons</option>
-            <option>DELE Preparation</option>
-            <option>EOI Preparation</option>
-            <option>Web Project</option>
-            <option>Other</option>
-          </select>
-
-          <label class="label" for="message">Message</label>
-          <textarea class="input textarea" id="message" name="Message" rows="6"
-            placeholder="Goal, current level (for languages), preferred schedule, context, deadline..."
-            required></textarea>
-
-          <button class="button" type="submit">Send Message</button>
-          <p class="form-note muted">
-            This form will open your default email client. Alternatively, use the direct links.
-          </p>
-        </form>
-      </div>
-
-      <div class="card">
-        <h2>Direct Contact</h2>
-        <p class="muted">Simple, straightforward options.</p>
-
-        <div class="contact-list">
-          <div class="contact-item">
-            <h3>Email</h3>
-            <p><a class="link" href="mailto:nazar.dezign@gmail.com">nazar.dezign@gmail.com</a></p>
-          </div>
-
-          <div class="contact-item">
-            <h3>Communication Language</h3>
-            <p class="muted">
-              You can write to me in English, Spanish, or Russian. I will adapt from our first contact.
+        <!-- Calendar Block (Consistency with ES/CA) -->
+        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line);">
+            <h3>Ready to start?</h3>
+            <p class="contact-note" style="margin-bottom: 1rem;">
+                If you already have a clear goal, you can skip the email and book your session directly.
             </p>
-          </div>
-        </div>
-
-        <div class="mini-cta">
-          <a class="button secondary" href="/en/index.html">Back to home</a>
+            <a href="https://calendar.app.google/BnS9UF5h7zEvaQhH6" target="_blank" class="link" style="font-weight: 500; color: var(--color-terracotta);">
+                Book a class now →
+            </a>
         </div>
       </div>
+
+      <!-- RIGHT COLUMN: Editorial Form -->
+      <form class="form-editorial" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
+        
+        <!-- Name -->
+        <div class="form-group">
+            <label class="form-label" for="name">Your name</label>
+            <input class="form-line" id="name" name="Name" type="text" placeholder="What is your name" required />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label class="form-label" for="email">Your email</label>
+            <input class="form-line" id="email" name="Email" type="email" placeholder="So I can reply to you" required />
+        </div>
+
+        <!-- Topic -->
+        <div class="form-group">
+            <label class="form-label" for="topic">What do you want to talk about?</label>
+            <select class="form-line" id="topic" name="Subject" required>
+                <option value="" disabled selected>Select an option</option>
+                <option>Spanish / Valencian Classes</option>
+                <option>Exam Preparation (DELE/EOI)</option>
+                <option>Web Project / Development</option>
+                <option>Professional Collaboration</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group">
+            <label class="form-label" for="message">Tell me details</label>
+            <textarea class="form-line" id="message" name="Message" rows="4" 
+                placeholder="Goals, current level, deadlines, or project context..." required></textarea>
+        </div>
+
+        <!-- Button -->
+        <button class="button" type="submit" style="margin-top: 1rem;">
+            Send message
+        </button>
+
+      </form>
+
     </section>
+
   </main>
-  
+
   <div id="footer-slot"></div>
 
 </body>
