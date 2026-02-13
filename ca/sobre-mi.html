@@ -5,36 +5,163 @@
   <title>Sobre mi — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="/styles.css" />
+  
+  <!-- FAVICON -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
 </head>
 
 <body class="is-loading">
-  <div id="header-slot"></div>
 
+  <div id="header-slot"></div>
+  
   <main class="page">
-    <section class="container page-hero">
+    
+    <!-- HERO INTRODUCTORI -->
+    <section class="container page-hero" style="padding-bottom: 2rem;">
       <h1>Sobre mi</h1>
       <p class="lead">
-        Sóc Nazar Omelianenko, professor d'idiomes i desenvolupador, especialitzat en l'acompanyament lingüístic i solucions tecnològiques clares.
+        El meu recorregut s'ha construït entre l'educació i la tecnologia,
+        dos àmbits diferents que comparteixen una mateixa exigència:
+        comprendre bé per avançar amb criteri.
       </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>Trajectòria docent</h2>
-        <p>Treballo com a professor autònom impartint classes personalitzades de castellà, català i valencià per a la comunitat internacional.</p>
-      </div>
-      <div class="card">
-        <h2>Perfil tecnològic</h2>
-        <p>Actualment estic cursant Desenvolupament d'Aplicacions Multiplataforma (DAM), integrant la programació amb la meva experiència en comunicació.</p>
+    <!-- ESTRUCTURA BIOGRÀFICA (Grid Asimètric) -->
+    <section class="container bio-grid">
+      
+      <!-- COLUMNA ESQUERRA: DADES (Fitxa Tècnica) -->
+      <aside class="bio-sidebar">
+        <h3 class="sidebar-title">En resum</h3>
+        
+        <div class="bio-data-item">
+          <strong>Ubicació</strong>
+          <p>Espanya<br>Treball online i presencial</p>
+        </div>
+
+        <div class="bio-data-item">
+          <strong>Idiomes</strong>
+          <p>Espanyol, Valencià/Català,<br>Rus, Ucraïnès, Anglès</p>
+        </div>
+
+        <div class="bio-data-item">
+          <strong>Feina</strong>
+          <p>Ensenyament d'idiomes +<br>Desenvolupament web</p>
+        </div>
+      </aside>
+
+      <!-- COLUMNA DRETA: NARRATIVA -->
+      <div class="bio-content">
+        
+        <!-- Bloc 1 -->
+        <article class="editorial-block">
+          <h2>Com treballo</h2>
+          <p>
+            Treballo amb respecte pels processos, responsabilitat en cada decisió
+            i una comunicació directa. Valoro l'estructura, la coherència i la 
+            feina de qualitat com a base de qualsevol avanç real.
+          </p>
+        </article>
+
+        <!-- Bloc 2 -->
+        <article class="editorial-block">
+          <h2>Educació</h2>
+          <p>
+            Imparteixo classes d'espanyol i valencià a persones adultes,
+            amb especial atenció a qui prové d'altres llengües i cultures.
+          </p>
+          <p>
+            Incloc estratègies d'aprenentatge socioemocional (<strong>SEL</strong>)
+            i un entorn d'aprenentatge positiu: <strong>seguretat</strong>, claredat i ritme sostenible.
+            Atenció a l'enfocament en la preparació de certificacions oficials,
+            com <strong>DELE</strong> i <strong>EOI</strong>, integrades dins d'un procés d'<strong>aprenentatge sòlid</strong>.
+          </p>
+        </article>
+
+        <!-- Bloc 3 -->
+        <article class="editorial-block">
+          <h2>Tecnologia</h2>
+          <p>
+            Desenvolupo projectes web amb focus en <strong>utilitat real</strong>, experiència d'usuari
+            i un <strong>codi net</strong> que s'entén i es pot evolucionar.
+          </p>
+          <p>
+            M'estic formant en Desenvolupament d'Aplicacions (FP) i construint projectes
+            propis per consolidar pràctica i criteri tècnic.
+          </p>
+        </article>
+
+        <!-- Bloc 4: Comunicació (Amb el vídeo) -->
+        <article class="editorial-block">
+          <h2>Comunicació</h2>
+          <p>
+            Més enllà del codi i la gramàtica, m'especialitzo en la transmissió efectiva d'idees. 
+            Porto més de <strong>6 anys</strong> creant contingut audiovisual professional, 
+            presentant i moderant en directe tant en rus com en espanyol.
+          </p>
+          <p>
+            Aquesta faceta em permet aportar un valor afegit en projectes que requereixen 
+            visibilitat pública, formació d'equips o creació de material corporatiu.
+          </p>
+
+          <!-- Targeta de Vídeo -->
+          <a href="https://www.youtube.com/watch?v=TU_ENLACE_REAL" target="_blank" class="video-card">
+            <div class="video-thumbnail-container">
+               <img src="/images/nazar-video-thumb.jpg" alt="Nazar presentant a Alegría Real Estate" class="video-thumbnail">
+               <div class="play-icon"></div>
+            </div>
+            <div class="video-caption">
+                <strong>Presentació Corporativa (Bilingüe)</strong>
+                Exemple de comunicació professional per al sector immobiliari (Alegría Real Estate).
+            </div>
+          </a>
+        </article>
+
+        <!-- Bloc 5: Valors -->
+        <article class="editorial-block">
+          <h2>Valors</h2>
+          <p>
+            Crec en les relacions basades en la <strong>confiança</strong>
+            i en el <strong>criteri</strong> com a forma de respecte cap a les persones i cap a la feina.
+            M'interessa allò que es construeix amb intenció:
+            pas a pas, amb <strong>constància</strong> i amb un estàndard alt.
+          </p>
+        </article>
+
       </div>
     </section>
+
+    <!-- CTA FINAL -->
+    <section class="container editorial-cta">
+      <h2>Si vols parlar amb mi</h2>
+      <p>
+        Si busques classes, una preparació seriosa, o un projecte web amb ordre i criteri,
+        escriu-me i ho veiem.
+      </p>
+      
+      <div class="cta-stack">
+        <a class="cta-link-primary" href="contacte.html">
+            Contactar ara
+        </a>
+        <a class="cta-link-secondary" href="index.html">
+            ← Tornar a l'inici
+        </a>
+      </div>
+    </section>
+
   </main>
 
   <div id="footer-slot"></div>
+  
 </body>
 </html>
