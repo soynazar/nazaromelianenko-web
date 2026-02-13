@@ -5,116 +5,131 @@
   <title>Desenvolupament · Tecnologia — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="/styles.css" />
-<script src="/js/include.js" defer></script>
-<script src="/js/lang-switch.js" defer></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
+  <link rel="stylesheet" href="/styles.css" />
+  
+  <!-- FAVICON -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
+  <script src="/js/include.js" defer></script>
+  <script src="/js/lang-switch.js" defer></script>
 </head>
 
 <body class="is-loading">
+
   <div id="header-slot"></div>
+
   <main class="page">
-    <section class="container page-hero">
-      <h1>Desarrollo · Tecnología</h1>
+    
+    <!-- HERO -->
+    <section class="container page-hero" style="padding-bottom: 2rem;">
+      <h1>Desenvolupament · Tecnologia</h1>
       <p class="lead">
-        Desenvolupo projectes amb estructura i criteris clars, 
+        Desenvolupo projectes amb estructura i criteri,
         centrats en l'essencial i pensats per mantenir-se en el temps.
       </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>Com treballo</h2>
-        <p>
-          Em guio per decisions tècniques justificades, documentació mínima però 
-          útil i un procés ordenat: entendre, dissenyar, construir i revisar.
-        </p>
-        <p>
-          Priorizo el resultado práctico: que el producto sea cómodo, claro para el usuario
-          y fácil de evolucionar.
-        </p>
-      </div>
+    <!-- GRID ASIMÈTRIC (Sidebar + Contingut) -->
+    <section class="container bio-grid">
+      
+      <!-- SIDEBAR: TECH SPECS -->
+      <aside class="bio-sidebar">
+        <h3 class="sidebar-title">Enfocament</h3>
+        
+        <div class="bio-data-item">
+          <strong>Filosofia</strong>
+          <p>Clean Code<br>Mantenibilitat<br>UX Cuidada</p>
+        </div>
 
-      <div class="card">
-        <h2>Què puc aportar</h2>
-        <p>
-          Desenvolupament web amb focus en l'experiència d'usuari (UX), rendiment i organització del codi.
-          Si l'objectiu està ben definit, el treball es torna més simple i mesurable.
-        </p>
-        <p>
-          Si el objetivo está bien definido, el trabajo se vuelve más simple,
-          más medible y más fácil de mantener.
-        </p>
-      </div>
+        <div class="bio-data-item">
+          <strong>Estat</strong>
+          <p>En formació (DAM)<br>Desenvolupant projectes propis</p>
+        </div>
 
-      <div class="card">
-        <h2>Enfoque</h2>
-        <p>
-          Me gusta trabajar con criterios claros: estructura, coherencia,
-          buen uso del tiempo y una comunicación directa.
-        </p>
-        <p>
-          El desarrollo no es “hacer por hacer”, sino construir con intención
-          y con respeto por quien lo usará y lo mantendrá.
-        </p>
-      </div>
+        <div class="bio-data-item">
+          <strong>Interessos</strong>
+          <p>Arquitectura web<br>Automatització</p>
+        </div>
+      </aside>
 
-      <div class="card">
-        <h2>Ahora mismo</h2>
-        <p>
-          Estoy formándome en <strong>Desarrollo de Aplicaciones</strong> (FP),
-          y construyendo proyectos propios para consolidar práctica y criterio técnico.
-        </p>
-        <p>
-          Esta web también es parte del proceso: sencilla, sobria y cada vez más completa.
-        </p>
+      <!-- CONTINGUT NARRATIU -->
+      <div class="bio-content">
+        
+        <article class="editorial-block">
+          <h2>Com treballo</h2>
+          <p>
+            Em guio per decisions tècniques justificades, documentació mínima però útil
+            i un procés ordenat: entendre, dissenyar, construir i revisar.
+          </p>
+          <p>
+            Prioritzo el resultat pràctic: que el producte sigui còmode, clar per a l'usuari
+            i <strong>fàcil d'evolucionar</strong>.
+          </p>
+        </article>
+
+        <article class="editorial-block">
+          <h2>Què puc aportar</h2>
+          <p>
+            Desenvolupament web amb focus en <strong>UX</strong>, rendiment i <strong>organització del codi</strong>.
+            M'interessa especialment allò que combina precisió tècnica i utilitat real.
+          </p>
+          <p>
+            Si l'objectiu està ben definit, el treball es torna més simple,
+            més mesurable i més fàcil de mantenir.
+          </p>
+        </article>
+
+        <!-- SECCIÓ PROJECTES (Estil Llista Indentada) -->
+        <div class="editorial-block" style="margin-top: 4rem;">
+            <h2 style="margin-bottom: 2rem; border-top: 1px solid var(--line); padding-top: 2rem;">
+                Projectes seleccionats
+            </h2>
+            
+            <div class="editorial-list">
+                <div class="list-item-editorial">
+                  <h3>Web personal</h3>
+                  <p>Base estàtica, navegació clara i desplegament amb domini propi. Evolució per iteracions.</p>
+                </div>
+
+                <div class="list-item-editorial">
+                  <h3>Projecte DAM</h3>
+                  <p>Espai reservat per a un projecte complet amb estructura, decisions i resultats.</p>
+                </div>
+
+                <div class="list-item-editorial">
+                  <h3>Automatitzacions</h3>
+                  <p>Petites millores que estalvien temps: organització, plantilles i fluxos repetibles.</p>
+                </div>
+            </div>
+        </div>
+
       </div>
     </section>
 
-    <section class="container page-section">
-      <div class="section-header">
-        <h2>Proyectos</h2>
-        <p class="muted">
-          Aquí irán proyectos seleccionados: breves, claros y con contexto (qué se hizo y por qué).
-        </p>
-      </div>
-
-      <div class="list-grid">
-        <div class="list-item">
-          <h3>Web personal</h3>
-          <p>Base estática, navegación clara y despliegue con dominio propio. Evolución por iteraciones.</p>
-        </div>
-        <div class="list-item">
-          <h3>Proyecto DAM</h3>
-          <p>Espacio reservado para un proyecto completo con estructura, decisiones y resultados.</p>
-        </div>
-        <div class="list-item">
-          <h3>Automatizaciones</h3>
-          <p>Pequeñas mejoras que ahorran tiempo: organización, plantillas y flujos repetibles.</p>
-        </div>
+    <!-- CTA FINAL -->
+    <section class="container editorial-cta">
+      <h2>Si vols contactar-me</h2>
+      <p>
+        Si tens una idea, una necessitat concreta o vols veure exemples,
+        escriu-me i en parlem amb calma.
+      </p>
+      
+      <div class="cta-stack">
+        <a class="cta-link-primary" href="contacte.html">Contactar ara</a>
+        <a class="cta-link-secondary" href="index.html">← Tornar a l'inici</a>
       </div>
     </section>
 
-    <section class="container page-cta">
-      <div class="cta-box">
-        <h2>Tens un projecte en ment?</h2>
-        <p>
-          Si tienes una idea, una necesidad concreta o quieres ver ejemplos,
-          escríbeme y lo hablamos con calma.
-        </p>
-        <div class="cta-actions">
-          <a class="button" href="contacto.html">Contacta amb mi</a>
-          <a class="button secondary" href="index.html">Tornal a l'inici</a>
-        </div>
-      </div>
-    </section>
   </main>
 
- <footer class="footer">© Nazar Omelianenko</footer>
+  <div id="footer-slot"></div>
 
 </body>
 </html>
-
-
