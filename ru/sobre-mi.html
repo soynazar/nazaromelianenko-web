@@ -2,12 +2,21 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Обо мне — Назар Омельяненко</title>
+  <title>Обо мне — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="/styles.css" />
+  
+  <!-- FAVICON -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
 </head>
@@ -15,9 +24,11 @@
 <body class="is-loading">
 
   <div id="header-slot"></div>
-
+  
   <main class="page">
-    <section class="container page-hero">
+    
+    <!-- HERO -->
+    <section class="container page-hero" style="padding-bottom: 2rem;">
       <h1>Обо мне</h1>
       <p class="lead">
         Мой путь строится на стыке образования и технологий — двух разных сфер, 
@@ -25,98 +36,101 @@
       </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>Как я работаю</h2>
-        <p>
-          Я работаю с уважением к процессам, ответственностью за каждое решение 
-          и прямой коммуникацией.
-        </p>
-        <p>
-          Для меня важны структура, последовательность и качество работы 
-          как основа любого реального прогресса.
-        </p>
-      </div>
-
-      <div class="card">
-        <h2>Образование</h2>
-        <p>
-          Я преподаю испанский и валенсийский языки взрослым, уделяя особое внимание тем, 
-          кто является носителем других языков и культур.
-        </p>
-        <p>
-          В обучение я включаю стратегии социально-эмоционального интеллекта (SEL) 
-          и создаю позитивную среду: безопасность, ясность и устойчивый темп.
-        </p>
-        <p>
-          Особое внимание я уделяю подготовке к официальным сертификациям (DELE и EOI), 
-          интегрируя её в основательный процесс изучения языка.
-        </p>
-      </div>
-
-      <div class="card">
-        <h2>Технологии</h2>
-        <p>
-          Я разрабатываю веб-проекты с упором на реальную пользу, пользовательский опыт (UX) 
-          и чистый код, который понятен и пригоден для развития.
-        </p>
-        <p>
-          В данный момент я получаю профильное образование в области разработки приложений (DAM) 
-          и создаю собственные проекты для закрепления технических навыков.
-        </p>
-      </div>
-
-      <div class="card">
-        <h2>Ценности</h2>
-        <p>
-          Я верю в отношения, основанные на доверии, и в профессиональный подход 
-          как форму уважения к людям и к самой работе.
-        </p>
-        <p>
-          Меня интересует то, что создается осознанно: шаг за шагом, 
-          с постоянством и высокими стандартами.
-        </p>
-      </div>
-    </section>
-
-    <section class="container page-section">
-      <div class="section-header">
-        <h2>Коротко о главном</h2>
-        <p class="muted">Краткое резюме для быстрого ознакомления.</p>
-      </div>
-
-      <div class="list-grid">
-        <div class="list-item">
-          <h3>Локация</h3>
-          <p>Испания · Работаю онлайн и очно, в зависимости от проекта.</p>
+    <!-- GRID ASIMÉTRICO (Sidebar + Contenido) -->
+    <section class="container bio-grid">
+      
+      <!-- COLUMNA IZQUIERDA: DATOS (Sidebar) -->
+      <aside class="bio-sidebar">
+        <h3 class="sidebar-title">Координаты</h3>
+        
+        <div class="bio-data-item">
+          <strong>Локация</strong>
+          <p>Испания<br>Работаю онлайн и очно</p>
         </div>
-        <div class="list-item">
-          <h3>Языки</h3>
-          <p>Испанский, валенсийский/каталанский, русский, украинский и английский.</p>
-        </div>
-        <div class="list-item">
-          <h3>Деятельность</h3>
-          <p>Преподавание языков + веб-разработка с практическим подходом.</p>
-        </div>
-      </div>
-    </section>
 
-    <section class="container page-cta">
-      <div class="cta-box">
-        <h2>Связаться со мной</h2>
-        <p>
-          Если вы ищете уроки, серьезную подготовку или веб-проект, выполненный 
-          с порядком и смыслом, напишите мне, и мы все обсудим.
-        </p>
-        <div class="cta-actions">
-          <a class="button" href="/ru/contacto">Контакты</a>
-          <a class="button secondary" href="/ru/">На главную</a>
+        <div class="bio-data-item">
+          <strong>Языки</strong>
+          <p>Испанский, Валенсийский,<br>Русский, Украинский, Английский</p>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <div id="footer-slot"></div>
+        <div class="bio-data-item">
+          <strong>Деятельность</strong>
+          <p>Преподавание языков +<br>Веб-разработка</p>
+        </div>
+      </aside>
 
-</body>
-</html>
+      <!-- COLUMNA DERECHA: NARRATIVA -->
+      <div class="bio-content">
+        
+        <!-- Bloque 1 -->
+        <article class="editorial-block">
+          <h2>Как я работаю</h2>
+          <p>
+            Я работаю с уважением к процессам, ответственностью за каждое решение 
+            и прямой коммуникацией. Для меня важны структура, последовательность 
+            и качество работы как основа любого реального прогресса.
+          </p>
+        </article>
+
+        <!-- Bloque 2 -->
+        <article class="editorial-block">
+          <h2>Образование</h2>
+          <p>
+            Я преподаю испанский и валенсийский языки взрослым, уделяя особое внимание 
+            тем, кто является носителем других языков и культур.
+          </p>
+          <p>
+            В обучение я включаю стратегии социально-эмоционального интеллекта (<strong>SEL</strong>) 
+            и создаю позитивную среду: <strong>безопасность</strong>, ясность и устойчивый темп.
+            Особое внимание уделяю подготовке к официальным экзаменам, таким как 
+            <strong>DELE</strong> и <strong>EOI</strong>, интегрируя её в процесс <strong>фундаментального обучения</strong>.
+          </p>
+        </article>
+
+        <!-- Bloque 3 -->
+        <article class="editorial-block">
+          <h2>Технологии</h2>
+          <p>
+            Я разрабатываю веб-проекты с упором на <strong>реальную пользу</strong>, 
+            пользовательский опыт (UX) и <strong>чистый код</strong>, который понятен 
+            и пригоден для развития.
+          </p>
+          <p>
+            В данный момент я получаю профильное образование в области разработки приложений (FP) 
+            и создаю собственные проекты для закрепления технических навыков.
+          </p>
+        </article>
+
+        <!-- Bloque 4: COMUNICACIÓN (El Video) -->
+        <article class="editorial-block">
+          <h2>Коммуникация</h2>
+          <p>
+            Помимо кода и грамматики, я специализируюсь на эффективной передаче идей. 
+            Более <strong>6 лет</strong> я создаю профессиональный аудиовизуальный контент, 
+            выступая в роли ведущего и модератора в прямом эфире на русском и испанском языках.
+          </p>
+          <p>
+            Этот опыт позволяет мне приносить дополнительную ценность проектам, требующим 
+            публичности, обучения команд или создания корпоративных материалов.
+          </p>
+
+          <!-- Tarjeta de Video -->
+          <a href="https://www.youtube.com/watch?v=TU_ENLACE_REAL" target="_blank" class="video-card">
+            <div class="video-thumbnail-container">
+               <img src="/images/nazar-video-thumb.jpg" alt="Презентация Alegría Real Estate" class="video-thumbnail">
+               <div class="play-icon"></div>
+            </div>
+            <div class="video-caption">
+                <strong>Корпоративная презентация (Bilingual)</strong>
+                Пример профессиональной коммуникации для сектора недвижимости (Alegría Real Estate).
+            </div>
+          </a>
+        </article>
+
+        <!-- Bloque 5 -->
+        <article class="editorial-block">
+          <h2>Ценности</h2>
+          <p>
+            Я верю в отношения, основанные на <strong>доверии</strong>, и в <strong>критерий</strong> 
+            как форму уважения к людям и к самой работе.
+            Меня интересует то, что создается осознанно: шаг за шагом, с <strong>постоянством</strong
