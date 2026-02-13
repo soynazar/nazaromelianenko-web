@@ -5,10 +5,18 @@
   <title>About me — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/styles.css" />
+  
+  <!-- FAVICON -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
 </head>
@@ -18,82 +26,140 @@
   <div id="header-slot"></div>
   
   <main class="page">
-    <section class="container page-hero">
+    
+    <!-- HERO -->
+    <section class="container page-hero" style="padding-bottom: 2rem;">
       <h1>About me</h1>
       <p class="lead">
-        My professional path has been built at the intersection of education and technology—two 
-        distinct fields that share a common requirement: understanding deeply in order to advance with purpose.
+        My professional path has been built at the intersection of education and technology—two distinct fields that share a common requirement: understanding deeply in order to advance with purpose.
       </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>How I work</h2>
-        <p>
-          I work with respect for established processes, responsibility in every decision, 
-          and direct communication.
-        </p>
-        <p>
-          I value structure, consistency, and high-quality work as the foundation 
-          for any meaningful progress.
-        </p>
-      </div>
+    <!-- ASYMMETRIC GRID (Sidebar + Content) -->
+    <section class="container bio-grid">
+      
+      <!-- LEFT COLUMN: DATA (Sidebar) -->
+      <aside class="bio-sidebar">
+        <h3 class="sidebar-title">At a glance</h3>
+        
+        <div class="bio-data-item">
+          <strong>Location</strong>
+          <p>Spain<br>Online & In-person</p>
+        </div>
 
-      <div class="card">
-        <h2>Education</h2>
-        <p>
-          I teach Spanish and Valencian to adults, with a specialized focus on 
-          learners coming from diverse linguistic and cultural backgrounds.
-        </p>
-        <p>
-          My approach integrates Social-Emotional Learning (SEL) strategies within a 
-          Positive Learning Environment: ensuring safety, clarity, and a sustainable pace.
-        </p>
-        <p>
-          I also specialize in preparing students for official certifications like 
-          DELE and EOI, embedding test prep within a solid overall learning journey.
-        </p>
-      </div>
+        <div class="bio-data-item">
+          <strong>Languages</strong>
+          <p>Spanish, Valencian/Catalan,<br>Russian, Ukrainian, English</p>
+        </div>
 
-      <div class="card">
-        <h2>Technology</h2>
-        <p>
-          I develop web projects focused on real utility, user experience (UX), 
-          and clean code that is easy to understand and evolve.
-        </p>
-        <p>
-          I am currently pursuing professional training in Application Development (DAM) 
-          while building personal projects to refine my technical criteria and practice.
-        </p>
-      </div>
+        <div class="bio-data-item">
+          <strong>Work</strong>
+          <p>Language Teaching +<br>Web Development</p>
+        </div>
+      </aside>
 
-      <div class="card">
-        <h2>Values</h2>
-        <p>
-          I believe in relationships based on trust and in using clear criteria as a 
-          form of respect toward people and the work itself.
-        </p>
-        <p>
-          I am interested in what is built with intention: step by step, 
-          with consistency and high standards.
-        </p>
+      <!-- RIGHT COLUMN: NARRATIVE -->
+      <div class="bio-content">
+        
+        <!-- Block 1 -->
+        <article class="editorial-block">
+          <h2>How I work</h2>
+          <p>
+            I work with respect for established processes, responsibility in every decision, 
+            and direct communication. I value structure, consistency, and high-quality 
+            work as the foundation for any meaningful progress.
+          </p>
+        </article>
+
+        <!-- Block 2 -->
+        <article class="editorial-block">
+          <h2>Education</h2>
+          <p>
+            I teach Spanish and Valencian to adults, with a specialized focus on 
+            learners coming from diverse linguistic and cultural backgrounds.
+          </p>
+          <p>
+            I integrate Social-Emotional Learning (<strong>SEL</strong>) strategies and foster a 
+            positive learning environment: <strong>safety</strong>, clarity, and a sustainable pace.
+            I pay special attention to preparing for official certifications like 
+            <strong>DELE</strong> and <strong>EOI</strong>, embedding test prep within a <strong>solid learning</strong> journey.
+          </p>
+        </article>
+
+        <!-- Block 3 -->
+        <article class="editorial-block">
+          <h2>Technology</h2>
+          <p>
+            I develop web projects focused on <strong>real utility</strong>, user experience (UX), 
+            and <strong>clean code</strong> that is easy to understand and evolve.
+          </p>
+          <p>
+            I am currently pursuing professional training in Application Development (DAM) 
+            while building personal projects to refine my technical criteria and practice.
+          </p>
+        </article>
+
+        <!-- Block 4: COMMUNICATION (The Video) -->
+        <article class="editorial-block">
+          <h2>Communication</h2>
+          <p>
+            Beyond code and grammar, I specialize in the effective transmission of ideas. 
+            I have over <strong>6 years</strong> of experience creating professional audiovisual content, 
+            presenting, and moderating live broadcasts in both Russian and Spanish.
+          </p>
+          <p>
+            This facet allows me to add value to projects requiring public visibility, 
+            team training, or the creation of corporate materials.
+          </p>
+
+          <!-- Video Card -->
+          <a href="https://www.youtube.com/watch?v=aiOGJEh3veo" target="_blank" class="video-card">
+            <div class="video-thumbnail-container">
+               <img src="/images/nazar-video-thumb.webp" alt="Nazar presenting at Alegría Real Estate" class="video-thumbnail">
+               <div class="play-icon"></div>
+            </div>
+            <div class="video-caption">
+                <strong>Corporate Presentation (Bilingual)</strong>
+                Example of professional communication for the real estate sector (Alegría Real Estate).
+            </div>
+          </a>
+        </article>
+
+        <!-- Block 5 -->
+        <article class="editorial-block">
+          <h2>Values</h2>
+          <p>
+            I believe in relationships based on <strong>trust</strong> and in using clear <strong>criteria</strong> 
+            as a form of respect toward people and the work itself.
+            I am interested in what is built with intention: step by step, with <strong>consistency</strong> 
+            and high standards.
+          </p>
+        </article>
+
       </div>
     </section>
 
-    <section class="container page-section">
-      <div class="section-header">
-        <h2>At a glance</h2>
-        <p class="muted">A quick summary of my profile.</p>
+    <!-- FINAL CTA -->
+    <section class="container editorial-cta">
+      <h2>Want to talk?</h2>
+      <p>
+        If you are looking for classes, serious preparation, or a structured web project, 
+        write to me and we can discuss it.
+      </p>
+      
+      <div class="cta-stack">
+        <a class="cta-link-primary" href="contact.html">
+            Contact now
+        </a>
+        <a class="cta-link-secondary" href="index.html">
+            ← Back to home
+        </a>
       </div>
+    </section>
 
-      <div class="list-grid">
-        <div class="list-item">
-          <h3>Location</h3>
-          <p>Spain · Working online and in-person depending on the project.</p>
-        </div>
-        <div class="list-item">
-          <h3>Languages</h3>
-          <p>Spanish, Valencian/Catalan, Russian, Ukrainian, and English.</p>
-        </div>
-        <div class="list-item">
-          <h3>Expertise</h3>
+  </main>
+
+  <div id="footer-slot"></div>
+  
+</body>
+</html>
