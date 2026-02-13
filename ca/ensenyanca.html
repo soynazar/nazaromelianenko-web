@@ -3,24 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <title>Ensenyament · Idiomes — Nazar Omelianenko</title>
- <!-- FAVICON & BRANDING -->
-  <!-- 1. El .ico de la raíz (red de seguridad) -->
-  <link rel="icon" href="/favicon.ico" sizes="any">
-
-  <!-- 2. Los PNGs en su carpeta correcta -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
-  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
-  <link rel="manifest" href="/images/favicon/site.webmanifest">
-  <meta name="msapplication-TileColor" content="#f2f1ef">
-  <meta name="theme-color" content="#f2f1ef">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/styles.css" />
+  
+  <!-- FAVICON -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
 </head>
@@ -31,85 +27,136 @@
 
   <main class="page">
     
-    <!-- HERO (Mantenemos la coherencia con el Home) -->
-    <section class="container page-hero">
+    <!-- HERO -->
+    <section class="container page-hero" style="padding-bottom: 2rem;">
       <h1>Ensenyament · Idiomes</h1>
       <p class="lead">
-       Treballo amb persones que busquen un aprenentatge seriós,
+        Treballo amb persones que busquen un aprenentatge seriós, 
         adaptat al seu ritme i amb atenció al procés.
       </p>
     </section>
 
-    <!-- CONTENIDO EDITORIAL (Sin cajas, solo texto y aire) -->
-    <section class="container reading-container">
+    <!-- GRID ASIMÈTRIC (Igual que ES) -->
+    <section class="container bio-grid">
       
-      <!-- Bloque 1 -->
-      <article class="editorial-block">
-        <h2>Què imparteix</h2>
-        <p>
-        Imparteixo classes de <strong>castellà</strong> i <strong>valencià</strong>,
-          amb un enfocament especialitzat per a estudiants que provenen
-          de diferents entorns lingüístics i culturals.
-        </p>
-        <p>
-        Les classes són ideals tant per a principiants com per a aquells
-          que volen perfeccionar la seva fluïdesa i confiança a l’hora de parlar.
-        </p>
-      </article>
+      <!-- SIDEBAR: DADES CLAU -->
+      <aside class="bio-sidebar">
+        <h3 class="sidebar-title">Fitxa tècnica</h3>
+        
+        <div class="bio-data-item">
+          <strong>Públic</strong>
+          <p>Adults<br>Professionals</p>
+        </div>
 
-      <!-- Bloque 2 -->
-      <article class="editorial-block">
-        <h2>Metodologia</h2>
-        <p>
-     El meu mètode combina estructura, pràctica útil i un acompanyament basat
-          en un <strong>entorn d’aprenentatge positiu</strong> i en principis
-          d’<strong>intel·ligència emocional (SEL)</strong>.
-        </p>
-        <p>
-          Això significa aprendre sense estrès però amb exigència real,
-          superant barreres i mantenint una motivació constant.
-        </p>
-      </article>
+        <div class="bio-data-item">
+          <strong>Modalitat</strong>
+          <p>Online<br>Presencial (Consultar)</p>
+        </div>
 
-      <!-- Bloque 3 -->
-      <article class="editorial-block">
-        <h2>Preparació d’exàmens</h2>
-        <p>
-          Estic especialitzat en la preparació de certificacions oficials com
-          <strong>DELE</strong> i <strong>EOI</strong>, integrant l’estudi de l’examen
-          dins del procés real d’aprenentatge de la llengua.
-        </p>
-      </article>
+        <div class="bio-data-item">
+          <strong>Especialitat</strong>
+          <p>Preparació DELE / EOI<br>Gramàtica Cognitiva</p>
+        </div>
+      </aside>
 
-      <!-- Bloque 4 -->
-      <article class="editorial-block">
-        <h2>Format</h2>
-        <p>
-          Classes en línia amb materials de suport personalitzats. Treballo per objectius,
-          amb seguiment regular del progrés i un pla d’estudis realista.
-        </p>
-      </article>
+      <!-- CONTINGUT NARRATIU -->
+      <div class="bio-content">
+        
+        <article class="editorial-block">
+          <h2>Què imparteixo</h2>
+          <p>
+            Dono classes de <strong>castellà</strong> i <strong>valencià/català</strong>, 
+            amb un enfocament especialitzat per a estudiants que provenen de 
+            diferents entorns lingüístics i culturals.
+          </p>
+          <p>
+            Les classes són ideals tant per a principiants com per a aquells 
+            que busquen perfeccionar la seva fluïdesa i confiança en parlar.
+          </p>
+        </article>
 
+        <article class="editorial-block">
+          <h2>Metodologia</h2>
+          <p>
+            El meu mètode combina estructura, pràctica útil i un acompanyament basat 
+            en un <strong>Entorn d'Aprenentatge Positiu</strong> i principis 
+            d'<strong>Intel·ligència Emocional (SEL)</strong>.
+          </p>
+          <p>
+            Això significa aprendre sense estrès però amb exigència real, 
+            superant barreres i mantenint la motivació constant.
+          </p>
+        </article>
+
+        <article class="editorial-block">
+          <h2>Preparació d'exàmens</h2>
+          <p>
+            M'especialitzo en la preparació per a certificacions oficials com 
+            <strong>DELE</strong> i <strong>EOI</strong>, integrant l'estudi de 
+            l'examen en el procés d'aprenentatge real de la llengua.
+          </p>
+        </article>
+
+        <article class="editorial-block">
+          <h2>Format</h2>
+          <p>
+            Classes online amb materials de suport personalitzats. Treball per objectius, 
+            amb seguiment regular del progrés i un pla d'estudis realista.
+          </p>
+        </article>
+
+      </div>
     </section>
 
-   <!-- CTA FINAL (Editorial y Jerárquico) -->
-    <section class="container editorial-cta">
-      
-      <h2>T’interessa començar?</h2>
-      <p>Explica’m el teu nivell actual, el teu objectiu i la teva disponibilitat.</p>
-      
-      <div class="cta-stack">
-        <!-- Acción Principal: Grande y Clara -->
-        <a class="cta-link-primary" href="contacte.html">
-            Contactar ara
-        </a>
+    <!-- PANELL D'ACCIÓ I RESERVES (Integrat com a ES) -->
+    <section class="container" style="margin-top: 6rem; margin-bottom: 6rem;">
+        
+        <h2 style="font-family: var(--font-header); font-size: 2rem; margin-bottom: 2rem; color: var(--color-charcoal);">
+            Fes el següent pas
+        </h2>
 
-        <!-- Acción Secundaria: Discreta -->
-        <a class="cta-link-secondary" href="index.html">
-            ← Tornar a l’inici
-        </a>
-      </div>
+        <!-- Mini Bento Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
 
+            <!-- 1. RESERVA (Fosca/Premium) -->
+            <article class="bento-item" style="background-color: var(--color-charcoal); color: var(--color-arena); border: none;">
+                <div>
+                    <h3 style="color: var(--color-arena); margin-bottom: 0.5rem;">Reserva la teva classe</h3>
+                    <p style="color: rgba(242, 241, 239, 0.8); font-size: 0.95rem;">
+                        Accedeix a la meva agenda en temps real, tria l'horari que millor et vagi i assegura la teva plaça a l'instant.
+                    </p>
+                </div>
+                <!-- Enllaç al Calendar -->
+                <a href="https://calendar.app.google/BnS9UF5h7zEvaQhH6" target="_blank" class="button" style="border-color: rgba(255,255,255,0.3); color: white; margin-top: 2rem;">
+                    Veure disponibilitat i reservar
+                </a>
+            </article>
+
+            <!-- 2. MATERIALS -->
+            <article class="bento-item" style="border-color: var(--color-terracotta);">
+                <div>
+                    <div class="product-badge">Recursos</div>
+                    <h3>Materials d'estudi</h3>
+                    <p style="font-size: 0.95rem;">
+                        Guies visuals i esquemes per reforçar el teu aprenentatge de forma autònoma entre classes.
+                    </p>
+                </div>
+                <!-- Si tens pàgina de materials en ES/CA, canvia l'enllaç. Si no, apunta a la Home o RU -->
+                <a href="/ru/materiales.html" class="button">Veure materials disponibles</a>
+            </article>
+
+            <!-- 3. CONTACTE -->
+            <article class="bento-item">
+                <div>
+                    <h3>Tens dubtes?</h3>
+                    <p style="font-size: 0.95rem;">
+                        Si no tens clar el teu nivell o el pla que necessites, escriu-me abans de reservar.
+                    </p>
+                </div>
+                <a href="contacte.html" class="button">Anar al formulari</a>
+            </article>
+
+        </div>
     </section>
 
   </main>
