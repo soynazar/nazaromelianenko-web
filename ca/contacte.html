@@ -5,104 +5,112 @@
   <title>Contacte — Nazar Omelianenko</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css" />
-<script src="/js/include.js" defer></script>
-<script src="/js/lang-switch.js" defer></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/styles.css" />
+  
+  <!-- FAVICON -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
+  <script src="/js/include.js" defer></script>
+  <script src="/js/lang-switch.js" defer></script>
 </head>
 
 <body class="is-loading">
+
   <div id="header-slot"></div>
 
   <main class="page">
+    
+    <!-- HERO -->
     <section class="container page-hero">
-      <h1>Contacto</h1>
+      <h1>Contacte</h1>
       <p class="lead">
         Si vols parlar sobre classes, preparació DELE/EOI o un projecte web, 
-escriu-me i ho enfoquem amb claredat.
+        escriu-me i ho enfoquem amb claredat.
       </p>
     </section>
 
-    <section class="container page-grid">
-      <div class="card">
-        <h2>Missatge ràpid</h2>
-        <p class="muted">
-         Explica'm en 3 línies què necessites i en quin termini.
+    <!-- ESTRUCTURA DE 2 COLUMNES (Context + Acció) -->
+    <section class="container contact-layout">
+      
+      <!-- COLUMNA ESQUERRA: Context -->
+      <div class="contact-info">
+        <h3>Contacte directe</h3>
+        <a href="mailto:nazar.dezign@gmail.com" class="contact-email">
+            nazar.dezign@gmail.com
+        </a>
+
+        <h3>Idioma</h3>
+        <p class="contact-note">
+            Pots escriure'm en <strong>català/valencià, espanyol, rus o anglès</strong>. 
+            M'adapto a la teva resposta des del primer moment.
         </p>
 
-        <form class="form" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
-          <label class="label" for="name">Nom</label>
-          <input class="input" id="name" name="Nombre" type="text" placeholder="Tu nombre" required />
-
-          <label class="label" for="email">Email</label>
-          <input class="input" id="email" name="Email" type="email" placeholder="tu@email.com" required />
-
-          <label class="label" for="topic">Tema</label>
-          <select class="input" id="topic" name="Tema" required>
-            <option value="" disabled selected>Seleccioneu una opció</option>
-            <option>Classes d'espanyol</option>
-            <option>Classes de valencià</option>
-            <option>Preparació DELE</option>
-            <option>Preparació EOI</option>
-            <option>Projecte web</option>
-            <option>Un altre</option>
-          </select>
-
-          <label class="label" for="message">Missatge</label>
-          <textarea class="input textarea" id="message" name="Mensaje" rows="6"
-            placeholder="Objetivo, nivel (si es idiomas), horario aproximado, contexto, plazo…"
-            required></textarea>
-
-          <button class="button" type="submit">Enviar</button>
-          <p class="form-note muted">
-           Aquest formulari obre el teu client de correu. Si prefereixes, fes servir els enllaços de sota.
-          </p>
-        </form>
-      </div>
-
-      <div class="card">
-        <h2>Contacte directe</h2>
-        <p class="muted">Opcions senzilles, sense embuts.</p>
-
-        <div class="contact-list">
-          <div class="contact-item">
-            <h3>Email</h3>
-            <p><a class="link" href="mailto:nazar.dezign@gmail.com">nazar.dezign@gmail.com</a></p>
-          </div>
-
-          <div class="contact-item">
-            <h3>Calendario (opcional)</h3>
-            <p class="muted"> un enlace a reservas.</p>
-            <p><a class="link" href="#" onclick="return false;">Añadir enlace</a></p>
-          </div>
-
-          <div class="contact-item">
-            <h3>Redes (opcional)</h3>
-            <p class="muted"> enlaces </p>
-            <p>
-              <a class="link" href="#" onclick="return false;">YouTube</a> ·
-              <a class="link" href="#" onclick="return false;">Instagram</a> ·
-              <a class="link" href="#" onclick="return false;">LinkedIn</a>
+        <!-- Bloque Calendario (Coherencia con ES) -->
+        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line);">
+            <h3>A punt per començar?</h3>
+            <p class="contact-note" style="margin-bottom: 1rem;">
+                Si ja tens clar el teu objectiu, pots saltar-te l'email i reservar la teva sessió directament.
             </p>
-          </div>
-
-          <div class="contact-item">
-            <h3>Idioma del primer missatge</h3>
-            <p class="muted">
-              Pots escriure'm en espanyol, català o rus. M'adapto des del primer contacte.
-            </p>
-          </div>
-        </div>
-
-        <div class="mini-cta">
-          <a class="button secondary" href="index.html">Tornar a l'inici</a>
+            <a href="https://calendar.app.google/BnS9UF5h7zEvaQhH6" target="_blank" class="link" style="font-weight: 500; color: var(--color-terracotta);">
+                Agendar classe ara →
+            </a>
         </div>
       </div>
+
+      <!-- COLUMNA DRETA: Formulari Editorial -->
+      <form class="form-editorial" action="mailto:nazar.dezign@gmail.com" method="post" enctype="text/plain">
+        
+        <!-- Nom -->
+        <div class="form-group">
+            <label class="form-label" for="name">El teu nom</label>
+            <input class="form-line" id="name" name="Nom" type="text" placeholder="Com et dius" required />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label class="form-label" for="email">El teu email</label>
+            <input class="form-line" id="email" name="Email" type="email" placeholder="Per poder respondre't" required />
+        </div>
+
+        <!-- Tema -->
+        <div class="form-group">
+            <label class="form-label" for="topic">Sobre què vols parlar?</label>
+            <select class="form-line" id="topic" name="Tema" required>
+                <option value="" disabled selected>Selecciona una opció</option>
+                <option>Classes d'espanyol / valencià</option>
+                <option>Preparació Exàmens (DELE/EOI)</option>
+                <option>Projecte Web / Desenvolupament</option>
+                <option>Col·laboració professional</option>
+                <option>Altre assumpte</option>
+            </select>
+        </div>
+
+        <!-- Missatge -->
+        <div class="form-group">
+            <label class="form-label" for="message">Explica'm detalls</label>
+            <textarea class="form-line" id="message" name="Missatge" rows="4" 
+                placeholder="Objectius, nivell actual, terminis o context del projecte..." required></textarea>
+        </div>
+
+        <!-- Botó -->
+        <button class="button" type="submit" style="margin-top: 1rem;">
+            Enviar missatge
+        </button>
+
+      </form>
+
     </section>
+
   </main>
-  
+
   <div id="footer-slot"></div>
+
 </body>
 </html>
-
