@@ -575,7 +575,54 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
     animation: imageReveal 1.5s var(--ease-editorial) forwards;
     animation-delay: 0.5s; /* Espera a que el usuario se asiente */
 }
+/* =========================================
+   15. GUMROAD OVERRIDE (Forzar Estilo Editorial)
+   ========================================= */
 
+/* Anulamos los estilos feos que inyecta Gumroad */
+.gumroad-button {
+    background-image: none !important; /* Quita el logo de Gumroad */
+    background-color: transparent !important; /* Quita el fondo gris */
+    box-shadow: none !important; /* Quita sombras raras */
+    border: none !important;
+    border-bottom: 1px solid rgba(26,26,26,0.2) !important; /* Recupera nuestra línea fina */
+    
+    /* Recuperamos nuestra tipografía */
+    color: var(--color-charcoal) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    
+    /* Ajustes de espaciado */
+    padding: 0 !important;
+    padding-bottom: 2px !important;
+    margin-top: 0 !important;
+    border-radius: 0 !important;
+    
+    display: inline-flex !important;
+    align-items: center !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Efecto Hover (Humanidad) */
+.gumroad-button:hover {
+    color: var(--color-terracotta) !important;
+    border-bottom-color: var(--color-terracotta) !important;
+    transform: translateY(-1px);
+}
+
+/* Añadimos nuestra flecha característica */
+.gumroad-button::after {
+    content: "→";
+    display: inline-block;
+    margin-left: 8px;
+    color: var(--color-terracotta);
+    transition: transform 0.3s ease;
+}
+
+.gumroad-button:hover::after {
+    transform: translateX(4px);
+}
 /* =========================================
    ACCESIBILIDAD (Respeto al usuario)
    Si el usuario tiene desactivado el movimiento en su OS, lo respetamos.
