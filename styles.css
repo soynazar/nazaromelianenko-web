@@ -623,6 +623,91 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .gumroad-button:hover::after {
     transform: translateX(4px);
 }
+
+/* =========================================
+   GALERÍA DE PRODUCTOS (2 Columnas)
+   ========================================= */
+
+.products-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    gap: 2rem; /* Espacio entre tarjetas */
+    margin-bottom: 4rem;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Para que todas tengan la misma altura */
+    border: 1px solid rgba(26, 26, 26, 0.08);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-terracotta);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.product-image-container {
+    width: 100%;
+    aspect-ratio: 4/5; /* Formato vertical elegante */
+    background-color: #f4f4f4;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.03);
+}
+
+.product-info {
+    flex: 1; /* Empuja el botón hacia abajo */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+    color: var(--color-charcoal);
+}
+
+.product-info p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.product-footer {
+    margin-top: auto; /* Pega el precio y botón al final */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* En móvil, volvemos a una sola columna */
+@media (max-width: 768px) {
+    .products-gallery {
+        grid-template-columns: 1fr;
+    }
+}
 /* =========================================
    ACCESIBILIDAD (Respeto al usuario)
    Si el usuario tiene desactivado el movimiento en su OS, lo respetamos.
