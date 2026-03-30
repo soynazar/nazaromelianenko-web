@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Nazar Omelianenko — Образование и технологии</title>
-<!-- FAVICON & BRANDING -->
-  <!-- 1. El .ico de la raíz (red de seguridad) -->
-  <link rel="icon" href="/favicon.ico" sizes="any">
-
-  <!-- 2. Los PNGs en su carpeta correcta -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
-  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
-  <link rel="manifest" href="/images/favicon/site.webmanifest">
-  <meta name="msapplication-TileColor" content="#f2f1ef">
-  <meta name="theme-color" content="#f2f1ef">
-
+  
+  <!-- ================= SEO АКТИВИРОВАН ================= -->
+  <title>Nazar Omelianenko — Преподаватель испанского языка | Когнитивная грамматика</title>
+  <meta name="description" content="Уроки испанского языка онлайн с академическим подходом для русскоязычных профессионалов. Подготовка к DELE и EOI на базе когнитивной грамматики и прагматики." />
+  <meta name="keywords" content="преподаватель испанского, испанский для русскоговорящих, когнитивная грамматика, подготовка DELE, бизнес испанский B2B, EOI, испанский язык онлайн" />
+  <!-- =================================================== -->
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/styles.css" />
+  
+  <!-- FAVICON -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
 </head>
@@ -30,50 +32,124 @@
 
   <div id="header-slot"></div>
 
- <main class="page">
-    <section class="container page-hero">
-      <h1>Я работаю в сфере образования и технологий, объединяя обучение и новейше разработки с системным подходом.</h1>
-    </section>
-
-    <!-- EL NUEVO GRID EDITORIAL (2 Columnas Maestras) -->
-    <section class="container bento-grid">
+  <main class="page">
+    
+    <!-- БЛОК 1: HERO (Текст + ФОТО) -->
+    <!-- Утонченный шрифт (font-weight: 300) и плотный межстрочный интервал (1.12) -->
+    <section class="container" style="display: flex; flex-wrap: wrap; gap: 4rem; align-items: center; margin-top: 4rem; margin-bottom: 8rem;">
       
-      <!-- COLUMNA 1: ENSEÑANZA -->
-      <article class="bento-item">
-        <div>
-            <h3>Обучение · Языки</h3>
-            <p>Я работаю с людьми, которые стремятся к серьёзному обучению, адаптированному к их темпу и с вниманием к процессу.</p>
+      <div style="flex: 1 1 500px;">
+        <h1 style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.12; margin-bottom: 1.5rem; letter-spacing: -0.03em; color: var(--color-charcoal); font-weight: 300;">
+          Испанский язык не заучивают.<br>Его понимают.
+        </h1>
+        <p style="font-size: 1.15rem; line-height: 1.6; color: var(--color-slate); margin-bottom: 2.5rem; max-width: 90%;">
+          Уроки испанского с реальной лингвистической базой для тех, кто хочет говорить точно и без страха. Академический подход, прямое общение, без пустых формул.
+        </p>
+        <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+          <a href="contacto.html" class="cta-link-primary" style="font-size: 1.1rem; border-bottom-width: 2px;">Запросить диагностическую сессию</a>
+          <a href="metodologia.html" class="cta-link-secondary" style="font-size: 1rem;">Изучить метод →</a>
         </div>
-        <!-- El botón ahora es un enlace elegante -->
-        <a href="ensenanza.html" class="button">Ознакомиться с образовательным подходом</a>
-      </article>
+      </div>
 
-      <!-- COLUMNA 2: DESARROLLO -->
-      <article class="bento-item">
-        <div>
-            <h3>Разработка · Технологии</h3>
-            <p>Я разрабатываю проекты, требующие ясных решений, прочных критериев и фокуса на самом важном.</p>
+      <!-- Фотография -->
+      <div style="flex: 1 1 350px;">
+        <div style="aspect-ratio: 4/5; border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid rgba(26,26,26,0.05);">
+          <img src="/images/nazar-perfil.webp" alt="Назар Омельяненко" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%);">
         </div>
-        <a href="desarrollo.html" class="button">Ознакомиться с техническим подходом</a>
-      </article>
-
-      <!-- SECCIÓN INFERIOR: FOTO Y CITA -->
-      <!-- Foto a la izquierda -->
-      <article class="bento-item bento-hero-service">
-        <div class="bento-hero-image-container">
-           <img src="/images/nazar-perfil.webp" alt="Nazar Omelianenko" class="bento-hero-img">
-        </div>
-      </article>
-
-      <!-- Cita a la derecha (Sin fondo negro) -->
-      <article class="bento-item bento-philosophy">
-        <p class="quote">«Язык — это не набор правил, а способ видеть мир»</p>
-      </article>
+      </div>
 
     </section>
-</main>
-  
-  <div id="footer-slot"></div>
 
-</body>
-</html>
+    <!-- БЛОК 2: АУДИТОРИЯ -->
+    <section class="container" style="max-width: 800px; margin: 0 auto 8rem auto;">
+      <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--color-charcoal); font-weight: 400;">Для тех, кому испанский важен по-настоящему</h2>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-charcoal); margin-bottom: 1.5rem;">
+        Я работаю со взрослыми, которые изучают испанский с четкой целью: точно общаться в профессиональной среде, сдать официальный экзамен или понять язык через его реальную структуру, а не поверхностно.
+      </p>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-charcoal); margin-bottom: 1.5rem;">
+        У меня есть специфический опыт работы с носителями <strong>русского и украинского</strong> языков — языков, которые разделяют с испанским определенные паттерны мышления и расходятся в других. Знание этих различий меняет подход к обучению.
+      </p>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-charcoal);">
+        Если вы ищете преподавателя, который объясняет причину каждого явления и адаптирует метод к тому, как вы мыслите — вы в правильном месте.
+      </p>
+    </section>
+
+    <!-- БЛОК 3: УСЛУГИ (Идеально выровненные кнопки) -->
+    <section class="container" style="margin-bottom: 8rem;">
+      <h2 style="font-size: 2rem; margin-bottom: 3rem; text-align: center; color: var(--color-charcoal); font-weight: 400;">Как я работаю</h2>
+      
+      <div class="page-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: stretch;">
+        
+        <!-- Услуга 1 -->
+        <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
+            <div style="flex-grow: 1;">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Индивидуальные занятия</h3>
+                <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;">
+                    Для взрослых и профессионалов, которые хотят прогрессировать системно и без потери времени. Онлайн-уроки, авторские материалы, реальное сопровождение между сессиями.
+                </p>
+            </div>
+            <a href="ensenanza.html" class="button" style="margin-top: auto;">Учебный план</a>
+        </article>
+
+        <!-- Услуга 2 -->
+        <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
+            <div style="flex-grow: 1;">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Подготовка к DELE и EOI</h3>
+                <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;">
+                    Интегрирована в реальное изучение языка, а не как симуляция экзамена. Цель — чтобы вы сдали, потому что владеете языком, а не потому что заучили формат.
+                </p>
+            </div>
+            <a href="ensenanza.html" class="button" style="margin-top: auto;">Подробнее об экзаменах</a>
+        </article>
+
+        <!-- Услуга 3 -->
+        <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
+            <div style="flex-grow: 1;">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Лингвистический консалтинг B2B</h3>
+                <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;">
+                    Обучение испанскому для команд, консультирование по общению с испаноязычными или русскоязычными клиентами, адаптация контента с учетом культурной специфики.
+                </p>
+            </div>
+            <a href="contacto.html" class="button" style="margin-top: auto;">Услуги для организаций</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- БЛОК 4: МЕТОДОЛОГИЯ -->
+    <section class="container" style="max-width: 800px; margin: 0 auto 6rem auto;">
+      <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--color-charcoal); font-weight: 400;">Метод, построенный на лингвистике, а не на интуиции</h2>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-charcoal); margin-bottom: 1.5rem;">
+        То, как я объясняю испанский, объединяет современные лингвистические исследования о том, как усваиваются языки: когнитивная грамматика, прагматика, психолингвистика и анализ реального использования языка.
+      </p>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-charcoal); margin-bottom: 2.5rem;">
+        Это не означает скучных теоретических лекций. Это значит, что <strong>за каждым объяснением стоит причина</strong>, упражнения разработаны так, чтобы язык встроился в ваш образ мышления, и вы не теряете время на неработающие правила.
+      </p>
+      <a href="metodologia.html" class="cta-link-primary">Подробнее о методе</a>
+    </section>
+
+    <!-- БЛОК 5A: ИНСТИТУЦИОНАЛЬНЫЙ АВТОРИТЕТ -->
+    <div class="credentials-banner">
+        <div class="container">
+            <h3 class="credentials-title">Упоминания и сотрудничество</h3>
+            <div class="credentials-list">
+                <a href="https://open.spotify.com/episode/6zFLQ0yJ2obgsJwtsi5MJR" target="_blank" class="credential-item">
+                    <svg class="credential-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                    Podcast EOI Torrevieja
+                </a>
+                <a href="sobre-mi.html" class="credential-item">
+                    <svg class="credential-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    Alegría Real Estate
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОК 5B: СОЦИАЛЬНОЕ ДОКАЗАТЕЛЬСТВО (Твои новые отзывы!) -->
+    <section class="container testimonials-section reading-container" style="max-width: 900px; margin: 0 auto; border: none; padding-top: 2rem;">
+        <h2 style="text-align: center; margin-bottom: 4rem; font-weight: 400;">Результаты моих студентов</h2>
+        
+        <div class="testimonial-grid">
+            <!-- Кейс 1 -->
+            <div class="testimonial-item">
+                <p class="testimonial-quote">«Всего две консультации по подготовке к публичному выступлению привели к тому, что я получила предложение о постоянном сотрудничестве в качестве ведущей. Этот кейс наглядно демонстрирует, как профессионал
