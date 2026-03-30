@@ -365,6 +365,66 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .footer-inner { display: flex; justify-content: center; align-items: center; gap: 1.5rem; }
 
 /* =========================================
+   TESTIMONIOS EDITORIALES (3 Columnas Flotantes)
+   ========================================= */
+.testimonials-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    border-top: 1px solid var(--line);
+    margin-top: 4rem;
+}
+
+.testimonial-grid {
+    display: grid;
+    /* Esto fuerza exactamente 3 columnas horizontales en PC */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 4rem; /* Mucho aire entre los 3 bloques */
+    align-items: start;
+}
+
+.testimonial-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Separación entre la cita y el autor */
+}
+
+.testimonial-quote {
+    font-family: var(--font-header);
+    font-style: italic; /* Aquí aplicamos la cursiva */
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--color-charcoal);
+    margin: 0;
+}
+
+.testimonial-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.testimonial-author {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-charcoal);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.testimonial-context {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-terracotta);
+}
+
+/* OJO: Para que en móvil no se aplasten, añade esta regla dentro de tu @media (max-width: 768px) existente al final del archivo: */
+/* 
+    .testimonial-grid { grid-template-columns: 1fr !important; gap: 3rem; }
+*/
+
+/* =========================================
    13. RESPONSIVE (MÓVIL)
    ========================================= */
 @media (max-width: 768px) {
