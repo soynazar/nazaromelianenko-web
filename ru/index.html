@@ -32,31 +32,35 @@
 
   <main class="page">
     
-    <!-- БЛОК 1: HERO (Быстрая конверсия и бронирование) -->
+    <!-- БЛОК 1: HERO (Исправленная структура и кнопки) -->
     <section class="container" style="display: flex; flex-wrap: wrap; gap: 4rem; align-items: center; margin-top: 4rem; margin-bottom: 4rem;">
       
-      <!-- Левая часть: Текст и Прямое бронирование -->
+      <!-- Левая часть -->
       <div style="flex: 1 1 500px;">
         <h1 style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.12; margin-bottom: 1.5rem; letter-spacing: -0.03em; color: var(--color-charcoal); font-weight: 300;">
           Испанский язык не заучивают.<br>Его понимают.
         </h1>
         <p style="font-size: 1.15rem; line-height: 1.6; color: var(--color-slate); margin-bottom: 2.5rem; max-width: 90%;">
-          Академический подход для тех, кто хочет говорить точно — в профессиональной среде, на экзамене, в реальной жизни.
+          Уроки испанского с реальной лингвистической базой для тех, кто хочет говорить точно и без страха. Академический подход, прямое общение, без пустых формул.
         </p>
         
-        <!-- НОВЫЙ БЛОК БРОНИРОВАНИЯ (UX Hospitality) -->
-   <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
-                <!-- Кнопка бронирования -->
+        <!-- БЛОК БРОНИРОВАНИЯ И МАТЕРИАЛОВ -->
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line);">
+            <div style="display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap;">
+                
+                <!-- Кнопка 1 (Резерв) -->
                 <a href="https://calendar.app.google/BnS9UF5h7zEvaQhH6" target="_blank" class="cta-link-primary" style="font-size: 1.1rem; border-bottom-width: 2px;">
                     Забронировать занятие
                 </a>
                 
-                <!-- Кнопка материалов (С анимацией) -->
-                <!-- Класс 'button' автоматически добавит анимированную стрелку -->
-                <a href="materiales.html" class="button" style="margin-top: 0; font-size: 1rem;">
+                <!-- Кнопка 2 (Материалы - ТЕПЕРЬ ИДЕНТИЧНА ПЕРВОЙ) -->
+                <a href="materiales.html" class="cta-link-primary" style="font-size: 1.1rem; border-bottom-width: 2px;">
                     Авторские материалы
                 </a>
+
             </div>
+        </div>
+      </div>
 
       <!-- Правая часть: Фотография -->
       <div style="flex: 1 1 350px;">
@@ -67,11 +71,10 @@
 
     </section>
 
-    <!-- БЛОК 2: ИНСТИТУЦИОНАЛЬНЫЙ АВТОРИТЕТ (Сразу после Hero) -->
-    <!-- Подняли вверх, чтобы повысить доверие с первых секунд -->
+    <!-- БЛОК 2: ИНСТИТУЦИОНАЛЬНЫЙ АВТОРИТЕТ -->
     <div class="credentials-banner" style="margin-top: 0; margin-bottom: 6rem;">
         <div class="container">
-            <h3 class="credentials-title">Cотрудничество</h3>
+            <h3 class="credentials-title">Упоминания и сотрудничество</h3>
             <div class="credentials-list">
                 <a href="https://open.spotify.com/episode/6zFLQ0yJ2obgsJwtsi5MJR" target="_blank" class="credential-item">
                     <svg class="credential-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
@@ -96,13 +99,12 @@
       </p>
     </section>
 
-    <!-- БЛОК 4: УСЛУГИ (4 Карточки = 2х2 Идеальный квадрат) -->
+    <!-- БЛОК 4: УСЛУГИ -->
     <section class="container" style="margin-bottom: 8rem;">
       <h2 style="font-size: 2rem; margin-bottom: 3rem; text-align: center; color: var(--color-charcoal); font-weight: 400;">Как я работаю</h2>
       
       <div class="page-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); align-items: stretch;">
         
-        <!-- Услуга 1 -->
         <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
             <div style="flex-grow: 1;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Индивидуальные занятия</h3>
@@ -113,7 +115,6 @@
             <a href="ensenanza.html" class="button" style="margin-top: auto;">Учебный план</a>
         </article>
 
-        <!-- Услуга 2 -->
         <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
             <div style="flex-grow: 1;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Подготовка к DELE и EOI</h3>
@@ -124,7 +125,6 @@
             <a href="ensenanza.html" class="button" style="margin-top: auto;">Подробнее об экзаменах</a>
         </article>
 
-        <!-- Услуга 3 -->
         <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
             <div style="flex-grow: 1;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Лингвистический консалтинг B2B</h3>
@@ -135,7 +135,6 @@
             <a href="contacto.html" class="button" style="margin-top: auto;">Услуги для организаций</a>
         </article>
 
-        <!-- Услуга 4 (Материалы) -->
         <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%; border-color: var(--color-terracotta);">
             <div style="flex-grow: 1;">
                 <div class="product-badge" style="margin-bottom: 0.5rem;">PDF & Руководства</div>
@@ -159,15 +158,11 @@
       <a href="metodologia.html" class="cta-link-primary">Изучить метод подробно</a>
     </section>
 
-  <!-- БЛОК 6: СОЦИАЛЬНОЕ ДОКАЗАТЕЛЬСТВО (Отзывы) -->
-    <section class="container testimonials-section">
-        <h2 style="text-align: center; margin-bottom: 4rem; font-weight: 400; font-size: 2rem; color: var(--color-charcoal);">
-            Результаты моих студентов
-        </h2>
+    <!-- БЛОК 6: ОТЗЫВЫ -->
+    <section class="container testimonials-section" style="max-width: 1000px; margin: 0 auto; border-top: 1px solid var(--line); padding-top: 4rem;">
+        <h2 style="text-align: center; margin-bottom: 4rem; font-weight: 400;">Результаты моих студентов</h2>
         
         <div class="testimonial-grid">
-            
-            <!-- Кейс 1 -->
             <div class="testimonial-item">
                 <p class="testimonial-quote">«Всего две консультации по подготовке к публичному выступлению привели к тому, что я получила предложение о постоянном сотрудничестве в качестве ведущей.»</p>
                 <div class="testimonial-meta">
@@ -176,7 +171,6 @@
                 </div>
             </div>
 
-            <!-- Кейс 2 -->
             <div class="testimonial-item">
                 <p class="testimonial-quote">«Моя самая искренняя благодарность! Сдать экзамен на уровень C1 — это огромный шаг, и без твоей помощи, структуры и поддержки это было бы просто невозможно.»</p>
                 <div class="testimonial-meta">
@@ -185,7 +179,6 @@
                 </div>
             </div>
             
-            <!-- Кейс 3 -->
             <div class="testimonial-item">
                 <p class="testimonial-quote">«Я сдала экзамен в EOI со средним баллом 9.0 (Apto)! До сих пор не верю, что смогла добиться такого результата. Отдельное спасибо за фундаментальную подготовку.»</p>
                 <div class="testimonial-meta">
@@ -193,21 +186,23 @@
                     <span class="testimonial-context">Испанский и Валенсийский (B1/B2)</span>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- БЛОК 7: CTA ФИНАЛ -->
     <section class="container editorial-cta" style="margin-top: 8rem; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
-      <h2 style="font-size: 2.2rem; margin-bottom: 1rem; font-weight: 400;">Остались вопросы?</h2>
+      <h2 style="font-size: 2.2rem; margin-bottom: 1rem; font-weight: 400;">Первый шаг — это разговор</h2>
       <p style="font-size: 1.1rem; margin-bottom: 3rem; color: var(--muted);">
-        Не уверены в своем уровне или вам нужен особый план подготовки? 
-        Запросите диагностическую сессию, и мы всё обсудим.
+        Расскажите мне о вашем текущем уровне, целях и сроках. 
+        В течение 24 часов я отвечу с конкретным предложением.
       </p>
       
-      <div style="display: flex; justify-content: center;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
         <a class="cta-link-primary" href="contacto.html" style="font-size: 1.5rem;">
-            Запросить диагностическую сессию
+            Написать сейчас
+        </a>
+        <a class="cta-link-secondary" href="https://calendar.app.google/BnS9UF5h7zEvaQhH6" target="_blank">
+            Или забронировать сессию напрямую →
         </a>
       </div>
     </section>
