@@ -15,6 +15,9 @@
   <meta name="msapplication-TileColor" content="#f2f1ef">
   <meta name="theme-color" content="#f2f1ef">
 
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+        <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,62 +111,36 @@
     </section>
 
    <!-- PANEL DE ACCIÓN Y RESERVAS (RU) - VERSIÓN EDITORIAL LIMPIA -->
-    <section class="container" style="margin-top: 8rem; margin-bottom: 6rem;">
-        
-        <h2 style="font-family: var(--font-header); font-size: 2rem; margin-bottom: 3rem; color: var(--color-charcoal); border-top: 1px solid var(--line); padding-top: 2rem;">
-            Сделайте следующий шаг
-        </h2>
+  <section class="container booking-section">
 
-        <!-- Grid Editorial (Sin cajas, solo contenido) -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
-
-            <!-- 1. RESERVA (El Protagonista) -->
-            <article class="bento-item" style="padding: 0;">
-                <div>
-                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: var(--color-charcoal);">
-                        Забронировать урок
-                    </h3>
-                    <p style="font-size: 1rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem;">
-                        Доступ к моему календарю в реальном времени. Выберите удобное время и закрепите за собой место мгновенно.
-                    </p>
-                </div>
-                <!-- Enlace estilo Firma (Más elegante que un botón) -->
-                <a href="https://calendly.com/nazar-dezign/clase-individual" target="_blank" class="cta-link-primary">
-                    Выбрать время
-                </a>
-            </article>
-
-            <!-- 2. MATERIALES -->
-            <article class="bento-item" style="padding: 0;">
-                <div>
-                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: var(--color-charcoal);">
-                        Материалы
-                    </h3>
-                    <p style="font-size: 1rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem;">
-                        Визуальные гиды и схемы для самостоятельного изучения. Скачайте бесплатный образец.
-                    </p>
-                </div>
-                <a href="materiales.html" class="button" style="margin-top: 0;">
-                    Перейти к материалам
-                </a>
-            </article>
-
-            <!-- 3. CONTACTO -->
-            <article class="bento-item" style="padding: 0;">
-                <div>
-                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: var(--color-charcoal);">
-                        Есть вопросы?
-                    </h3>
-                    <p style="font-size: 1rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem;">
-                        Если вы не уверены в своем уровне или плане обучения, напишите мне перед бронированием.
-                    </p>
-                </div>
-                <a href="contacto.html" class="button" style="margin-top: 0;">
-                    Написать сообщение
-                </a>
-            </article>
-
+    <div class="booking-header">
+        <div>
+            <h2>Готовы начать?</h2>
+            <p>
+                Выберите удобное время, завершите оплату — и сразу получите 
+                подтверждение с ссылкой на Google Meet. Без ожиданий.
+            </p>
         </div>
+        <div class="booking-price-card">
+            <span class="booking-price-amount">35€</span>
+            <span class="booking-price-detail">индивидуальное занятие · 60 мин</span>
+            <span class="booking-price-stripe">Безопасная оплата через Stripe</span>
+        </div>
+    </div>
+
+    <div class="booking-widget-wrapper">
+        <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/nazar-dezign/clase-individual?hide_gdpr_banner=1&background_color=f2f1ef&text_color=1a1a1a&primary_color=e2725b">
+        </div>
+    </div>
+
+    <p class="booking-note">
+        Уже занимаетесь со мной? Используйте персональную ссылку, которую я вам отправил.
+    </p>
+
+</section>
+
 
 
   </main>
