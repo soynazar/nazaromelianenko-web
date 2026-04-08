@@ -944,8 +944,8 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 }
 
 .calendly-inline-widget {
-    min-width: 320px;
-    height: 700px;
+    min-width: 100%;
+    height: 1000px;
     width: 100%;
 }
 
