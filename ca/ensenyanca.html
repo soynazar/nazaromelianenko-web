@@ -9,7 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/styles.css" />
-  
+   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+        <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
   <!-- FAVICON -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
@@ -109,24 +111,35 @@
     </section>
 
   <!-- CTA FINAL (Editorial i Jeràrquic) -->
-    <section class="container editorial-cta">
-      
-      <h2>T'interessa començar?</h2>
-      <p>Explica'm el teu nivell actual, el teu objectiu i la teva disponibilitat.</p>
-      
-      <div class="cta-stack">
-        <!-- Acció Principal -->
-        <a class="cta-link-primary" href="contacte.html">
-            Contactar ara
-        </a>
+   <section class="container booking-section">
 
-        <!-- Acció Secundària -->
-        <a class="cta-link-secondary" href="index.html">
-            ← Tornar a l'inici
-        </a>
-      </div>
+    <div class="booking-header">
+        <div>
+            <h2>Llest per començar?</h2>
+            <p>
+                Tria un horari, completa el pagament i rebràs la confirmació 
+                amb l'enllaç de Google Meet a l'instant. Sense esperes.
+            </p>
+        </div>
+        <div class="booking-price-card">
+            <span class="booking-price-amount">35€</span>
+            <span class="booking-price-detail">sessió individual · 60 min</span>
+            <span class="booking-price-stripe">Pagament segur via Stripe</span>
+        </div>
+    </div>
 
-    </section>
+    <div class="booking-widget-wrapper">
+        <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/nazar-dezign/clase-individual?hide_gdpr_banner=1&background_color=f2f1ef&text_color=1a1a1a&primary_color=e2725b">
+        </div>
+    </div>
+
+    <p class="booking-note">
+        Ja ets alumne? Fes servir l'enllaç personalitzat que et vaig enviar per reservar la teva propera classe.
+    </p>
+
+</section>
   </main>
 
   <div id="footer-slot"></div>
