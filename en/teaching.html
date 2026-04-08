@@ -14,6 +14,8 @@
   <link rel="manifest" href="/images/favicon/site.webmanifest">
   <meta name="msapplication-TileColor" content="#f2f1ef">
   <meta name="theme-color" content="#f2f1ef">
+ <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+        <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,15 +113,37 @@
     </section>
 
     <!-- CTA FINAL (Alineado) -->
-    <section class="container editorial-cta">
-      <h2>Interested in getting started?</h2>
-      <p>Tell me about your current level, your goal, and your availability.</p>
-      
-      <div class="cta-stack">
-        <a class="cta-link-primary" href="contact.html">Contact now</a>
-        <a class="cta-link-secondary" href="index.html">← Back to home</a>
-      </div>
-    </section>
+  <section class="container booking-section">
+
+    <div class="booking-header">
+        <div>
+            <h2>Ready to get started?</h2>
+            <p>
+                Pick a time, complete your payment, and you'll receive 
+                instant confirmation with your Google Meet link. No waiting.
+            </p>
+        </div>
+        <div class="booking-price-card">
+            <span class="booking-price-amount">€35</span>
+            <span class="booking-price-detail">individual session · 60 min</span>
+            <span class="booking-price-stripe">Secure payment via Stripe</span>
+        </div>
+    </div>
+
+    <div class="booking-widget-wrapper">
+        <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/nazar-dezign/clase-individual?hide_gdpr_banner=1&background_color=f2f1ef&text_color=1a1a1a&primary_color=e2725b">
+        </div>
+    </div>
+
+    <p class="booking-note">
+        Already a student? Use the personal link I sent you to book your next class.
+    </p>
+
+</section>
+
+
 
   </main>
 
