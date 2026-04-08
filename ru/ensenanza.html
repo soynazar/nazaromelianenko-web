@@ -111,39 +111,49 @@
     </section>
 
    <!-- PANEL DE ACCIÓN Y RESERVAS (RU) - VERSIÓN EDITORIAL LIMPIA -->
-  <section class="booking-section-full">
+<!-- СЕКЦИЯ БРОНИРОВАНИЯ (Booking Section) -->
+    <section class="booking-section-full">
 
-    <div class="booking-header">
-      <div class="booking-header-top">
-        <div>
-            <h2>Готовы начать?</h2>
-            <p>
-                Выберите удобное время, завершите оплату — и сразу получите 
-                подтверждение с ссылкой на Google Meet. Без ожиданий.
-            </p>
+        <!-- Шапка: Заголовок слева, Цена справа -->
+        <div class="booking-header">
+            <div class="booking-header-top">
+                <!-- Текст (Слева) -->
+                <div style="flex: 1;">
+                    <h2 style="font-family: var(--font-header); font-size: 2.2rem; font-weight: 400; color: var(--color-charcoal); margin-bottom: 0.5rem;">
+                        Готовы начать?
+                    </h2>
+                    <p style="font-size: 1.05rem; color: var(--muted); line-height: 1.6; max-width: 500px;">
+                        Выберите удобное время, завершите оплату — и сразу получите 
+                        подтверждение с ссылкой на Google Meet. Без ожиданий.
+                    </p>
+                </div>
+                
+                <!-- Карточка цены (Справа) -->
+                <div class="booking-price-card">
+                    <span class="booking-price-duration">60 минут</span>
+                    <span class="booking-price-type">Индивидуальное занятие · Онлайн</span>
+                    <div class="booking-price-amount">
+                        35€
+                        <span class="booking-price-stripe">Оплата через Stripe</span>
+                    </div>
+                </div>
+            </div> <!-- ЗАКРЫВАЕМ booking-header-top -->
+        </div> <!-- ЗАКРЫВАЕМ booking-header -->
+
+        <!-- Виджет Calendly (На всю ширину) -->
+        <div class="booking-widget-wrapper">
+            <div class="calendly-inline-widget" 
+                 data-url="https://calendly.com/nazar-dezign/clase-individual?hide_gdpr_banner=1&background_color=f2f1ef&text_color=1a1a1a&primary_color=e2725b" 
+                 style="min-width:320px;height:700px;">
+            </div>
         </div>
-       <div class="booking-price-card">
-    <span class="booking-price-duration">60 минут</span>
-    <span class="booking-price-type">Индивидуальное занятие · Онлайн</span>
-    <div class="booking-price-amount">
-        35€
-        <span class="booking-price-stripe">Оплата через Stripe</span>
-    </div>
-</div>
 
-    <div class="booking-widget-wrapper">
-        <div
-            class="calendly-inline-widget"
-            data-url="https://calendly.com/nazar-dezign/clase-individual?hide_gdpr_banner=1&background_color=f2f1ef&text_color=1a1a1a&primary_color=e2725b">
-        </div>
-    </div>
+        <!-- Примечание снизу -->
+        <p class="booking-note" style="text-align: right; margin-top: 1rem;">
+            Уже занимаетесь со мной? Используйте персональную ссылку, которую я вам отправил.
+        </p>
 
-    <p class="booking-note">
-        Уже занимаетесь со мной? Используйте персональную ссылку, которую я вам отправил.
-    </p>
-
-</section>
-
+    </section>
 
 
   </main>
