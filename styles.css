@@ -936,17 +936,17 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 
 /* Widget de Calendly */
 .booking-widget-wrapper {
+    width: 100%;
     border: 1px solid var(--line);
     border-radius: var(--radius);
     overflow: hidden;
-   overflow-x: auto;
     box-shadow: 0 4px 24px rgba(0,0,0,0.06);
 }
 
 .calendly-inline-widget {
-    min-width: 900px;
-    width: 100%;
+    min-width: 320px;
     height: 700px;
+    width: 100%;
 }
 
 /* Nota discreta */
