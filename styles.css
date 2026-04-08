@@ -828,3 +828,127 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
         scroll-behavior: auto !important;
     }
 }
+
+
+ 
+/* =========================================
+   SECCIÓN DE RESERVA — BOOKING EDITORIAL
+   ========================================= */
+
+.booking-section {
+    margin-top: 8rem;
+    margin-bottom: 4rem;
+}
+
+.booking-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 2rem;
+    border-top: 1px solid var(--line);
+    padding-top: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.booking-header h2 {
+    font-family: var(--font-header);
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--color-charcoal);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin: 0;
+}
+
+.booking-header p {
+    font-size: 1rem;
+    color: var(--muted);
+    margin: 0.75rem 0 0 0;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+/* Tarjeta de precio */
+.booking-price-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: white;
+    white-space: nowrap;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.booking-price-amount {
+    font-family: var(--font-header);
+    font-size: 3rem;
+    font-weight: 500;
+    color: var(--color-charcoal);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.booking-price-detail {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.5;
+}
+
+.booking-price-stripe {
+    font-size: 0.75rem;
+    color: var(--color-terracotta);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.booking-price-stripe::before {
+    content: "✓";
+    font-weight: 700;
+}
+
+/* Widget de Calendly */
+.booking-widget-wrapper {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.calendly-inline-widget {
+    min-width: 320px;
+    height: 700px;
+}
+
+/* Nota discreta */
+.booking-note {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 1.25rem;
+    opacity: 0.65;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .booking-header {
+        grid-template-columns: 1fr;
+    }
+    .booking-price-card {
+        align-items: flex-start;
+        width: fit-content;
+    }
+    .booking-price-detail {
+        text-align: left;
+    }
+    .calendly-inline-widget {
+        height: 800px;
+    }
+}
+ 
+
+
