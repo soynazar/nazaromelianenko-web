@@ -25,19 +25,15 @@
     --spacing-md: 3rem;
     --radius: 8px;
 }
-/* COMPORTAMIENTO DE SCROLL SUAVE PARA LOS ENLACES ANCLA */
-html {
-    scroll-behavior: smooth;
-}
+
 /* =========================================
    2. BASE STYLES & TEXTURA EDITORIAL
    ========================================= */
+html { scroll-behavior: smooth; }
+
 body {
-
-    overflow-x: hidden; /* Prohíbe terminantemente que la web se desplace hacia los lados */
+    overflow-x: hidden; 
     width: 100%;
-
-   
     font-family: var(--font-body);
     background-color: var(--color-arena);
     color: var(--color-charcoal);
@@ -62,14 +58,7 @@ body::before {
 body.is-loading { opacity: 0; }
 main { flex: 1; padding-bottom: var(--spacing-lg); }
 
-h1, h2, h3 {
-    font-family: var(--font-header);
-    color: var(--color-charcoal);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    font-weight: 500; 
-}
-
+h1, h2, h3 { font-family: var(--font-header); color: var(--color-charcoal); line-height: 1.2; letter-spacing: -0.02em; font-weight: 500; }
 p { margin-bottom: 1.5rem; }
 
 .link { color: var(--color-charcoal); text-decoration: underline; text-decoration-color: rgba(26,26,26,0.2); text-underline-offset: 4px; transition: 0.3s; }
@@ -78,25 +67,14 @@ p { margin-bottom: 1.5rem; }
 /* =========================================
    3. HEADER & NAV
    ========================================= */
-.site-header { 
-    border-bottom: 1px solid rgba(26,26,26,0.05); 
-    background-color: var(--color-arena); 
-    position: sticky; top: 0; z-index: 1000; 
-}
+.site-header { border-bottom: 1px solid rgba(26,26,26,0.05); background-color: var(--color-arena); position: sticky; top: 0; z-index: 1000; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
 
-.header-inner { 
-    display: flex; align-items: center; justify-content: space-between; 
-    height: 90px; flex-direction: row; 
-}
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 90px; flex-direction: row; }
 
-/* LOGO (Animado) */
+/* LOGO */
 .brand-link { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
-.brand-icon { 
-    height: 55px; width: auto; display: block; object-fit: contain; 
-    opacity: 0.9; transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); 
-    transform-origin: center center;
-}
+.brand-icon { height: 55px; width: auto; display: block; object-fit: contain; opacity: 0.9; transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); transform-origin: center center; }
 .brand-link:hover .brand-icon { opacity: 1; transform: scale(1.1) rotate(-4deg); }
 .brand-name { font-family: var(--font-header); font-weight: 600; font-size: 1.5rem; color: var(--text); letter-spacing: -0.02em; transition: color 0.3s ease; }
 .brand-link:hover .brand-name { color: var(--color-terracotta); }
@@ -108,18 +86,10 @@ p { margin-bottom: 1.5rem; }
 
 /* SELECTOR DE IDIOMA */
 .lang-switch { display: flex; gap: 8px; border-left: 1px solid var(--line); padding-left: 24px; margin-left: 10px; }
-.lang-switch a { 
-    text-decoration: none; font-family: var(--font-body); font-size: 0.75rem; 
-    font-weight: 500; letter-spacing: 0.05em; color: var(--muted); 
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); position: relative;
-    display: inline-block; min-width: 32px; text-align: center;
-}
+.lang-switch a { text-decoration: none; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; color: var(--muted); transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); position: relative; display: inline-block; min-width: 32px; text-align: center; }
 .lang-switch a:hover { color: var(--color-terracotta); transform: translateY(-1px); }
 .lang-switch a.active { color: var(--color-charcoal); font-weight: 700; cursor: default; }
-.lang-switch a.active::after {
-    content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
-    width: 3px; height: 3px; background-color: var(--color-terracotta); border-radius: 50%; opacity: 0.8;
-}
+.lang-switch a.active::after { content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 3px; height: 3px; background-color: var(--color-terracotta); border-radius: 50%; opacity: 0.8; }
 
 /* =========================================
    4. LAYOUTS INTERNOS (Hero)
@@ -130,32 +100,16 @@ p { margin-bottom: 1.5rem; }
 /* =========================================
    5. BENTO GRID (Estructura Editorial)
    ========================================= */
-.bento-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); 
-    column-gap: 4rem; row-gap: 4rem; margin-top: 2rem; align-items: start; position: relative;
-}
-.bento-grid::after {
-    content: ""; position: absolute; top: 0; bottom: 0; left: 50%;
-    width: 1px; background: var(--line); display: block; 
-}
-.bento-item {
-    background: transparent; padding: 2rem 0; border: none; box-shadow: none;
-    display: flex; flex-direction: column; height: 100%; justify-content: flex-start;
-}
+.bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 4rem; row-gap: 4rem; margin-top: 2rem; align-items: start; position: relative; }
+.bento-grid::after { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--line); display: block; }
+.bento-item { background: transparent; padding: 2rem 0; border: none; box-shadow: none; display: flex; flex-direction: column; height: 100%; justify-content: flex-start; }
 .bento-item h3 { font-size: 1.6rem; margin-bottom: 1rem; font-weight: 400; }
 .bento-item p { font-size: 1.05rem; line-height: 1.7; color: var(--muted); max-width: 90%; }
 
 /* =========================================
-   6. BOTONES (Estilo Enlace)
+   6. BOTONES
    ========================================= */
-.button {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: transparent; color: var(--color-charcoal);
-    padding: 0; border: none; font-size: 0.95rem; text-transform: none; font-weight: 500;
-    text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.2); 
-    padding-bottom: 2px; margin-top: 1.5rem; transition: all 0.3s ease;
-    align-self: flex-start; cursor: pointer;
-}
+.button { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--color-charcoal); padding: 0; border: none; font-size: 0.95rem; text-transform: none; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.2); padding-bottom: 2px; margin-top: 1.5rem; transition: all 0.3s ease; align-self: flex-start; cursor: pointer; }
 .button::after { content: "→"; display: inline-block; transition: transform 0.3s ease; color: var(--color-terracotta); }
 .button:hover { color: var(--color-terracotta); border-bottom-color: var(--color-terracotta); }
 .button:hover::after { transform: translateX(4px); }
@@ -164,14 +118,14 @@ p { margin-bottom: 1.5rem; }
    7. SECCIÓN FOTO Y FILOSOFÍA
    ========================================= */
 .bento-hero-service { grid-column: span 1 !important; background: transparent !important; border: none !important; padding: 0 !important; display: block !important; }
-.bento-hero-image-container { width: 100%; height: auto; aspect-ratio: 1/1.2; overflow: hidden; border-radius: var(--radius); }
+.bento-hero-image-container { width: 100%; height: auto; aspect-ratio: 4/5; overflow: hidden; border-radius: var(--radius); }
 .bento-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; filter: grayscale(100%); transition: transform 0.7s ease; }
 .bento-hero-image-container:hover .bento-hero-img { transform: scale(1.03); }
 .bento-philosophy { background: transparent; color: var(--color-charcoal); text-align: left; padding: 2rem 0; display: flex; align-items: center; }
 .bento-philosophy .quote { font-family: var(--font-header); font-style: italic; font-size: 1.8rem; font-weight: 300; line-height: 1.4; color: var(--color-charcoal); }
 
 /* =========================================
-   8. ESTILOS EDITORIALES (Páginas Internas)
+   8. ESTILOS EDITORIALES
    ========================================= */
 .reading-container { max-width: 800px; margin: 0; }
 .editorial-block { margin-bottom: 6rem; position: relative; }
@@ -214,7 +168,7 @@ p { margin-bottom: 1.5rem; }
 .bio-content { max-width: 800px; }
 
 /* =========================================
-   12. CONTACTO (Formulario UX)
+   12. CONTACTO
    ========================================= */
 .contact-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; margin-top: 4rem; align-items: start; }
 .contact-info h3 { font-family: var(--font-header); font-size: 1.2rem; margin-bottom: 1rem; color: var(--color-charcoal); }
@@ -229,6 +183,10 @@ p { margin-bottom: 1.5rem; }
 select.form-line { cursor: pointer; color: var(--color-charcoal); }
 textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 ::placeholder { color: rgba(26, 26, 26, 0.3); font-weight: 300; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--line); padding: 2rem 0; margin-top: auto; font-size: 0.85rem; color: var(--muted); text-align: center; }
+.footer-inner { display: flex; justify-content: center; align-items: center; gap: 1.5rem; }
 
 /* =========================================
    13. TESTIMONIOS (Social Proof)
@@ -254,43 +212,26 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 /* =========================================
    15. GUMROAD & GALERÍA DE PRODUCTOS
    ========================================= */
-/* =========================================
-   15. GUMROAD OVERRIDE (Forzar Estilo Editorial)
-   ========================================= */
 .gumroad-button {
-    background-image: none !important; 
-    background-color: transparent !important; 
-    box-shadow: none !important; 
-    border: none !important; 
-    border-bottom: 1px solid rgba(26,26,26,0.2) !important; 
-    
-    color: var(--color-charcoal) !important; 
-    font-family: var(--font-body) !important; 
-    font-size: 0.95rem !important; 
-    font-weight: 500 !important;
-    
-    padding: 0 !important; padding-bottom: 2px !important; 
-    margin-top: 0 !important; border-radius: 0 !important;
-    
-    display: inline-flex !important; 
-    align-items: center !important; 
-    transition: all 0.3s ease !important;
-    
-    /* BLOQUEO DE OVERFLOW (Evita que rompa el móvil) */
-    max-width: 100% !important;
-    white-space: normal !important;
-    word-break: break-word !important;
+    background-image: none !important; background-color: transparent !important; box-shadow: none !important; border: none !important; border-bottom: 1px solid rgba(26,26,26,0.2) !important;
+    color: var(--color-charcoal) !important; font-family: var(--font-body) !important; font-size: 0.95rem !important; font-weight: 500 !important;
+    padding: 0 !important; padding-bottom: 2px !important; margin-top: 0 !important; border-radius: 0 !important;
+    display: inline-flex !important; align-items: center !important; transition: all 0.3s ease !important;
 }
-
-/* Ocultamos cualquier logo SVG o texto extra feo que intente inyectar Gumroad */
-.gumroad-button svg, 
-.gumroad-button .gumroad-button-logo {
-    display: none !important;
-}
-
 .gumroad-button:hover { color: var(--color-terracotta) !important; border-bottom-color: var(--color-terracotta) !important; transform: translateY(-1px); }
 .gumroad-button::after { content: "→"; display: inline-block; margin-left: 8px; color: var(--color-terracotta); transition: transform 0.3s ease; }
 .gumroad-button:hover::after { transform: translateX(4px); }
+
+.products-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 4rem; }
+.product-card { display: flex; flex-direction: column; height: 100%; border: 1px solid rgba(26, 26, 26, 0.08); border-radius: 8px; padding: 1.5rem; background: white; transition: all 0.3s ease; }
+.product-card:hover { transform: translateY(-4px); border-color: var(--color-terracotta); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.product-image-container { width: 100%; aspect-ratio: 4/5; background-color: #f4f4f4; border-radius: 4px; overflow: hidden; margin-bottom: 1.5rem; position: relative; }
+.product-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.product-card:hover img { transform: scale(1.03); }
+.product-info { flex: 1; display: flex; flex-direction: column; }
+.product-info h3 { font-size: 1.1rem; margin-bottom: 0.8rem; line-height: 1.4; color: var(--color-charcoal); }
+.product-info p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; margin-bottom: 1.5rem; }
+.product-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05); }
 
 /* =========================================
    16. VIDEO CARD (Sobre mí)
@@ -312,34 +253,26 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .booking-section-full { max-width: 1100px; margin: 8rem auto 4rem auto; padding: 0 32px; }
 .booking-header { border-top: 1px solid var(--line); padding-top: 2.5rem; margin-bottom: 3rem; }
 .booking-header-top { display: flex; flex-direction: row; justify-content: space-between; align-items: flex-end; gap: 2rem; }
-
 .booking-price-card { display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem; padding: 1.25rem 1.75rem; border: 1px solid var(--line); border-radius: var(--radius); background: white; white-space: nowrap; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
 .booking-price-duration { font-family: var(--font-header); font-size: 1.4rem; font-weight: 500; color: var(--color-charcoal); letter-spacing: -0.02em; line-height: 1; }
 .booking-price-type { font-size: 0.8rem; color: var(--muted); text-align: right; letter-spacing: 0.03em; text-transform: uppercase; }
 .booking-price-amount { font-family: var(--font-body); font-size: 0.95rem; font-weight: 400; color: var(--muted); margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--line); width: 100%; text-align: right; }
 .booking-price-stripe { font-size: 0.75rem; color: var(--color-terracotta); display: flex; align-items: center; justify-content: flex-end; gap: 0.3rem; }
 .booking-price-stripe::before { content: "✓"; font-weight: 700; }
-
 .booking-widget-wrapper { width: 100%; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
 .calendly-inline-widget { min-width: 100%; height: 700px; }
 .booking-note { font-size: 0.8rem; color: var(--muted); margin-top: 1.25rem; opacity: 0.65; font-style: italic; text-align: right; }
 
-/* Footer Base */
-.site-footer { border-top: 1px solid var(--line); padding: 2rem 0; margin-top: auto; font-size: 0.85rem; color: var(--muted); text-align: center; }
-.footer-inner { display: flex; justify-content: center; align-items: center; gap: 1.5rem; }
-
 /* =========================================
    18. MOTION DESIGN (Quiet Luxury)
    ========================================= */
-:root { --ease-editorial: cubic-bezier(0.2, 1, 0.4, 1); }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-.page-hero h1 { opacity: 0; animation: fadeInUp 1s var(--ease-editorial) forwards; animation-delay: 0.2s; }
-.page-hero .lead { opacity: 0; animation: fadeInUp 1s var(--ease-editorial) forwards; animation-delay: 0.4s; }
-.bento-grid, .bio-grid, .contact-layout, .reading-container, .editorial-cta, .booking-section-full { opacity: 0; animation: fadeInUp 1.2s var(--ease-editorial) forwards; animation-delay: 0.6s; }
+.page-hero h1 { opacity: 0; animation: fadeInUp 1s cubic-bezier(0.2, 1, 0.4, 1) forwards; animation-delay: 0.2s; }
+.page-hero .lead { opacity: 0; animation: fadeInUp 1s cubic-bezier(0.2, 1, 0.4, 1) forwards; animation-delay: 0.4s; }
+.bento-grid, .bio-grid, .contact-layout, .reading-container, .editorial-cta, .booking-section-full { opacity: 0; animation: fadeInUp 1.2s cubic-bezier(0.2, 1, 0.4, 1) forwards; animation-delay: 0.6s; }
 
 @keyframes imageReveal { from { opacity: 0; transform: scale(1.03); filter: blur(5px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
-.bento-hero-img, .video-thumbnail { animation: imageReveal 1.5s var(--ease-editorial) forwards; animation-delay: 0.5s; }
+.bento-hero-img, .video-thumbnail { animation: imageReveal 1.5s cubic-bezier(0.2, 1, 0.4, 1) forwards; animation-delay: 0.5s; }
 
 @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: 0.01s !important; transition-duration: 0.01s !important; } }
 
@@ -347,20 +280,9 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
    19. RESPONSIVE (MÓVIL - ÚNICO BLOQUE)
    ========================================= */
 @media (max-width: 768px) {
-    /* Header */
-
-   /* Ajuste de márgenes seguros en móvil */
-    .container {
-        padding: 0 20px !important; /* Garantiza que el texto NUNCA toque el borde */
-    }
+    .container { padding: 0 20px !important; }
     
-    /* Fuerza al calendario a adaptarse a la pantalla */
-    .calendly-inline-widget { 
-        min-width: 100% !important; 
-        width: 100% !important; 
-        height: 850px !important; 
-    }
-   
+    /* Header */
     .header-inner { flex-direction: column; height: auto; padding: 1.5rem 0; gap: 1rem; }
     .nav { gap: 15px; flex-wrap: wrap; justify-content: center; }
     .brand-icon { height: 40px; } 
@@ -379,8 +301,40 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
     .form-editorial { order: 1; }
     .contact-info { order: 2; margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 2rem; }
     
-    .products-gallery { grid-template-columns: 1fr; }
     .testimonial-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+    /* GALERÍA DE PRODUCTOS: 2 Columnas en móvil, compacto */
+    .products-gallery { 
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 1rem !important; 
+    }
+    .product-card { 
+        padding: 1rem !important; 
+        grid-column: span 1 !important; 
+    }
+    .product-info h3 { 
+        font-size: 0.95rem !important; 
+        line-height: 1.3 !important;
+        margin-bottom: 0.5rem !important;
+    }
+    /* Ocultamos las descripciones largas en móvil para que parezca una App Store limpia */
+    .product-info p { 
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 0.8rem !important; 
+        margin-bottom: 1rem !important;
+    }
+    .product-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding-top: 0.5rem;
+    }
+    .product-footer span { font-size: 1.1rem !important; }
+    .gumroad-button { font-size: 0.85rem !important; padding-bottom: 0 !important; }
+    .gumroad-button::after { display: none; } /* Ocultamos flecha para ahorrar espacio en móvil */
 
     /* Ajustes específicos */
     .bento-hero-service { margin-top: 2rem; }
@@ -393,6 +347,6 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
     .booking-header-top { flex-direction: column !important; align-items: flex-start !important; gap: 1.5rem; }
     .booking-price-card { align-items: flex-start; width: 100%; }
     .booking-price-type, .booking-price-amount, .booking-price-stripe { text-align: left; justify-content: flex-start; }
-    .calendly-inline-widget { height: 850px !important; }
+    .calendly-inline-widget { height: 850px !important; min-width: 100% !important; width: 100% !important; }
     .booking-note { text-align: left !important; }
-} /* <--- FIN DEL MÓVIL */
+}
