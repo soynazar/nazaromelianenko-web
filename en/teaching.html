@@ -112,39 +112,48 @@
       </div>
     </section>
 
-    <!-- CTA FINAL (Alineado) -->
-  <section class="container booking-section">
+    <!-- BOOKING SECTION -->
+    <section class="booking-section-full">
 
-    <div class="booking-header">
-      <div class="booking-header-top">
-        <div>
-            <h2>Ready to get started?</h2>
-            <p>
-                Pick a time, complete your payment, and you'll receive 
-                instant confirmation with your Google Meet link. No waiting.
-            </p>
+        <!-- Header: Title Left, Price Right -->
+        <div class="booking-header">
+            <div class="booking-header-top">
+                <!-- Text (Left) -->
+                <div style="flex: 1;">
+                    <h2 style="font-family: var(--font-header); font-size: 2.2rem; font-weight: 400; color: var(--color-charcoal); margin-bottom: 0.5rem;">
+                        Ready to start?
+                    </h2>
+                    <p style="font-size: 1.05rem; color: var(--muted); line-height: 1.6; max-width: 500px;">
+                        Choose a time, complete the payment, and instantly receive your confirmation with the Google Meet link. No waiting.
+                    </p>
+                </div>
+                
+                <!-- Price Card (Right) -->
+                <div class="booking-price-card">
+                    <span class="booking-price-duration">60 minutes</span>
+                    <span class="booking-price-type">1-on-1 Session · Online</span>
+                    <div class="booking-price-amount">
+                        35€
+                        <span class="booking-price-stripe">Secure payment via Stripe</span>
+                    </div>
+                </div>
+            </div> <!-- END booking-header-top -->
+        </div> <!-- END booking-header -->
+
+        <!-- Calendly Widget -->
+        <div class="booking-widget-wrapper">
+            <div class="calendly-inline-widget" 
+                 data-url="https://calendly.com/nazar-dezign/clase-individual?hide_gdpr_banner=1&background_color=f2f1ef&text_color=1a1a1a&primary_color=e2725b" 
+                 style="min-width:320px;height:700px;">
+            </div>
         </div>
- <div class="booking-price-card">
-    <span class="booking-price-duration">60 minuts</span>
-    <span class="booking-price-type">Sessió individual · En línia</span>
-    <div class="booking-price-amount">
-        35€
-        <span class="booking-price-stripe">Pagament segur via Stripe</span>
-    </div>
-</div>
 
-    <div class="booking-widget-wrapper">
-        <div
-            class="calendly-inline-widget"
-            data-url="https://calendly.com/nazar-dezign/clase-individual?hide_gdpr_banner=1&background_color=f2f1ef&text_color=1a1a1a&primary_color=e2725b">
-        </div>
-    </div>
+        <!-- Student Note -->
+        <p class="booking-note" style="text-align: right; margin-top: 1rem;">
+            Already a student? Use the personalized link I sent you to book your next class.
+        </p>
 
-    <p class="booking-note">
-        Already a student? Use the personal link I sent you to book your next class.
-    </p>
-
-</section>
+    </section>
 
 
 
