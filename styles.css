@@ -25,7 +25,10 @@
     --spacing-md: 3rem;
     --radius: 8px;
 }
-
+/* COMPORTAMIENTO DE SCROLL SUAVE PARA LOS ENLACES ANCLA */
+html {
+    scroll-behavior: smooth;
+}
 /* =========================================
    2. BASE STYLES & TEXTURA EDITORIAL
    ========================================= */
