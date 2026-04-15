@@ -168,7 +168,7 @@ p { margin-bottom: 1.5rem; }
 .bio-content { max-width: 800px; }
 
 /* =========================================
-   12. CONTACTO
+   12. CONTACTO (Formulario UX)
    ========================================= */
 .contact-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; margin-top: 4rem; align-items: start; }
 .contact-info h3 { font-family: var(--font-header); font-size: 1.2rem; margin-bottom: 1rem; color: var(--color-charcoal); }
@@ -210,42 +210,52 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .credential-icon { width: 24px; height: 24px; opacity: 0.7; }
 
 /* =========================================
-   15. GUMROAD & GALERÍA DE PRODUCTOS
+   15. GUMROAD OVERRIDE (Forzar Estilo Editorial)
    ========================================= */
 .gumroad-button {
     background-image: none !important; background-color: transparent !important; box-shadow: none !important; border: none !important; border-bottom: 1px solid rgba(26,26,26,0.2) !important;
     color: var(--color-charcoal) !important; font-family: var(--font-body) !important; font-size: 0.95rem !important; font-weight: 500 !important;
     padding: 0 !important; padding-bottom: 2px !important; margin-top: 0 !important; border-radius: 0 !important;
     display: inline-flex !important; align-items: center !important; transition: all 0.3s ease !important;
+    max-width: 100% !important; white-space: normal !important; word-break: break-word !important;
 }
+.gumroad-button svg, .gumroad-button i, .gumroad-button span.gumroad-button-logo { display: none !important; width: 0 !important; height: 0 !important; opacity: 0 !important; visibility: hidden !important; margin: 0 !important; padding: 0 !important; }
 .gumroad-button:hover { color: var(--color-terracotta) !important; border-bottom-color: var(--color-terracotta) !important; transform: translateY(-1px); }
 .gumroad-button::after { content: "→"; display: inline-block; margin-left: 8px; color: var(--color-terracotta); transition: transform 0.3s ease; }
 .gumroad-button:hover::after { transform: translateX(4px); }
 
+/* =========================================
+   16. GALERÍA DE PRODUCTOS Y CRO
+   ========================================= */
+.store-section-title { font-family: var(--font-header); font-size: 1.8rem; color: var(--color-charcoal); margin-top: 4rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
 .products-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 4rem; }
 .product-card { display: flex; flex-direction: column; height: 100%; border: 1px solid rgba(26, 26, 26, 0.08); border-radius: 8px; padding: 1.5rem; background: white; transition: all 0.3s ease; }
+.product-card.premium { border-color: rgba(26,26,26,0.15); background-color: #faf9f8; }
 .product-card:hover { transform: translateY(-4px); border-color: var(--color-terracotta); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
 .product-image-container { width: 100%; aspect-ratio: 4/5; background-color: #f4f4f4; border-radius: 4px; overflow: hidden; margin-bottom: 1.5rem; position: relative; }
 .product-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
 .product-card:hover img { transform: scale(1.03); }
-.product-info { flex: 1; display: flex; flex-direction: column; }
-.product-info h3 { font-size: 1.1rem; margin-bottom: 0.8rem; line-height: 1.4; color: var(--color-charcoal); }
-.product-info p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; margin-bottom: 1.5rem; }
-.product-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05); }
 
-/* =========================================
-   16. VIDEO CARD (Sobre mí)
-   ========================================= */
-.video-card { display: block; text-decoration: none; background-color: var(--color-charcoal); color: var(--color-arena); border-radius: var(--radius); overflow: hidden; position: relative; margin-top: 1.5rem; transition: transform 0.4s ease; }
-.video-card:hover { transform: translateY(-4px); }
-.video-thumbnail-container { position: relative; width: 100%; height: 200px; overflow: hidden; }
-.video-thumbnail { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.8; transition: opacity 0.4s ease; }
-.video-card:hover .video-thumbnail { opacity: 0.6; }
-.play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.4); transition: all 0.4s ease; }
-.play-icon::after { content: ""; display: block; width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 14px solid var(--color-arena); margin-left: 4px; }
-.video-card:hover .play-icon { background: var(--color-terracotta); border-color: var(--color-terracotta); transform: translate(-50%, -50%) scale(1.1); }
-.video-caption { padding: 1.5rem; font-size: 0.9rem; line-height: 1.5; }
-.video-caption strong { display: block; font-family: var(--font-header); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--color-arena); }
+.product-info { flex: 1; display: flex; flex-direction: column; }
+.product-badge.premium-badge { background-color: var(--color-charcoal); color: var(--color-arena) !important; padding: 0.2rem 0.6rem; border-radius: 4px; display: inline-block; }
+.product-info h3 { font-size: 1.1rem; margin-bottom: 0.8rem; line-height: 1.4; color: var(--color-charcoal); }
+
+.product-target { font-size: 0.85rem; color: var(--color-charcoal); background-color: rgba(226, 114, 91, 0.05); padding: 0.5rem 0.8rem; border-left: 2px solid var(--color-terracotta); margin-bottom: 1rem; line-height: 1.4; }
+.product-info p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+
+.product-meta { font-family: var(--font-body); font-size: 0.8rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--line); }
+.product-meta span::after { content: "·"; margin-left: 0.5rem; color: rgba(26,26,26,0.2); }
+.product-meta span:last-child::after { display: none; }
+.meta-highlight { color: var(--color-terracotta); font-weight: 500; }
+
+.product-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05); }
+.cta-wrapper { display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem; }
+.button-subtext { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+.gumroad-button.solid { background-color: var(--color-charcoal) !important; color: white !important; padding: 0.6rem 1.2rem !important; border-radius: 4px !important; border: none !important; }
+.gumroad-button.solid:hover { background-color: var(--color-terracotta) !important; color: white !important; transform: translateY(-2px); }
+.gumroad-button.solid::after { color: white; }
 
 /* =========================================
    17. SECCIÓN DE RESERVA (Calendly Widget)
@@ -264,20 +274,36 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .booking-note { font-size: 0.8rem; color: var(--muted); margin-top: 1.25rem; opacity: 0.65; font-style: italic; text-align: right; }
 
 /* =========================================
-   18. MOTION DESIGN (Quiet Luxury)
+   18. VIDEO CARD (Sobre mí)
    ========================================= */
+.video-card { display: block; text-decoration: none; background-color: var(--color-charcoal); color: var(--color-arena); border-radius: var(--radius); overflow: hidden; position: relative; margin-top: 1.5rem; transition: transform 0.4s ease; }
+.video-card:hover { transform: translateY(-4px); }
+.video-thumbnail-container { position: relative; width: 100%; height: 200px; overflow: hidden; }
+.video-thumbnail { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.8; transition: opacity 0.4s ease; }
+.video-card:hover .video-thumbnail { opacity: 0.6; }
+.play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.4); transition: all 0.4s ease; }
+.play-icon::after { content: ""; display: block; width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 14px solid var(--color-arena); margin-left: 4px; }
+.video-card:hover .play-icon { background: var(--color-terracotta); border-color: var(--color-terracotta); transform: translate(-50%, -50%) scale(1.1); }
+.video-caption { padding: 1.5rem; font-size: 0.9rem; line-height: 1.5; }
+.video-caption strong { display: block; font-family: var(--font-header); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--color-arena); }
+
+/* =========================================
+   19. MOTION DESIGN (Quiet Luxury)
+   ========================================= */
+:root { --ease-editorial: cubic-bezier(0.2, 1, 0.4, 1); }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-.page-hero h1 { opacity: 0; animation: fadeInUp 1s cubic-bezier(0.2, 1, 0.4, 1) forwards; animation-delay: 0.2s; }
-.page-hero .lead { opacity: 0; animation: fadeInUp 1s cubic-bezier(0.2, 1, 0.4, 1) forwards; animation-delay: 0.4s; }
-.bento-grid, .bio-grid, .contact-layout, .reading-container, .editorial-cta, .booking-section-full { opacity: 0; animation: fadeInUp 1.2s cubic-bezier(0.2, 1, 0.4, 1) forwards; animation-delay: 0.6s; }
+
+.page-hero h1 { opacity: 0; animation: fadeInUp 1s var(--ease-editorial) forwards; animation-delay: 0.2s; }
+.page-hero .lead { opacity: 0; animation: fadeInUp 1s var(--ease-editorial) forwards; animation-delay: 0.4s; }
+.bento-grid, .bio-grid, .contact-layout, .reading-container, .editorial-cta, .booking-section-full { opacity: 0; animation: fadeInUp 1.2s var(--ease-editorial) forwards; animation-delay: 0.6s; }
 
 @keyframes imageReveal { from { opacity: 0; transform: scale(1.03); filter: blur(5px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
-.bento-hero-img, .video-thumbnail { animation: imageReveal 1.5s cubic-bezier(0.2, 1, 0.4, 1) forwards; animation-delay: 0.5s; }
+.bento-hero-img, .video-thumbnail { animation: imageReveal 1.5s var(--ease-editorial) forwards; animation-delay: 0.5s; }
 
 @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: 0.01s !important; transition-duration: 0.01s !important; } }
 
 /* =========================================
-   19. RESPONSIVE (MÓVIL - ÚNICO BLOQUE)
+   20. RESPONSIVE (MÓVIL - ÚNICO BLOQUE)
    ========================================= */
 @media (max-width: 768px) {
     .container { padding: 0 20px !important; }
@@ -304,37 +330,18 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
     .testimonial-grid { grid-template-columns: 1fr; gap: 3rem; }
 
     /* GALERÍA DE PRODUCTOS: 2 Columnas en móvil, compacto */
-    .products-gallery { 
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 1rem !important; 
-    }
-    .product-card { 
-        padding: 1rem !important; 
-        grid-column: span 1 !important; 
-    }
-    .product-info h3 { 
-        font-size: 0.95rem !important; 
-        line-height: 1.3 !important;
-        margin-bottom: 0.5rem !important;
-    }
-    /* Ocultamos las descripciones largas en móvil para que parezca una App Store limpia */
-    .product-info p { 
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        font-size: 0.8rem !important; 
-        margin-bottom: 1rem !important;
-    }
-    .product-footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-        padding-top: 0.5rem;
-    }
+    .products-gallery { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem !important; }
+    .product-card { padding: 1rem !important; grid-column: span 1 !important; }
+    .product-info h3 { font-size: 0.95rem !important; line-height: 1.3 !important; margin-bottom: 0.5rem !important; }
+    .product-info p { display: -webkit-box !important; -webkit-line-clamp: 3 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; font-size: 0.8rem !important; margin-bottom: 1rem !important; color: var(--muted) !important; }
+    .product-target, .product-meta { display: none !important; } /* Ocultamos metadata en móvil para ganar espacio */
+    .product-footer { flex-direction: column !important; align-items: flex-start !important; gap: 0.5rem !important; padding-top: 0.8rem !important; }
     .product-footer span { font-size: 1.1rem !important; }
-    .gumroad-button { font-size: 0.85rem !important; padding-bottom: 0 !important; }
-    .gumroad-button::after { display: none; } /* Ocultamos flecha para ahorrar espacio en móvil */
+    .cta-wrapper { align-items: flex-start; margin-top: 0.5rem; width: 100%; }
+    .gumroad-button { font-size: 0.85rem !important; padding-bottom: 2px !important; white-space: nowrap !important; }
+    .gumroad-button.solid { width: 100%; justify-content: center; }
+    .gumroad-button::after { display: none !important; }
+    .button-subtext { display: none !important; }
 
     /* Ajustes específicos */
     .bento-hero-service { margin-top: 2rem; }
