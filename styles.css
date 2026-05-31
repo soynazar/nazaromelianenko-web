@@ -113,6 +113,9 @@ p { margin-bottom: 1.5rem; }
 .button::after { content: "→"; display: inline-block; transition: transform 0.3s ease; color: var(--color-terracotta); }
 .button:hover { color: var(--color-terracotta); border-bottom-color: var(--color-terracotta); }
 .button:hover::after { transform: translateX(4px); }
+/* Botón especial con flecha animada hacia ABAJO */
+.button-down::after { content: "↓" !important; }
+.button-down:hover::after { transform: translateY(4px) !important; }
 
 /* =========================================
    7. SECCIÓN FOTO Y FILOSOFÍA
