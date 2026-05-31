@@ -16,10 +16,10 @@
   <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
 </head>
 
-<!-- Añadimos padding-top para que no quede pegado arriba en el móvil -->
-<body style="padding-top: 2rem;">
+<body class="is-loading" style="padding-top: 2rem;">
 
-  <main class="container" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
+  <!-- Añadimos padding-bottom enorme para que el móvil pueda hacer scroll extra -->
+  <main class="container" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; padding-bottom: 6rem;">
     
     <!-- LOGO CENTRADO -->
     <a href="index.html" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; margin-bottom: 3rem;">
@@ -35,8 +35,8 @@
     <!-- BOTONES (LOS 3 EMBUDOS DE CONVERSIÓN) -->
     <div style="width: 100%; display: flex; flex-direction: column; gap: 1.5rem;">
 
-        <!-- 1. SUSCRIPCIÓN (La opción más rentable = La más destacada) -->
-        <a href="https://buy.stripe.com/5kQdR91ek7muaMmfpZ1ck00" target="_blank" style="display: flex; flex-direction: column; background-color: var(--color-charcoal); color: var(--color-arena); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+        <!-- 1. SUSCRIPCIÓN (Color #1E1E1E) -->
+        <a href="https://buy.stripe.com/5kQdR91ek7muaMmfpZ1ck00" target="_blank" style="display: flex; flex-direction: column; background-color: #1E1E1E; color: var(--color-arena); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
             <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem; color: white;">Абонемент · 4 занятия</span>
             <span style="font-size: 0.9rem; opacity: 0.8;">Фиксированное место. 130€ / месяц</span>
         </a>
@@ -56,8 +56,9 @@
     </div>
 
     <!-- ENLACE A LA WEB COMPLETA -->
+    <!-- Más margen arriba para despegarlo de las cajas -->
     <div style="margin-top: 4rem;">
-        <a href="index.html" class="link" style="font-size: 0.9rem;">
+        <a href="index.html" class="link" style="font-size: 0.95rem;">
             Перейти на главный сайт →
         </a>
     </div>
