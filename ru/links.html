@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>Nazar Omelianenko — Ссылки</title>
-  <!-- viewport-fit=cover ayuda a evitar las "muescas" de los iPhone -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +16,6 @@
   <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
 </head>
 
-<!-- PADDING EXTREMO ARRIBA Y ABAJO PARA EVITAR LAS BARRAS DE INSTAGRAM/TELEGRAM -->
 <body style="padding-top: 4rem; padding-bottom: 6rem; background-color: var(--color-arena);">
 
   <main class="container" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
@@ -33,31 +31,37 @@
         </span>
     </a>
 
-    <!-- BOTONES (ESPACIADO MATEMÁTICAMENTE IDÉNTICO) -->
-    <div style="width: 100%; display: flex; flex-direction: column; gap: 1.5rem;">
+    <!-- BOTONES (NUEVA JERARQUÍA DE 3 NIVELES) -->
+    <div style="width: 100%; display: flex; flex-direction: column; gap: 1.2rem;">
 
-        <!-- 1. SUSCRIPCIÓN -->
-        <a href="https://buy.stripe.com/5kQdR91ek7muaMmfpZ1ck00" target="_blank" style="display: flex; flex-direction: column; background-color: #1E1E1E; color: var(--color-arena); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-            <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem; color: white;">Абонемент · 4 занятия</span>
-            <span style="font-size: 0.9rem; opacity: 0.8;">Фиксированное место. 130€ / месяц</span>
+        <!-- NIVEL 1: ABONO (Protagonista - Color #B56B6B) -->
+        <a href="https://buy.stripe.com/5kQdR91ek7muaMmfpZ1ck00" target="_blank" style="display: flex; flex-direction: column; align-items: center; background-color: #B56B6B; color: #EDEAE5; padding: 1.5rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 10px 30px rgba(181, 107, 107, 0.15); transition: transform 0.3s ease;">
+            <span style="font-family: var(--font-header); font-size: 1.4rem; margin-bottom: 0.3rem; color: #EDEAE5;">Абонемент · 4 занятия</span>
+            <span style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">Фиксированное место в расписании</span>
+            
+            <!-- Anclaje de precios -->
+            <div style="display: flex; align-items: baseline; gap: 0.6rem; margin-top: 0.3rem;">
+                <span style="font-family: var(--font-header); font-size: 1.5rem; font-weight: 500;">130€</span>
+                <span style="font-size: 1rem; opacity: 0.6; text-decoration: line-through;">140€</span>
+            </div>
         </a>
 
-        <!-- 2. CLASE SUELTA -->
+        <!-- NIVEL 2: CLASE INDIVIDUAL (Secundario - Blanco y Limpio) -->
         <a href="https://calendly.com/nazar-dezign/clase-individual" target="_blank" style="display: flex; flex-direction: column; background-color: white; color: var(--color-charcoal); border: 1px solid var(--line); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: transform 0.3s ease;">
-            <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem;">Разовое занятие</span>
-            <span style="font-size: 0.9rem; color: var(--muted);">Диагностика или консультация. 35€</span>
+            <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem;">Индивидуальный урок</span>
+            <span style="font-size: 0.95rem; color: var(--muted);">60 минут · 35€</span>
         </a>
 
-        <!-- 3. MATERIALES DESCARGABLES (Sin márgenes extra que rompan el diseño) -->
-        <a href="materiales.html" style="display: flex; flex-direction: column; background-color: transparent; color: var(--color-charcoal); border: 1px solid var(--color-terracotta); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; transition: transform 0.3s ease;">
-            <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem; color: var(--color-terracotta);">Учебные материалы</span>
+        <!-- NIVEL 3: MATERIALES (Terciario - Sin caja, solo texto) -->
+        <!-- Usamos tu color terracota personalizado #B56B6B para el texto -->
+        <a href="materiales.html" style="display: flex; flex-direction: column; background-color: transparent; padding: 1rem; border: none; text-decoration: none; transition: transform 0.3s ease; margin-top: 0.5rem;">
+            <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem; color: #B56B6B;">Учебные материалы →</span>
             <span style="font-size: 0.9rem; color: var(--muted);">Авторские PDF и шпаргалки (от 0€)</span>
         </a>
 
     </div>
 
     <!-- ENLACE A LA WEB COMPLETA -->
-    <!-- MUCHO margen inferior para forzar que el enlace suba al hacer scroll -->
     <div style="margin-top: 5rem; margin-bottom: 5rem;">
         <a href="index.html" style="font-size: 0.95rem; color: var(--color-charcoal); text-decoration: underline; text-decoration-color: rgba(26,26,26,0.3); text-underline-offset: 4px;">
             Перейти на главный сайт →
