@@ -18,52 +18,58 @@
 
 <body style="padding-top: 4rem; padding-bottom: 6rem; background-color: var(--color-arena);">
 
-  <main class="container" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
+  <main class="container" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; padding-bottom: 6rem;">
     
-    <!-- LOGO CENTRADO -->
-    <a href="index.html" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; margin-bottom: 3rem;">
+    <!-- LOGO Y SUBTÍTULO (Con más presencia y peso visual) -->
+    <a href="index.html" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; margin-bottom: 3.5rem;">
         <img src="/images/logo.png" alt="Nazar Omelianenko" style="height: 70px; width: auto; object-fit: contain; margin-bottom: 1rem;">
-        <span style="font-family: var(--font-header); font-weight: 600; font-size: 1.5rem; color: var(--color-charcoal); letter-spacing: -0.02em;">
+        <span style="font-family: var(--font-header); font-weight: 600; font-size: 1.6rem; color: var(--color-charcoal); letter-spacing: -0.02em;">
             Nazar Omelianenko
         </span>
-        <span style="font-size: 0.9rem; color: var(--muted); margin-top: 0.3rem;">
+        <!-- ACENTO TIPOGRÁFICO: Más oscuro, con más peso y presencia -->
+        <span style="font-size: 1rem; color: var(--color-charcoal); margin-top: 0.6rem; font-weight: 500; letter-spacing: -0.01em;">
             Испанский язык с академическим подходом
         </span>
     </a>
 
-    <!-- BOTONES (NUEVA JERARQUÍA DE 3 NIVELES) -->
-    <div style="width: 100%; display: flex; flex-direction: column; gap: 1.2rem;">
+    <!-- SISTEMA DE BLOQUES CON TENSIÓN VISUAL Y BORDES SUIZOS -->
+    <div style="width: 100%; display: flex; flex-direction: column;">
 
-        <!-- NIVEL 1: ABONO (Protagonista - Color #B56B6B) -->
-        <a href="https://buy.stripe.com/5kQdR91ek7muaMmfpZ1ck00" target="_blank" style="display: flex; flex-direction: column; align-items: center; background-color: #B56B6B; color: #EDEAE5; padding: 1.5rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 10px 30px rgba(181, 107, 107, 0.15); transition: transform 0.3s ease;">
+        <!-- 1. ABONEMENT (Fondo terracota + Borde negro consistente + Espacio extra abajo) -->
+        <a href="https://buy.stripe.com/5kQdR91ek7muaMmfpZ1ck00" target="_blank" style="display: flex; flex-direction: column; align-items: center; background-color: #B56B6B; color: #EDEAE5; padding: 1.75rem; border-radius: var(--radius); text-decoration: none; border: 1px solid #1E1E1E; box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: transform 0.3s ease; margin-bottom: 2.5rem; /* Separación visual para jerarquía */">
             <span style="font-family: var(--font-header); font-size: 1.4rem; margin-bottom: 0.3rem; color: #EDEAE5;">Абонемент · 4 занятия</span>
-            <span style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">Фиксированное место в расписании</span>
+            <span style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.8rem; font-style: italic; border-bottom: 1px solid rgba(237,234,229,0.2); padding-bottom: 4px; width: fit-content;">Фиксированное место в расписании</span>
             
-            <!-- Anclaje de precios -->
-            <div style="display: flex; align-items: baseline; gap: 0.6rem; margin-top: 0.3rem;">
-                <span style="font-family: var(--font-header); font-size: 1.5rem; font-weight: 500;">130€</span>
-                <span style="font-size: 1rem; opacity: 0.6; text-decoration: line-through;">140€</span>
+            <!-- Precio con "/ месяц" explícito y tachado discreto -->
+            <div style="display: flex; align-items: baseline; justify-content: center; gap: 0.6rem; margin-top: 0.5rem;">
+                <span style="font-family: var(--font-header); font-size: 1.8rem; font-weight: 500; color: #EDEAE5;">130€</span>
+                <span style="font-size: 1.05rem; opacity: 0.5; text-decoration: line-through; color: #EDEAE5;">140€</span>
+                <span style="font-size: 0.85rem; opacity: 0.7; color: #EDEAE5; margin-left: 0.2rem;">/ месяц</span>
             </div>
         </a>
 
-        <!-- NIVEL 2: CLASE INDIVIDUAL (Secundario - Blanco y Limpio) -->
-        <a href="https://calendly.com/nazar-dezign/clase-individual" target="_blank" style="display: flex; flex-direction: column; background-color: white; color: var(--color-charcoal); border: 1px solid var(--line); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: transform 0.3s ease;">
-            <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem;">Индивидуальный урок</span>
-            <span style="font-size: 0.95rem; color: var(--muted);">60 минут · 35€</span>
-        </a>
+        <!-- GRUPO SECUNDARIO (Con espacio uniforme entre ellos) -->
+        <div style="width: 100%; display: flex; flex-direction: column; gap: 1.2rem;">
 
-        <!-- NIVEL 3: MATERIALES (Terciario - Sin caja, solo texto) -->
-        <!-- Usamos tu color terracota personalizado #B56B6B para el texto -->
-        <a href="materiales.html" style="display: flex; flex-direction: column; background-color: transparent; padding: 1rem; border: none; text-decoration: none; transition: transform 0.3s ease; margin-top: 0.5rem;">
-            <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem; color: #B56B6B;">Учебные материалы →</span>
-            <span style="font-size: 0.9rem; color: var(--muted);">Авторские PDF и шпаргалки (от 0€)</span>
-        </a>
+            <!-- 2. CLASE INDIVIDUAL (Blanco + Borde negro consistente) -->
+            <a href="https://calendly.com/nazar-dezign/clase-individual" target="_blank" style="display: flex; flex-direction: column; background-color: white; color: var(--color-charcoal); border: 1px solid #1E1E1E; padding: 1.5rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: transform 0.3s ease;">
+                <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem;">Индивидуальный урок</span>
+                <span style="font-size: 0.95rem; color: var(--muted);">60 минут · 35€</span>
+            </a>
+
+            <!-- 3. MATERIALES (Transparente + Borde presente pero suave) -->
+            <a href="materiales.html" style="display: flex; flex-direction: column; background-color: transparent; color: var(--color-charcoal); border: 1.5px solid rgba(26,26,26,0.15); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; transition: transform 0.3s ease;">
+                <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem; color: #B56B6B;">Учебные материалы →</span>
+                <span style="font-size: 0.9rem; color: var(--muted);">Авторские PDF и шпаргалки (от 0€)</span>
+            </a>
+
+        </div>
 
     </div>
 
     <!-- ENLACE A LA WEB COMPLETA -->
-    <div style="margin-top: 5rem; margin-bottom: 5rem;">
-        <a href="index.html" style="font-size: 0.95rem; color: var(--color-charcoal); text-decoration: underline; text-decoration-color: rgba(26,26,26,0.3); text-underline-offset: 4px;">
+    <div style="margin-top: 4.5rem;">
+        <a href="index.html" class="link" style="font-size: 0.95rem; font-weight: 500;">
             Перейти на главный сайт →
         </a>
     </div>
