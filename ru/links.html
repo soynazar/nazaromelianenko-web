@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>Nazar Omelianenko — Ссылки</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- viewport-fit=cover ayuda a evitar las "muescas" de los iPhone -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,15 +17,14 @@
   <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
 </head>
 
-<!-- CORREGIDO: Quitada la clase is-loading -->
-<body style="padding-top: 2rem;">
+<!-- PADDING EXTREMO ARRIBA Y ABAJO PARA EVITAR LAS BARRAS DE INSTAGRAM/TELEGRAM -->
+<body style="padding-top: 4rem; padding-bottom: 6rem; background-color: var(--color-arena);">
 
-  <!-- Añadimos padding-bottom enorme para que el móvil pueda hacer scroll extra -->
-  <main class="container" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; padding-bottom: 6rem;">
+  <main class="container" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
     
     <!-- LOGO CENTRADO -->
     <a href="index.html" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; margin-bottom: 3rem;">
-        <img src="/images/logo.png" alt="Nazar Omelianenko" style="height: 80px; width: auto; object-fit: contain; margin-bottom: 1rem;">
+        <img src="/images/logo.png" alt="Nazar Omelianenko" style="height: 70px; width: auto; object-fit: contain; margin-bottom: 1rem;">
         <span style="font-family: var(--font-header); font-weight: 600; font-size: 1.5rem; color: var(--color-charcoal); letter-spacing: -0.02em;">
             Nazar Omelianenko
         </span>
@@ -33,23 +33,23 @@
         </span>
     </a>
 
-    <!-- BOTONES (LOS 3 EMBUDOS DE CONVERSIÓN) -->
+    <!-- BOTONES (ESPACIADO MATEMÁTICAMENTE IDÉNTICO) -->
     <div style="width: 100%; display: flex; flex-direction: column; gap: 1.5rem;">
 
-        <!-- 1. SUSCRIPCIÓN (Color #1E1E1E) -->
+        <!-- 1. SUSCRIPCIÓN -->
         <a href="https://buy.stripe.com/5kQdR91ek7muaMmfpZ1ck00" target="_blank" style="display: flex; flex-direction: column; background-color: #1E1E1E; color: var(--color-arena); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
             <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem; color: white;">Абонемент · 4 занятия</span>
             <span style="font-size: 0.9rem; opacity: 0.8;">Фиксированное место. 130€ / месяц</span>
         </a>
 
-        <!-- 2. CLASE SUELTA (Calendly) -->
+        <!-- 2. CLASE SUELTA -->
         <a href="https://calendly.com/nazar-dezign/clase-individual" target="_blank" style="display: flex; flex-direction: column; background-color: white; color: var(--color-charcoal); border: 1px solid var(--line); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: transform 0.3s ease;">
             <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem;">Разовое занятие</span>
             <span style="font-size: 0.9rem; color: var(--muted);">Диагностика или консультация. 35€</span>
         </a>
 
-        <!-- 3. MATERIALES DESCARGABLES (La tienda) -->
-        <a href="materiales.html" style="display: flex; flex-direction: column; background-color: transparent; color: var(--color-charcoal); border: 1px solid var(--color-terracotta); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; transition: transform 0.3s ease; margin-top: 1rem;">
+        <!-- 3. MATERIALES DESCARGABLES (Sin márgenes extra que rompan el diseño) -->
+        <a href="materiales.html" style="display: flex; flex-direction: column; background-color: transparent; color: var(--color-charcoal); border: 1px solid var(--color-terracotta); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; transition: transform 0.3s ease;">
             <span style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 0.2rem; color: var(--color-terracotta);">Учебные материалы</span>
             <span style="font-size: 0.9rem; color: var(--muted);">Авторские PDF и шпаргалки (от 0€)</span>
         </a>
@@ -57,9 +57,9 @@
     </div>
 
     <!-- ENLACE A LA WEB COMPLETA -->
-    <!-- Más margen arriba para despegarlo de las cajas -->
-    <div style="margin-top: 4rem;">
-        <a href="index.html" class="link" style="font-size: 0.95rem;">
+    <!-- MUCHO margen inferior para forzar que el enlace suba al hacer scroll -->
+    <div style="margin-top: 5rem; margin-bottom: 5rem;">
+        <a href="index.html" style="font-size: 0.95rem; color: var(--color-charcoal); text-decoration: underline; text-decoration-color: rgba(26,26,26,0.3); text-underline-offset: 4px;">
             Перейти на главный сайт →
         </a>
     </div>
