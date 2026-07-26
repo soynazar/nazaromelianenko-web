@@ -10,11 +10,12 @@ const pageMap = {
     'ensenanza.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyanca.html' },
     'ensenyanca.html': { es: 'ensenanza.html', ru: 'ensenanza.html', en: 'teaching.html', ca: 'ensenyanca.html' },
     
-    // Desde Desarrollo
-    'development.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
-    'desarrollo.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
-    'desenvolupament.html': { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
-    
+    /* DESARROLLO DESACTIVADO 2026-07
+    'development.html':    { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
+    'desarrollo.html':     { es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
+    'desenvolupament.html':{ es: 'desarrollo.html', ru: 'desarrollo.html', en: 'development.html', ca: 'desenvolupament.html' },
+    */
+
     // Desde Contacto
     'contact.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html', ca: 'contacte.html' },
     'contacto.html': { es: 'contacto.html', ru: 'contacto.html', en: 'contact.html', ca: 'contacte.html' },
@@ -31,10 +32,10 @@ const pageMap = {
 
 // Textos de la interfaz (Menú)
 const uiStrings = {
-    es: { home: "Inicio", teaching: "Enseñanza", dev: "Desarrollo", about: "Sobre mí", contact: "Contacto", materials: "Materiales" },
-    en: { home: "Home", teaching: "Teaching", dev: "Development", about: "About me", contact: "Contact", materials: "Materials" },
-    ru: { home: "Главная", teaching: "Обучение", dev: "Разработка", about: "Обо мне", contact: "Контакт", materials: "Материалы" },
-    ca: { home: "Inici", teaching: "Ensenyança", dev: "Desenvolupament", about: "Sobre mi", contact: "Contacte", materials: "Materials" }
+    es: { home: "Inicio", teaching: "Enseñanza", /* dev: "Desarrollo", */ about: "Sobre mí", contact: "Contacto", materials: "Materiales" },
+    en: { home: "Home",   teaching: "Teaching",  /* dev: "Development", */ about: "About me", contact: "Contact",  materials: "Materials" },
+    ru: { home: "Главная", teaching: "Обучение", /* dev: "Разработка", */ about: "Обо мне", contact: "Контакт",  materials: "Материалы" },
+    ca: { home: "Inici",  teaching: "Ensenyança",/* dev: "Desenvolupament", */ about: "Sobre mi", contact: "Contacte", materials: "Materials" }
 };
 
 const initLanguageSwitch = () => {
@@ -75,10 +76,6 @@ const initLanguageSwitch = () => {
         
         // Buscamos la traducción del archivo destino
         if (hrefOriginal) {
-            // Normalizamos: si el link va a "teaching.html", buscamos cómo se llama eso en el idioma actual
-            // Pero como hrefOriginal puede variar según dónde copiamos el HTML, usamos el data-key mejor si es navegación general
-            // O buscamos en el pageMap las claves.
-            
             // Estrategia simple: buscar la clave en el pageMap
             let targetFile = 'index.html';
             
@@ -121,7 +118,6 @@ const initLanguageSwitch = () => {
             localStorage.setItem("site_lang", targetLang);
             
             // Calcular página destino
-            // Si estamos en 'sobre-mi.html' (ES) y vamos a EN -> 'about-me.html'
             let destinationPage = 'index.html';
             if (pageMap[currentPage]) {
                 destinationPage = pageMap[currentPage][targetLang];
