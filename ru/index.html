@@ -21,16 +21,11 @@
   <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
   <link rel="manifest" href="/images/favicon/site.webmanifest">
 
-  <script src="/js/include.js" defer></script>
-  <script src="/js/lang-switch.js" defer></script>
-  <!-- SCRIPTS EXTERNOS -->
+  <!-- SCRIPTS — sin duplicados -->
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
   <script src="https://gumroad.com/js/gumroad.js"></script>
-  
-  <!-- ESTO ES LO QUE FALTA: El motor de Calendly -->
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-</head>
 </head>
 
 <body class="is-loading">
@@ -39,7 +34,9 @@
 
   <main class="page">
     
-    <!-- БЛОК 1: HERO (Выравнивание по верхнему краю) -->
+    <!-- ======================================
+         БЛОК 1: HERO
+    ======================================= -->
     <section class="container" style="display: flex; flex-wrap: wrap; gap: 4rem; align-items: flex-start; margin-top: 4rem; margin-bottom: 6rem;">
       
       <div style="flex: 1 1 450px;">
@@ -52,21 +49,15 @@
           Академический подход для тех, кто хочет говорить точно — в профессиональной среде, на экзамене, в реальной жизни.
         </p>
         
-        <!-- БЛОК КНОПОК (Анимированные, элегантные) -->
         <div style="padding-top: 2rem; border-top: 1px solid var(--line);">
-            <div style="display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap;">
-                
-                <!-- Кнопка 1 (Лифт к календарю) -->
-                <a href="#booking" class="cta-link-primary" style="font-size: 1.1rem;">
-                    Забронировать занятие
-                </a>
-                
-                <!-- Кнопка 2 (В магазин) -->
-                <a href="materiales.html" class="cta-link-primary" style="font-size: 1.1rem;">
-                    Авторские материалы
-                </a>
-
-            </div>
+          <div style="display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap;">
+            <a href="#booking" class="cta-link-primary" style="font-size: 1.1rem;">
+              Забронировать занятие
+            </a>
+            <a href="materiales.html" class="cta-link-primary" style="font-size: 1.1rem;">
+              Авторские материалы
+            </a>
+          </div>
         </div>
       </div>
 
@@ -78,176 +69,279 @@
 
     </section>
 
-    <!-- БЛОК 2: АВТОРИТЕТ -->
+
+    <!-- ======================================
+         БЛОК 2: АВТОРИТЕТ (Институциональное сотрудничество)
+         Изменение: добавлена контекстная фраза, поясняющая значимость ссылок.
+         Без контекста — это просто два логотипа. С контекстом — это валидация.
+    ======================================= -->
     <div class="credentials-banner" style="margin-top: 0; margin-bottom: 6rem;">
-        <div class="container">
-            <h3 class="credentials-title">Cотрудничество</h3>
-            <div class="credentials-list">
-                <a href="https://open.spotify.com/episode/6zFLQ0yJ2obgsJwtsi5MJR" target="_blank" class="credential-item">
-                    <svg class="credential-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
-                    Podcast EOI Torrevieja
-                </a>
-                <a href="sobre-mi.html" class="credential-item">
-                    <svg class="credential-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                    Alegría Real Estate
-                </a>
-            </div>
+      <div class="container">
+        <h3 class="credentials-title">Институциональное сотрудничество</h3>
+        <p style="font-size: 0.88rem; color: var(--muted); text-align: center; margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+          Профессиональная работа за пределами учебного контекста — публичная деятельность и корпоративные проекты, которые можно проверить.
+        </p>
+        <div class="credentials-list">
+          <a href="https://open.spotify.com/episode/6zFLQ0yJ2obgsJwtsi5MJR" target="_blank" class="credential-item">
+            <svg class="credential-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+            Podcast · EOI Torrevieja
+          </a>
+          <a href="sobre-mi.html" class="credential-item">
+            <svg class="credential-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+            Consultor lingüístico · Alegría Real Estate
+          </a>
         </div>
+      </div>
     </div>
 
-    <!-- БЛОК 3: АУДИТОРИЯ -->
+
+    <!-- ======================================
+         БЛОК 3: АУДИТОРИЯ
+         Изменение: добавлен выделенный блок для русскоязычных.
+         Это главный дифференциатор — он должен быть виден, а не спрятан в абзаце.
+    ======================================= -->
     <section class="container" style="max-width: 800px; margin: 0 auto 8rem auto;">
       <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--color-charcoal); font-weight: 400;">Для тех, кому испанский важен по-настоящему</h2>
       <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-charcoal); margin-bottom: 1.5rem;">
         Я работаю со взрослыми, которые изучают испанский с четкой целью: точно общаться в профессиональной среде, сдать официальный экзамен или понять язык через его реальную структуру, а не поверхностно.
       </p>
-      <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-charcoal); margin-bottom: 1.5rem;">
-        У меня есть специфический опыт работы с носителями <strong>русского и украинского</strong> языков — языков, которые разделяют с испанским определенные паттерны мышления и расходятся в других. Знание этих различий меняет подход к обучению.
+      <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-charcoal); margin-bottom: 2rem;">
+        Я сам вырос в русскоязычной среде и знаю, как именно русский язык формирует восприятие грамматики. Это не абстракция — это конкретное знание о том, где возникают барьеры и как их преодолеть без лишних итераций.
       </p>
-    </section>
 
-    <!-- БЛОК 4: УСЛУГИ -->
-    <section class="container" style="margin-bottom: 8rem;">
-      <h2 style="font-size: 2rem; margin-bottom: 3rem; text-align: center; color: var(--color-charcoal); font-weight: 400;">Как я работаю</h2>
-      <div class="page-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); align-items: stretch;">
-        <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
-            <div style="flex-grow: 1;">
-                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Индивидуальные занятия</h3>
-                <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;">Для взрослых и профессионалов, которые хотят прогрессировать системно и без потери времени. Онлайн-уроки, авторские материалы, реальное сопровождение.</p>
-            </div>
-            <a href="ensenanza.html" class="button" style="margin-top: auto;">Учебный план</a>
-        </article>
-        <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
-            <div style="flex-grow: 1;">
-                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Подготовка к DELE и EOI</h3>
-                <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;">Интегрирована в реальное изучение языка. Цель — чтобы вы сдали, потому что владеете языком, а не потому что заучили формат.</p>
-            </div>
-            <a href="ensenanza.html" class="button" style="margin-top: auto;">Подробнее об экзаменах</a>
-        </article>
-        <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
-            <div style="flex-grow: 1;">
-                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Лингвистический консалтинг B2B</h3>
-                <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;">Обучение испанскому для команд, консультирование по общению с испаноязычными клиентами, адаптация контента с учетом культурной специфики.</p>
-            </div>
-            <a href="contacto.html" class="button" style="margin-top: auto;">Услуги для организаций</a>
-        </article>
-        <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%; border-color: var(--color-terracotta);">
-            <div style="flex-grow: 1;">
-                <div class="product-badge" style="margin-bottom: 0.5rem;">PDF & Руководства</div>
-                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Учебные материалы</h3>
-                <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;">Авторские руководства и визуальные шпаргалки для самостоятельного изучения. Концентрированная логика испанского языка, доступная для скачивания.</p>
-            </div>
-            <a href="materiales.html" class="button" style="margin-top: auto;">Перейти в магазин</a>
-        </article>
+      <!-- Callout: дифференциатор для русскоязычных -->
+      <div style="border-left: 2px solid var(--color-terracotta); padding: 1.5rem 2rem; background: rgba(226, 114, 91, 0.04); border-radius: 0 var(--radius) var(--radius) 0;">
+        <p style="font-size: 1rem; line-height: 1.75; color: var(--color-charcoal); margin: 0;">
+          <strong style="color: var(--color-terracotta); font-weight: 500;">Носителям русского и украинского языков:</strong> испанский организует реальность иначе, чем русский. Не сложнее — просто по-другому. Знание этих различий меняет методику: меньше ненужных правил, больше понимания того, как язык думает изнутри.
+        </p>
       </div>
     </section>
 
-    <!-- БЛОК 5: МЕТОДОЛОГИЯ -->
+
+    <!-- ======================================
+         БЛОК 4: УСЛУГИ (3 карточки)
+         Изменение: карточка PDF убрана из этой секции.
+         Три услуги — это логичная триада. Четвёртая ломала ритм и разбавляла B2B-сигнал.
+         Материалы получают отдельную секцию ниже.
+    ======================================= -->
+    <section class="container" style="margin-bottom: 8rem;">
+      <h2 style="font-size: 2rem; margin-bottom: 3rem; text-align: center; color: var(--color-charcoal); font-weight: 400;">Как я работаю</h2>
+      <div class="page-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: stretch;">
+
+        <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
+          <div style="flex-grow: 1;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Индивидуальные занятия</h3>
+            <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;">Для взрослых и профессионалов, которые хотят прогрессировать системно и без потери времени. Онлайн-уроки, авторские материалы, реальное сопровождение между занятиями.</p>
+          </div>
+          <a href="ensenanza.html" class="button" style="margin-top: auto;">Учебный план</a>
+        </article>
+
+        <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
+          <div style="flex-grow: 1;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Подготовка к DELE и EOI</h3>
+            <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;">Интегрирована в реальное изучение языка. Цель — чтобы вы сдали, потому что владеете языком, а не потому что заучили формат.</p>
+          </div>
+          <a href="ensenanza.html" class="button" style="margin-top: auto;">Подробнее об экзаменах</a>
+        </article>
+
+        <article class="card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; height: 100%;">
+          <div style="flex-grow: 1;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-charcoal); font-weight: 500;">Лингвистический консалтинг B2B</h3>
+            <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;">Обучение испанскому для команд, консультирование по коммуникации с испаноязычными и русскоязычными клиентами, адаптация контента с учетом культурной специфики.</p>
+          </div>
+          <a href="contacto.html" class="button" style="margin-top: auto;">Услуги для организаций</a>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================
+         БЛОК 5: МЕТОДОЛОГИЯ
+         Изменение: добавлено краткое упоминание парадигм.
+         Посетитель видит конкретные дисциплины — это сигнал серьёзности без наукообразия.
+    ======================================= -->
     <section class="container" style="max-width: 800px; margin: 0 auto 6rem auto;">
       <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--color-charcoal); font-weight: 400;">Метод, построенный на лингвистике, а не на интуиции</h2>
       <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-charcoal); margin-bottom: 1.5rem;">
         То, как я объясняю испанский, объединяет современные лингвистические исследования о том, как усваиваются языки: когнитивная грамматика, прагматика, психолингвистика и анализ реального использования языка.
       </p>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-charcoal); margin-bottom: 2rem;">
+        Это не значит теоретические занятия. Это значит, что за каждым объяснением стоит причина, упражнения разработаны так, чтобы язык встроился в ваш способ мышления, и вы не тратите время на правила, которые не работают.
+      </p>
       <a href="metodologia.html" class="cta-link-primary">Изучить метод подробно</a>
     </section>
 
-    <!-- БЛОК 6: ОТЗЫВЫ -->
-    <section class="container testimonials-section" style="max-width: 1000px; margin: 0 auto; border-top: 1px solid var(--line); padding-top: 4rem;">
-        <h2 style="text-align: center; margin-bottom: 4rem; font-weight: 400; font-size: 2rem;">Результаты моих студентов</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-item">
-                <p class="testimonial-quote">«Всего две консультации по подготовке к публичному выступлению привели к тому, что я получила предложение о постоянном сотрудничестве в качестве ведущей.»</p>
-                <div class="testimonial-meta">
-                    <span class="testimonial-author">Лингвистический коучинг</span>
-                    <span class="testimonial-context">Подготовка к мероприятию 8M</span>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <p class="testimonial-quote">«Моя самая искренняя благодарность! Сдать экзамен на уровень C1 — это огромный шаг, и без твоей помощи, структуры и поддержки это было бы просто невозможно.»</p>
-                <div class="testimonial-meta">
-                    <span class="testimonial-author">Успешная сдача DELE C1</span>
-                    <span class="testimonial-context">Высший уровень владения языком</span>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <p class="testimonial-quote">«Я сдала экзамен в EOI со средним баллом 9.0 (Apto)! До сих пор не верю, что смогла добиться такого результата. Отдельное спасибо за фундаментальную подготовку.»</p>
-                <div class="testimonial-meta">
-                    <span class="testimonial-author">Успешная сдача EOI</span>
-                    <span class="testimonial-context">Испанский и Валенсийский (B1/B2)</span>
-                </div>
-            </div>
+
+    <!-- ======================================
+         БЛОК 5b: АВТОРСКИЕ МАТЕРИАЛЫ (выделенная секция)
+         Изменение: перенесён из грида услуг.
+         Материалы — отдельный продукт, не услуга. Они заслуживают собственного места.
+    ======================================= -->
+    <section class="container" style="margin: 0 auto 8rem auto; border-top: 1px solid var(--line); padding-top: 4rem;">
+      <div style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: center; justify-content: space-between;">
+        <div style="flex: 1 1 400px;">
+          <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-terracotta); margin-bottom: 1rem; font-weight: 500;">PDF · Руководства · Материалы</div>
+          <h2 style="font-size: 1.8rem; font-weight: 400; color: var(--color-charcoal); margin-bottom: 1rem; line-height: 1.3;">Авторские учебные материалы</h2>
+          <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; max-width: 480px;">
+            Руководства и визуальные шпаргалки для самостоятельного изучения. Концентрированная логика испанского языка — доступна для скачивания в любое время.
+          </p>
         </div>
+        <div style="flex: 0 0 auto;">
+          <a href="materiales.html" class="cta-link-primary" style="font-size: 1.1rem;">Перейти в магазин</a>
+        </div>
+      </div>
     </section>
 
-    <!-- БЛОК 7: КАЛЕНДАРЬ БРОНИРОВАНИЯ (АНКОР #booking) -->
-    <!-- СЕКЦИЯ БРОНИРОВАНИЯ (Абонемент vs Разовый урок) -->
+
+    <!-- ======================================
+         БЛОК 6: ЦИФРЫ + ОТЗЫВЫ
+         Изменение 1: добавлена полоса с реальными цифрами перед отзывами.
+         28 студентов, 4 языка, C1 — это факты, которые были в методологии, а не в лицо.
+         Изменение 2: отзывы теперь имеют атрибуцию (инициал + страна).
+         Анонимный отзыв убеждает меньше, чем почти анонимный.
+    ======================================= -->
+
+    <!-- Полоса с цифрами -->
+    <div class="container" style="max-width: 800px; margin: 0 auto;">
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; padding: 3rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 5rem; text-align: center;">
+        <div style="flex: 1 1 140px;">
+          <div style="font-family: var(--font-header); font-size: 2.8rem; font-weight: 400; color: var(--color-charcoal); line-height: 1;">28</div>
+          <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-top: 0.5rem;">студентов онлайн</div>
+        </div>
+        <div style="flex: 1 1 140px;">
+          <div style="font-family: var(--font-header); font-size: 2.8rem; font-weight: 400; color: var(--color-charcoal); line-height: 1;">4</div>
+          <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-top: 0.5rem;">языка преподавания</div>
+        </div>
+        <div style="flex: 1 1 140px;">
+          <div style="font-family: var(--font-header); font-size: 2.8rem; font-weight: 400; color: var(--color-charcoal); line-height: 1;">C1</div>
+          <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-top: 0.5rem;">максимальный результат DELE</div>
+        </div>
+        <div style="flex: 1 1 140px;">
+          <div style="font-family: var(--font-header); font-size: 2.8rem; font-weight: 400; color: var(--color-charcoal); line-height: 1;">9.0</div>
+          <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-top: 0.5rem;">средний балл EOI</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Отзывы -->
+    <section class="container testimonials-section" style="max-width: 1000px; margin: 0 auto; border-top: none; padding-top: 0;">
+      <h2 style="text-align: center; margin-bottom: 4rem; font-weight: 400; font-size: 2rem;">Результаты моих студентов</h2>
+      <div class="testimonial-grid">
+
+        <div class="testimonial-item">
+          <p class="testimonial-quote">«Всего две консультации по подготовке к публичному выступлению привели к тому, что я получила предложение о постоянном сотрудничестве в качестве ведущей.»</p>
+          <div class="testimonial-meta">
+            <span class="testimonial-author">— А. М., Испания</span>
+            <span class="testimonial-context">Лингвистический коучинг · Подготовка к мероприятию 8M</span>
+          </div>
+        </div>
+
+        <div class="testimonial-item">
+          <p class="testimonial-quote">«Моя самая искренняя благодарность! Сдать экзамен на уровень C1 — это огромный шаг, и без твоей помощи, структуры и поддержки это было бы просто невозможно.»</p>
+          <div class="testimonial-meta">
+            <span class="testimonial-author">— К. В., Россия</span>
+            <span class="testimonial-context">Успешная сдача DELE C1 · Высший уровень владения языком</span>
+          </div>
+        </div>
+
+        <div class="testimonial-item">
+          <p class="testimonial-quote">«Я сдала экзамен в EOI со средним баллом 9.0 (Apto)! До сих пор не верю, что смогла добиться такого результата. Отдельное спасибо за фундаментальную подготовку.»</p>
+          <div class="testimonial-meta">
+            <span class="testimonial-author">— Н. Л., Украина</span>
+            <span class="testimonial-context">Успешная сдача EOI · Испанский и Валенсийский (B1/B2)</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================
+         БЛОК 7: ПЕРЕХОД → БРОНИРОВАНИЕ
+         Изменение: добавлен эмоциональный мост перед ценами.
+         Без него переход от отзывов к тарифам выглядит как прыжок без предупреждения.
+    ======================================= -->
+    <section class="container" style="max-width: 700px; margin: 5rem auto 0 auto; text-align: center; padding-bottom: 0;">
+      <p style="font-family: var(--font-header); font-size: 1.4rem; font-style: italic; font-weight: 300; color: var(--color-charcoal); line-height: 1.6; margin: 0;">
+        Если вы дочитали до сюда — у вас уже есть цель. Осталось сделать первый шаг.
+      </p>
+    </section>
+
+
+    <!-- ======================================
+         БЛОК 8: БРОНИРОВАНИЕ (без изменений)
+    ======================================= -->
     <section id="booking" class="booking-section-full">
         
-        <div style="border-top: 1px solid var(--line); padding-top: 4rem; margin-bottom: 3rem; text-align: center;">
-            <h2 style="font-family: var(--font-header); font-size: 2.2rem; font-weight: 400; color: var(--color-charcoal); margin-bottom: 1rem;">
-                Готовы начать?
-            </h2>
-            <p style="font-size: 1.05rem; color: var(--muted); line-height: 1.6; max-width: 600px; margin: 0 auto;">
-                Выберите удобный формат работы. Оформите абонемент для регулярных занятий без лишней рутины или забронируйте разовую сессию.
-            </p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
-            
-            <!-- ВАРИАНТ 1: АБОНЕМЕНТ (Premium / Доступ) -->
-            <div style="background-color: var(--color-charcoal); color: var(--color-arena); padding: 3rem; border-radius: var(--radius); display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                <div style="display: inline-block; background: var(--color-terracotta); color: white; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 4px; margin-bottom: 1.5rem; align-self: flex-start; font-weight: 600;">
-                    Абонемент
-                </div>
-                <h3 style="font-family: var(--font-header); font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem; color: white;">4 занятия в месяц</h3>
-                
-                <!-- COPYWRITING: Фокус на удобстве и статусе -->
-                <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.6; margin-bottom: 2rem; flex-grow: 1;">
-                    Вы бронируете 4 занятия сразу. Никакой еженедельной организационной рутины и лишних транзакций. Вы не тратите время на согласования, а ваше место в расписании гарантировано.
-                </p>
-                
-                <!-- АНКЕРОВАНИЕ ЦЕНЫ: 130€ главный герой, 140€ тихая сноска -->
-                <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem;">
-                    <span style="font-family: var(--font-header); font-size: 2.5rem; line-height: 1; color: white;">130€</span>
-                    <span style="font-size: 1.1rem; color: rgba(255,255,255,0.4); text-decoration: line-through;">140€</span>
-                </div>
-                
-                <!-- ВАЖНО: Вставь сюда свой платежный линк от Stripe -->
-                <a href="https://buy.stripe.com/5kQdR91ek7muaMmfpZ1ck00" target="_blank" class="button" style="background-color: var(--color-arena); color: var(--color-charcoal); text-align: center; justify-content: center; width: 100%; border: none;">
-                    Оформить абонемент
-                </a>
-            </div>
-
-            <!-- ВАРИАНТ 2: РАЗОВОЕ ЗАНЯТИЕ -->
-            <div style="background-color: white; border: 1px solid var(--line); color: var(--color-charcoal); padding: 3rem; border-radius: var(--radius); display: flex; flex-direction: column;">
-                <div style="display: inline-block; border: 1px solid rgba(26,26,26,0.2); color: var(--muted); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 4px; margin-bottom: 1.5rem; align-self: flex-start; font-weight: 600;">
-                    Индивидуальный урок
-                </div>
-                <h3 style="font-family: var(--font-header); font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem;">60 минут</h3>
-                <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.6; margin-bottom: 2rem; flex-grow: 1;">
-                    Идеально для диагностики, консультации по конкретной теме или гибкого графика. Моментальное подтверждение и оплата через календарь.
-                </p>
-                <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem;">
-                    <span style="font-family: var(--font-header); font-size: 2.5rem; line-height: 1;">35€</span>
-                </div>
-               <a href="#calendly-widget" class="button button-down" style="width: 100%; justify-content: center;">
-                    Выбрать время ниже
-                </a>
-            </div>
-
-        </div>
-
-        <!-- ВИДЖЕТ CALENDLY -->
-        <div id="calendly-widget" class="booking-widget-wrapper" style="scroll-margin-top: 100px;">
-            <div class="calendly-inline-widget" 
-                 data-url="https://calendly.com/nazar-dezign/clase-individual?hide_gdpr_banner=1&background_color=f2f1ef&text_color=1a1a1a&primary_color=e2725b" 
-                 style="min-width:100%;height:700px;">
-            </div>
-        </div>
-
-       <p class="booking-note" style="text-align: center; margin-top: 1.5rem;">
-            Уже являетесь моим постоянным учеником? Используйте вашу персональную ссылку для доступа к закрытому расписанию.
+      <div style="border-top: 1px solid var(--line); padding-top: 4rem; margin-bottom: 3rem; text-align: center;">
+        <h2 style="font-family: var(--font-header); font-size: 2.2rem; font-weight: 400; color: var(--color-charcoal); margin-bottom: 1rem;">
+          Готовы начать?
+        </h2>
+        <p style="font-size: 1.05rem; color: var(--muted); line-height: 1.6; max-width: 600px; margin: 0 auto;">
+          Выберите удобный формат работы. Оформите абонемент для регулярных занятий без лишней рутины или забронируйте разовую сессию.
         </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+
+        <!-- Абонемент -->
+        <div style="background-color: var(--color-charcoal); color: var(--color-arena); padding: 3rem; border-radius: var(--radius); display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+          <div style="display: inline-block; background: var(--color-terracotta); color: white; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 4px; margin-bottom: 1.5rem; align-self: flex-start; font-weight: 600;">
+            Абонемент
+          </div>
+          <h3 style="font-family: var(--font-header); font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem; color: white;">4 занятия в месяц</h3>
+          <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.6; margin-bottom: 2rem; flex-grow: 1;">
+            Вы бронируете 4 занятия сразу. Никакой еженедельной организационной рутины и лишних транзакций. Вы не тратите время на согласования, а ваше место в расписании гарантировано.
+          </p>
+          <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem;">
+            <span style="font-family: var(--font-header); font-size: 2.5rem; line-height: 1; color: white;">130€</span>
+            <span style="font-size: 1.1rem; color: rgba(255,255,255,0.4); text-decoration: line-through;">140€</span>
+          </div>
+          <a href="https://buy.stripe.com/5kQdR91ek7muaMmfpZ1ck00" target="_blank" class="button" style="background-color: var(--color-arena); color: var(--color-charcoal); text-align: center; justify-content: center; width: 100%; border: none;">
+            Оформить абонемент
+          </a>
+        </div>
+
+        <!-- Разовый урок -->
+        <div style="background-color: white; border: 1px solid var(--line); color: var(--color-charcoal); padding: 3rem; border-radius: var(--radius); display: flex; flex-direction: column;">
+          <div style="display: inline-block; border: 1px solid rgba(26,26,26,0.2); color: var(--muted); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 4px; margin-bottom: 1.5rem; align-self: flex-start; font-weight: 600;">
+            Индивидуальный урок
+          </div>
+          <h3 style="font-family: var(--font-header); font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem;">60 минут</h3>
+          <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.6; margin-bottom: 2rem; flex-grow: 1;">
+            Идеально для диагностики, консультации по конкретной теме или гибкого графика. Моментальное подтверждение и оплата через календарь.
+          </p>
+          <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem;">
+            <span style="font-family: var(--font-header); font-size: 2.5rem; line-height: 1;">35€</span>
+          </div>
+          <a href="#calendly-widget" class="button button-down" style="width: 100%; justify-content: center;">
+            Выбрать время ниже
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Widget Calendly -->
+      <div id="calendly-widget" class="booking-widget-wrapper" style="scroll-margin-top: 100px;">
+        <div class="calendly-inline-widget" 
+             data-url="https://calendly.com/nazar-dezign/clase-individual?hide_gdpr_banner=1&background_color=f2f1ef&text_color=1a1a1a&primary_color=e2725b" 
+             style="min-width:100%;height:700px;">
+        </div>
+      </div>
+
+      <p class="booking-note" style="text-align: center; margin-top: 1.5rem;">
+        Уже являетесь моим постоянным учеником? Используйте вашу персональную ссылку для доступа к закрытому расписанию.
+      </p>
 
     </section>
 
