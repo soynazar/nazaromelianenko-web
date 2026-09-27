@@ -17,7 +17,7 @@ const pageMap = {
     'index.html': { es: 'index.html', ru: 'index.html', en: 'index.html', ca: 'index.html' },
     'materiales.html': { es: 'index.html', ru: 'materiales.html', en: 'index.html', ca: 'index.html' },
     
-    // Libro «По ту сторону правил» (solo existe en ruso)
+    // Libro (solo existe en ruso)
     'book.html': { es: 'index.html', ru: 'book.html', en: 'index.html', ca: 'index.html' },
     'kniga.html': { es: 'index.html', ru: 'book.html', en: 'index.html', ca: 'index.html' }
 };
@@ -36,8 +36,13 @@ const initLanguageSwitch = () => {
     const currentPath = window.location.pathname; 
     const pathParts = currentPath.split('/').filter(Boolean); 
     
-    const currentLang = (pathParts.length > 0 && ['es', 'en', 'ru', 'ca'].includes(pathParts[0])) ? pathParts[0] : 'es';
-    const currentPage = pathParts.length > 1 ? pathParts[1] : 'index.html';
+    let currentLang = (pathParts.length > 0 && ['es', 'en', 'ru', 'ca'].includes(pathParts[0])) ? pathParts[0] : 'es';
+    const currentPage = pathParts.length > 1 ? pathParts[1] : (pathParts[0] && !['es', 'en', 'ru', 'ca'].includes(pathParts[0]) ? pathParts[0] : 'index.html');
+
+    // EXCEPCIÓN: Si estamos en book.html o materiales.html en la raíz, forzamos idioma RU
+    if (currentPage === 'book.html' || currentPage === 'materiales.html' || currentPage === 'kniga.html') {
+        currentLang = 'ru';
+    }
 
     document.querySelectorAll('.nav-link[data-key="materials"], .nav-link[data-key="book"]').forEach(link => {
         link.style.display = (currentLang === 'ru') ? 'inline-block' : 'none';
@@ -60,7 +65,6 @@ const initLanguageSwitch = () => {
                 targetFile = pageMap[hrefOriginal][currentLang];
             }
             
-            // Si el enlace está desactivado (href="#"), no lo reescribimos
             if (hrefOriginal !== '#') {
                 link.href = `/${currentLang}/${targetFile}`;
             }
