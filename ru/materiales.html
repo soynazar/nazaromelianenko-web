@@ -10,11 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css" />
   
-  <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
   
-  <!-- SCRIPTS EXTERNOS -->
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
   <script src="https://gumroad.com/js/gumroad.js" defer></script>
@@ -27,7 +25,6 @@
 
   <main class="page">
     
-    <!-- HERO (С интеграцией кнопки бронирования) -->
     <section class="container page-hero" style="padding-bottom: 2rem;">
       <h1 style="font-family: var(--font-header); font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.12; margin-bottom: 1.5rem; letter-spacing: -0.02em; color: var(--color-charcoal); font-weight: 300;">
           Учебные материалы
@@ -36,7 +33,6 @@
         Авторские материалы, объясняющие грамматику через логику носителя, а не через зубрежку правил.
       </p>
       
-      <!-- UX Hospitality (Лифт для Instagram) -->
       <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--line);">
           <p style="font-family: var(--font-header); font-size: 1.3rem; color: var(--color-charcoal); margin-bottom: 0.5rem; font-weight: 500;">
               Готовы начать?
@@ -49,30 +45,22 @@
       </div>
     </section>
 
-    <!-- GRID ASIMÉTRICO (Sidebar + Galería) -->
     <section class="container bio-grid">
       
-      <!-- COLUMNA IZQUIERDA: DATOS + RESERVA -->
       <aside class="bio-sidebar">
-        
         <h3 class="sidebar-title">Инфо</h3>
-        
         <div class="bio-data-item">
           <strong>Формат</strong>
           <p>Цифровой (PDF, PNG)<br>Моментальная загрузка</p>
         </div>
-
         <div class="bio-data-item">
           <strong>Оплата</strong>
           <p>Карта / Apple Pay<br>Безопасно (via Gumroad)</p>
         </div>
-
         <div class="bio-data-item">
           <strong>Язык</strong>
           <p>Русский / Español</p>
         </div>
-
-        <!-- RESERVA DE CLASE -->
         <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line);">
             <h3 class="sidebar-title" style="margin-bottom: 1rem;">Практика</h3>
             <p class="contact-note" style="margin-bottom: 1.5rem;">
@@ -82,99 +70,27 @@
                 Выбрать время
             </a>
         </div>
-
       </aside>
 
-      <!-- COLUMNA DERECHA: GALERÍA DE ПРОДУКТОВ -->
       <div class="bio-content">
 
         <!-- ================= СЕКЦИЯ 1: БЕСПЛАТНЫЕ МАТЕРИАЛЫ ================= -->
-
-
-
-
-
-        
         <h2 class="store-section-title" style="margin-top: 0;">Бесплатные материалы</h2>
         
         <div class="products-gallery">
 
-          <!-- NUEVO PRODUCTO: Анатомия испанского "se" -->
-            <article class="product-card">
-                <div class="product-image-container">
-                    <!-- Asegúrate de subir la imagen a tu carpeta /images/ con el nombre cover-se.png -->
-                    <img src="/images/portada-se.png" alt="Анатомия испанского se">
-                </div>
-                <div class="product-info">
-                    <div class="product-badge">Бесплатно / 0€+</div>
-                    <h3>Анатомия испанского "se"</h3>
-                    
-                    <div class="product-target">
-                        <strong>Для кого:</strong>  Для тех, кто устал путать функции SE и хочет наконец разобраться в его логике.
-                    </div>
-                    
-                    <p>Когнитивный разбор одной из самых сложных тем испанской грамматики. Избавьтесь от хаоса в пассивных, безличных и возвратных конструкциях навсегда.</p>
-                    
-                    <div class="product-meta">
-                        <span>PDF (6 стр.)</span>
-                        <span class="meta-highlight">Гайд</span>
-                    </div>
-
-                    <div class="product-footer">
-                        <span style="font-family: var(--font-header); font-weight: 600;">0€+</span>
-                        <div class="cta-wrapper">
-                            <!-- Enlace a tu producto con el popup de Gumroad activado -->
-                            <a href="https://nazaromelianenko.gumroad.com/l/anatomiya-ispanskogo-se" class="gumroad-button" data-gumroad-overlay-checkout="true" data-gumroad-single-item="true">Скачать</a>
-                            <span class="button-subtext">через Gumroad</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-          <!-- NUEVO PRODUCTO: Испанское время -->
-            <article class="product-card">
-                <div class="product-image-container">
-                    <!-- Asegúrate de subir la imagen a tu carpeta /images/ con el nombre cover-time.png -->
-                    <img src="/images/cover-time.png" alt="Испанское время">
-                </div>
-                <div class="product-info">
-                    <div class="product-badge">Бесплатно / 0€+</div>
-                    <h3>Испанское время: Как синхронизировать график с ритмом страны</h3>
-                    
-                    <div class="product-target">
-                        <strong>Для кого:</strong> Для экспатов и профессионалов. Для тех, кто хочет понимать неписаные правила местного расписания и действовать без стресса.
-                    </div>
-                    
-                    <p>Почему официальное время в Испании опережает солнце и как устроен полихронный ритм. Практический протокол коммуникации, который сэкономит ваши нервы и время.</p>
-                    
-                    <div class="product-meta">
-                        <span>PDF (9 стр.)</span>
-                        <span class="meta-highlight">Практикум</span>
-                    </div>
-
-                    <div class="product-footer">
-                        <span style="font-family: var(--font-header); font-weight: 600;">0€+</span>
-                        <div class="cta-wrapper">
-                            <!-- Enlace a tu producto con el popup de Gumroad activado -->
-                            <a href="https://nazaromelianenko.gumroad.com/l/tiempo" class="gumroad-button" data-gumroad-overlay-checkout="true" data-gumroad-single-item="true">Скачать</a>
-                            <span class="button-subtext">через Gumroad</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-          <!-- NUEVO PRODUCTO: Secretos del sufijo -azo -->
+            <!-- NUEVO PRODUCTO: Secretos del sufijo -azo -->
             <article class="product-card">
                 <div class="product-image-container">
                     <!-- Asegúrate de subir la imagen a tu carpeta /images/ con el nombre cover-azo.png -->
-                    <img src="/images/portada_azo.png" alt="Секреты суффикса -azo">
+                    <img src="/images/cover-azo.png" alt="Секреты суффикса -azo">
                 </div>
                 <div class="product-info">
                     <div class="product-badge">Бесплатно / 0€+</div>
                     <h3>Секреты суффикса -azo: Морфология и экспрессия</h3>
                     
                     <div class="product-target">
-                        <strong>Для кого:</strong> Для тех, кто хочет обогатить свою речь и считывать скрытые оттенки значений.
+                        <strong>Для кого:</strong> Уровни B1-C2. Для тех, кто хочет обогатить свою речь и считывать скрытые оттенки значений.
                     </div>
                     
                     <p>Как один суффикс превращает нейтральное слово в удар, превосходную степень или угрозу. Глубинная прагматика использования в живой речи.</p>
@@ -187,7 +103,6 @@
                     <div class="product-footer">
                         <span style="font-family: var(--font-header); font-weight: 600;">0€+</span>
                         <div class="cta-wrapper">
-                            <!-- Enlace a tu producto con el popup de Gumroad activado -->
                             <a href="https://nazaromelianenko.gumroad.com/l/azo" class="gumroad-button" data-gumroad-overlay-checkout="true" data-gumroad-single-item="true">Скачать</a>
                             <span class="button-subtext">через Gumroad</span>
                         </div>
@@ -195,9 +110,7 @@
                 </div>
             </article>
 
-
-
-          <!-- NUEVO PRODUCTO: Flamenco, Corrida y Catolicismo -->
+            <!-- Flamenco, Corrida y Catolicismo -->
             <article class="product-card">
                 <div class="product-image-container">
                     <img src="/images/cover-flamenco.png" alt="Фламенко, коррида, католицизм">
@@ -205,24 +118,17 @@
                 <div class="product-info">
                     <div class="product-badge">Бесплатно / 0€+</div>
                     <h3>След фламенко, корриды и католицизма в испанской речи</h3>
-                    
-                    <!-- CONTEXTO: PARA QUIÉN -->
                     <div class="product-target">
                         <strong>Для кого:</strong> Для тех, кто хочет понимать скрытый культурный подтекст повседневных испанских фраз.
                     </div>
-                    
                     <p>Вы знаете культуру Испании глубже, чем кажется. Узнайте неожиданное происхождение привычных слов (от <em>currar</em> до <em>entrar al trapo</em>).</p>
-                    
-                    <!-- META: DATOS -->
                     <div class="product-meta">
                         <span>PDF (6 стр.)</span>
                         <span>Культурный код</span>
                     </div>
-
                     <div class="product-footer">
                         <span style="font-family: var(--font-header); font-weight: 600;">0€+</span>
                         <div class="cta-wrapper">
-                            <!-- Enlace con el dominio store y los atributos para el popup -->
                             <a href="https://nazaromelianenko.gumroad.com/l/FL" class="gumroad-button" data-gumroad-overlay-checkout="true" data-gumroad-single-item="true">Скачать</a>
                         </div>
                     </div>
@@ -237,19 +143,15 @@
                 <div class="product-info">
                     <div class="product-badge">Бесплатно / 0€+</div>
                     <h3>10 фундаментальных ключей к архитектуре испанского языка</h3>
-                    
                     <div class="product-target">
                         <strong>Для кого:</strong> Для тех, кто устал зубрить правила и хочет понять логику испанского мышления.
                     </div>
-                    
                     <p>Как превратить испанский из набора правил в вашу новую силу. Разбор логики, скрывающейся за грамматикой.</p>
-                    
                     <div class="product-meta">
                         <span>PDF (Введение)</span>
                         <span>Мгновенная загрузка</span>
                         <span class="meta-highlight">Топ скачиваний</span>
                     </div>
-
                     <div class="product-footer">
                         <span style="font-family: var(--font-header); font-weight: 600;">0€+</span>
                         <div class="cta-wrapper">
@@ -268,18 +170,14 @@
                 <div class="product-info">
                     <div class="product-badge">0€+</div>
                     <h3>Образование в Испании: Formación Profesional</h3>
-                    
                     <div class="product-target">
                         <strong>Для кого:</strong> Для эмигрантов, планирующих получить официальный диплом в Испании без аттестата.
                     </div>
-                    
                     <p>Пошаговое руководство: как поступить на Grado Superior через Prueba de Acceso. Сроки, цены и процесс.</p>
-                    
                     <div class="product-meta">
                         <span>PDF (9 стр.)</span>
                         <span>Чек-лист</span>
                     </div>
-
                     <div class="product-footer">
                         <span style="font-family: var(--font-header); font-weight: 600;">Бесплатно</span>
                         <div class="cta-wrapper">
@@ -298,17 +196,13 @@
                 <div class="product-info">
                     <div class="product-badge">0€+</div>
                     <h3>Словарь редукций: Разговорный испанский</h3>
-                    
                     <div class="product-target">
                         <strong>Для кого:</strong> Уровни A2-B2. Для тех, кто не понимает быструю речь испанцев на улице.
                     </div>
-                    
                     <p>Почему они «глотают» звуки? Практическое руководство по расшифровке живой уличной речи.</p>
-                    
                     <div class="product-meta">
                         <span>PDF</span>
                     </div>
-
                     <div class="product-footer">
                         <span style="font-family: var(--font-header); font-weight: 600;">0€+</span>
                         <div class="cta-wrapper">
@@ -326,17 +220,13 @@
                 <div class="product-info">
                     <div class="product-badge">Mini</div>
                     <h3>Логика артикля: Визуальная шпаргалка</h3>
-                    
                     <div class="product-target">
                         <strong>Для кого:</strong> Для тех, кому нужна быстрая опора перед разговором (B1-C1).
                     </div>
-                    
                     <p>Одна схема, заменяющая страницы учебников. Мгновенная настройка фокуса.</p>
-                    
                     <div class="product-meta">
                         <span>PNG (Высокое разрешение)</span>
                     </div>
-
                     <div class="product-footer">
                         <span style="font-family: var(--font-header); font-weight: 600;">0€+</span>
                         <div class="cta-wrapper">
@@ -362,18 +252,14 @@
                 <div class="product-info">
                     <div class="product-badge premium-badge">Новинка</div>
                     <h3>Tacos vs. Мат: прагматический справочник</h3>
-                    
                     <div class="product-target">
                         <strong>Для кого:</strong> Для тех, кто хочет правильно считывать эмоции и этично выражать свои.
                     </div>
-                    
                     <p>Испанские tacos и русский мат — это принципиально разные механизмы. Узнайте, как не путать интенсификатор с оскорблением.</p>
-                    
                     <div class="product-meta">
                         <span>PDF (Таблицы и разборы)</span>
                         <span>Мгновенный доступ</span>
                     </div>
-
                     <div class="product-footer">
                         <span style="font-family: var(--font-header); font-weight: 600; font-size: 1.4rem; color: var(--color-charcoal);">9€</span>
                         <div class="cta-wrapper">
@@ -392,19 +278,15 @@
                 <div class="product-info">
                     <div class="product-badge premium-badge">B2B / Бизнес</div>
                     <h3>Социальная инженерия и дипломатия в испанской культуре</h3>
-                    
                     <div class="product-target">
                         <strong>Для кого:</strong> Для профессионалов, работающих с испанцами, чью прямолинейность принимают за агрессию.
                     </div>
-                    
                     <p>Почему испанцы говорят «да», имея в виду «нет»? Стратегии контакта для деловой коммуникации.</p>
-                    
                     <div class="product-meta">
                         <span>PDF (9 стр.)</span>
                         <span>Практические сценарии</span>
                         <span class="meta-highlight">Выбор компаний</span>
                     </div>
-
                     <div class="product-footer">
                         <span style="font-family: var(--font-header); font-weight: 600; font-size: 1.4rem; color: var(--color-charcoal);">11€</span>
                         <div class="cta-wrapper">
@@ -423,18 +305,14 @@
                 <div class="product-info">
                     <div class="product-badge premium-badge">B2-C1</div>
                     <h3>Прагматика местоимений: Искусство не сказать лишнего</h3>
-                    
                     <div class="product-target">
                         <strong>Для кого:</strong> Уровни B2-C1. Для тех, кто звучит слишком резко или эгоцентрично в общении.
                     </div>
-                    
                     <p>Стратегическое руководство по управлению смыслами. Избегайте «я-канья» и используйте "se" для дипломатии и снятия ответственности.</p>
-                    
                     <div class="product-meta">
                         <span>PDF (4 стр.)</span>
                         <span class="meta-highlight">4.9/5 ★ (Gumroad)</span>
                     </div>
-
                     <div class="product-footer">
                         <span style="font-family: var(--font-header); font-weight: 600; font-size: 1.4rem; color: var(--color-charcoal);">9€</span>
                         <div class="cta-wrapper">
@@ -453,18 +331,14 @@
                 <div class="product-info">
                     <div class="product-badge premium-badge">Bestseller</div>
                     <h3>Логика испанского артикля: Психология выбора</h3>
-                    
                     <div class="product-target">
                         <strong>Для кого:</strong> B1-C1+. Для тех, кто ставит артикли наугад или постоянно в них сомневается.
                     </div>
-                    
                     <p>Артикль как настройка «фокуса камеры». Алгоритм принятия решения в реальном времени. Переход от зубрежки к интуитивному пониманию.</p>
-                    
                     <div class="product-meta">
                         <span>PDF (7 стр.)</span>
                         <span class="meta-highlight">Топ продаж</span>
                     </div>
-
                     <div class="product-footer">
                         <span style="font-family: var(--font-header); font-weight: 600; font-size: 1.4rem; color: var(--color-charcoal);">10€</span>
                         <div class="cta-wrapper">
@@ -490,7 +364,6 @@
 
     <!-- СЕКЦИЯ БРОНИРОВАНИЯ (Calendly) -->
       <section id="booking" class="booking-section-full">
-        
         <div style="border-top: 1px solid var(--line); padding-top: 4rem; margin-bottom: 3rem; text-align: center;">
             <h2 style="font-family: var(--font-header); font-size: 2.2rem; font-weight: 400; color: var(--color-charcoal); margin-bottom: 1rem;">
                 Готовы начать?
@@ -502,31 +375,23 @@
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
             
-            <!-- ВАРИАНТ 1: АБОНЕМЕНТ (Premium / Доступ) -->
             <div style="background-color: var(--color-charcoal); color: var(--color-arena); padding: 3rem; border-radius: var(--radius); display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                 <div style="display: inline-block; background: var(--color-terracotta); color: white; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 4px; margin-bottom: 1.5rem; align-self: flex-start; font-weight: 600;">
                     Абонемент
                 </div>
                 <h3 style="font-family: var(--font-header); font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem; color: white;">4 занятия в месяц</h3>
-                
-                <!-- COPYWRITING: Фокус на удобстве и статусе -->
                 <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.6; margin-bottom: 2rem; flex-grow: 1;">
                     Вы бронируете 4 занятия сразу. Никакой еженедельной организационной рутины и лишних транзакций. Вы не тратите время на согласования, а ваше место в расписании гарантировано.
                 </p>
-                
-                <!-- АНКЕРОВАНИЕ ЦЕНЫ: 130€ главный герой, 140€ тихая сноска -->
                 <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem;">
                     <span style="font-family: var(--font-header); font-size: 2.5rem; line-height: 1; color: white;">130€</span>
                     <span style="font-size: 1.1rem; color: rgba(255,255,255,0.4); text-decoration: line-through;">140€</span>
                 </div>
-                
-                <!-- ВАЖНО: Вставь сюда свой платежный линк от Stripe -->
                 <a href="https://buy.stripe.com/4gM5kD3msdKS7Aab9J1ck03"target="_blank" class="button" style="background-color: var(--color-arena); color: var(--color-charcoal); text-align: center; justify-content: center; width: 100%; border: none;">
                     Оформить абонемент
                 </a>
             </div>
 
-            <!-- ВАРИАНТ 2: РАЗОВОЕ ЗАНЯТИЕ -->
             <div style="background-color: white; border: 1px solid var(--line); color: var(--color-charcoal); padding: 3rem; border-radius: var(--radius); display: flex; flex-direction: column;">
                 <div style="display: inline-block; border: 1px solid rgba(26,26,26,0.2); color: var(--muted); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 4px; margin-bottom: 1.5rem; align-self: flex-start; font-weight: 600;">
                     Индивидуальный урок
@@ -545,7 +410,6 @@
 
         </div>
 
-        <!-- ВИДЖЕТ CALENDLY -->
         <div id="calendly-widget" class="booking-widget-wrapper" style="scroll-margin-top: 100px;">
             <div class="calendly-inline-widget" 
                  data-url="https://calendly.com/nazar-dezign/clase-individual?hide_gdpr_banner=1&background_color=f2f1ef&text_color=1a1a1a&primary_color=e2725b" 
