@@ -30,8 +30,8 @@
 html,body{height:100%;margin:0;overflow:hidden;overscroll-behavior:none}
 body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
 .stage{position:relative;height:100vh;height:100svh;overflow:hidden}
-.stage.landed:not(.crossed){touch-action:none;cursor:grab}
-.stage.landed:not(.crossed):active{cursor:grabbing}
+.stage.landed{touch-action:none;cursor:grab}
+.stage.landed:active{cursor:grabbing}
 .bg{position:absolute;top:-10%;bottom:-10%;left:-15%;width:150%;pointer-events:none;
   background:radial-gradient(60% 55% at 62% 28%,var(--bg-hi) 0%,var(--bg) 52%,var(--bg-lo) 100%);will-change:transform}
 
@@ -81,6 +81,15 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 .copy.alive{animation:breathe 4.6s ease-in-out infinite}
 @keyframes breathe{0%,100%{opacity:1}50%{opacity:.42}}
 .copy:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+/* Tercera orilla: solo el número. Llega por la línea, como sobre un raíl */
+.num{position:absolute;left:var(--g);bottom:calc(100% - var(--y) + 12px);margin:0;white-space:nowrap;
+  font-size:clamp(1.7rem,7.2vw,2.3rem);line-height:1;font-weight:500;color:var(--ink);font-variant-numeric:lining-nums tabular-nums;letter-spacing:.01em;will-change:transform,opacity}
+.after3{position:absolute;left:var(--g);right:var(--g);top:calc(var(--y) + 30px);display:flex;flex-direction:column;gap:10px;will-change:transform,opacity}
+.after3 > *{margin:0}
+.copyrow{font-size:1.12rem;line-height:1.4}
+.copyrow .copy{margin:0}
+.s3{visibility:hidden}
+.crossed .s3{visibility:visible}
 .when{font-size:1.12rem;letter-spacing:.08em;color:var(--ink);font-variant-numeric:lining-nums}
 .when a{color:var(--terra);font-style:italic;letter-spacing:0;text-decoration:none;border-bottom:1px solid rgba(191,101,63,.45)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -105,10 +114,15 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
     <button class="dot" id="dot" type="button" aria-label="Перейти по ту сторону правил"><i></i></button>
   </div>
 
-  <section class="after" aria-live="polite">
+  <section class="after" id="after" aria-live="polite">
     <p class="author">Назар Омельяненко</p>
-    <p class="isbn"><span id="isbn">ISBN 978-84-09-90248-4</span><button class="copy" id="copy" type="button">скопировать</button></p>
     <p class="when" id="when">17.11</p>
+  </section>
+
+  <p class="num s3" id="num" inert><span id="isbn">978-84-09-90248-4</span></p>
+  <section class="after3 s3" id="after3" inert>
+    <p class="author">ISBN</p>
+    <p class="copyrow"><button class="copy" id="copy" type="button">скопировать</button></p>
   </section>
 </main>
 
@@ -140,8 +154,10 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   });
 
   /* Geometría */
+  var after=$('after'),num=$('num'),after3=$('after3');
   var W,G,TW,LW,max,S0=.62;
-  var p=0,crossed=false,dragging=false,sx=0,sp=0,raf=0;
+  /* p: de la pregunta al libro (0→1). q: del libro al número (0→1), solo tras cruzar */
+  var p=0,q=0,crossed=false,dragging=false,sx=0,sp=0,sq=0,raf=0,captured=false,lastX=0,lastT=0,vx=0;
   function measure(){
     W=window.innerWidth;G=track.getBoundingClientRect().left;TW=track.clientWidth;
     label.style.transform='none';LW=label.getBoundingClientRect().width;
@@ -149,16 +165,22 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
     render();
   }
   function render(){
-    var lx=lerp(W-G-LW*S0,G,p), ls=lerp(S0,1,p);
+    var lx=lerp(W-G-LW*S0,G,p)-q*W, ls=lerp(S0,1,p);
     label.style.transform='translateX('+lx+'px) scale('+ls+')';
+    /* Paralaje a lo largo de la línea: lo de arriba a la velocidad del dedo, lo de abajo algo más rápido; la línea queda quieta como horizonte */
+    var o2=String(Math.max(0,1-Math.abs(q)*.85)), o3=String(Math.max(0,Math.min(1,.15+q*.85)));
+    label.style.opacity=crossed?o2:'';
+    after.style.transform='translateX('+(-q*W*1.2)+'px)';after.style.opacity=o2;
+    num.style.transform='translateX('+((1-q)*W)+'px)';num.style.opacity=o3;
+    after3.style.transform='translateX('+((1-q)*W*1.2)+'px)';after3.style.opacity=o3;
     var c=[Math.round(lerp(90,43,p)),Math.round(lerp(81,39,p)),Math.round(lerp(73,35,p))];
     label.style.color='rgb('+c.join(',')+')';
     ask.style.transform='translateX('+(-p*W*1.15)+'px)';
     ask.style.opacity=String(Math.max(0,1-p*1.5));
-    bg.style.transform='translateX('+(-p*W*.18)+'px)';
+    bg.style.transform='translateX('+(-p*W*.18-q*W*.12)+'px)';
     var x=p*max;
     dot.style.transform='translateX('+x+'px)';
-    fill.style.width=(x>0.5?x+8:0)+'px';
+    if(!fill.classList.contains('full'))fill.style.width=(x>0.5?x+8:0)+'px';
   }
   function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
   function easeOut(t){return 1-Math.pow(1-t,2);}
@@ -170,6 +192,40 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
       var t=Math.min(1,(now-t0)/ms);p=lerp(from,target,fn(t));render();
       if(t<1)raf=requestAnimationFrame(f);else if(then)then();
     })(t0);
+  }
+  function easeOut3(t){return 1-Math.pow(1-t,3);}
+  function animateQ(target,ms,then){
+    cancelAnimationFrame(raf);
+    var from=q,t0=performance.now();
+    (function f(now){
+      var t=Math.min(1,(now-t0)/ms);q=lerp(from,target,easeOut3(t));render();
+      if(t<1)raf=requestAnimationFrame(f);else{if(then)then();}
+    })(t0);
+  }
+
+  /* Al otro lado: el libro y el número. Se puede ir y volver por la línea; el cruce no se deshace */
+  var seen3=false,cueT,on3=false;
+  function settleQ(target){
+    animateQ(target,reduce?1:480,function(){
+      q=target;render();
+      var now3=target===1;
+      if(now3!==on3){on3=now3;
+        if(on3){num.removeAttribute('inert');after3.removeAttribute('inert');after.setAttribute('inert','');}
+        else{num.setAttribute('inert','');after3.setAttribute('inert','');after.removeAttribute('inert');}
+      }
+      if(on3&&!seen3){seen3=true;clearTimeout(cueT);copyT=setTimeout(function(){if(!copied&&!reduce)copyBtn.classList.add('alive');},1200);}
+    });
+  }
+  /* Aviso de que el camino sigue: la composición entera se inclina un poco a lo largo de la línea y vuelve, la misma gramática que el punto */
+  function cue(first){
+    cueT=setTimeout(function(){
+      if(seen3)return;
+      if(!dragging&&q===0){
+        var amp=12/W,t0=performance.now();cancelAnimationFrame(raf);
+        (function f(now){var t=Math.min(1,(now-t0)/1200);q=amp*Math.pow(Math.sin(Math.PI*t),2);render();if(t<1)raf=requestAnimationFrame(f);else{q=0;render();}})(t0);
+      }
+      cue(false);
+    },first?2600:rnd(4800,8400));
   }
 
   /* El punto respira, sin ritmo fijo: alguien está ahí */
@@ -188,24 +244,56 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
       fill.style.width=TW+'px';
       dot.style.transition='opacity .18s ease .12s';dot.style.opacity='0';
       try{if(navigator.vibrate)navigator.vibrate(8);}catch(e){}
-      setTimeout(function(){stage.classList.add('crossed');copyT=setTimeout(function(){if(!copied&&!reduce)copyBtn.classList.add('alive');},3200);},reduce?0:220);
+      setTimeout(function(){stage.classList.add('crossed');if(!reduce)cue(true);},reduce?0:220);
     },easeOut);
   }
+  var after2=function(){return stage.classList.contains('crossed');};
   function down(e){
-    if(crossed||!stage.classList.contains('landed'))return;
-    dragging=true;cancelAnimationFrame(raf);clearTimeout(breathT);dot.classList.remove('breath','nudge');
-    sx=e.clientX;sp=p;try{stage.setPointerCapture(e.pointerId);}catch(_){}
+    if(!stage.classList.contains('landed'))return;
+    if(crossed&&!after2())return;
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    dragging=true;captured=false;cancelAnimationFrame(raf);
+    if(!crossed){clearTimeout(breathT);dot.classList.remove('breath','nudge');}
+    else if(q>0&&q<.05){q=0;render();}
+    sx=lastX=e.clientX;lastT=performance.now();vx=0;sp=p;sq=q;
+    stage._pid=e.pointerId;
   }
-  function move(e){if(!dragging)return;p=Math.max(0,Math.min(1,sp+(e.clientX-sx)/max));render();}
+  function move(e){
+    if(!dragging)return;
+    var dx=e.clientX-sx;
+    /* La captura se toma solo cuando el gesto ya es un deslizamiento: así los toques en «скопировать» y en el enlace siguen funcionando */
+    if(!captured&&Math.abs(dx)>6){captured=true;try{stage.setPointerCapture(e.pointerId);}catch(_){}}
+    var now=performance.now(),dt=now-lastT;if(dt>0){vx=lerp(vx,(e.clientX-lastX)/dt,.5);lastX=e.clientX;lastT=now;}
+    if(!crossed){p=Math.max(0,Math.min(1,sp+dx/max));}
+    else{
+      var raw=sq-dx/(W*.7);
+      /* Resistencia elástica en los extremos: hacia atrás no se vuelve a la pregunta; hacia delante, el camino termina */
+      q=raw<0?Math.max(-.08,raw*.25):raw>1?Math.min(1.08,1+(raw-1)*.25):raw;
+    }
+    render();
+  }
   function up(){
     if(!dragging)return;dragging=false;
-    if(p>=.6)cross();else animateTo(0,500,function(){breathT=setTimeout(breathe,rnd(800,1600));});
+    if(!crossed){
+      if(p>=.6)cross();else animateTo(0,500,function(){breathT=setTimeout(breathe,rnd(800,1600));});
+      return;
+    }
+    if(!captured){if(q!==0&&q!==1)settleQ(q>.5?1:0);return;}
+    var target;
+    if(vx<-.35)target=1;else if(vx>.35)target=0;
+    else target=sq<.5?(q>.3?1:0):(q<.7?0:1);
+    settleQ(target);
   }
   stage.addEventListener('pointerdown',down);
   stage.addEventListener('pointermove',move);
   stage.addEventListener('pointerup',up);
   stage.addEventListener('pointercancel',up);
   dot.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='Enter'||e.key===' '){e.preventDefault();cross();}});
+  document.addEventListener('keydown',function(e){
+    if(!crossed||!after2())return;
+    if(e.key==='ArrowRight'&&q!==1){e.preventDefault();settleQ(1);}
+    else if(e.key==='ArrowLeft'&&q!==0){e.preventDefault();settleQ(0);}
+  });
   window.addEventListener('resize',function(){measure();if(crossed)fill.style.width=TW+'px';});
 
   /* Señal de vida tras el colofón: «скопировать» respira, sin ritmo fijo, hasta que se copia */
