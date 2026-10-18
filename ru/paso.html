@@ -30,6 +30,8 @@
 html,body{height:100%;margin:0;overflow:hidden;overscroll-behavior:none}
 body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
 .stage{position:relative;height:100vh;height:100svh;overflow:hidden}
+.stage.landed:not(.crossed){touch-action:none;cursor:grab}
+.stage.landed:not(.crossed):active{cursor:grabbing}
 .bg{position:absolute;top:-10%;bottom:-10%;left:-15%;width:150%;pointer-events:none;
   background:radial-gradient(60% 55% at 62% 28%,var(--bg-hi) 0%,var(--bg) 52%,var(--bg-lo) 100%);will-change:transform}
 
@@ -47,8 +49,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 .landed .base{transform:scaleX(1)}
 .comet{position:absolute;left:0;top:50%;width:110px;height:2.4px;margin-top:-1.2px;opacity:0;pointer-events:none;
   background:linear-gradient(90deg,rgba(191,101,63,1) 0%,rgba(201,128,95,.55) 30%,rgba(201,128,95,0) 100%)}
-.comet::before{content:"";position:absolute;left:-3px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--terra);box-shadow:0 0 10px 3px rgba(191,101,63,.35)}
-.fill{position:absolute;left:0;top:50%;height:2.4px;margin-top:-1.2px;width:0;background:var(--rule);opacity:0;transition:opacity .9s ease}
+.comet::before{content:"";position:absolute;left:-3.5px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--terra);box-shadow:0 0 10px 3px rgba(191,101,63,.35)}
+.fill{position:absolute;left:0;top:50%;height:1.2px;margin-top:-.6px;width:0;background:var(--rule);opacity:0;transition:opacity .9s ease}
+.fill.full{height:2.4px;margin-top:-1.2px}
 .landed .fill{opacity:1}
 .dot{position:absolute;left:-20px;top:50%;width:56px;height:56px;margin-top:-28px;padding:0;border:0;background:transparent;cursor:grab;touch-action:none;outline:none;opacity:0}
 .landed .dot{opacity:1}
@@ -155,14 +158,16 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
     bg.style.transform='translateX('+(-p*W*.18)+'px)';
     var x=p*max;
     dot.style.transform='translateX('+x+'px)';
-    fill.style.width=(x+7)+'px';
+    fill.style.width=(x>0.5?x+8:0)+'px';
   }
   function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
-  function animateTo(target,ms,then){
+  function easeOut(t){return 1-Math.pow(1-t,2);}
+  function animateTo(target,ms,then,fn){
+    fn=fn||ease;
     cancelAnimationFrame(raf);
     var from=p,t0=performance.now();
     (function f(now){
-      var t=Math.min(1,(now-t0)/ms);p=lerp(from,target,ease(t));render();
+      var t=Math.min(1,(now-t0)/ms);p=lerp(from,target,fn(t));render();
       if(t<1)raf=requestAnimationFrame(f);else if(then)then();
     })(t0);
   }
@@ -176,29 +181,30 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
     if(crossed)return;crossed=true;
     clearTimeout(breathT);clearTimeout(nudgeT);
     dot.classList.remove('breath');dot.setAttribute('tabindex','-1');
-    animateTo(1,reduce?1:550,function(){
+    animateTo(1,reduce?1:260,function(){
       dot.classList.add('melt');
-      fill.style.transition='width .4s cubic-bezier(.3,.7,.3,1)';
+      fill.style.transition='width .35s cubic-bezier(.3,.7,.3,1),height .35s ease,margin-top .35s ease';
+      fill.classList.add('full');
       fill.style.width=TW+'px';
       dot.style.transition='opacity .18s ease .12s';dot.style.opacity='0';
       try{if(navigator.vibrate)navigator.vibrate(8);}catch(e){}
       setTimeout(function(){stage.classList.add('crossed');copyT=setTimeout(function(){if(!copied&&!reduce)copyBtn.classList.add('alive');},3200);},reduce?0:220);
-    });
+    },easeOut);
   }
   function down(e){
     if(crossed||!stage.classList.contains('landed'))return;
     dragging=true;cancelAnimationFrame(raf);clearTimeout(breathT);dot.classList.remove('breath','nudge');
-    sx=e.clientX;sp=p;try{track.setPointerCapture(e.pointerId);}catch(_){}
+    sx=e.clientX;sp=p;try{stage.setPointerCapture(e.pointerId);}catch(_){}
   }
   function move(e){if(!dragging)return;p=Math.max(0,Math.min(1,sp+(e.clientX-sx)/max));render();}
   function up(){
     if(!dragging)return;dragging=false;
     if(p>=.6)cross();else animateTo(0,500,function(){breathT=setTimeout(breathe,rnd(800,1600));});
   }
-  track.addEventListener('pointerdown',down);
-  track.addEventListener('pointermove',move);
-  track.addEventListener('pointerup',up);
-  track.addEventListener('pointercancel',up);
+  stage.addEventListener('pointerdown',down);
+  stage.addEventListener('pointermove',move);
+  stage.addEventListener('pointerup',up);
+  stage.addEventListener('pointercancel',up);
   dot.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='Enter'||e.key===' '){e.preventDefault();cross();}});
   window.addEventListener('resize',function(){measure();if(crossed)fill.style.width=TW+'px';});
 
@@ -217,16 +223,17 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   /* Secuencia de entrada: la frase; poco después llega desde la derecha un rayo que deja la línea como rastro y se condensa en el punto */
   var base=$('base'),comet=$('comet'),dotI=dot.querySelector('i');
   function land(){
-    stage.classList.add('landed');base.style.transform='scaleX(1)';
+    stage.classList.add('landed');base.style.transform='scaleX(1)';base.getAnimations&&base.getAnimations().forEach(function(a){a.cancel();});base.style.clipPath='inset(0 0 0 8px)';
     breathT=setTimeout(breathe,reduce?0:2600);
     if(!reduce)nudge(true);
   }
   function arrive(){
     measure();stage.classList.add('lit');
     if(reduce||!comet.animate){land();return;}
-    var dur=1150,ez='cubic-bezier(.12,.82,.28,1)',from=TW+40;
-    base.animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{duration:dur,easing:ez,fill:'forwards'});
-    var a=comet.animate([{transform:'translateX('+from+'px)',opacity:0},{opacity:1,offset:.06},{transform:'translateX(6px)',opacity:1}],{duration:dur,easing:ez,fill:'forwards'});
+    var dur=900,ez='cubic-bezier(.3,.55,.35,1)',from=TW+40;
+    base.style.transform='scaleX(1)';
+    base.animate([{clipPath:'inset(0 0 0 '+from+'px)'},{clipPath:'inset(0 0 0 8px)'}],{duration:dur,easing:ez,fill:'forwards'});
+    var a=comet.animate([{transform:'translateX('+from+'px)',opacity:0},{opacity:1,offset:.06},{transform:'translateX(8px)',opacity:1}],{duration:dur,easing:ez,fill:'forwards'});
     a.onfinish=function(){
       land();
       comet.animate([{opacity:1},{opacity:0}],{duration:240,fill:'forwards'});
