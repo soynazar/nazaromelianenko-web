@@ -92,10 +92,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 .crossed .s3{visibility:visible}
 .on3 .s3{opacity:1;translate:0 0}
 .on3 .after3{transition-delay:.35s}
-/* La continuación de la línea hacia la tercera orilla: discontinua, tras un pequeño hueco */
-.dash{position:absolute;top:50%;height:1.2px;margin-top:-.6px;opacity:0;transition:opacity .6s ease;
-  background:repeating-linear-gradient(90deg,var(--rule) 0 7px,transparent 7px 13px)}
-.crossed .dash{opacity:.85}
+/* A partir de la segunda llegada el texto ya es conocido: viaja visible con la línea, como el título */
+.known3 .s3{opacity:1;translate:0 0;transition:none}
 .when{font-size:1.12rem;letter-spacing:.08em;color:var(--ink);font-variant-numeric:lining-nums}
 .when a{color:var(--terra);font-style:italic;letter-spacing:0;text-decoration:none;border-bottom:1px solid rgba(191,101,63,.45)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -117,7 +115,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
     <div class="base" id="base"></div>
     <div class="comet" id="comet"></div>
     <div class="fill" id="fill"></div>
-    <div class="dash" id="dash"></div>
     <button class="dot" id="dot" type="button" aria-label="Перейти по ту сторону правил"><i></i></button>
   </div>
 
@@ -159,7 +156,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   });
 
   /* Geometría */
-  var after=$('after'),num=$('num'),after3=$('after3'),dash=$('dash');
+  var after=$('after'),num=$('num'),after3=$('after3');
   var W,G,TW,LW,max,S0=.62;
   /* p: de la pregunta al libro (0→1). q: del libro al número (0→1), solo tras cruzar */
   var p=0,q=0,crossed=false,dragging=false,sx=0,sp=0,sq=0,raf=0,captured=false,lastX=0,lastT=0,vx=0;
@@ -167,7 +164,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
     W=window.innerWidth;G=track.getBoundingClientRect().left;TW=track.clientWidth;
     label.style.transform='none';LW=label.getBoundingClientRect().width;
     max=Math.max(140,TW-64);
-    dash.style.left=W+'px';dash.style.width=W+'px';
     render();
   }
   function render(){
@@ -179,7 +175,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
     after.style.transform='translateX('+(-q*W*1.2)+'px)';after.style.opacity=o2;
     num.style.transform='translateX('+((1-q)*W)+'px)';
     after3.style.transform='translateX('+((1-q)*W*1.2)+'px)';
-    var lt=(-q*W)+'px 0';base.style.translate=lt;fill.style.translate=lt;dash.style.translate=lt;
+    var lt=(-q*W)+'px 0';base.style.translate=lt;fill.style.translate=lt;
     var c=[Math.round(lerp(90,43,p)),Math.round(lerp(81,39,p)),Math.round(lerp(73,35,p))];
     label.style.color='rgb('+c.join(',')+')';
     ask.style.transform='translateX('+(-p*W*1.15)+'px)';
@@ -213,6 +209,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   /* Al otro lado: el libro y el número. Se puede ir y volver por la línea; el cruce no se deshace */
   var seen3=false,cueT,on3=false;
   function settleQ(target){
+    if(target===1)stage.classList.add('on3');
     animateQ(target,reduce?1:480,function(){
       q=target;render();
       var now3=target===1;
@@ -221,6 +218,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
         if(on3){num.removeAttribute('inert');after3.removeAttribute('inert');after.setAttribute('inert','');}
         else{num.setAttribute('inert','');after3.setAttribute('inert','');after.removeAttribute('inert');}
       }
+      if(!on3&&seen3)stage.classList.add('known3');
       if(on3&&!seen3){seen3=true;clearTimeout(cueT);copyT=setTimeout(function(){if(!copied&&!reduce)copyBtn.classList.add('alive');},2400);}
     });
   }
@@ -253,6 +251,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
       dot.style.transition='opacity .18s ease .12s';dot.style.opacity='0';
       try{if(navigator.vibrate)navigator.vibrate(8);}catch(e){}
       setTimeout(function(){stage.classList.add('crossed');if(!reduce)cue(true);},reduce?0:220);
+      /* Una vez completa, la línea se prolonga más allá del borde: es la misma línea que lleva a la tercera orilla, sin cortes */
+      setTimeout(longLine,reduce?0:420);
     },easeOut);
   }
   var after2=function(){return stage.classList.contains('crossed');};
@@ -302,7 +302,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
     if(e.key==='ArrowRight'&&q!==1){e.preventDefault();settleQ(1);}
     else if(e.key==='ArrowLeft'&&q!==0){e.preventDefault();settleQ(0);}
   });
-  window.addEventListener('resize',function(){measure();if(crossed)fill.style.width=TW+'px';});
+  function longLine(){fill.style.transition='none';fill.style.width=(TW+W*1.3)+'px';}
+  window.addEventListener('resize',function(){measure();if(crossed)longLine();});
 
   /* Señal de vida tras el colofón: «скопировать» respira, sin ritmo fijo, hasta que se copia */
   var copyBtn=$('copy'),copyT,copied=false;
