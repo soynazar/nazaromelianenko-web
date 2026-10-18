@@ -99,10 +99,9 @@
         </p>
 
         <div class="bk-cta-row">
-          <a href="#kupit" class="bk-btn" data-bk-link="signed" data-bk-hero="">Экземпляр с автографом</a>
-          <a href="#kupit" class="bk-textlink">Купить без автографа</a>
+          <a href="#kupit" class="bk-btn" data-bk-link="amazon" data-bk-hero="">Купить книгу</a>
+          <a href="#kupit" class="bk-textlink">Другие способы</a>
         </div>
-        <p class="bk-hero-note" style="margin-top: 1.25rem; font-size: 0.9rem; color: var(--muted);">Подписываю каждый экземпляр лично и отправляю его вам.</p>
 
         <div class="bk-meta-line">
           <span>Твёрдый переплёт</span>
@@ -293,17 +292,14 @@
 
         <article class="bk-offer is-featured" data-region="eu">
           <div class="bk-offer-region">Испания и Евросоюз <span class="bk-badge" data-bk-suggest="" hidden="">Для вашего региона</span></div>
-          <h3>Экземпляр с автографом автора</h3>
-          <p>Каждый экземпляр я подписываю лично – с вашим именем или посвящением, которое вы укажете при оформлении заказа.</p>
+          <h3>Amazon.es</h3>
+          <p>Экземпляр печатается по требованию в типографии Ingram и приходит обычной доставкой Amazon.</p>
           <ul>
-            <li>Именная надпись от руки</li>
-            <li>Отправка с номером для отслеживания</li>
-            <li>Упаковка защищающая переплёт</li>
+            <li>Доставка по Испании и Евросоюзу</li>
+            <li>Оплата и возврат – на стороне Amazon</li>
           </ul>
           <div class="bk-offer-bottom">
-            <div class="bk-price" data-bk-price="signed"></div>
-            <span class="bk-price-note" data-bk-price-note="signed"></span>
-            <a href="#" class="bk-btn is-light is-block" data-bk-link="signed">Заказать с автографом</a>
+            <a href="#" class="bk-btn is-light is-block" data-bk-link="amazon">Купить на Amazon</a>
           </div>
         </article>
 
@@ -403,12 +399,12 @@
           <p>Больше всего книга даст тем, кто уже изучает испанский и столкнулся с ощущением, что знание правил не превращается в свободную речь. Преподавателям она будет полезна как сопоставительная и методическая база для работы с русскоязычными учениками.</p>
         </details>
         <details>
-          <summary>Как отправляется экземпляр с автографом?</summary>
-          <p>Я подписываю каждый экземпляр лично и отправляю его почтой из Торревьехи с номером для отслеживания, который приходит вам на почту. Текст посвящения вы указываете при оформлении заказа. Срок отправки указан на странице оплаты.</p>
+          <summary>Можно ли получить экземпляр с автографом?</summary>
+          <p>Да, но только из рук в руки. Я подписываю книги на презентациях и встречах с читателями и не отправляю подписанные экземпляры по почте: подпись для меня – след встречи, а не услуга.</p>
         </details>
         <details>
           <summary>Можно ли заказать несколько экземпляров?</summary>
-          <p>Да. Напишите мне на <a class="link" href="mailto:info@nazaromelianenko.com">info@nazaromelianenko.com</a> – укажите количество и страну доставки.</p>
+          <p>Да – на Amazon или в любой книжной по ISBN. Если книга нужна для школы или группы учеников, напишите мне на <a class="link" href="mailto:info@nazaromelianenko.com">info@nazaromelianenko.com</a> – подскажу удобный вариант.</p>
         </details>
       </div>
     </section>
@@ -438,9 +434,8 @@
 
   <script>
   const BOOK = {
-    signed: '',
-    signedPrice: '',          
-    signedPriceNote: '',      
+    // Enlace directo a la ficha de Amazon.es. Vacío: se usa la búsqueda por ISBN, que funciona en cuanto Amazon lista el libro.
+    amazon: '',
     shareSell: '',
     sample: '',
     stores: [
@@ -451,8 +446,8 @@
 
   (function () {
     const MAIL = 'info@nazaromelianenko.com';
+    if (!BOOK.amazon) BOOK.amazon = 'https://www.amazon.es/s?k=9788409902484&i=stripbooks';
     const pending = {
-      signed:    { text: 'Сообщить о старте продаж', subject: 'Экземпляр с автографом – сообщите о старте продаж' },
       shareSell: { text: 'Сообщить о старте продаж', subject: 'Книга: заказ в Великобританию / США' },
       sample:    { text: 'Прислать фрагмент на почту', subject: 'Пришлите, пожалуйста, пролог книги' }
     };
@@ -472,15 +467,6 @@
         el.removeAttribute('data-gumroad-overlay-checkout');
       }
     });
-
-    const price = document.querySelector('[data-bk-price="signed"]');
-    const note = document.querySelector('[data-bk-price-note="signed"]');
-    if (price) { if (BOOK.signedPrice) price.textContent = BOOK.signedPrice; else price.remove(); }
-    if (note) {
-      if (BOOK.signedPriceNote) note.textContent = BOOK.signedPriceNote;
-      else if (!BOOK.signed) note.textContent = 'Первые экземпляры уже в пути. Оставьте заявку – я напишу, как только начну отправку.';
-      else note.remove();
-    }
 
     const list = document.querySelector('[data-bk-stores]');
     if (list) {
