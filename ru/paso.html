@@ -40,28 +40,30 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 .ask{opacity:0;translate:0 8px;transition:opacity 2.4s ease,translate 2.4s cubic-bezier(.2,.7,.2,1)}
 .shown .ask{opacity:1;translate:0 0}
 .cw{position:relative;display:inline-block;width:0;height:0}
-.caret{position:absolute;left:.04em;bottom:-.12em;width:.05em;height:.82em;background:var(--ink)}
-.caret.off{opacity:0}
-.gone .caret{display:none}
 
 /* El umbral */
 .track{position:absolute;left:var(--g);right:0;top:var(--y);height:56px;margin-top:-28px;touch-action:none;cursor:grab;outline:none}
-.base{position:absolute;left:0;right:0;top:50%;height:1.2px;margin-top:-.6px;background:var(--rule);opacity:.6;transform-origin:left center;transform:scaleX(0);transition:transform 1.6s cubic-bezier(.25,.7,.15,1)}
-.drawn .base{transform:scaleX(1)}
+.base{position:absolute;left:0;right:0;top:50%;height:1.2px;margin-top:-.6px;background:var(--rule);opacity:.6;transform-origin:right center;transform:scaleX(0)}
+.landed .base{transform:scaleX(1)}
+.comet{position:absolute;left:0;top:50%;width:110px;height:2.4px;margin-top:-1.2px;opacity:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(191,101,63,1) 0%,rgba(201,128,95,.55) 30%,rgba(201,128,95,0) 100%)}
+.comet::before{content:"";position:absolute;left:-3px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--terra);box-shadow:0 0 10px 3px rgba(191,101,63,.35)}
 .fill{position:absolute;left:0;top:50%;height:2.4px;margin-top:-1.2px;width:0;background:var(--rule);opacity:0;transition:opacity .9s ease}
-.drawn .fill{opacity:1}
-.dot{position:absolute;left:-20px;top:50%;width:56px;height:56px;margin-top:-28px;padding:0;border:0;background:transparent;cursor:grab;touch-action:none;outline:none;opacity:0;transition:opacity .9s ease}
-.drawn .dot{opacity:1}
+.landed .fill{opacity:1}
+.dot{position:absolute;left:-20px;top:50%;width:56px;height:56px;margin-top:-28px;padding:0;border:0;background:transparent;cursor:grab;touch-action:none;outline:none;opacity:0}
+.landed .dot{opacity:1}
+.dot.nudge{animation:nudge 1.2s cubic-bezier(.3,.6,.3,1)}
+@keyframes nudge{0%,100%{translate:0 0}40%{translate:14px 0}}
 .dot i{position:absolute;left:50%;top:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border-radius:50%;background:var(--terra);transition:transform .9s cubic-bezier(.3,.7,.3,1),box-shadow .9s ease}
 .dot.breath i{transform:scale(1.22);box-shadow:0 0 0 8px rgba(191,101,63,.09)}
-.dot.melt i{transition:transform .5s cubic-bezier(.5,0,.3,1),box-shadow .3s;transform:scale(1.4,.16);box-shadow:none}
+.dot.melt i{transition:transform .2s cubic-bezier(.5,0,.3,1),box-shadow .15s;transform:scale(1.5,.16);box-shadow:none}
 .dot:focus-visible i{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--terra)}
 
 /* La otra orilla: el título, que llega desde la derecha */
 .label{position:absolute;left:0;bottom:calc(100% - var(--y) + 12px);margin:0;white-space:nowrap;
   font-size:clamp(1.7rem,7.2vw,2.3rem);line-height:1;transform-origin:left bottom;opacity:0;transition:opacity 1s ease;will-change:transform}
 .label em{font-style:italic;color:var(--terra)}
-.drawn .label{opacity:1}
+.lit .label{opacity:1}
 
 /* Bajo la línea, al final */
 .after{position:absolute;left:var(--g);right:var(--g);top:calc(var(--y) + 30px);display:flex;flex-direction:column;gap:10px}
@@ -70,17 +72,19 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 .crossed .after > :nth-child(2){transition-delay:.35s}
 .crossed .after > :nth-child(3){transition-delay:.7s}
 .author{font-size:.98rem;letter-spacing:.05em;color:var(--soft)}
-.isbn{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;font-size:1.12rem;color:var(--ink);font-variant-numeric:lining-nums tabular-nums;letter-spacing:.02em}
-.copy{font:inherit;font-style:italic;font-size:1.05rem;color:var(--terra);background:none;border:0;padding:6px 0;cursor:pointer;border-bottom:1px solid rgba(191,101,63,.45);line-height:1.1;letter-spacing:0}
-.copy{transition:opacity 2.6s ease-in-out}
-.copy.dim{opacity:.5}
+.isbn{font-size:1.12rem;line-height:1.4;color:var(--ink);font-variant-numeric:lining-nums tabular-nums;letter-spacing:.02em}
+.copy{display:inline;font:inherit;font-style:italic;line-height:inherit;letter-spacing:0;color:var(--terra);background:none;border:0;padding:0;margin:0 0 0 14px;cursor:pointer;vertical-align:baseline;
+  text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:rgba(191,101,63,.5);text-underline-offset:5px;-webkit-appearance:none;appearance:none}
+.copy.alive{animation:breathe 4.6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:1}50%{opacity:.42}}
 .copy:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
 .when{font-size:1.12rem;letter-spacing:.08em;color:var(--ink);font-variant-numeric:lining-nums}
 .when a{color:var(--terra);font-style:italic;letter-spacing:0;text-decoration:none;border-bottom:1px solid rgba(191,101,63,.45)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 @media (prefers-reduced-motion:reduce){
-  .ask,.base,.dot,.label,.after > *,.copy{transition:none}
+  .ask,.label,.after > *{transition:none}
+  .copy.alive,.dot.nudge{animation:none}
 }
 </style>
 
@@ -92,7 +96,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   <p class="label" id="label">По ту сторону <em>правил</em></p>
 
   <div class="track" id="track">
-    <div class="base"></div>
+    <div class="base" id="base"></div>
+    <div class="comet" id="comet"></div>
     <div class="fill" id="fill"></div>
     <button class="dot" id="dot" type="button" aria-label="Перейти по ту сторону правил"><i></i></button>
   </div>
@@ -130,10 +135,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
     if(t[0]===null){out.appendChild(document.createElement('br'));return;}
     if(t[1]){var em=document.createElement('em');em.textContent=t[0];out.appendChild(em);}else{out.appendChild(document.createTextNode(t[0]));}
   });
-  var cw=document.createElement('span');cw.className='cw';cw.innerHTML='<span class="caret" id="caret"></span>';
-  out.appendChild(cw);var caret=$('caret');
-  var caretT;
-  function blink(){if(!caret)return;caret.classList.toggle('off');caretT=setTimeout(blink,rnd(380,880)+(Math.random()<.14?rnd(500,1300):0));}
 
   /* Geometría */
   var W,G,TW,LW,max,S0=.62;
@@ -167,25 +168,26 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   }
 
   /* El punto respira, sin ritmo fijo: alguien está ahí */
-  var breathT;
+  var breathT,nudgeT;
   function breathe(){if(crossed||dragging)return;dot.classList.toggle('breath');breathT=setTimeout(breathe,rnd(1300,3400));}
+  function nudge(first){nudgeT=setTimeout(function(){if(crossed)return;if(!dragging){dot.classList.remove('nudge');void dot.offsetWidth;dot.classList.add('nudge');}nudge(false);},first?1300:rnd(3600,7200));}
 
   function cross(){
     if(crossed)return;crossed=true;
-    clearTimeout(breathT);clearTimeout(caretT);stage.classList.add('gone');
+    clearTimeout(breathT);clearTimeout(nudgeT);
     dot.classList.remove('breath');dot.setAttribute('tabindex','-1');
-    animateTo(1,reduce?1:650,function(){
+    animateTo(1,reduce?1:550,function(){
       dot.classList.add('melt');
-      fill.style.transition='width .9s cubic-bezier(.3,.7,.3,1)';
+      fill.style.transition='width .4s cubic-bezier(.3,.7,.3,1)';
       fill.style.width=TW+'px';
-      dot.style.transition='opacity .5s ease .25s';dot.style.opacity='0';
+      dot.style.transition='opacity .18s ease .12s';dot.style.opacity='0';
       try{if(navigator.vibrate)navigator.vibrate(8);}catch(e){}
-      setTimeout(function(){stage.classList.add('crossed');later(breatheCopy,reduce?0:3600);},reduce?0:450);
+      setTimeout(function(){stage.classList.add('crossed');copyT=setTimeout(function(){if(!copied&&!reduce)copyBtn.classList.add('alive');},3200);},reduce?0:220);
     });
   }
   function down(e){
-    if(crossed||!stage.classList.contains('drawn'))return;
-    dragging=true;cancelAnimationFrame(raf);clearTimeout(breathT);dot.classList.remove('breath');
+    if(crossed||!stage.classList.contains('landed'))return;
+    dragging=true;cancelAnimationFrame(raf);clearTimeout(breathT);dot.classList.remove('breath','nudge');
     sx=e.clientX;sp=p;try{track.setPointerCapture(e.pointerId);}catch(_){}
   }
   function move(e){if(!dragging)return;p=Math.max(0,Math.min(1,sp+(e.clientX-sx)/max));render();}
@@ -202,28 +204,41 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 
   /* Señal de vida tras el colofón: «скопировать» respira, sin ritmo fijo, hasta que se copia */
   var copyBtn=$('copy'),copyT,copied=false;
-  function later(fn,ms){copyT=setTimeout(fn,ms);}
-  function breatheCopy(){if(copied||reduce)return;copyBtn.classList.toggle('dim');copyT=setTimeout(breatheCopy,rnd(2600,4600));}
+  function stillCopy(){var o=getComputedStyle(copyBtn).opacity;copyBtn.style.opacity=o;copyBtn.classList.remove('alive');void copyBtn.offsetWidth;copyBtn.style.transition='opacity .8s ease';copyBtn.style.opacity='1';}
 
   /* Copiar el número */
   $('copy').addEventListener('click',function(){
     var btn=this,ok=false;
-    function show(){btn.textContent=ok?'скопировано':'номер выделен';copied=true;clearTimeout(copyT);btn.classList.remove('dim');}
+    function show(){btn.textContent=ok?'скопировано':'номер выделен';copied=true;clearTimeout(copyT);stillCopy();}
     function fallback(){var r=document.createRange();r.selectNodeContents($('isbn'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{ok=document.execCommand('copy');}catch(e){}show();}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText('9788409902484').then(function(){ok=true;show();},fallback);}else fallback();
   });
 
-  /* Secuencia de entrada: la frase aparece despacio, luego el cursor, luego la línea */
+  /* Secuencia de entrada: la frase; poco después llega desde la derecha un rayo que deja la línea como rastro y se condensa en el punto */
+  var base=$('base'),comet=$('comet'),dotI=dot.querySelector('i');
+  function land(){
+    stage.classList.add('landed');base.style.transform='scaleX(1)';
+    breathT=setTimeout(breathe,reduce?0:2600);
+    if(!reduce)nudge(true);
+  }
+  function arrive(){
+    measure();stage.classList.add('lit');
+    if(reduce||!comet.animate){land();return;}
+    var dur=1150,ez='cubic-bezier(.12,.82,.28,1)',from=TW+40;
+    base.animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{duration:dur,easing:ez,fill:'forwards'});
+    var a=comet.animate([{transform:'translateX('+from+'px)',opacity:0},{opacity:1,offset:.06},{transform:'translateX(6px)',opacity:1}],{duration:dur,easing:ez,fill:'forwards'});
+    a.onfinish=function(){
+      land();
+      comet.animate([{opacity:1},{opacity:0}],{duration:240,fill:'forwards'});
+      dotI.animate([{transform:'scale(.25)',opacity:.5},{transform:'scale(1.4)',opacity:1,offset:.5},{transform:'scale(1)',opacity:1}],{duration:380,easing:'ease-out'});
+    };
+  }
   measure();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
   setTimeout(function(){
     stage.classList.add('shown');
-    setTimeout(blink,reduce?0:1600);
-    setTimeout(function(){
-      stage.classList.add('drawn');
-      breathT=setTimeout(breathe,reduce?0:2200);
-    },reduce?0:2600);
-  },reduce?0:500);
+    setTimeout(arrive,reduce?0:1100);
+  },reduce?0:400);
 })();
 </script>
 
