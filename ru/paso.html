@@ -136,10 +136,11 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   var rnd=function(a,b){return a+Math.random()*(b-a)};
   var lerp=function(a,b,t){return a+(b-a)*t};
 
-  /* Segunda visita: desactivada mientras se pule la primera. Para verla: añadir #vuelta a la dirección. */
-  var RETURN_ENABLED=false, visits=0;
-  if(RETURN_ENABLED){try{visits=parseInt(localStorage.getItem('paso.v')||'0',10)||0;localStorage.setItem('paso.v',String(visits+1));}catch(e){}}
-  var back=location.hash==='#vuelta'||(RETURN_ENABLED&&visits>0);
+  /* Segunda visita: a partir de la segunda vez en el mismo navegador, la pregunta cambia.
+     Pruebas: #vuelta fuerza la segunda visita; #primera muestra la primera y reinicia el contador. */
+  var RETURN_ENABLED=true, visits=0, first=location.hash==='#primera';
+  if(RETURN_ENABLED){try{if(first)localStorage.removeItem('paso.v');visits=parseInt(localStorage.getItem('paso.v')||'0',10)||0;localStorage.setItem('paso.v',String(visits+1));}catch(e){}}
+  var back=!first&&(location.hash==='#vuelta'||(RETURN_ENABLED&&visits>0));
   var Q=back
     ? [['Перейти ещё раз'],[null],['по ту сторону'],[null],['правил',1],['?']]
     : [['Перейти'],[null],['по ту сторону'],[null],['правил',1],['?']];
