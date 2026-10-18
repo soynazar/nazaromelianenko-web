@@ -37,8 +37,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 .ask{position:absolute;left:var(--g);right:var(--g);top:calc(env(safe-area-inset-top,0px) + 15svh);margin:0;
   font-weight:500;font-size:clamp(2.2rem,9.4vw,3.1rem);line-height:1.1;will-change:transform,opacity}
 .ask em{font-style:italic;color:var(--terra)}
-.ch{opacity:0;transition:opacity .55s ease}
-.ch.on{opacity:1}
+.ask{opacity:0;translate:0 8px;transition:opacity 2.4s ease,translate 2.4s cubic-bezier(.2,.7,.2,1)}
+.shown .ask{opacity:1;translate:0 0}
 .cw{position:relative;display:inline-block;width:0;height:0}
 .caret{position:absolute;left:.04em;bottom:-.12em;width:.05em;height:.82em;background:var(--ink)}
 .caret.off{opacity:0}
@@ -72,13 +72,15 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 .author{font-size:.98rem;letter-spacing:.05em;color:var(--soft)}
 .isbn{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;font-size:1.12rem;color:var(--ink);font-variant-numeric:lining-nums tabular-nums;letter-spacing:.02em}
 .copy{font:inherit;font-style:italic;font-size:1.05rem;color:var(--terra);background:none;border:0;padding:6px 0;cursor:pointer;border-bottom:1px solid rgba(191,101,63,.45);line-height:1.1;letter-spacing:0}
+.copy{transition:opacity 2.6s ease-in-out}
+.copy.dim{opacity:.5}
 .copy:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
 .when{font-size:1.12rem;letter-spacing:.08em;color:var(--ink);font-variant-numeric:lining-nums}
 .when a{color:var(--terra);font-style:italic;letter-spacing:0;text-decoration:none;border-bottom:1px solid rgba(191,101,63,.45)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 @media (prefers-reduced-motion:reduce){
-  .ch,.base,.dot,.label,.after > *{transition:none}
+  .ask,.base,.dot,.label,.after > *,.copy{transition:none}
 }
 </style>
 
@@ -110,42 +112,26 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   var rnd=function(a,b){return a+Math.random()*(b-a)};
   var lerp=function(a,b,t){return a+(b-a)*t};
 
-  /* Visitas */
-  var visits=0;
-  try{visits=parseInt(localStorage.getItem('paso.v')||'0',10)||0;localStorage.setItem('paso.v',String(visits+1));}catch(e){}
-  var Q=visits>0
+  /* Segunda visita: desactivada mientras se pule la primera. Para verla: añadir #vuelta a la dirección. */
+  var RETURN_ENABLED=false, visits=0;
+  if(RETURN_ENABLED){try{visits=parseInt(localStorage.getItem('paso.v')||'0',10)||0;localStorage.setItem('paso.v',String(visits+1));}catch(e){}}
+  var back=location.hash==='#vuelta'||(RETURN_ENABLED&&visits>0);
+  var Q=back
     ? [['Перейти ещё раз'],[null],['по ту сторону'],[null],['правил',1],['?']]
-    : [['Устали от'],[null],['правил',1],['?']];
+    : [['Перейти'],[null],['по ту сторону'],[null],['правил',1],['?']];
 
   /* Después del 17 nov (00:00 Madrid) la puerta se abre */
   if(Date.now()>=Date.UTC(2026,10,16,23,0,0)){$('when').innerHTML='<a href="/book.html">Открыть книгу</a>';}
 
-  /* La pregunta: letra a letra, sin prisa, con ritmo humano */
+  /* La frase completa, sin escritura letra a letra */
   $('askSr').textContent=Q.map(function(t){return t[0]===null?' ':t[0]}).join('');
-  var out=$('askText'),chars=[];
+  var out=$('askText');
   Q.forEach(function(t){
-    if(t[0]===null){if(chars.length)chars[chars.length-1].dataset.br='1';out.appendChild(document.createElement('br'));return;}
-    var host=t[1]?out.appendChild(document.createElement('em')):out;
-    t[0].split('').forEach(function(c){var s=document.createElement('span');s.className='ch';s.textContent=c;host.appendChild(s);chars.push(s);});
+    if(t[0]===null){out.appendChild(document.createElement('br'));return;}
+    if(t[1]){var em=document.createElement('em');em.textContent=t[0];out.appendChild(em);}else{out.appendChild(document.createTextNode(t[0]));}
   });
   var cw=document.createElement('span');cw.className='cw';cw.innerHTML='<span class="caret" id="caret"></span>';
-  var caret;
-  function placeCaret(after){after.parentNode.insertBefore(cw,after.nextSibling);}
-  function typeAll(done){
-    if(reduce){chars.forEach(function(s){s.classList.add('on');});placeCaret(chars[chars.length-1]);caret=$('caret');done();return;}
-    chars[0].parentNode.insertBefore(cw,chars[0]);caret=$('caret');
-    var i=0;
-    (function step(){
-      if(i>=chars.length){done();return;}
-      var s=chars[i],c=s.textContent;s.classList.add('on');placeCaret(s);i++;
-      var d=rnd(90,190);
-      if(c===' ')d+=rnd(40,140);
-      if(c==='.'||c==='?')d+=rnd(380,700);
-      if(Math.random()<.08)d+=rnd(220,520);
-      if(s.dataset.br)d+=rnd(260,520);
-      setTimeout(step,d);
-    })();
-  }
+  out.appendChild(cw);var caret=$('caret');
   var caretT;
   function blink(){if(!caret)return;caret.classList.toggle('off');caretT=setTimeout(blink,rnd(380,880)+(Math.random()<.14?rnd(500,1300):0));}
 
@@ -194,7 +180,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
       fill.style.width=TW+'px';
       dot.style.transition='opacity .5s ease .25s';dot.style.opacity='0';
       try{if(navigator.vibrate)navigator.vibrate(8);}catch(e){}
-      setTimeout(function(){stage.classList.add('crossed');},reduce?0:450);
+      setTimeout(function(){stage.classList.add('crossed');later(breatheCopy,reduce?0:3600);},reduce?0:450);
     });
   }
   function down(e){
@@ -214,26 +200,30 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   dot.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='Enter'||e.key===' '){e.preventDefault();cross();}});
   window.addEventListener('resize',function(){measure();if(crossed)fill.style.width=TW+'px';});
 
+  /* Señal de vida tras el colofón: «скопировать» respira, sin ritmo fijo, hasta que se copia */
+  var copyBtn=$('copy'),copyT,copied=false;
+  function later(fn,ms){copyT=setTimeout(fn,ms);}
+  function breatheCopy(){if(copied||reduce)return;copyBtn.classList.toggle('dim');copyT=setTimeout(breatheCopy,rnd(2600,4600));}
+
   /* Copiar el número */
   $('copy').addEventListener('click',function(){
     var btn=this,ok=false;
-    function show(){btn.textContent=ok?'скопировано':'номер выделен';}
+    function show(){btn.textContent=ok?'скопировано':'номер выделен';copied=true;clearTimeout(copyT);btn.classList.remove('dim');}
     function fallback(){var r=document.createRange();r.selectNodeContents($('isbn'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{ok=document.execCommand('copy');}catch(e){}show();}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText('9788409902484').then(function(){ok=true;show();},fallback);}else fallback();
   });
 
-  /* Secuencia de entrada */
+  /* Secuencia de entrada: la frase aparece despacio, luego el cursor, luego la línea */
   measure();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
   setTimeout(function(){
-    typeAll(function(){
-      blink();
-      setTimeout(function(){
-        stage.classList.add('drawn');
-        breathT=setTimeout(breathe,reduce?0:2200);
-      },reduce?0:rnd(700,1000));
-    });
-  },reduce?0:rnd(800,1200));
+    stage.classList.add('shown');
+    setTimeout(blink,reduce?0:1600);
+    setTimeout(function(){
+      stage.classList.add('drawn');
+      breathT=setTimeout(breathe,reduce?0:2200);
+    },reduce?0:2600);
+  },reduce?0:500);
 })();
 </script>
 
