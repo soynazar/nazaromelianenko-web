@@ -17,245 +17,223 @@
 </head>
 <body>
 <style>
-/* Página-umbral: una sola columna, la línea terracota que sale a sangre por la derecha. Arriba esta orilla, abajo la otra. */
+/* Página-umbral: una escena de una sola pantalla. La línea es el umbral; al cruzarla, la escena se desplaza en capas (parallax) y queda la composición de la plantilla D. */
 :root{
   --bg:#F3EDE3; --bg-hi:#F7F2E9; --bg-lo:#EDE4D6;
   --ink:#2B2723; --soft:#5A5149; --mute:#8C8278;
   --terra:#BF653F; --rule:#C9805F;
   --serif:"Cormorant Garamond","EB Garamond",Garamond,"Times New Roman",serif;
+  --g:max(24px, env(safe-area-inset-left,0px), calc((100vw - 34rem) / 2));
+  --y:46svh;
   color-scheme:light;
 }
-html{overflow-x:hidden}
-body{margin:0;background:var(--bg);background-image:radial-gradient(120% 80% at 78% 18%,var(--bg-hi) 0%,var(--bg) 48%,var(--bg-lo) 100%);background-attachment:fixed;color:var(--ink);font-family:var(--serif);overflow-x:hidden;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
-.wrap{box-sizing:border-box;min-height:100vh;min-height:100svh;width:min(100%,36rem);margin:0 auto;
-  padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));
-  padding-block:calc(env(safe-area-inset-top,0px) + 14svh) calc(env(safe-area-inset-bottom,0px) + 36px);
-  display:flex;flex-direction:column}
+html,body{height:100%;margin:0;overflow:hidden;overscroll-behavior:none}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
+.stage{position:relative;height:100vh;height:100svh;overflow:hidden}
+.bg{position:absolute;top:-10%;bottom:-10%;left:-15%;width:150%;pointer-events:none;
+  background:radial-gradient(60% 55% at 62% 28%,var(--bg-hi) 0%,var(--bg) 52%,var(--bg-lo) 100%);will-change:transform}
 
-/* Esta orilla */
-.ask{margin:0;font-weight:500;font-size:clamp(2.05rem,9vw,3rem);line-height:1.1;min-height:3.35em;transition:color 1.2s ease}
-.ask em{font-style:italic;color:var(--terra);transition:color 1.2s ease}
-.caret{display:inline-block;width:.055em;height:.82em;margin-left:.08em;background:var(--ink);vertical-align:-.06em}
+/* Esta orilla: la pregunta */
+.ask{position:absolute;left:var(--g);right:var(--g);top:calc(env(safe-area-inset-top,0px) + 15svh);margin:0;
+  font-weight:500;font-size:clamp(2.2rem,9.4vw,3.1rem);line-height:1.1;will-change:transform,opacity}
+.ask em{font-style:italic;color:var(--terra)}
+.ch{opacity:0;transition:opacity .55s ease}
+.ch.on{opacity:1}
+.cw{position:relative;display:inline-block;width:0;height:0}
+.caret{position:absolute;left:.04em;bottom:-.12em;width:.05em;height:.82em;background:var(--ink)}
 .caret.off{opacity:0}
-.crossed .ask{color:var(--mute)}
-.crossed .ask em{color:#C99A84}
-.crossed .caret{display:none}
+.gone .caret{display:none}
 
 /* El umbral */
-.threshold{margin-top:9svh;width:calc(50vw + 50%);opacity:0;transition:opacity .8s ease}
-.ready .threshold{opacity:1}
-.invite{margin:0 0 6px;font-style:italic;font-size:clamp(1.25rem,5.2vw,1.55rem);color:var(--soft);transition:opacity .6s ease}
-.crossed .invite{opacity:0}
-.track{position:relative;height:56px;touch-action:none;cursor:grab;outline:none}
-.track:active{cursor:grabbing}
-.base{position:absolute;left:0;right:0;top:50%;height:1.2px;background:var(--rule);opacity:.6;transform-origin:left center;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.2,.7,.15,1)}
-.ready .base{transform:scaleX(1)}
-.fill{position:absolute;left:0;top:50%;height:2.4px;margin-top:-.7px;width:8px;background:var(--rule)}
-.glint{position:absolute;top:50%;left:0;width:90px;height:2.4px;margin-top:-.7px;opacity:0;pointer-events:none;
-  background:linear-gradient(90deg,rgba(191,101,63,0),rgba(191,101,63,.95),rgba(191,101,63,0))}
-.glint.run{animation:glint 1.6s cubic-bezier(.4,0,.2,1) forwards}
-@keyframes glint{0%{opacity:0;transform:translateX(0)}15%{opacity:1}100%{opacity:0;transform:translateX(var(--glint-to,300px))}}
-.dot{position:absolute;left:-20px;top:50%;width:56px;height:56px;margin-top:-28px;padding:0;border:0;background:transparent;cursor:grab;touch-action:none;outline:none}
-.dot::after{content:"";position:absolute;left:50%;top:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border-radius:50%;background:var(--terra);transition:transform .5s cubic-bezier(.3,.7,.3,1),box-shadow .5s ease}
-.dot.breath::after{transform:scale(1.28);box-shadow:0 0 0 7px rgba(191,101,63,.10)}
-.dot.nudge{animation:nudge 1.1s cubic-bezier(.3,.6,.3,1)}
-@keyframes nudge{0%,100%{translate:0 0}40%{translate:9px 0}}
-.dot:focus-visible::after{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--terra)}
-.hint{margin:4px 0 0;font-style:italic;font-size:1rem;color:var(--mute);opacity:0;transition:opacity 1.2s ease}
-.hint.show{opacity:1}
-.crossed .hint{opacity:0}
+.track{position:absolute;left:var(--g);right:0;top:var(--y);height:56px;margin-top:-28px;touch-action:none;cursor:grab;outline:none}
+.base{position:absolute;left:0;right:0;top:50%;height:1.2px;margin-top:-.6px;background:var(--rule);opacity:.6;transform-origin:left center;transform:scaleX(0);transition:transform 1.6s cubic-bezier(.25,.7,.15,1)}
+.drawn .base{transform:scaleX(1)}
+.fill{position:absolute;left:0;top:50%;height:2.4px;margin-top:-1.2px;width:0;background:var(--rule);opacity:0;transition:opacity .9s ease}
+.drawn .fill{opacity:1}
+.dot{position:absolute;left:-20px;top:50%;width:56px;height:56px;margin-top:-28px;padding:0;border:0;background:transparent;cursor:grab;touch-action:none;outline:none;opacity:0;transition:opacity .9s ease}
+.drawn .dot{opacity:1}
+.dot i{position:absolute;left:50%;top:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border-radius:50%;background:var(--terra);transition:transform .9s cubic-bezier(.3,.7,.3,1),box-shadow .9s ease}
+.dot.breath i{transform:scale(1.22);box-shadow:0 0 0 8px rgba(191,101,63,.09)}
+.dot.melt i{transition:transform .5s cubic-bezier(.5,0,.3,1),box-shadow .3s;transform:scale(1.4,.16);box-shadow:none}
+.dot:focus-visible i{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--terra)}
 
-/* La otra orilla */
-.beyond{margin-top:14px;display:flex;flex-direction:column;gap:12px}
-.beyond > *{opacity:0;transform:translateY(10px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
-.crossed .beyond > *{opacity:1;transform:none}
-.crossed .beyond .exp{transition-delay:.45s}
-.label{margin:0;font-style:italic;color:var(--terra);font-size:clamp(1.25rem,5.2vw,1.55rem)}
-.exp{margin:0;font-weight:500;font-size:clamp(1.45rem,6.1vw,1.85rem);line-height:1.2;max-width:30ch;text-wrap:pretty}
-.exp em{font-style:italic;color:var(--terra)}
+/* La otra orilla: el título, que llega desde la derecha */
+.label{position:absolute;left:0;bottom:calc(100% - var(--y) + 12px);margin:0;white-space:nowrap;
+  font-size:clamp(1.7rem,7.2vw,2.3rem);line-height:1;transform-origin:left bottom;opacity:0;transition:opacity 1s ease;will-change:transform}
+.label em{font-style:italic;color:var(--terra)}
+.drawn .label{opacity:1}
 
-/* Colofón */
-.colophon{margin-top:auto;padding-top:52px;display:flex;flex-direction:column;gap:6px;font-size:1.06rem;color:var(--soft);opacity:0;transition:opacity 1.4s ease 1.6s}
-.crossed .colophon{opacity:1}
-.colophon .t{color:var(--ink);font-size:1.18rem}
-.colophon .t em{font-style:italic;color:var(--terra)}
-.colophon p{margin:0}
-.isbn{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;font-variant-numeric:lining-nums tabular-nums;letter-spacing:.02em}
-.copy{font:inherit;font-style:italic;color:var(--terra);background:none;border:0;padding:6px 0;cursor:pointer;border-bottom:1px solid rgba(191,101,63,.45);line-height:1.1}
+/* Bajo la línea, al final */
+.after{position:absolute;left:var(--g);right:var(--g);top:calc(var(--y) + 30px);display:flex;flex-direction:column;gap:10px}
+.after > *{margin:0;opacity:0;transform:translateY(8px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.crossed .after > *{opacity:1;transform:none}
+.crossed .after > :nth-child(2){transition-delay:.35s}
+.crossed .after > :nth-child(3){transition-delay:.7s}
+.author{font-size:.98rem;letter-spacing:.05em;color:var(--soft)}
+.isbn{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;font-size:1.12rem;color:var(--ink);font-variant-numeric:lining-nums tabular-nums;letter-spacing:.02em}
+.copy{font:inherit;font-style:italic;font-size:1.05rem;color:var(--terra);background:none;border:0;padding:6px 0;cursor:pointer;border-bottom:1px solid rgba(191,101,63,.45);line-height:1.1;letter-spacing:0}
 .copy:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
-.when{letter-spacing:.06em;color:var(--ink)}
-.when a{color:var(--terra);font-style:italic;text-decoration:none;border-bottom:1px solid rgba(191,101,63,.45);letter-spacing:0}
+.when{font-size:1.12rem;letter-spacing:.08em;color:var(--ink);font-variant-numeric:lining-nums}
+.when a{color:var(--terra);font-style:italic;letter-spacing:0;text-decoration:none;border-bottom:1px solid rgba(191,101,63,.45)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 @media (prefers-reduced-motion:reduce){
-  .base,.threshold,.beyond > *,.colophon,.invite,.ask,.ask em{transition:none}
-  .dot.nudge,.glint.run{animation:none}
+  .ch,.base,.dot,.label,.after > *{transition:none}
 }
 </style>
 
-<main class="wrap" id="stage">
-  <h1 class="ask" id="ask"><span class="sr" id="askSr"></span><span aria-hidden="true" id="askText"></span><span class="caret" id="caret" aria-hidden="true"></span></h1>
+<main class="stage" id="stage">
+  <div class="bg" id="bg"></div>
 
-  <section class="threshold" id="threshold" aria-label="Порог">
-    <p class="invite" id="invite"></p>
-    <div class="track" id="track">
-      <div class="base"></div>
-      <div class="glint" id="glint"></div>
-      <div class="fill" id="fill"></div>
-      <button class="dot" id="dot" type="button" aria-label="Провести черту"></button>
-    </div>
-    <p class="hint" id="hint">проведите по линии</p>
-  </section>
+  <h1 class="ask" id="ask"><span class="sr" id="askSr"></span><span aria-hidden="true" id="askText"></span></h1>
 
-  <section class="beyond" aria-live="polite">
-    <p class="label">по ту сторону</p>
-    <p class="exp" id="exp"></p>
-  </section>
+  <p class="label" id="label">По ту сторону <em>правил</em></p>
 
-  <footer class="colophon" id="colophon">
-    <p class="t">По ту сторону <em>правил</em></p>
-    <p>Назар Омельяненко</p>
+  <div class="track" id="track">
+    <div class="base"></div>
+    <div class="fill" id="fill"></div>
+    <button class="dot" id="dot" type="button" aria-label="Перейти по ту сторону правил"><i></i></button>
+  </div>
+
+  <section class="after" aria-live="polite">
+    <p class="author">Назар Омельяненко</p>
     <p class="isbn"><span id="isbn">ISBN 978-84-09-90248-4</span><button class="copy" id="copy" type="button">скопировать</button></p>
     <p class="when" id="when">17.11</p>
-  </footer>
+  </section>
 </main>
 
 <script>
 (function(){
   var $=function(id){return document.getElementById(id)};
-  var stage=$('stage'), reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stage=$('stage'),bg=$('bg'),ask=$('ask'),label=$('label'),track=$('track'),fill=$('fill'),dot=$('dot');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   var rnd=function(a,b){return a+Math.random()*(b-a)};
+  var lerp=function(a,b,t){return a+(b-a)*t};
 
-  /* Visitas: la segunda vez la página no repite lo mismo */
+  /* Visitas */
   var visits=0;
   try{visits=parseInt(localStorage.getItem('paso.v')||'0',10)||0;localStorage.setItem('paso.v',String(visits+1));}catch(e){}
-  var back=visits>0;
-
-  var Q=back
-    ? [['Снова здесь.'],[null],['Всё ещё'],[null],['по '],['правилам',1],['?']]
-    : [['Устали учить'],[null],['испанский'],[null],['по '],['правилам',1],['?']];
-  $('invite').textContent=back?'Ещё раз – за пределы правил?':'Выйти за пределы правил?';
-
-  var EXPL=[
-    '<i>Por</i> и <i>para</i> – не два правила, а одна <em>стрела</em>: <i>para</i> смотрит туда, куда она летит, <i>por</i> – на силу, которая её выпустила.',
-    '<i>Quería un café</i> – не прошлое, а <em>шаг назад</em>: дистанция, которую испанец слышит как вежливость.',
-    '<i>Lo recojo, lo voy a recoger, lo recogeré</i> – одно и то же будущее, но три разных <em>расстояния</em> между вами и событием.'
-  ];
-  $('exp').innerHTML=EXPL[visits%EXPL.length];
+  var Q=visits>0
+    ? [['Перейти ещё раз'],[null],['по ту сторону'],[null],['правил',1],['?']]
+    : [['Устали от'],[null],['правил',1],['?']];
 
   /* Después del 17 nov (00:00 Madrid) la puerta se abre */
-  if(Date.now()>=Date.UTC(2026,10,16,23,0,0)){
-    $('when').innerHTML='<a href="/book.html">Открыть книгу</a>';
-  }
+  if(Date.now()>=Date.UTC(2026,10,16,23,0,0)){$('when').innerHTML='<a href="/book.html">Открыть книгу</a>';}
 
-  /* Texto escrito por alguien, con ritmo humano */
+  /* La pregunta: letra a letra, sin prisa, con ritmo humano */
   $('askSr').textContent=Q.map(function(t){return t[0]===null?' ':t[0]}).join('');
-  var out=$('askText');
+  var out=$('askText'),chars=[];
+  Q.forEach(function(t){
+    if(t[0]===null){if(chars.length)chars[chars.length-1].dataset.br='1';out.appendChild(document.createElement('br'));return;}
+    var host=t[1]?out.appendChild(document.createElement('em')):out;
+    t[0].split('').forEach(function(c){var s=document.createElement('span');s.className='ch';s.textContent=c;host.appendChild(s);chars.push(s);});
+  });
+  var cw=document.createElement('span');cw.className='cw';cw.innerHTML='<span class="caret" id="caret"></span>';
+  var caret;
+  function placeCaret(after){after.parentNode.insertBefore(cw,after.nextSibling);}
   function typeAll(done){
-    if(reduce){
-      Q.forEach(function(t){
-        if(t[0]===null){out.appendChild(document.createElement('br'));return;}
-        var n=t[1]?document.createElement('em'):document.createTextNode('');
-        if(t[1]){n.textContent=t[0];out.appendChild(n);}else{out.appendChild(document.createTextNode(t[0]));}
-      });
-      done();return;
-    }
-    var ti=0,ci=0,node=null;
+    if(reduce){chars.forEach(function(s){s.classList.add('on');});placeCaret(chars[chars.length-1]);caret=$('caret');done();return;}
+    chars[0].parentNode.insertBefore(cw,chars[0]);caret=$('caret');
+    var i=0;
     (function step(){
-      if(ti>=Q.length){done();return;}
-      var tok=Q[ti];
-      if(tok[0]===null){out.appendChild(document.createElement('br'));ti++;setTimeout(step,rnd(260,520));return;}
-      if(ci===0){node=tok[1]?out.appendChild(document.createElement('em')):out.appendChild(document.createTextNode(''));}
-      var ch=tok[0].charAt(ci);
-      if(tok[1]){node.textContent+=ch;}else{node.textContent+=ch;}
-      ci++;
-      var d=rnd(45,125);
-      if(ch==='.'||ch==='?')d+=rnd(260,520);
-      if(Math.random()<.06)d+=rnd(160,380);
-      if(ci>=tok[0].length){ti++;ci=0;}
+      if(i>=chars.length){done();return;}
+      var s=chars[i],c=s.textContent;s.classList.add('on');placeCaret(s);i++;
+      var d=rnd(90,190);
+      if(c===' ')d+=rnd(40,140);
+      if(c==='.'||c==='?')d+=rnd(380,700);
+      if(Math.random()<.08)d+=rnd(220,520);
+      if(s.dataset.br)d+=rnd(260,520);
       setTimeout(step,d);
     })();
   }
+  var caretT;
+  function blink(){if(!caret)return;caret.classList.toggle('off');caretT=setTimeout(blink,rnd(380,880)+(Math.random()<.14?rnd(500,1300):0));}
 
-  /* El cursor parpadea sin metrónomo */
-  var caret=$('caret'),caretT;
-  (function blink(){caret.classList.toggle('off');caretT=setTimeout(blink,rnd(380,880)+(Math.random()<.14?rnd(500,1300):0));})();
-
-  /* Umbral */
-  var track=$('track'),dot=$('dot'),fill=$('fill'),glint=$('glint'),hint=$('hint');
-  var C=8, x=0, max=0, dragging=false, sx=0, sxx=0, crossed=false, touched=false, timers=[];
-  function measure(){max=Math.max(120,track.clientWidth-C-44);}
-  function setX(v,animate){
-    x=Math.max(0,Math.min(max,v));
-    var t=animate?'transform .45s cubic-bezier(.3,.7,.3,1)':'none', w=animate?'width .45s cubic-bezier(.3,.7,.3,1)':'none';
-    dot.style.transition=t;fill.style.transition=w;
+  /* Geometría */
+  var W,G,TW,LW,max,S0=.62;
+  var p=0,crossed=false,dragging=false,sx=0,sp=0,raf=0;
+  function measure(){
+    W=window.innerWidth;G=track.getBoundingClientRect().left;TW=track.clientWidth;
+    label.style.transform='none';LW=label.getBoundingClientRect().width;
+    max=Math.max(140,TW-64);
+    render();
+  }
+  function render(){
+    var lx=lerp(W-G-LW*S0,G,p), ls=lerp(S0,1,p);
+    label.style.transform='translateX('+lx+'px) scale('+ls+')';
+    var c=[Math.round(lerp(90,43,p)),Math.round(lerp(81,39,p)),Math.round(lerp(73,35,p))];
+    label.style.color='rgb('+c.join(',')+')';
+    ask.style.transform='translateX('+(-p*W*1.15)+'px)';
+    ask.style.opacity=String(Math.max(0,1-p*1.5));
+    bg.style.transform='translateX('+(-p*W*.18)+'px)';
+    var x=p*max;
     dot.style.transform='translateX('+x+'px)';
-    fill.style.width=(C+x)+'px';
+    fill.style.width=(x+7)+'px';
   }
-  function later(fn,ms){var id=setTimeout(fn,ms);timers.push(id);return id;}
-  function ambient(){
-    if(reduce)return;
-    (function breathe(){if(crossed||dragging)return;dot.classList.toggle('breath');later(breathe,rnd(1400,3200));})();
-    (function nudge(){later(function(){if(crossed||dragging||touched){return;}dot.classList.remove('nudge');void dot.offsetWidth;dot.classList.add('nudge');nudge();},rnd(3800,8200));})();
-    (function shine(){later(function(){if(crossed||dragging)return;glint.style.setProperty('--glint-to',(track.clientWidth*.75)+'px');glint.classList.remove('run');void glint.offsetWidth;glint.classList.add('run');shine();},rnd(4200,9500));})();
+  function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+  function animateTo(target,ms,then){
+    cancelAnimationFrame(raf);
+    var from=p,t0=performance.now();
+    (function f(now){
+      var t=Math.min(1,(now-t0)/ms);p=lerp(from,target,ease(t));render();
+      if(t<1)raf=requestAnimationFrame(f);else if(then)then();
+    })(t0);
   }
+
+  /* El punto respira, sin ritmo fijo: alguien está ahí */
+  var breathT;
+  function breathe(){if(crossed||dragging)return;dot.classList.toggle('breath');breathT=setTimeout(breathe,rnd(1300,3400));}
+
   function cross(){
     if(crossed)return;crossed=true;
-    timers.forEach(clearTimeout);clearTimeout(caretT);
-    dot.classList.remove('breath','nudge');
-    setX(max,true);
-    fill.style.transition='width .9s cubic-bezier(.3,.7,.3,1)';
-    fill.style.width=track.clientWidth+'px';
-    dot.style.transition='transform .9s cubic-bezier(.3,.7,.3,1),opacity .6s ease .5s';
-    dot.style.transform='translateX('+(track.clientWidth)+'px)';dot.style.opacity='0';
-    dot.setAttribute('tabindex','-1');
-    try{if(navigator.vibrate)navigator.vibrate(8);}catch(e){}
-    stage.classList.add('crossed');
+    clearTimeout(breathT);clearTimeout(caretT);stage.classList.add('gone');
+    dot.classList.remove('breath');dot.setAttribute('tabindex','-1');
+    animateTo(1,reduce?1:650,function(){
+      dot.classList.add('melt');
+      fill.style.transition='width .9s cubic-bezier(.3,.7,.3,1)';
+      fill.style.width=TW+'px';
+      dot.style.transition='opacity .5s ease .25s';dot.style.opacity='0';
+      try{if(navigator.vibrate)navigator.vibrate(8);}catch(e){}
+      setTimeout(function(){stage.classList.add('crossed');},reduce?0:450);
+    });
   }
   function down(e){
-    if(crossed)return;
-    dragging=true;touched=true;hint.classList.remove('show');
-    dot.classList.remove('breath','nudge');
-    sx=e.clientX;sxx=x;
-    try{track.setPointerCapture(e.pointerId);}catch(_){}
+    if(crossed||!stage.classList.contains('drawn'))return;
+    dragging=true;cancelAnimationFrame(raf);clearTimeout(breathT);dot.classList.remove('breath');
+    sx=e.clientX;sp=p;try{track.setPointerCapture(e.pointerId);}catch(_){}
   }
-  function move(e){if(!dragging)return;setX(sxx+(e.clientX-sx),false);}
+  function move(e){if(!dragging)return;p=Math.max(0,Math.min(1,sp+(e.clientX-sx)/max));render();}
   function up(){
     if(!dragging)return;dragging=false;
-    if(x/max>=.72)cross();else{setX(0,true);}
+    if(p>=.6)cross();else animateTo(0,500,function(){breathT=setTimeout(breathe,rnd(800,1600));});
   }
   track.addEventListener('pointerdown',down);
   track.addEventListener('pointermove',move);
   track.addEventListener('pointerup',up);
   track.addEventListener('pointercancel',up);
   dot.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='Enter'||e.key===' '){e.preventDefault();cross();}});
-  window.addEventListener('resize',function(){measure();if(!crossed)setX(0,false);});
+  window.addEventListener('resize',function(){measure();if(crossed)fill.style.width=TW+'px';});
 
-  /* Copiar el número: con él hay que hacer algo */
+  /* Copiar el número */
   $('copy').addEventListener('click',function(){
-    var btn=this,val='9788409902484',ok=false;
+    var btn=this,ok=false;
     function show(){btn.textContent=ok?'скопировано':'номер выделен';}
-    function fallback(){
-      var r=document.createRange();r.selectNodeContents($('isbn'));var s=getSelection();s.removeAllRanges();s.addRange(r);
-      try{ok=document.execCommand('copy');}catch(e){}
-      show();
-    }
-    if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(val).then(function(){ok=true;show();},fallback);
-    }else{fallback();}
+    function fallback(){var r=document.createRange();r.selectNodeContents($('isbn'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{ok=document.execCommand('copy');}catch(e){}show();}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText('9788409902484').then(function(){ok=true;show();},fallback);}else fallback();
   });
 
-  /* Secuencia */
-  measure();setX(0,false);
+  /* Secuencia de entrada */
+  measure();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
   setTimeout(function(){
     typeAll(function(){
+      blink();
       setTimeout(function(){
-        stage.classList.add('ready');measure();
-        setTimeout(ambient,1400);
-        later(function(){if(!touched&&!crossed)hint.classList.add('show');},7500);
-      },reduce?0:rnd(500,900));
+        stage.classList.add('drawn');
+        breathT=setTimeout(breathe,reduce?0:2200);
+      },reduce?0:rnd(700,1000));
     });
-  },reduce?0:rnd(600,1000));
+  },reduce?0:rnd(800,1200));
 })();
 </script>
 
