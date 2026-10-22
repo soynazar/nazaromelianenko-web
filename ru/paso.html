@@ -88,6 +88,11 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 .after3 > *{margin:0}
 .copyrow{font-size:1.12rem;line-height:1.4}
 .copyrow .copy{margin:0}
+/* La puerta: aparece solo después de copiar, desde la nada */
+.find{font-style:italic;color:var(--terra);text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:rgba(191,101,63,.5);text-underline-offset:5px}
+.findrow{opacity:0;visibility:hidden;transition:opacity 2.8s ease .9s,visibility 0s linear 3.7s}
+.findrow.on{opacity:1;visibility:visible;transition:opacity 2.8s ease .9s,visibility 0s}
+.find:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
 .s3{visibility:hidden;opacity:0;translate:0 8px;transition:opacity 1.1s ease,translate 1.1s cubic-bezier(.2,.7,.2,1)}
 .crossed .s3{visibility:visible}
 .on3 .s3{opacity:1;translate:0 0}
@@ -101,6 +106,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 @media (prefers-reduced-motion:reduce){
   .ask,.label,.after > *,.s3{transition:none}
   .copy.alive,.dot.nudge{animation:none}
+  .findrow,.findrow.on{transition:none}
 }
 </style>
 
@@ -125,6 +131,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   <p class="num s3" id="num" inert><span class="pre">ISBN</span><span id="isbn">978-84-09-90248-4</span></p>
   <section class="after3 s3" id="after3" inert>
     <p class="copyrow"><button class="copy" id="copy" type="button">скопировать</button></p>
+    <p class="copyrow findrow" id="findrow"><a class="find" href="https://www.amazon.es/s?k=9788409902484" target="_blank" rel="noopener">найти</a></p>
   </section>
 </main>
 
@@ -325,7 +332,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   /* Copiar el número */
   $('copy').addEventListener('click',function(){
     var btn=this,ok=false;
-    function show(){btn.textContent=ok?'скопировано':'номер выделен';copied=true;clearTimeout(copyT);stillCopy();}
+    function show(){btn.textContent=ok?'скопировано':'номер выделен';copied=true;clearTimeout(copyT);stillCopy();$('findrow').classList.add('on');}
     function fallback(){var r=document.createRange();r.selectNodeContents($('isbn'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{ok=document.execCommand('copy');}catch(e){}show();}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText('9788409902484').then(function(){ok=true;show();},fallback);}else fallback();
   });
