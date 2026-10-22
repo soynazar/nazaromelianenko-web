@@ -15,6 +15,19 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
   <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+  <style>
+    /* Miniatura del libro: borde de papel y sombra corta y densa para que se separe del fondo crema; entra una sola vez, sin bucles */
+    .lk-cover{flex:none;width:64px;height:auto;display:block;border-radius:1px;
+      outline:1px solid rgba(43,39,35,.14);outline-offset:-1px;
+      box-shadow:0 1px 1px rgba(43,39,35,.22),0 3px 6px -1px rgba(43,39,35,.30),0 10px 16px -8px rgba(43,39,35,.45);
+      animation:lkRise 1.4s cubic-bezier(.2,.7,.2,1) .25s both}
+    @keyframes lkRise{
+      from{opacity:0;transform:translateY(10px) rotate(-1.2deg);box-shadow:0 0 0 rgba(43,39,35,0)}
+      to{opacity:1;transform:none}
+    }
+    .lk-book:active .lk-cover{transform:translateY(1px);box-shadow:0 1px 1px rgba(43,39,35,.22),0 2px 4px rgba(43,39,35,.25)}
+    @media (prefers-reduced-motion:reduce){.lk-cover{animation:none}}
+  </style>
 </head>
 
 <body style="padding-top: 4rem; padding-bottom: 6rem; background-color: var(--color-arena);">
@@ -37,8 +50,8 @@
     <div style="width: 100%; display: flex; flex-direction: column;">
 
         <!-- 0. LIBRO (ficha editorial: miniatura de la portada + título; todo el bloque enlaza a la página del libro) -->
-        <a href="/ru/book.html" style="display: flex; align-items: center; gap: 1.25rem; text-align: left; background-color: #F3EDE3; color: #2B2723; border: 1px solid #1E1E1E; padding: 1.1rem 1.5rem 1.1rem 1.1rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: transform 0.3s ease; margin-bottom: 1.2rem;">
-            <img src="/images/kniga-cover.webp" alt="Обложка книги «По ту сторону правил»" width="64" height="105" style="flex: none; width: 64px; height: auto; display: block; box-shadow: 0 3px 10px rgba(43,39,35,0.18);">
+        <a href="/ru/book.html" class="lk-book" style="display: flex; align-items: center; gap: 1.25rem; text-align: left; background-color: #F3EDE3; color: #2B2723; border: 1px solid #1E1E1E; padding: 1.1rem 1.5rem 1.1rem 1.1rem; border-radius: var(--radius); text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: transform 0.3s ease; margin-bottom: 1.2rem;">
+            <img class="lk-cover" src="/images/kniga-cover.webp" alt="Обложка книги «По ту сторону правил»" width="64" height="105">
             <span style="display: flex; flex-direction: column; gap: 0.35rem;">
                 <span style="font-family: 'Cormorant Garamond', Garamond, serif; font-weight: 500; font-size: 1.55rem; line-height: 1.05; color: #2B2723;">По ту сторону <em style="font-style: italic; color: #BF653F;">правил</em></span>
                 <span style="font-size: 0.85rem; line-height: 1.4; color: var(--muted);">Когнитивная грамматика испанского языка через призму русского</span>
