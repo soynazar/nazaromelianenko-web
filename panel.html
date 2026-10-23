@@ -722,7 +722,7 @@ function openInforme(){
   const conClases=[...new Set(clasesDe(a.id).map(c=>c.fecha.slice(0,7)))].sort();
   const meses=new Set(conClases);
   meses.add(new Date().toISOString().slice(0,7)); // el mes actual, siempre disponible en la lista
-  sel.innerHTML=[...meses].sort().reverse().map(k=>{
+  sel.innerHTML=`<option value="impagadas">Todas las impagadas (todos los meses)</option>`+[...meses].sort().reverse().map(k=>{
     const[y,m]=k.split('-');return`<option value="${k}">${MESES_C[+m-1]} ${y}</option>`}).join('');
   // Abre por defecto en el mes MÁS RECIENTE que tiene clases, no en un mes vacío
   sel.value=conClases.length?conClases[conClases.length-1]:new Date().toISOString().slice(0,7);
@@ -734,7 +734,29 @@ function etiquetaLinea(c){
   if(c.estado==='cancelada_no_cobrada')return{txt:'CANCELADA',cls:'unpaid'};
   return isPagada(c)?{txt:'PAGADA',cls:'paid'}:{txt:'SIN PAGAR',cls:'unpaid'};
 }
+/* Opción "Todas las impagadas": solo las clases cobrables sin pagar, de todos los meses, y su total.
+   Usa las mismas reglas que el "Pendiente" del informe mensual (statsSet): clases sueltas
+   impartidas o canceladas con cobro, sin pagar. Las de bono no cuentan. */
+function renderInformeImpagadas(){
+  const a=alumno(alumnoSel);
+  const sin=clasesDe(a.id).filter(c=>c.bono_id==null&&consumeHueco(c)&&!isPagada(c))
+    .sort((x,z)=>x.fecha.localeCompare(z.fecha)||String(x.hora||'').localeCompare(String(z.hora||'')));
+  const total=sin.reduce((s,c)=>s+precioClase(c),0);
+  const nota=c=>c.estado==='cancelada_cobrada'?' [Cancel. cobrada]':'';
+  const lineas=sin.map(c=>`✗ ${fmtDY(c.fecha)} ${hhmm(c.hora)} · ${c.tema||'—'}${nota(c)} · ${eur(precioClase(c))} €`).join('\n');
+  informeTxt=`📋 Clases impartidas pendientes de cobro — ${a.nombre}\n\nClases sin cobrar: ${sin.length}\nTotal pendiente: ${eur(total)} €\n\n— Clases —\n${lineas||'(no hay clases pendientes de cobro)'}`;
+  document.getElementById('infBody').innerHTML=`
+  <div class="minicards">
+    <div class="minicard"><div class="lb">Sin cobrar</div><div class="vl">${sin.length}</div></div>
+    <div class="minicard"><div class="lb">Total pendiente</div><div class="vl">${eur(total)} €</div></div>
+  </div>
+  <label>Clases</label>
+  ${sin.map(c=>`<div class="repline"><span class="mono">${fmtDY(c.fecha)} ${hhmm(c.hora)}</span><span>${c.tema||'—'}${nota(c)}</span>
+    <span class="bdg badge unpaid">${eur(precioClase(c))} €</span></div>`).join('')||'<div class="empty">No hay clases pendientes de cobro.</div>'}
+  <div class="reporte">${informeTxt.replace(/</g,'&lt;')}</div>`;
+}
 function renderInforme(){
+  if(document.getElementById('infPeriodo').value==='impagadas'){renderInformeImpagadas();return}
   const a=alumno(alumnoSel);
   const[y,m]=document.getElementById('infPeriodo').value.split('-').map(Number);
   const ref=new Date(y,m-1,1);
