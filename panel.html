@@ -143,6 +143,17 @@ main{flex:1;padding:28px 40px; overflow-y: auto;}
 .minicard{border:1px solid var(--line);border-radius:12px;padding:12px 14px;flex:1;background:#faf8f5}
 .minicard .lb{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .minicard .vl{font-family:var(--mono);font-size:21px;margin-top:4px}
+/* semáforo del sistema */
+.side-sem{margin:0 16px 12px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;display:flex;align-items:center;gap:10px;cursor:pointer;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:.2s}
+.side-sem:hover{border-color:var(--muted)}
+.sem-dot{width:10px;height:10px;border-radius:50%;display:inline-block;background:var(--muted2)}
+.sem-dot.ok{background:var(--green)}.sem-dot.warn{background:#c98a1b}.sem-dot.bad{background:var(--red)}.sem-dot.na{background:var(--muted2)}
+.sem-row{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.sem-row .sem-dot{margin-top:5px;flex:none}
+.sem-row .t{font-size:13px}.sem-row .d{font-size:12px;color:var(--muted);margin-top:2px}
+.sem-ev{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}
+.sem-ev .grow{flex:1;min-width:170px}.sem-ev button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px;font-size:12px}
+.sem-ev button:hover{border-color:var(--muted)}
 .repline{display:flex;gap:14px;padding:11px 2px;border-bottom:1px solid var(--line);align-items:center;font-size:15.5px}
 .repline .mono{color:var(--muted);font-size:13.5px}
 .repline .bdg{margin-left:auto}
@@ -234,6 +245,7 @@ main{flex:1;padding:28px 40px; overflow-y: auto;}
       <button onclick="syncCalendar(true)" title="Sincronizar con Google Calendar">⟳ SYNC</button>
       <button onclick="doLogout()" title="Cerrar Sesión">⎋ SALIR</button>
     </div>
+    <div class="side-sem" id="semaforo" onclick="openSistema()" title="Estado del sistema"></div>
     <nav class="side-nav">
       <a href="#" id="nav-resumen" onclick="go('resumen');return false">Resumen mensual</a>
       <a href="#" id="nav-agenda" onclick="go('agenda');return false">Agenda semanal</a>
@@ -359,6 +371,16 @@ main{flex:1;padding:28px 40px; overflow-y: auto;}
   <div class="mfoot" id="delFoot"></div>
 </div></div>
 
+<div class="overlay" id="ovSistema"><div class="modal">
+  <button class="x" onclick="closeOv('ovSistema')">✕</button>
+  <h2>Estado del sistema</h2>
+  <div id="sisBody"></div>
+  <div class="mfoot">
+    <button class="btn btn-ghost" onclick="cargarSistema(true)">Actualizar</button>
+    <button class="btn btn-terra" onclick="closeOv('ovSistema')">Cerrar</button>
+  </div>
+</div></div>
+
 <div class="overlay" id="ovInforme"><div class="modal">
   <button class="x" onclick="closeOv('ovInforme')">✕</button>
   <h2>Informe de pagos</h2>
@@ -445,6 +467,7 @@ async function refresh(){
     if(first){view='alumno';alumnoSel=first.id}else view='resumen';
   }
   render();
+  cargarSistema();   // semáforo: independiente; si falla, no afecta al panel
 }
 
 /* ================= LÓGICA ================= */
@@ -714,6 +737,87 @@ function renderCalendario(){
   <div class="cal">${cells}</div>`;
 }
 function movCal(n){calMes=new Date(calMes.getFullYear(),calMes.getMonth()+n,1);render()}
+
+/* ================= ESTADO DEL SISTEMA (semáforo) =================
+   Solo LEE stripe_eventos y sistema_estado. La única escritura es marcar un aviso como atendido
+   (estado='registrado'). Todo va dentro de try/catch: si algo falla, el panel sigue igual. */
+let SIS={listo:false,eventos:[],estado:[],errEv:null,errEs:null};
+const escH=t=>String(t??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const fmtDT=iso=>iso?new Date(iso).toLocaleString('es-ES',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}):'—';
+function haceTxt(iso){
+  const h=(Date.now()-new Date(iso).getTime())/36e5;
+  if(h<1)return 'hace menos de 1 hora';
+  if(h<48)return 'hace '+Math.round(h)+' h';
+  return 'hace '+Math.round(h/24)+' días';
+}
+async function cargarSistema(abrir){
+  try{
+    const[e,s]=await Promise.all([
+      sb.from('stripe_eventos').select('id,tipo_evento,recibido_en,payment_intent_id,charge_id,importe_eur,email_pagador,clasificacion,estado,motivo,alumno_id_propuesto').order('recibido_en',{ascending:false}).limit(300),
+      sb.from('sistema_estado').select('*')
+    ]);
+    SIS={listo:true,eventos:e.error?[]:e.data,estado:s.error?[]:s.data,errEv:e.error?e.error.message:null,errEs:s.error?s.error.message:null};
+  }catch(err){
+    SIS={listo:false,eventos:[],estado:[],errEv:String(err),errEs:String(err)};
+  }
+  try{renderSemaforo();if(abrir)renderSistema()}catch(err){console.error(err)}
+}
+function calcSistema(){
+  const ahora=SIS.estado.find(x=>x.clave==='copia_nocturna');
+  let copia={c:'na',t:'Copia nocturna',d:'Sin datos todavía (se rellena tras la próxima copia).'};
+  if(ahora){
+    const h=(Date.now()-new Date(ahora.valor_ts).getTime())/36e5;
+    copia={c:h<36?'ok':(h<60?'warn':'bad'),t:'Copia nocturna',d:'Última copia correcta: '+haceTxt(ahora.valor_ts)+' ('+fmtDT(ahora.valor_ts)+').'+(h>=36?' Debería haber una cada noche: revisa GitHub, Actions.':'')};
+  }
+  const ev=SIS.eventos;
+  const errores=ev.filter(x=>x.estado==='error'), revisar=ev.filter(x=>x.estado==='revisar');
+  let stripe;
+  if(SIS.errEv) stripe={c:'na',t:'Avisos de Stripe',d:'No se pueden leer ('+escH(SIS.errEv)+').'};
+  else{
+    const ult=ev.length?ev[0].recibido_en:null;
+    stripe={c:errores.length?'bad':(revisar.length?'warn':'ok'),t:'Avisos de Stripe',
+      d:(ult?'Último aviso: '+haceTxt(ult)+' ('+fmtDT(ult)+'). ':'Todavía no ha llegado ningún aviso. ')+
+        (errores.length?errores.length+' con error. ':'')+(revisar.length?(revisar.length===1?'1 espera tu decisión.':revisar.length+' esperan tu decisión.'):(errores.length?'':'Nada pendiente de decidir.'))};
+  }
+  const ids=new Set(D.pagos.flatMap(p=>[p.stripe_payment_intent_id,p.stripe_charge_id]).filter(Boolean));
+  const porAnotar=SIS.errEv?[]:ev.filter(x=>x.estado==='sombra_ok'&&!ids.has(x.payment_intent_id)&&!ids.has(x.charge_id));
+  const anotar={c:SIS.errEv?'na':(porAnotar.length?'warn':'ok'),t:'Cobros de Stripe sin anotar',
+    d:SIS.errEv?'—':(porAnotar.length?porAnotar.length+' cobro(s) llegados por Stripe que aún no has marcado como anotados.':'Todo anotado.')};
+  return{copia,stripe,anotar,errores,revisar,porAnotar};
+}
+function renderSemaforo(){
+  const el=document.getElementById('semaforo');if(!el)return;
+  const x=calcSistema();
+  const dot=i=>`<span class="sem-dot ${i.c}" title="${escH(i.t)}: ${escH(i.d)}"></span>`;
+  el.innerHTML=dot(x.copia)+dot(x.stripe)+dot(x.anotar)+'<span>Sistema'+(x.porAnotar.length?' · '+x.porAnotar.length+' por anotar':'')+'</span>';
+}
+const TIPO_EV={abono:'Abono',suelta:'Clase suelta',exclusiva:'Exclusiva',reembolso:'Reembolso',disputa:'Disputa',otro:'Otro'};
+function filaEvento(x,botonIr){
+  const a=x.alumno_id_propuesto?alumno(x.alumno_id_propuesto):null;
+  const quien=a?escH(a.nombre):('<em>alumno desconocido</em>'+(x.email_pagador?' · '+escH(x.email_pagador):''));
+  return`<div class="sem-ev"><span class="mono">${fmtDT(x.recibido_en)}</span>
+    <span class="grow"><strong>${TIPO_EV[x.clasificacion]||escH(x.clasificacion)}</strong> · ${eur(Number(x.importe_eur||0))} € · ${quien}${x.motivo&&x.estado!=='sombra_ok'?'<div class="d" style="font-size:12px;color:var(--muted)">'+escH(x.motivo)+'</div>':''}</span>
+    ${botonIr&&a?`<button onclick="closeOv('ovSistema');goAlumno(${a.id})">Ir al alumno</button>`:''}
+    <button onclick="marcarEvento(${x.id})" title="Quita el aviso de esta lista">${x.estado==='revisar'||x.estado==='error'?'Atendido':'Ya anotado'}</button></div>`;
+}
+function renderSistema(){
+  const x=calcSistema();
+  const fila=i=>`<div class="sem-row"><span class="sem-dot ${i.c}"></span><div><div class="t">${escH(i.t)}</div><div class="d">${i.d}</div></div></div>`;
+  document.getElementById('sisBody').innerHTML=
+    fila(x.copia)+fila(x.stripe)+fila(x.anotar)+
+    (x.errores.length||x.revisar.length?`<label>Avisos que esperan tu decisión</label>${[...x.errores,...x.revisar].map(e=>filaEvento(e,true)).join('')}`:'')+
+    (x.porAnotar.length?`<label>Cobros de Stripe sin anotar</label>
+      <div class="d" style="font-size:12px;color:var(--muted);margin-bottom:4px">Las clases sueltas y exclusivas se anotan después de darlas. Pulsa "Ya anotado" cuando ya conste en el panel.</div>
+      ${x.porAnotar.map(e=>filaEvento(e,true)).join('')}`:'');
+}
+function openSistema(){openOv('ovSistema');renderSistema();cargarSistema(true)}
+async function marcarEvento(id){
+  const{data,error}=await sb.from('stripe_eventos').update({estado:'registrado',procesado_en:new Date().toISOString()}).eq('id',id).select('id');
+  if(error)return toast('Error: '+error.message);
+  if(!data||!data.length)return toast('No se pudo marcar (sin permiso).');
+  toast('Marcado como atendido');
+  cargarSistema(true);
+}
 
 /* ================= INFORME DE PAGOS ================= */
 function openInforme(){
