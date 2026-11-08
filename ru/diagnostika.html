@@ -22,24 +22,24 @@
   <script src="/js/lang-switch.js" defer></script>
 
   <style>
-    /* Complementos de esta página. La maquetación base es la de sobre-mi / ensenanza (page-hero, lead, editorial-block). */
-    .dg-areas { list-style: none; margin: 0 0 2rem; padding: 0; border-top: 1px solid var(--line); }
-    .dg-areas li { padding: 1rem 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; line-height: 1.6; }
-    .dg-areas li b { font-family: var(--font-header); font-weight: 500; font-size: 1.15rem; }
+    /* Complementos de esta página. Base: sobre-mi / ensenanza (page-hero, bio-grid, bio-sidebar, editorial-block, list-item-editorial). */
+    .dg-kicker { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-terracotta); margin-bottom: 1.5rem; font-weight: 500; }
     .dg-each { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.8rem; }
     .dg-each li { position: relative; padding-left: 1.4rem; font-size: 1.05rem; line-height: 1.7; }
     .dg-each li::before { content: "–"; position: absolute; left: 0; color: var(--color-terracotta); }
-    .dg-sub { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin: 2rem 0 1rem; }
+    .dg-sub { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-terracotta); margin: 2.5rem 0 1rem; font-weight: 500; }
+    .editorial-block .editorial-list { margin-bottom: 0; }
     .editorial-block .bk-whys { margin-top: 0; }
     .editorial-block .bk-sample { padding: 3rem; gap: 3rem; }
     .editorial-block .bk-sample p { margin-bottom: 0; color: rgba(242,241,239,0.72); }
     .editorial-block .bk-faq { margin-top: 0; }
-    .dg-privacy { padding-left: 1.75rem; border-left: 1px solid var(--color-terracotta); }
-    .dg-privacy p:last-child { margin-bottom: 0; }
+    .dg-quote { border-left: 2px solid var(--color-terracotta); padding: 1.5rem 2rem; margin: 0; background: rgba(226, 114, 91, 0.04); border-radius: 0 var(--radius) var(--radius) 0; }
+    .editorial-block .dg-quote p { font-family: var(--font-header); font-style: italic; font-size: 1.2rem; font-weight: 300; line-height: 1.6; margin-bottom: 0; }
     .dg-price-card { max-width: 520px; }
     .dg-price-card .bk-price { color: #fff; }
-    .dg-price-card .bk-offer-region { margin-bottom: 1rem; }
+    .dg-price-card .bk-offer-region { margin-bottom: 1rem; color: #eea08f; }
     .dg-price-card .bk-price-note { margin-bottom: 2rem; }
+    .dg-end { border-top: 1px solid var(--line); padding-top: 3rem; }
     /* Botones inactivos: existen, pero no hacen nada */
     .bk-btn.dg-off, .bk-btn.dg-off:hover { opacity: 0.55; cursor: not-allowed; transform: none; background: transparent; color: inherit; border: 1px dashed currentColor; }
     .bk-btn.dg-off::after { content: none; }
@@ -48,6 +48,7 @@
     @media (max-width: 768px) {
       .editorial-block .bk-sample { padding: 2.25rem 1.5rem; gap: 2rem; }
       .editorial-block { margin-bottom: 4rem; }
+      .dg-quote { padding: 1.25rem 1.25rem; }
     }
   </style>
 </head>
@@ -65,111 +66,156 @@
       </p>
     </section>
 
-    <section class="container" style="margin-top: 2rem;">
-    <div class="reading-container">
+    <section class="container bio-grid">
 
-      <article class="editorial-block">
-        <h2>Персональный PDF-отчёт</h2>
-        <p>Это не универсальный список частых ошибок. Это детальный разбор того, что прозвучало именно в вашей аудиозаписи. Отчёт охватывает четыре аспекта:</p>
-        <ul class="dg-areas">
-          <li><b>Произношение и акцент</b> (звуки, ударение, ритм и интонация).</li>
-          <li><b>Грамматика</b> (конструкции, скопированные с русской синтаксической модели).</li>
-          <li><b>Лексика</b> (слова и сочетания, перенесённые из родного языка).</li>
-          <li><b>Прагматика</b> (как ваше высказывание считывается носителями испанского).</li>
-        </ul>
-        <p class="dg-sub">Для каждой выявленной интерференции в отчёте представлены</p>
-        <ul class="dg-each">
-          <li>точная цитата из вашей аудиозаписи;</li>
-          <li>когнитивное объяснение причины ошибки (влияние русского языка);</li>
-          <li>конкретные рекомендации по приоритетной отработке.</li>
-        </ul>
-      </article>
+      <aside class="bio-sidebar">
+        <h3 class="sidebar-title">Кратко о диагностике</h3>
 
-      <article class="editorial-block">
-        <h2>Три шага</h2>
-        <ol class="bk-whys">
-          <li>Оплата.</li>
-          <li>Запись (15–20 минут). Загрузите готовый аудиофайл или запишите речь прямо в браузере – на свободную тему или с опорой на вопросы-подсказки.</li>
-          <li>Отчёт. Я анализирую вашу речь лично. Срок подготовки разбора – до 7 дней.</li>
-        </ol>
-      </article>
+        <div class="bio-data-item">
+          <strong>Уровень</strong>
+          <p>B1 и выше</p>
+        </div>
 
-      <article class="editorial-block">
-        <h2>Чем диагностика не является</h2>
-        <p>Это не тест на уровень владения языком и не сертификат. Это не индивидуальное занятие и не замена полноценного курса. Это точечный аналитический срез вашей текущей речи.</p>
-      </article>
+        <div class="bio-data-item">
+          <strong>Запись</strong>
+          <p>15–20 минут<br>Аудиофайл или запись в браузере</p>
+        </div>
 
-      <article class="editorial-block" id="obrazets">
-        <h2>Образец отчёта</h2>
-        <div class="bk-sample">
-          <div class="bk-sample-pages" aria-hidden="true">
-            <span></span><span></span>
-            <span><b>Отчёт</b><i>Образец, обезличенный</i><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s></span>
-          </div>
-          <div>
-            <p>Посмотрите, как устроен разбор. В обезличенном PDF-образце показаны структура документа, формат цитирования, глубина объяснений и тип рекомендаций.</p>
-            <div class="bk-cta-row" style="margin-top: 1.75rem;">
-              <!-- Marcador: /ru/files/diagnostika-primer.pdf aún no existe. Cuando exista, sustituir el <button> por <a href="/ru/files/diagnostika-primer.pdf" download> -->
-              <button type="button" class="bk-btn is-light dg-off" disabled aria-disabled="true">Образец скоро</button>
+        <div class="bio-data-item">
+          <strong>Результат</strong>
+          <p>Персональный PDF-отчёт</p>
+        </div>
+
+        <div class="bio-data-item">
+          <strong>Срок</strong>
+          <p>До 7 дней</p>
+        </div>
+
+        <div class="bio-data-item">
+          <strong>Стоимость</strong>
+          <p>59 €</p>
+        </div>
+      </aside>
+
+      <div class="bio-content">
+
+        <article class="editorial-block">
+          <h2>Персональный PDF-отчёт</h2>
+          <p>Это не универсальный список частых ошибок. Это <strong>детальный разбор того, что прозвучало именно в вашей аудиозаписи</strong>. Отчёт охватывает четыре аспекта:</p>
+
+          <div class="editorial-list">
+            <div class="list-item-editorial">
+              <h3>Произношение и акцент</h3>
+              <p>Звуки, ударение, ритм и интонация.</p>
+            </div>
+            <div class="list-item-editorial">
+              <h3>Грамматика</h3>
+              <p>Конструкции, скопированные с русской синтаксической модели.</p>
+            </div>
+            <div class="list-item-editorial">
+              <h3>Лексика</h3>
+              <p>Слова и сочетания, перенесённые из родного языка.</p>
+            </div>
+            <div class="list-item-editorial">
+              <h3>Прагматика</h3>
+              <p>Как ваше высказывание считывается носителями испанского.</p>
             </div>
           </div>
-        </div>
-      </article>
 
-      <article class="editorial-block">
-        <h2>На чём основан анализ</h2>
-        <p>Анализ базируется на данных постоянно пополняемого корпуса ошибок русскоязычных студентов и на моей авторской методологии «Цикл осознанного усвоения» (La Secuencia INIO), внесённой в Реестр интеллектуальной собственности Испании.</p>
-        <p>Я сопоставляю вашу речь с устойчивыми паттернами интерференции. Как автор книги «По ту сторону правил», я фокусируюсь на когнитивной грамматике и глубинных механизмах, стоящих за ошибками.</p>
-      </article>
+          <p class="dg-sub">Для каждой выявленной интерференции в отчёте представлены</p>
+          <ul class="dg-each">
+            <li>точная цитата из вашей аудиозаписи;</li>
+            <li>когнитивное объяснение причины ошибки (влияние русского языка);</li>
+            <li>конкретные рекомендации по приоритетной отработке.</li>
+          </ul>
+        </article>
 
-      <article class="editorial-block">
-        <h2>Конфиденциальность</h2>
-        <div class="dg-privacy">
-          <p>Ваша аудиозапись используется исключительно для составления отчёта. Только при наличии вашего явного согласия (отдельная отметка при оформлении) она может быть анонимно включена в мой исследовательский корпус.</p>
-        </div>
-      </article>
+        <article class="editorial-block">
+          <h2>Три шага</h2>
+          <ol class="bk-whys">
+            <li>Оплата.</li>
+            <li>Запись (15–20 минут). Загрузите готовый аудиофайл или запишите речь прямо в браузере – на свободную тему или с опорой на вопросы-подсказки.</li>
+            <li>Отчёт. Я анализирую вашу речь лично. Срок подготовки разбора – до 7 дней.</li>
+          </ol>
+        </article>
 
-      <article class="editorial-block" id="zakaz">
-        <h2>Стоимость и сроки</h2>
-        <p>Одна диагностика – один отчёт.</p>
-        <div class="bk-offer is-featured dg-price-card">
-          <div class="bk-offer-region">Диагностика речи</div>
-          <div class="bk-price">59 €</div>
-          <span class="bk-price-note">15–20 минут вашей записи · готовность в течение 7 дней</span>
-          <div class="bk-offer-bottom">
-            <!-- Marcador de fase 2: aquí irá el enlace a Stripe Checkout -->
-            <button type="button" class="bk-btn is-block dg-off" disabled aria-disabled="true">Заказать диагностику <span class="dg-soon">· Скоро</span></button>
+        <article class="editorial-block">
+          <h2>Чем диагностика не является</h2>
+          <p>Это <strong>не тест на уровень владения языком</strong> и не сертификат. Это <strong>не индивидуальное занятие</strong> и не замена полноценного курса. Это точечный аналитический срез вашей текущей речи.</p>
+        </article>
+
+        <article class="editorial-block" id="obrazets">
+          <div class="dg-kicker">Образец</div>
+          <h2>Образец отчёта</h2>
+          <div class="bk-sample">
+            <div class="bk-sample-pages" aria-hidden="true">
+              <span></span><span></span>
+              <span><b>Отчёт</b><i>Образец, обезличенный</i><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s></span>
+            </div>
+            <div>
+              <p>Посмотрите, как устроен разбор. В обезличенном PDF-образце показаны структура документа, формат цитирования, глубина объяснений и тип рекомендаций.</p>
+              <div class="bk-cta-row" style="margin-top: 1.75rem;">
+                <!-- Marcador: /ru/files/diagnostika-primer.pdf aún no existe. Cuando exista, sustituir el <button> por <a href="/ru/files/diagnostika-primer.pdf" download> -->
+                <button type="button" class="bk-btn is-light dg-off" disabled aria-disabled="true">Образец скоро</button>
+              </div>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="editorial-block">
-        <h2>Частые вопросы</h2>
-        <div class="bk-faq">
-          <details>
-            <summary>Какой уровень испанского требуется?</summary>
-            <p>B1 и выше. Достаточно уметь связно говорить в течение нескольких минут без подготовки и длительных пауз на подбор слов.</p>
-          </details>
-          <details>
-            <summary>О чём говорить на записи?</summary>
-            <p>Тема свободная: расскажите о своей работе, недавней поездке или о том, как прошёл день. Если вам так комфортнее, вы можете использовать подготовленные мной вопросы-подсказки. Главное – говорить естественно, не зачитывая заранее написанный текст.</p>
-          </details>
-          <details>
-            <summary>Что, если запись получится короче?</summary>
-            <p>Менее 15 минут – это недостаточный объём материала. Интерференция проявляется через повторяющиеся паттерны, которые на короткой записи сложно отличить от случайной оговорки. Лучше записать немного больше, чем меньше.</p>
-          </details>
-          <details>
-            <summary>Смогу ли я потом брать у вас индивидуальные уроки?</summary>
-            <p>В данный момент я работаю с крайне ограниченным числом учеников, поэтому диагностика не гарантирует возможности дальнейших регулярных занятий.</p>
-          </details>
-          <details>
-            <summary>Что происходит с моей записью после проверки?</summary>
-            <p>Она используется строго для подготовки вашего отчёта. Без вашего отдельного согласия материалы нигде не публикуются. Только если вы поставите соответствующую отметку, запись будет анонимизирована и включена в исследовательский аудиокорпус.</p>
-          </details>
-        </div>
-      </article>
+        <article class="editorial-block">
+          <h2>На чём основан анализ</h2>
+          <p>Анализ базируется на данных постоянно пополняемого <strong>корпуса ошибок русскоязычных студентов</strong> и на моей авторской методологии «Цикл осознанного усвоения» (<strong>La Secuencia INIO</strong>), внесённой в Реестр интеллектуальной собственности Испании.</p>
+          <p>Я сопоставляю вашу речь с устойчивыми паттернами интерференции. Как автор книги «По ту сторону правил», я фокусируюсь на когнитивной грамматике и глубинных механизмах, стоящих за ошибками.</p>
+        </article>
 
-    </div>
+        <article class="editorial-block">
+          <h2>Конфиденциальность</h2>
+          <blockquote class="dg-quote">
+            <p>Ваша аудиозапись используется исключительно для составления отчёта. Только при наличии вашего явного согласия (отдельная отметка при оформлении) она может быть анонимно включена в мой исследовательский корпус.</p>
+          </blockquote>
+        </article>
+
+        <article class="editorial-block" id="zakaz">
+          <h2>Стоимость и сроки</h2>
+          <p>Одна диагностика – один отчёт.</p>
+          <div class="bk-offer is-featured dg-price-card">
+            <div class="bk-offer-region">Диагностика речи</div>
+            <div class="bk-price">59 €</div>
+            <span class="bk-price-note">15–20 минут вашей записи · готовность в течение 7 дней</span>
+            <div class="bk-offer-bottom">
+              <!-- Marcador de fase 2: aquí irá el enlace a Stripe Checkout -->
+              <button type="button" class="bk-btn is-block dg-off" disabled aria-disabled="true">Заказать диагностику <span class="dg-soon">· Скоро</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="editorial-block">
+          <h2>Частые вопросы</h2>
+          <div class="bk-faq">
+            <details>
+              <summary>Какой уровень испанского требуется?</summary>
+              <p>B1 и выше. Достаточно уметь связно говорить в течение нескольких минут без подготовки и длительных пауз на подбор слов.</p>
+            </details>
+            <details>
+              <summary>О чём говорить на записи?</summary>
+              <p>Тема свободная: расскажите о своей работе, недавней поездке или о том, как прошёл день. Если вам так комфортнее, вы можете использовать подготовленные мной вопросы-подсказки. Главное – говорить естественно, не зачитывая заранее написанный текст.</p>
+            </details>
+            <details>
+              <summary>Что, если запись получится короче?</summary>
+              <p>Менее 15 минут – это недостаточный объём материала. Интерференция проявляется через повторяющиеся паттерны, которые на короткой записи сложно отличить от случайной оговорки. Лучше записать немного больше, чем меньше.</p>
+            </details>
+            <details>
+              <summary>Смогу ли я потом брать у вас индивидуальные уроки?</summary>
+              <p>В данный момент я работаю с крайне ограниченным числом учеников, поэтому диагностика не гарантирует возможности дальнейших регулярных занятий.</p>
+            </details>
+            <details>
+              <summary>Что происходит с моей записью после проверки?</summary>
+              <p>Она используется строго для подготовки вашего отчёта. Без вашего отдельного согласия материалы нигде не публикуются. Только если вы поставите соответствующую отметку, запись будет анонимизирована и включена в исследовательский аудиокорпус.</p>
+            </details>
+          </div>
+        </article>
+
+      </div>
     </section>
 
   </main>
