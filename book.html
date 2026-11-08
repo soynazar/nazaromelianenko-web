@@ -73,7 +73,14 @@
       "bookEdition": "Первое издание",
       "numberOfPages": 172,
       "datePublished": "2026-10-01",
-      "inLanguage": "ru"
+      "inLanguage": "ru",
+      "offers": [
+        { "@type": "Offer", "url": "https://www.amazon.es/dp/8409902486", "availability": "https://schema.org/InStock" },
+        { "@type": "Offer", "url": "https://www.thalia.de/shop/home/artikeldetails/A1082372485", "availability": "https://schema.org/InStock" },
+        { "@type": "Offer", "url": "https://www.amazon.co.uk/dp/8409902486", "availability": "https://schema.org/InStock" },
+        { "@type": "Offer", "url": "https://www.amazon.com/dp/8409902486", "availability": "https://schema.org/InStock" },
+        { "@type": "Offer", "url": "https://bookshop.org/p/books/1055-1086-1090-1091-1089-1090-1086-1088-1086-1085-1091-1087-1088-1072-1074-1080-1083-1050-1086-1075-108/dbaa023e158b6b0b", "availability": "https://schema.org/InStock" }
+      ]
     }
   }
   </script>
@@ -102,7 +109,7 @@
 
         <div class="bk-cta-row">
           <a href="#kupit" class="bk-btn" data-bk-link="amazon" data-bk-hero="">Купить книгу</a>
-          <a href="#kupit" class="bk-textlink">Другие способы</a>
+          <a href="#knizhnye" class="bk-textlink">Другие способы</a>
         </div>
 
         <div class="bk-meta-line">
@@ -287,25 +294,50 @@
     ======================================= -->
     <section class="container bk-block" id="kupit" aria-labelledby="bk-buy">
       <span class="bk-eyebrow">Где купить</span>
-      <h2 class="bk-h2" id="bk-buy">Три способа получить книгу</h2>
+      <h2 class="bk-h2" id="bk-buy">Где купить книгу</h2>
+      <p class="bk-status">Книга продаётся в книжных интернет-магазинах Испании, Германии, Италии, Дании, Великобритании, США, Индии и Южной Кореи.</p>
+      <p class="bk-status">Amazon · Thalia · Hugendubel · Bookshop.org · IBS · laFeltrinelli · Saxo · Yes24</p>
       <p class="bk-lead">Книга печатается по требованию и доступна по всему миру. Выберите вариант, который подходит вам по месту и по смыслу.</p>
 
       <div class="bk-buy-grid">
 
-        <article class="bk-offer is-featured" data-region="eu">
-          <div class="bk-offer-region">Испания и Евросоюз <span class="bk-badge" data-bk-suggest="" hidden="">Для вашего региона</span></div>
+        <article class="bk-offer is-featured">
+          <div class="bk-offer-region">Испания и ЕС</div>
           <h3>Amazon.es</h3>
-          <p>Экземпляр печатается по требованию в типографии Ingram и приходит обычной доставкой Amazon.</p>
-          <ul>
-            <li>Доставка по Испании и Евросоюзу</li>
-            <li>Оплата и возврат – на стороне Amazon</li>
-          </ul>
+          <p>Печать по требованию, доставляет Amazon.</p>
           <div class="bk-offer-bottom">
-            <a href="#" class="bk-btn is-light is-block" data-bk-link="amazon">Купить на Amazon</a>
+            <a href="https://www.amazon.es/dp/8409902486" class="bk-btn is-light is-block" target="_blank" rel="noopener">Купить на Amazon.es</a>
           </div>
         </article>
 
-        <article class="bk-offer" data-region="eu">
+        <article class="bk-offer">
+          <div class="bk-offer-region">Германия и Австрия</div>
+          <h3>Thalia</h3>
+          <p>Книжная сеть, раздел «Russische Bücher». Можно заказать домой или забрать в магазине.</p>
+          <div class="bk-offer-bottom">
+            <a href="https://www.thalia.de/shop/home/artikeldetails/A1082372485" class="bk-btn is-ghost is-block" target="_blank" rel="noopener">Купить в Thalia</a>
+          </div>
+        </article>
+
+        <article class="bk-offer">
+          <div class="bk-offer-region">Великобритания</div>
+          <h3>Amazon.co.uk</h3>
+          <div class="bk-offer-bottom">
+            <a href="https://www.amazon.co.uk/dp/8409902486" class="bk-btn is-ghost is-block" target="_blank" rel="noopener">Купить на Amazon.co.uk</a>
+          </div>
+        </article>
+
+        <article class="bk-offer">
+          <div class="bk-offer-region">США</div>
+          <h3>Amazon.com · Bookshop.org</h3>
+          <p>Bookshop.org – сеть независимых книжных.</p>
+          <div class="bk-offer-bottom is-pair">
+            <a href="https://www.amazon.com/dp/8409902486" class="bk-btn is-ghost" target="_blank" rel="noopener">Amazon.com</a>
+            <a href="https://bookshop.org/p/books/1055-1086-1090-1091-1089-1090-1086-1088-1086-1085-1091-1087-1088-1072-1074-1080-1083-1050-1086-1075-108/dbaa023e158b6b0b" class="bk-btn is-ghost" target="_blank" rel="noopener">Bookshop.org</a>
+          </div>
+        </article>
+
+        <article class="bk-offer" id="knizhnye">
           <div class="bk-offer-region">Книжные магазины</div>
           <h3>В любой книжной Испании</h3>
           <p>Назовите в магазине ISBN – книгу закажут у дистрибьютора. Или оформите заказ онлайн:</p>
@@ -314,19 +346,6 @@
             <button type="button" class="bk-copy" data-bk-copy="978-84-09-90248-4">Скопировать</button>
           </div>
           <ul class="bk-stores" data-bk-stores=""></ul>
-        </article>
-
-        <article class="bk-offer" data-region="uk-us">
-          <div class="bk-offer-region">Великобритания и США <span class="bk-badge" data-bk-suggest="" hidden="">Для вашего региона</span></div>
-          <h3>Напрямую из типографии</h3>
-          <p>Книга печатается и отправляется напрямую из типографии Ingram. Стоимость доставки и налоги рассчитываются при оформлении заказа.</p>
-          <ul>
-            <li>Печать по требованию – без ожидания тиража</li>
-            <li>Доставка по Великобритании и США</li>
-          </ul>
-          <div class="bk-offer-bottom">
-            <a href="#" class="bk-btn is-ghost is-block" data-bk-link="shareSell">Заказать с доставкой</a>
-          </div>
         </article>
       </div>
 
@@ -438,7 +457,6 @@
   const BOOK = {
     // Enlace directo a la ficha de Amazon.es. Vacío: se usa la búsqueda por ISBN, que funciona en cuanto Amazon lista el libro.
     amazon: 'https://www.amazon.es/dp/8409902486',
-    shareSell: '',
     sample: '',
     stores: [
       { name: 'Todos tus libros', url: 'https://www.todostuslibros.com/libros/mas-alla-de-las-reglas_978-84-09-90248-4' },
@@ -450,7 +468,6 @@
     const MAIL = 'info@nazaromelianenko.com';
     if (!BOOK.amazon) BOOK.amazon = 'https://www.amazon.es/s?k=9788409902484&i=stripbooks';
     const pending = {
-      shareSell: { text: 'Сообщить о старте продаж', subject: 'Книга: заказ в Великобританию / США' },
       sample:    { text: 'Прислать фрагмент на почту', subject: 'Пришлите, пожалуйста, пролог книги' }
     };
 
@@ -487,25 +504,6 @@
         if (navigator.clipboard) navigator.clipboard.writeText(value).then(done, function () {}); else done();
       });
     });
-
-    try {
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-      let region = null;
-      if (tz === 'Europe/London' || tz.indexOf('America/') === 0) region = 'uk-us';
-      else if (tz.indexOf('Europe/') === 0 || tz === 'Atlantic/Canary' || tz === 'Africa/Ceuta') region = 'eu';
-      const skip = ['Europe/Moscow','Europe/Minsk','Europe/Kaliningrad','Europe/Samara','Europe/Volgograd','Europe/Kirov','Europe/Astrakhan','Europe/Saratov','Europe/Ulyanovsk','Europe/Istanbul'];
-      if (skip.indexOf(tz) !== -1) region = null;
-      if (region) {
-        const card = document.querySelector('.bk-offer[data-region="' + region + '"] [data-bk-suggest]');
-        if (card) { card.hidden = false; card.closest('.bk-offer').classList.add('is-suggested'); }
-        const heroBtn = document.querySelector('[data-bk-hero]');
-        if (region === 'uk-us' && heroBtn) {
-          heroBtn.textContent = 'Заказать с доставкой';
-          if (BOOK.shareSell) { heroBtn.href = BOOK.shareSell; heroBtn.target = '_blank'; heroBtn.rel = 'noopener'; }
-          else { heroBtn.href = '#kupit'; heroBtn.removeAttribute('target'); }
-        }
-      }
-    } catch (e) {}
 
     const bar = document.querySelector('[data-bk-sticky]');
     const hero = document.querySelector('.bk-hero');
