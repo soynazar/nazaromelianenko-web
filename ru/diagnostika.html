@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Диагностика речи: русская интерференция в вашем испанском</title>
-  <meta name="description" content="Письменный разбор русской интерференции в вашей устной испанской речи по записи на 15–20 минут. Для тех, кто говорит на уровне B1 и выше." />
+  <title>Диагностика вашей испанской речи</title>
+  <meta name="description" content="Детальный письменный разбор вашей устной испанской речи по записи на 15–20 минут: системные ошибки и влияние родного языка. Для уровня B1 и выше." />
   <meta name="robots" content="noindex, nofollow">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,36 +22,32 @@
   <script src="/js/lang-switch.js" defer></script>
 
   <style>
-    /* Estilos propios de esta página (borrador). Se apoyan en las variables y clases .bk-* de styles.css */
-    .dg-hero { padding-top: 5rem; padding-bottom: 5rem; max-width: 880px; opacity: 0; animation: fadeInUp 1s var(--ease-editorial) forwards; animation-delay: 0.15s; }
-    .dg-hero .bk-title { font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.08; }
-    .dg-hero .bk-subtitle { max-width: 640px; text-transform: none; letter-spacing: 0.02em; font-size: 1.02rem; line-height: 1.7; margin-bottom: 0; }
-    .dg-areas { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 2.5rem 0 0; border-top: 1px solid var(--line); }
-    .dg-areas li { padding: 1.25rem 1.5rem 1.25rem 0; border-bottom: 1px solid var(--line); font-family: var(--font-header); font-size: 1.15rem; line-height: 1.4; }
-    .dg-areas li small { display: block; font-family: var(--font-body); font-size: 0.85rem; color: var(--muted); margin-top: 0.25rem; }
-    .dg-each { margin-top: 3rem; }
-    .dg-each h3 { font-family: var(--font-header); font-size: 1.2rem; font-weight: 500; margin-bottom: 1rem; }
-    .dg-each ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
-    .dg-each li { position: relative; padding-left: 1.4rem; color: var(--muted); line-height: 1.65; }
-    .dg-each li::before { content: "–"; position: absolute; left: 0; color: var(--bk-accent); }
-    .dg-not { list-style: none; margin-top: 2.5rem; }
-    .dg-not li { padding: 1.4rem 0; border-top: 1px solid var(--line); font-family: var(--font-header); font-size: 1.3rem; line-height: 1.45; }
-    .dg-not li:last-child { border-bottom: 1px solid var(--line); }
-    .dg-privacy { margin-top: 2.5rem; padding: 1.5rem 1.75rem; border-left: 1px solid var(--bk-accent); color: var(--bk-ink); line-height: 1.7; }
-    .dg-privacy p { margin: 0; }
-    .dg-price-card { max-width: 520px; margin: 3rem auto 0; }
-    .dg-price-card .bk-offer-region { margin-bottom: 1rem; }
+    /* Complementos de esta página. La maquetación base es la de sobre-mi / ensenanza (page-hero, lead, editorial-block). */
+    .dg-areas { list-style: none; margin: 0 0 2rem; padding: 0; border-top: 1px solid var(--line); }
+    .dg-areas li { padding: 1rem 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; line-height: 1.6; }
+    .dg-areas li b { font-family: var(--font-header); font-weight: 500; font-size: 1.15rem; }
+    .dg-each { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.8rem; }
+    .dg-each li { position: relative; padding-left: 1.4rem; font-size: 1.05rem; line-height: 1.7; }
+    .dg-each li::before { content: "–"; position: absolute; left: 0; color: var(--color-terracotta); }
+    .dg-sub { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin: 2rem 0 1rem; }
+    .editorial-block .bk-whys { margin-top: 0; }
+    .editorial-block .bk-sample { padding: 3rem; gap: 3rem; }
+    .editorial-block .bk-sample p { margin-bottom: 0; color: rgba(242,241,239,0.72); }
+    .editorial-block .bk-faq { margin-top: 0; }
+    .dg-privacy { padding-left: 1.75rem; border-left: 1px solid var(--color-terracotta); }
+    .dg-privacy p:last-child { margin-bottom: 0; }
+    .dg-price-card { max-width: 520px; }
     .dg-price-card .bk-price { color: #fff; }
+    .dg-price-card .bk-offer-region { margin-bottom: 1rem; }
+    .dg-price-card .bk-price-note { margin-bottom: 2rem; }
     /* Botones inactivos: existen, pero no hacen nada */
     .bk-btn.dg-off, .bk-btn.dg-off:hover { opacity: 0.55; cursor: not-allowed; transform: none; background: transparent; color: inherit; border: 1px dashed currentColor; }
     .bk-btn.dg-off::after { content: none; }
     .bk-offer.is-featured .bk-btn.dg-off, .bk-offer.is-featured .bk-btn.dg-off:hover { color: var(--color-arena); background: transparent; }
     .dg-soon { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
     @media (max-width: 768px) {
-      .dg-hero { padding-top: 2rem; padding-bottom: 3.5rem; }
-      .dg-areas { grid-template-columns: 1fr; }
-      .dg-not li { font-size: 1.12rem; }
-      .bk-offer.dg-price-card .bk-btn { width: 100%; }
+      .editorial-block .bk-sample { padding: 2.25rem 1.5rem; gap: 2rem; }
+      .editorial-block { margin-bottom: 4rem; }
     }
   </style>
 </head>
@@ -62,138 +58,118 @@
 
   <main class="page bk">
 
-    <!-- 1. CABECERA -->
-    <section class="container dg-hero" aria-labelledby="dg-title">
-      <span class="bk-eyebrow">Диагностика речи</span>
-      <h1 class="bk-title" id="dg-title">Диагностика речи: <em>русская интерференция</em> в вашем испанском</h1>
-      <p class="bk-subtitle">Письменный разбор вашей устной речи для тех, кто говорит по-испански на уровне B1 и выше, но замечает, что «звучит не так».</p>
+    <section class="container page-hero" style="padding-bottom: 2rem;">
+      <h1>Диагностика вашей испанской речи: детальный отчёт для устранения системных ошибок и влияния родного языка</h1>
+      <p class="lead">
+        Ваш личный подробный разбор устной речи: отчёт для работы над системными ошибками в испанском. Для тех, кто владеет испанским на уровне B1 и выше, но чувствует, что «звучит не так».
+      </p>
     </section>
 
-    <!-- 2. QUÉ RECIBE EL CLIENTE -->
-    <section class="container bk-block bk-narrow" aria-labelledby="dg-get">
-      <span class="bk-eyebrow">Что вы получаете</span>
-      <h2 class="bk-h2" id="dg-get">Отчёт в PDF о вашей собственной речи</h2>
-      <p class="bk-lead">Это не общий список типичных ошибок. Это разбор того, что прозвучало в вашей записи. Отчёт охватывает четыре области.</p>
+    <section class="container" style="margin-top: 2rem;">
+    <div class="reading-container">
 
-      <ul class="dg-areas">
-        <li>Произношение и акцент<small>Звуки, ударение, интонация.</small></li>
-        <li>Грамматика<small>Конструкции, которые строятся по русской модели.</small></li>
-        <li>Лексика<small>Слова и сочетания, переносимые из русского.</small></li>
-        <li>Прагматика<small>Как сказанное воспринимается по-испански.</small></li>
-      </ul>
-
-      <div class="dg-each">
-        <h3>Для каждой интерференции в отчёте</h3>
-        <ul>
-          <li>Дословные цитаты из вашей записи.</li>
-          <li>Объяснение, почему её вызывает русский язык.</li>
-          <li>Что отрабатывать в первую очередь.</li>
+      <article class="editorial-block">
+        <h2>Персональный PDF-отчёт</h2>
+        <p>Это не универсальный список частых ошибок. Это детальный разбор того, что прозвучало именно в вашей аудиозаписи. Отчёт охватывает четыре аспекта:</p>
+        <ul class="dg-areas">
+          <li><b>Произношение и акцент</b> (звуки, ударение, ритм и интонация).</li>
+          <li><b>Грамматика</b> (конструкции, скопированные с русской синтаксической модели).</li>
+          <li><b>Лексика</b> (слова и сочетания, перенесённые из родного языка).</li>
+          <li><b>Прагматика</b> (как ваше высказывание считывается носителями испанского).</li>
         </ul>
-      </div>
-    </section>
+        <p class="dg-sub">Для каждой выявленной интерференции в отчёте представлены</p>
+        <ul class="dg-each">
+          <li>точная цитата из вашей аудиозаписи;</li>
+          <li>когнитивное объяснение причины ошибки (влияние русского языка);</li>
+          <li>конкретные рекомендации по приоритетной отработке.</li>
+        </ul>
+      </article>
 
-    <!-- 3. CÓMO FUNCIONA -->
-    <section class="container bk-block bk-narrow" aria-labelledby="dg-how">
-      <span class="bk-eyebrow">Как это устроено</span>
-      <h2 class="bk-h2" id="dg-how">Три шага</h2>
+      <article class="editorial-block">
+        <h2>Три шага</h2>
+        <ol class="bk-whys">
+          <li>Оплата.</li>
+          <li>Запись (15–20 минут). Загрузите готовый аудиофайл или запишите речь прямо в браузере – на свободную тему или с опорой на вопросы-подсказки.</li>
+          <li>Отчёт. Я анализирую вашу речь лично. Срок подготовки разбора – до 7 дней.</li>
+        </ol>
+      </article>
 
-      <ol class="bk-whys">
-        <li>Оплата.</li>
-        <li>Запись на 15–20 минут. Загрузите готовый аудиофайл или запишите речь прямо в браузере – на свободную тему или по вопросам-подсказкам.</li>
-        <li>Отчёт, который я проверяю лично. Срок – 7 дней.</li>
-      </ol>
-    </section>
+      <article class="editorial-block">
+        <h2>Чем диагностика не является</h2>
+        <p>Это не тест на уровень владения языком и не сертификат. Это не индивидуальное занятие и не замена полноценного курса. Это точечный аналитический срез вашей текущей речи.</p>
+      </article>
 
-    <!-- 4. QUÉ NO ES -->
-    <section class="container bk-block bk-narrow" aria-labelledby="dg-not">
-      <span class="bk-eyebrow">Границы</span>
-      <h2 class="bk-h2" id="dg-not">Чем диагностика не является</h2>
-
-      <ul class="dg-not">
-        <li>Это не экзамен на уровень и не сертификат.</li>
-        <li>Это не занятие.</li>
-        <li>Это не замена курса.</li>
-      </ul>
-    </section>
-
-    <!-- 5. INFORME DE MUESTRA -->
-    <section class="container" id="obrazets" aria-labelledby="dg-sample" style="padding-bottom: 7rem; padding-top: 1rem;">
-      <div class="bk-sample">
-        <div class="bk-sample-pages" aria-hidden="true">
-          <span></span><span></span>
-          <span><b>Отчёт</b><i>Образец, обезличенный</i><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s></span>
-        </div>
-        <div>
-          <span class="bk-eyebrow">Образец отчёта</span>
-          <h2 class="bk-h2" id="dg-sample">Посмотрите, как выглядит разбор</h2>
-          <p>Обезличенный образец в PDF: структура отчёта, цитаты, объяснения и рекомендации.</p>
-          <div class="bk-cta-row" style="margin-top: 2rem;">
-            <!-- Marcador: /ru/files/diagnostika-primer.pdf aún no existe. Cuando exista, sustituir el <button> por <a href="/ru/files/diagnostika-primer.pdf" download> -->
-            <button type="button" class="bk-btn is-light dg-off" disabled aria-disabled="true">Образец скоро</button>
+      <article class="editorial-block" id="obrazets">
+        <h2>Образец отчёта</h2>
+        <div class="bk-sample">
+          <div class="bk-sample-pages" aria-hidden="true">
+            <span></span><span></span>
+            <span><b>Отчёт</b><i>Образец, обезличенный</i><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s></span>
+          </div>
+          <div>
+            <p>Посмотрите, как устроен разбор. В обезличенном PDF-образце показаны структура документа, формат цитирования, глубина объяснений и тип рекомендаций.</p>
+            <div class="bk-cta-row" style="margin-top: 1.75rem;">
+              <!-- Marcador: /ru/files/diagnostika-primer.pdf aún no existe. Cuando exista, sustituir el <button> por <a href="/ru/files/diagnostika-primer.pdf" download> -->
+              <button type="button" class="bk-btn is-light dg-off" disabled aria-disabled="true">Образец скоро</button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <!-- 6. MÉTODO Y AUTORÍA -->
-    <section class="container bk-block bk-narrow" aria-labelledby="dg-method">
-      <span class="bk-eyebrow">Метод и автор</span>
-      <h2 class="bk-h2" id="dg-method">На чём основан анализ</h2>
-      <p>Анализ опирается на корпус записей занятий русскоязычных учеников и на мою методологию «Цикл осознанного усвоения» (Secuencia INIO), зарегистрированную в Испании как научное произведение.</p>
-      <p style="margin-top: 1rem;">Это исследовательская работа с корпусом записей: я сопоставляю вашу речь с закономерностями, которые повторяются у русскоговорящих. Автор книги «По ту сторону правил».</p>
-    </section>
+      <article class="editorial-block">
+        <h2>На чём основан анализ</h2>
+        <p>Анализ базируется на данных постоянно пополняемого корпуса ошибок русскоязычных студентов и на моей авторской методологии «Цикл осознанного усвоения» (La Secuencia INIO), внесённой в Реестр интеллектуальной собственности Испании.</p>
+        <p>Я сопоставляю вашу речь с устойчивыми паттернами интерференции. Как автор книги «По ту сторону правил», я фокусируюсь на когнитивной грамматике и глубинных механизмах, стоящих за ошибками.</p>
+      </article>
 
-    <!-- 7. PRIVACIDAD -->
-    <section class="container bk-narrow" aria-label="Конфиденциальность" style="padding-bottom: 6rem;">
-      <div class="dg-privacy">
-        <p><strong>Конфиденциальность.</strong> Запись используется только для подготовки вашего отчёта. Только с вашего явного согласия (отдельная отметка) она анонимно включается в мой исследовательский корпус.</p>
-      </div>
-    </section>
-
-    <!-- 8. PRECIO Y PLAZO -->
-    <section class="container bk-block" id="zakaz" aria-labelledby="dg-price">
-      <div style="text-align: center;">
-        <span class="bk-eyebrow">Стоимость и срок</span>
-        <h2 class="bk-h2" id="dg-price">Одна диагностика – один отчёт</h2>
-      </div>
-
-      <article class="bk-offer is-featured dg-price-card">
-        <div class="bk-offer-region">Диагностика речи</div>
-        <div class="bk-price">59 €</div>
-        <span class="bk-price-note">15–20 минут записи · отчёт за 7 дней</span>
-        <div class="bk-offer-bottom">
-          <!-- Marcador de fase 2: aquí irá el enlace a Stripe Checkout -->
-          <button type="button" class="bk-btn is-block dg-off" disabled aria-disabled="true">Заказать диагностику <span class="dg-soon">· Скоро</span></button>
+      <article class="editorial-block">
+        <h2>Конфиденциальность</h2>
+        <div class="dg-privacy">
+          <p>Ваша аудиозапись используется исключительно для составления отчёта. Только при наличии вашего явного согласия (отдельная отметка при оформлении) она может быть анонимно включена в мой исследовательский корпус.</p>
         </div>
       </article>
-    </section>
 
-    <!-- 9. PREGUNTAS FRECUENTES -->
-    <section class="container bk-block bk-narrow" aria-labelledby="dg-faq">
-      <span class="bk-eyebrow">Вопросы</span>
-      <h2 class="bk-h2" id="dg-faq">Частые вопросы</h2>
-      <div class="bk-faq">
-        <details>
-          <summary>Какой уровень нужен?</summary>
-          <p>B1 и выше. Достаточно уметь связно говорить несколько минут без подготовки и без постоянных пауз на поиск слов.</p>
-        </details>
-        <details>
-          <summary>О чём говорить в записи?</summary>
-          <p>Тема свободная: расскажите о работе, о поездке, о своём дне. Если так проще, будут вопросы-подсказки. Главное – говорить так, как вы обычно говорите, а не готовить речь заранее.</p>
-        </details>
-        <details>
-          <summary>Что, если запись получится короче?</summary>
-          <p>Меньше 15 минут – это мало материала. Интерференция проявляется в повторяющихся закономерностях, и на короткой записи их трудно отличить от случайных оговорок. Лучше записать чуть больше, чем меньше.</p>
-        </details>
-        <details>
-          <summary>Можно ли потом заниматься со мной?</summary>
-          <p>Работаю с ограниченным числом учеников.</p>
-        </details>
-        <details>
-          <summary>Что происходит с моей записью?</summary>
-          <p>Запись используется только для подготовки отчёта. Только с вашего явного согласия (отдельная отметка) она включается анонимно в мой исследовательский корпус. Без этой отметки в корпус она не попадает.</p>
-        </details>
-      </div>
+      <article class="editorial-block" id="zakaz">
+        <h2>Стоимость и сроки</h2>
+        <p>Одна диагностика – один отчёт.</p>
+        <div class="bk-offer is-featured dg-price-card">
+          <div class="bk-offer-region">Диагностика речи</div>
+          <div class="bk-price">59 €</div>
+          <span class="bk-price-note">15–20 минут вашей записи · готовность в течение 7 дней</span>
+          <div class="bk-offer-bottom">
+            <!-- Marcador de fase 2: aquí irá el enlace a Stripe Checkout -->
+            <button type="button" class="bk-btn is-block dg-off" disabled aria-disabled="true">Заказать диагностику <span class="dg-soon">· Скоро</span></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="editorial-block">
+        <h2>Частые вопросы</h2>
+        <div class="bk-faq">
+          <details>
+            <summary>Какой уровень испанского требуется?</summary>
+            <p>B1 и выше. Достаточно уметь связно говорить в течение нескольких минут без подготовки и длительных пауз на подбор слов.</p>
+          </details>
+          <details>
+            <summary>О чём говорить на записи?</summary>
+            <p>Тема свободная: расскажите о своей работе, недавней поездке или о том, как прошёл день. Если вам так комфортнее, вы можете использовать подготовленные мной вопросы-подсказки. Главное – говорить естественно, не зачитывая заранее написанный текст.</p>
+          </details>
+          <details>
+            <summary>Что, если запись получится короче?</summary>
+            <p>Менее 15 минут – это недостаточный объём материала. Интерференция проявляется через повторяющиеся паттерны, которые на короткой записи сложно отличить от случайной оговорки. Лучше записать немного больше, чем меньше.</p>
+          </details>
+          <details>
+            <summary>Смогу ли я потом брать у вас индивидуальные уроки?</summary>
+            <p>В данный момент я работаю с крайне ограниченным числом учеников, поэтому диагностика не гарантирует возможности дальнейших регулярных занятий.</p>
+          </details>
+          <details>
+            <summary>Что происходит с моей записью после проверки?</summary>
+            <p>Она используется строго для подготовки вашего отчёта. Без вашего отдельного согласия материалы нигде не публикуются. Только если вы поставите соответствующую отметку, запись будет анонимизирована и включена в исследовательский аудиокорпус.</p>
+          </details>
+        </div>
+      </article>
+
+    </div>
     </section>
 
   </main>
