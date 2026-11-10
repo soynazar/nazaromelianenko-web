@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Анатомия ошибки – для преподавателей</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+  <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#F4F1ED;color:#2B2723;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+    main{max-width:520px;margin:0 auto;padding:4.5rem 1.6rem 4rem}
+    .logo{display:block;width:54px;margin:0 auto 3.2rem;opacity:.9}
+    .kicker{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#BF653F;margin:0 0 1.1rem}
+    h1{font-family:'Cormorant Garamond',Garamond,serif;font-weight:600;font-size:2.7rem;line-height:1.02;margin:0 0 .9rem;letter-spacing:-.01em}
+    h1 em{font-style:italic;font-weight:500;color:#BF653F}
+    .sub{font-family:'Cormorant Garamond',Garamond,serif;font-style:italic;font-size:1.25rem;line-height:1.35;color:#6A6159;margin:0 0 1.6rem}
+    .rule{width:72px;border-top:1px solid #BF653F;margin:0 0 1.8rem}
+    p{font-size:.95rem;line-height:1.65;margin:0 0 1.1rem;color:#3A3430}
+    ul{list-style:none;padding:0;margin:0 0 1.8rem;border-top:1px solid rgba(43,39,35,.14)}
+    li{font-size:.92rem;line-height:1.5;padding:.75rem 0;border-bottom:1px solid rgba(43,39,35,.14)}
+    li span{color:#BF653F;font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-right:.6rem}
+    .note{font-size:.8rem;color:#8C8278;margin:0 0 2rem}
+    form{margin:0}
+    label.f{display:block;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6A6159;margin:0 0 .5rem}
+    input[type=email]{width:100%;font:inherit;font-size:1rem;padding:.9rem 1rem;border:1px solid #2B2723;border-radius:2px;background:#FBF9F6;color:#2B2723;outline:none}
+    input[type=email]:focus{border-color:#BF653F}
+    .consent{display:flex;gap:.7rem;align-items:flex-start;font-size:.78rem;line-height:1.5;color:#6A6159;margin:1rem 0 1.4rem}
+    .consent input{margin-top:.2rem;accent-color:#BF653F}
+    button{width:100%;font:inherit;font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:1.05rem;border:1px solid #2B2723;background:#2B2723;color:#F4F1ED;border-radius:2px;cursor:pointer;transition:background .25s,color .25s}
+    button:hover{background:transparent;color:#2B2723}
+    button[disabled]{opacity:.5;cursor:default}
+    .err{font-size:.8rem;color:#A04030;min-height:1.2rem;margin:.7rem 0 0}
+    .done{display:none;border-top:1px solid #BF653F;padding-top:1.4rem}
+    .done p:first-child{font-family:'Cormorant Garamond',serif;font-size:1.5rem;line-height:1.2;color:#2B2723}
+    footer{text-align:center;font-size:.72rem;color:#8C8278;margin-top:4rem;letter-spacing:.04em}
+    footer a{color:inherit;text-decoration:none}
+    .cover{display:block;width:120px;margin:0 0 2rem;box-shadow:0 0 0 .5px rgba(91,64,43,.2),0 10px 22px -10px rgba(91,64,43,.35)}
+  </style>
+</head>
+<body>
+<main>
+  <a href="/ru/index.html"><img class="logo" src="/images/logo.png" alt="Nazar Omelianenko"></a>
+
+  <p class="kicker">Для преподавателей</p>
+  <h1>Анатомия <em>ошибки</em></h1>
+  <p class="sub">Рабочая классификация ошибок русскоязычных учащихся испанского языка</p>
+  <div class="rule"></div>
+  <ul>
+    <li><span>I</span>Два источника ошибки и состояние фоссилизации</li>
+    <li><span>II</span>Каталог из десяти типичных ошибок</li>
+    <li><span>III</span>Чего требует каждый источник</li>
+    <li><span>IV</span>Формуляр наблюдений</li>
+  </ul>
+  <p class="note">Материал распространяется только среди преподавателей. Ссылка на PDF приходит на электронную почту.</p>
+
+  <form id="f" novalidate>
+    <label class="f" for="email">Электронная почта</label>
+    <input id="email" name="EMAIL" type="email" autocomplete="email" required placeholder="name@example.com">
+    <label class="consent"><input id="ok" type="checkbox" required><span>Я согласен(-на) на обработку адреса электронной почты для получения материала и писем автора. Отписаться можно в любой момент.</span></label>
+    <button id="b" type="submit">Получить материал</button>
+    <p class="err" id="e"></p>
+  </form>
+  <div class="done" id="d">
+    <p>Письмо с материалом отправлено.</p>
+    <p>Если его нет во входящих в течение нескольких минут, проверьте папки «Промоакции» и «Спам».</p>
+  </div>
+
+  <footer>© Nazar Omelianenko · <a href="https://www.nazaromelianenko.com">nazaromelianenko.com</a></footer>
+</main>
+<script>
+(function(){
+  var ACTION='https://f3da5978.sibforms.com/serve/MUIFABhSISzSlWa-rgyXd_0ze7_7d4clyQtCRRaWFWuNcEYB673JLyH1yJbggVjALnTFWXdeTMHaOjM2MLhD83aBkfkMhmIGGCnlB-xX4s_NAzIv96FOEOdp4N2bGlmpn0tR31lkqEitwWY2HnlYNzKUjGnHhNrSvmZSwJX5vRhc_zxiucJT4LzXKV-dAd_D0iGYL1Yj5k7iqev7ww';
+  var f=document.getElementById('f'),e=document.getElementById('e'),b=document.getElementById('b');
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var m=document.getElementById('email').value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)){e.textContent='Проверьте адрес электронной почты.';return;}
+    if(!document.getElementById('ok').checked){e.textContent='Необходимо согласие на обработку адреса.';return;}
+    e.textContent='';b.disabled=true;
+    var d=new FormData();d.append('EMAIL',m);d.append('email_address_check','');d.append('locale','ru');d.append('html_type','simple');
+    fetch(ACTION,{method:'POST',body:d,mode:'no-cors'}).then(function(){
+      f.style.display='none';document.getElementById('d').style.display='block';
+    }).catch(function(){b.disabled=false;e.textContent='Не удалось отправить. Попробуйте ещё раз.';});
+  });
+})();
+</script>
+</body>
+</html>
