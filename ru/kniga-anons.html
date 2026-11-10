@@ -70,7 +70,7 @@
 </main>
 <script>
 (function(){
-  var ACTION='https://f3da5978.sibforms.com/serve/MUIFAPSTWtuZgPy0XoqKt-Q9ZYAjtuWpi8tC60WuSSdg1ygHcsCfSF16-SDbGUvgdnWU57FcKgpDpk-7bY8M-IK9DzbW0sfMWvOUiQ8koW2uawgWVlcIVi1f8NIQiEIIpYd91SJ341b7XSrwtkkmxHWzTnLZ7SiSIJQFzoCtv39qbCNhxSdigh0ZfpxUCrbFbyTSDN1UcHs-hyEMaw';
+  var ACTION='https://f3da5978.sibforms.com/serve/MUIFAPSTWtuZgPy0XoqKt-Q9ZYAjtuWpi8tC60WuSSdg1ygHcsCfSF16-SDbGUvgdnWU57FcKgpDpk-7bY8M-IK9DzbW0sfMWvOUiQ8koW2uawgWVlcIVi1f8NIQiEIIpYd91SJ341b7XSrwtkkmxHWzTnLZ7SiSIJQFzoCtv39qbCNhxSdigh0ZfpxUCrbFbyTSDN1UcHs-hyEMaw==';
   var f=document.getElementById('f'),e=document.getElementById('e'),b=document.getElementById('b');
   f.addEventListener('submit',function(ev){
     ev.preventDefault();
@@ -79,9 +79,13 @@
     if(!document.getElementById('ok').checked){e.textContent='Необходимо согласие на обработку адреса.';return;}
     e.textContent='';b.disabled=true;
     var d=new FormData();d.append('EMAIL',m);d.append('email_address_check','');d.append('locale','ru');d.append('html_type','simple');
-    fetch(ACTION,{method:'POST',body:d,mode:'no-cors'}).then(function(){
-      f.style.display='none';document.getElementById('d').style.display='block';
-    }).catch(function(){b.disabled=false;e.textContent='Не удалось отправить. Попробуйте ещё раз.';});
+    var ok=function(){f.style.display='none';document.getElementById('d').style.display='block';};
+    var fail=function(){b.disabled=false;e.textContent='Не удалось отправить. Попробуйте ещё раз.';};
+    fetch(ACTION+'?isAjax=1',{method:'POST',body:d}).then(function(r){return r.json();}).then(function(j){
+      if(j&&j.success){ok();}else{b.disabled=false;e.textContent=(j&&j.message)?j.message:'Не удалось отправить. Попробуйте ещё раз.';}
+    }).catch(function(){
+      fetch(ACTION,{method:'POST',body:d,mode:'no-cors'}).then(ok).catch(fail);
+    });
   });
 })();
 </script>
