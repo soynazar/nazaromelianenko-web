@@ -413,8 +413,7 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .bk-textlink:hover { color: var(--bk-accent); border-bottom-color: var(--bk-accent); }
 .bk-cover-wrap { display: flex; justify-content: center; perspective: 1800px; padding-right: 20px; opacity: 0; animation: imageReveal 1.4s var(--ease-editorial) forwards; animation-delay: 0.35s; }
 /* Libro en 3D: tapa, bloque de páginas con grosor real (1,42 cm sobre 14 cm de ancho ≈ 10 %) y contratapa */
-.bk-book { --t: 34px; position: relative; width: min(100%, 360px); aspect-ratio: 900 / 1481; transform-style: preserve-3d; transform: rotateY(-30deg) rotateX(3deg); transition: transform 1.1s var(--ease-editorial); animation: bkSettle 1.9s var(--ease-editorial) 0.35s both; }
-.bk-book:hover { transform: rotateY(-14deg) rotateX(2deg); }
+.bk-book { --t: 34px; position: relative; width: min(100%, 360px); aspect-ratio: 900 / 1481; transform-style: preserve-3d; transform: rotateY(-22deg) rotateX(3deg); animation: bkSettle 1.9s var(--ease-editorial) 0.35s both, bkSway 9s ease-in-out 2.25s infinite alternate; }
 .bk-book-front, .bk-book-back { position: absolute; inset: 0; border-radius: 2px 4px 4px 2px; }
 .bk-book-front { transform: translateZ(calc(var(--t) / 2)); }
 .bk-book-front img { display: block; width: 100%; height: 100%; border-radius: inherit; }
@@ -424,7 +423,8 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .bk-book-pages { position: absolute; top: 1.1%; bottom: 1.1%; right: calc(var(--t) / -2 + 3px); width: calc(var(--t) - 4px); transform: rotateY(90deg); background:
     linear-gradient(90deg, rgba(60,44,30,0.22) 0%, rgba(60,44,30,0) 18%, rgba(60,44,30,0) 82%, rgba(60,44,30,0.16) 100%),
     repeating-linear-gradient(90deg, #f6f0e4 0 1px, #e9e0cf 1px 2px, #f3ecdf 2px 3px); }
-@keyframes bkSettle { from { transform: rotateY(-42deg) rotateX(6deg) translateY(-8px); } to { transform: rotateY(-30deg) rotateX(3deg); } }
+@keyframes bkSettle { from { transform: rotateY(-32deg) rotateX(6deg) translateY(-8px); } to { transform: rotateY(-22deg) rotateX(3deg); } }
+@keyframes bkSway { from { transform: rotateY(-22deg) rotateX(3deg) translateY(0); } to { transform: rotateY(-17deg) rotateX(2deg) translateY(-4px); } }
 .bk-meta-under { justify-content: center; margin-top: 2.75rem; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .bk-meta-under span:nth-child(3) { flex-basis: 100%; text-align: center; }
 .bk-meta-under span:nth-child(3)::before { content: none; }
@@ -601,5 +601,4 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 }
 @media (prefers-reduced-motion: reduce) {
     .bk-book { animation: none; }
-    .bk-book:hover { transform: rotateY(-30deg) rotateX(3deg); }
 }
