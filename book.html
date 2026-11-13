@@ -293,9 +293,13 @@
             <label class="bk-sample-consent"><input type="checkbox" required><span>Я согласен(-на) на обработку адреса электронной почты. Отписаться можно в любой момент.</span></label>
             <p class="bk-sample-err" data-bk-sample-err></p>
           </form>
+          <div class="bk-sample-done" data-bk-sample-thanks hidden>
+            <p>Адрес подтверждён.</p>
+            <p>Пролог уже отправлен вам на почту. Если письма нет, загляните в папку «Спам».</p>
+          </div>
           <div class="bk-sample-done" data-bk-sample-done hidden>
             <p>Письмо уже в пути.</p>
-            <p>Подтвердите адрес по ссылке в письме – сразу после этого откроется пролог.</p>
+            <p>Подтвердите адрес по ссылке в письме – сразу после этого придёт пролог в PDF.</p>
           </div>
           <div class="bk-cta-row" style="margin-top: 2rem;" data-bk-sample-fallback>
             <a href="#" class="bk-btn is-light" data-bk-link="sample">Скачать фрагмент</a>
@@ -478,7 +482,7 @@
     amazon: 'https://www.amazon.es/dp/8409902486',
     // Formulario de Brevo para el prólogo (URL «serve» del formulario, como en ru/kniga-anons.html).
     // Vacío: el bloque muestra el botón de respaldo (pedir el prólogo por correo).
-    sampleForm: '',
+    sampleForm: 'https://f3da5978.sibforms.com/serve/MUIFAOG4Ozouvk1rXYehaiZa7aN_pdLRiJs286c2krjFcD-6fagigQW9CU2P7n4YQM-Mfjcqk_0RtgoM9B3zk3N1cYPXhcq2eqJcDZacxQ-gTcOecRXRJg9O5j1ewWC-b-u7xPbWhGoBiki7NyYXMwmrjuy5hYNAeF2AHFcN6u1R1iBUUUyhZ_RsC-nfnNU5ynbBZoXqpbSHyO31Lw==',
     sample: '',
     stores: [
       { name: 'Todos tus libros', url: 'https://www.todostuslibros.com/libros/mas-alla-de-las-reglas_978-84-09-90248-4' },
@@ -510,11 +514,16 @@
     });
 
     const sf = document.querySelector('[data-bk-sample-form]');
-    if (sf && BOOK.sampleForm) {
+    if (sf && /[?&]prolog=ok/.test(location.search)) {
+      const th = document.querySelector('[data-bk-sample-thanks]');
+      const fb0 = document.querySelector('[data-bk-sample-fallback]');
+      if (th) th.hidden = false; if (fb0) fb0.style.display = 'none';
+      const fr = document.getElementById('fragment'); if (fr) setTimeout(function () { fr.scrollIntoView({ block: 'center' }); }, 300);
+    } else if (sf && BOOK.sampleForm) {
       const fb = document.querySelector('[data-bk-sample-fallback]');
       const err = sf.querySelector('[data-bk-sample-err]');
       const btn = sf.querySelector('button');
-      sf.hidden = false; if (fb) fb.hidden = true;
+      sf.hidden = false; if (fb) fb.style.display = 'none';
       sf.addEventListener('submit', function (ev) {
         ev.preventDefault();
         const mail = sf.querySelector('input[type=email]').value.trim();
