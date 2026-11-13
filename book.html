@@ -38,7 +38,6 @@
 
   <script src="/js/include.js" defer></script>
   <script src="/js/lang-switch.js" defer></script>
-  <script src="https://gumroad.com/js/gumroad.js" defer></script>
 
   <!-- DATOS ESTRUCTURADOS -->
   <script type="application/ld+json">
@@ -109,25 +108,28 @@
         </p>
 
         <div class="bk-cta-row">
-          <a href="#kupit" class="bk-btn" data-bk-link="amazon" data-bk-hero="">Купить книгу</a>
-          <a href="#knizhnye" class="bk-textlink">Другие способы</a>
-        </div>
-
-        <div class="bk-meta-line">
-          <span>Твёрдый переплёт</span>
-          <span>172 страницы</span>
-          <span>ISBN 978-84-09-90248-4</span>
+          <a href="#kupit" class="bk-btn" data-bk-link="amazon" data-bk-hero="">Купить книгу на Amazon.es</a>
+          <a href="#kupit" class="bk-textlink">Другие способы покупки</a>
         </div>
       </div>
 
       <div>
         <div class="bk-cover-wrap">
-          <div class="bk-cover">
-            <picture>
-              <source srcset="/images/kniga-cover.webp" type="image/webp">
-              <img src="/images/kniga-cover.jpg" width="900" height="1481" alt="Обложка книги «По ту сторону правил. Когнитивная грамматика испанского языка через призму русского», Назар Омельяненко" fetchpriority="high">
-            </picture>
+          <div class="bk-book">
+            <div class="bk-book-back" aria-hidden="true"></div>
+            <div class="bk-book-pages" aria-hidden="true"></div>
+            <div class="bk-book-front">
+              <picture>
+                <source srcset="/images/kniga-cover.webp" type="image/webp">
+                <img src="/images/kniga-cover.jpg" width="900" height="1481" alt="Обложка книги «По ту сторону правил. Когнитивная грамматика испанского языка через призму русского», Назар Омельяненко" fetchpriority="high">
+              </picture>
+            </div>
           </div>
+        </div>
+        <div class="bk-meta-line bk-meta-under">
+          <span>Твёрдый переплёт</span>
+          <span>172 страницы</span>
+          <span>ISBN 978-84-09-90248-4</span>
         </div>
       </div>
     </section>
@@ -149,9 +151,6 @@
     <section class="container bk-block bk-narrow" aria-labelledby="bk-why">
       <span class="bk-eyebrow">О книге</span>
       <h2 class="bk-h2" id="bk-why">Эта книга отвечает на вопрос «почему»</h2>
-      <p class="bk-lead">
-        Опираясь на принципы когнитивной лингвистики, книга предлагает глубокий сопоставительный анализ двух языков и превращает особенности русской морфологии в рабочий инструмент.
-      </p>
 
       <ol class="bk-whys">
         <li>Почему русский и испанский языки по-разному обрабатывают реальность.</li>
@@ -160,6 +159,10 @@
         <li>Почему то, как именно мы учимся, ничуть не менее важно, чем то, что мы изучаем.</li>
         <li>И почему годы занятий не всегда превращаются в свободную речь.</li>
       </ol>
+
+      <p class="bk-lead bk-after-whys">
+        Опираясь на принципы когнитивной лингвистики, книга предлагает глубокий сопоставительный анализ двух языков и превращает особенности русской морфологии в рабочий инструмент.
+      </p>
 
       <div class="bk-not">
         <h3>Чем эта книга не является</h3>
@@ -269,7 +272,7 @@
 
 
     <!-- ======================================
-         7. FRAGMENTO GRATUITO (Gumroad 0 €+)
+         7. FRAGMENTO GRATUITO (formulario Brevo con doble confirmación)
     ======================================= -->
     <section class="container" id="fragment" aria-labelledby="bk-sample" style="padding-bottom: 7rem;">
       <div class="bk-sample">
@@ -281,10 +284,22 @@
           <span class="bk-eyebrow">Бесплатный фрагмент</span>
           <h2 class="bk-h2" id="bk-sample">Прочитайте пролог перед покупкой</h2>
           <p>Пролог в оригинальной вёрстке в PDF. Этого достаточно, чтобы оценить логику изложения и принять взвешенное решение.</p>
-          <div class="bk-cta-row" style="margin-top: 2rem;">
-            <a href="#" class="bk-btn is-light" data-bk-link="sample" data-gumroad-overlay-checkout="true" data-gumroad-single-item="true">Скачать фрагмент</a>
+          <form class="bk-sample-form" data-bk-sample-form novalidate hidden>
+            <label class="bk-sample-label" for="bk-sample-email">Электронная почта</label>
+            <div class="bk-sample-row">
+              <input id="bk-sample-email" name="EMAIL" type="email" autocomplete="email" required placeholder="name@example.com">
+              <button type="submit" class="bk-btn is-light">Получить пролог</button>
+            </div>
+            <label class="bk-sample-consent"><input type="checkbox" required><span>Я согласен(-на) на обработку адреса электронной почты. Отписаться можно в любой момент.</span></label>
+            <p class="bk-sample-err" data-bk-sample-err></p>
+          </form>
+          <div class="bk-sample-done" data-bk-sample-done hidden>
+            <p>Письмо уже в пути.</p>
+            <p>Подтвердите адрес по ссылке в письме – сразу после этого откроется пролог.</p>
           </div>
-          <p class="bk-sample-note">Бесплатно через Gumroad</p>
+          <div class="bk-cta-row" style="margin-top: 2rem;" data-bk-sample-fallback>
+            <a href="#" class="bk-btn is-light" data-bk-link="sample">Скачать фрагмент</a>
+          </div>
         </div>
       </div>
     </section>
@@ -297,15 +312,15 @@
       <span class="bk-eyebrow">Где купить</span>
       <h2 class="bk-h2" id="bk-buy">Где купить книгу</h2>
       <p class="bk-status">Книга продаётся в книжных интернет-магазинах Испании, Германии, Италии, Дании, Великобритании, США, Индии и Южной Кореи.</p>
-      <p class="bk-status">Amazon · Thalia · Hugendubel · Bookshop.org · IBS · laFeltrinelli · Saxo · Yes24</p>
-      <p class="bk-lead">Книга печатается по требованию и доступна по всему миру. Выберите вариант, который подходит вам по месту и по смыслу.</p>
+      <p class="bk-status bk-stores-line">Amazon · Thalia · Hugendubel · Bookshop.org · IBS · laFeltrinelli · Saxo · Yes24</p>
+      <p class="bk-lead">Книга печатается по запросу и доставляется по всему миру. Выберите наиболее удобный для вас вариант:</p>
 
       <div class="bk-buy-grid">
 
         <article class="bk-offer is-featured">
           <div class="bk-offer-region">Испания и ЕС</div>
           <h3>Amazon.es</h3>
-          <p>Печать по требованию, доставляет Amazon.</p>
+          <p>Печать по требованию, доставка Amazon.</p>
           <div class="bk-offer-bottom">
             <a href="https://www.amazon.es/dp/8409902486" class="bk-btn is-light is-block" target="_blank" rel="noopener">Купить на Amazon.es</a>
           </div>
@@ -314,7 +329,7 @@
         <article class="bk-offer">
           <div class="bk-offer-region">Германия и Австрия</div>
           <h3>Thalia</h3>
-          <p>Книжная сеть, раздел «Russische Bücher». Можно заказать домой или забрать в магазине.</p>
+          <p>Крупнейшая книжная сеть (раздел «Russische Bücher»). Книгу можно заказать с доставкой на дом или забрать в ближайшем магазине.</p>
           <div class="bk-offer-bottom">
             <a href="https://www.thalia.de/shop/home/artikeldetails/A1082372485" class="bk-btn is-ghost is-block" target="_blank" rel="noopener">Купить в Thalia</a>
           </div>
@@ -331,7 +346,7 @@
         <article class="bk-offer">
           <div class="bk-offer-region">США</div>
           <h3>Amazon.com · Bookshop.org</h3>
-          <p>Bookshop.org – сеть независимых книжных.</p>
+          <p>Bookshop.org – онлайн-платформа независимых книжных магазинов США.</p>
           <div class="bk-offer-bottom is-pair">
             <a href="https://www.amazon.com/dp/8409902486" class="bk-btn is-ghost" target="_blank" rel="noopener">Amazon.com</a>
             <a href="https://bookshop.org/p/books/1055-1086-1090-1091-1089-1090-1086-1088-1086-1085-1091-1087-1088-1072-1074-1080-1083-1050-1086-1075-108/dbaa023e158b6b0b" class="bk-btn is-ghost" target="_blank" rel="noopener">Bookshop.org</a>
@@ -340,17 +355,18 @@
 
         <article class="bk-offer" id="knizhnye">
           <div class="bk-offer-region">Книжные магазины</div>
-          <h3>В любой книжной Испании</h3>
-          <p>Назовите в магазине ISBN – книгу закажут у дистрибьютора. Или оформите заказ онлайн:</p>
+          <h3>Любой книжный магазин Испании</h3>
+          <p>Назовите в магазине ISBN, и книгу закажут напрямую у дистрибьютора.</p>
           <div class="bk-isbn">
             <code>978-84-09-90248-4</code>
             <button type="button" class="bk-copy" data-bk-copy="978-84-09-90248-4">Скопировать</button>
           </div>
+          <p class="bk-stores-intro">Или оформите заказ онлайн:</p>
           <ul class="bk-stores" data-bk-stores=""></ul>
         </article>
       </div>
 
-      <p class="bk-buy-foot">Вашей страны нет в списке? Напишите мне на <a class="link" href="mailto:info@nazaromelianenko.com?subject=%D0%9A%D0%BD%D0%B8%D0%B3%D0%B0%20%C2%AB%D0%9F%D0%BE%20%D1%82%D1%83%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%83%20%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%C2%BB">info@nazaromelianenko.com</a> – найдём способ.</p>
+      <p class="bk-buy-foot">Вашей страны нет в списке? Напишите мне на <a class="link" href="mailto:info@nazaromelianenko.com?subject=%D0%9A%D0%BD%D0%B8%D0%B3%D0%B0%20%C2%AB%D0%9F%D0%BE%20%D1%82%D1%83%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%83%20%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%C2%BB">info@nazaromelianenko.com</a> – подберём удобный вариант доставки.</p>
     </section>
 
 
@@ -365,14 +381,13 @@
         <div>
           <span class="bk-eyebrow">Об авторе</span>
           <h2 class="bk-h2" id="bk-author">Назар Омельяненко</h2>
-          <p>Преподаю испанский русскоязычным взрослым. Собственная интеграция в испаноязычную среду показала мне главный пробел: правила обычно предлагают заучивать, но редко объясняют их когнитивную природу.</p>
-          <p>Фундаментальное образование в области прикладной математики и системного программирования сформировало базовые принципы моей работы: системность, понимание внутренней архитектуры языка и критический взгляд на лишенные логики догмы. Поиск научно обоснованных ответов привел меня на стык когнитивной лингвистики, психолингвистики и современных исследований усвоения второго языка.</p>
-          <p>Из этого опыта выросла методология «Цикл осознанного усвоения» (Secuencia INIO), зарегистрированная в Испании как научное произведение.</p>
-          <p>Книга «По ту сторону правил» – первое её полное изложение.</p>
+          <p>Преподаю испанский русскоязычным взрослым. Личный опыт погружения в языковую среду помог мне увидеть главный пробел традиционного обучения: правила обычно предлагают заучивать, но редко объясняют их когнитивную природу.</p>
+          <p>Фундаментальное образование в области прикладной математики и системного программирования сформировало базовые принципы моей работы: системность, понимание внутренней архитектуры языка и критический взгляд на лишенные логики догмы. Поиск научно обоснованных ответов привел меня к разработкам методик, объединяющих когнитивную лингвистику, психолингвистику и современные исследования усвоения второго языка.</p>
+          <p>Из этого опыта выросла методология «Цикл осознанного усвоения» (Secuencia INIO), зарегистрированная в Испании как научное произведение. Книга «По ту сторону правил» – первое её полное изложение.</p>
           <div class="bk-facts">
             <div class="bk-fact"><b>C2</b><span>DELE у учеников</span></div>
             <div class="bk-fact"><b>9.0</b><span>средний балл EOI</span></div>
-            <div class="bk-fact"><b>INIO</b><span>авторская методология</span></div>
+            <div class="bk-fact"><b>INIO</b><span>авторская методология</span><small lang="es">Registro de la Propiedad Intelectual · 09/2026/4881</small></div>
           </div>
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:0.9rem 1.75rem">
             <a href="/ru/sobre-mi.html" class="bk-textlink">Подробнее обо мне</a>
@@ -429,7 +444,7 @@
         </details>
         <details>
           <summary>Можно ли заказать несколько экземпляров?</summary>
-          <p>Да – на Amazon или в любой книжной по ISBN. Если книга нужна для школы или группы учеников, напишите мне на <a class="link" href="mailto:info@nazaromelianenko.com">info@nazaromelianenko.com</a> – подскажу удобный вариант.</p>
+          <p>Да – на Amazon или в любом книжном магазине по номеру ISBN. Если книга нужна для учебного заведения, напишите мне на <a class="link" href="mailto:info@nazaromelianenko.com">info@nazaromelianenko.com</a>. Для школ и языковых центров возможна также встреча с автором.</p>
         </details>
       </div>
     </section>
@@ -441,7 +456,7 @@
     <section class="container bk-close" aria-labelledby="bk-close">
       <span class="bk-eyebrow">Карта и путь</span>
       <h2 class="bk-h2" id="bk-close">Книга даёт подробную карту. Но маршрут всегда проходят на практике.</h2>
-      <p>Если захотите пройти его вместе, я веду индивидуальные занятия по тому же методу.</p>
+      <p>Если захотите пройти его вместе, я веду индивидуальные занятия, используя метод, описанный в книге.</p>
       <div class="bk-cta-row">
         <a href="#kupit" class="bk-btn">Купить книгу</a>
         <a href="/ru/ensenanza.html" class="bk-textlink">Индивидуальные занятия</a>
@@ -461,6 +476,9 @@
   const BOOK = {
     // Enlace directo a la ficha de Amazon.es. Vacío: se usa la búsqueda por ISBN, que funciona en cuanto Amazon lista el libro.
     amazon: 'https://www.amazon.es/dp/8409902486',
+    // Formulario de Brevo para el prólogo (URL «serve» del formulario, como en ru/kniga-anons.html).
+    // Vacío: el bloque muestra el botón de respaldo (pedir el prólogo por correo).
+    sampleForm: '',
     sample: '',
     stores: [
       { name: 'Todos tus libros', url: 'https://www.todostuslibros.com/libros/mas-alla-de-las-reglas_978-84-09-90248-4' },
@@ -490,6 +508,27 @@
         el.removeAttribute('data-gumroad-overlay-checkout');
       }
     });
+
+    const sf = document.querySelector('[data-bk-sample-form]');
+    if (sf && BOOK.sampleForm) {
+      const fb = document.querySelector('[data-bk-sample-fallback]');
+      const err = sf.querySelector('[data-bk-sample-err]');
+      const btn = sf.querySelector('button');
+      sf.hidden = false; if (fb) fb.hidden = true;
+      sf.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        const mail = sf.querySelector('input[type=email]').value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) { err.textContent = 'Проверьте адрес электронной почты.'; return; }
+        if (!sf.querySelector('input[type=checkbox]').checked) { err.textContent = 'Необходимо согласие на обработку адреса.'; return; }
+        err.textContent = ''; btn.disabled = true;
+        const d = new FormData(); d.append('EMAIL', mail); d.append('email_address_check', ''); d.append('locale', 'ru'); d.append('html_type', 'simple');
+        const ok = function () { sf.hidden = true; document.querySelector('[data-bk-sample-done]').hidden = false; };
+        const fail = function () { btn.disabled = false; err.textContent = 'Не удалось отправить. Попробуйте ещё раз.'; };
+        fetch(BOOK.sampleForm + '?isAjax=1', { method: 'POST', body: d }).then(function (r) { return r.json(); }).then(function (j) {
+          if (j && j.success) ok(); else { btn.disabled = false; err.textContent = (j && j.message) ? j.message : 'Не удалось отправить. Попробуйте ещё раз.'; }
+        }).catch(function () { fetch(BOOK.sampleForm, { method: 'POST', body: d, mode: 'no-cors' }).then(ok).catch(fail); });
+      });
+    }
 
     const list = document.querySelector('[data-bk-stores]');
     if (list) {
