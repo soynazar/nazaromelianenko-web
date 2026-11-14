@@ -68,6 +68,10 @@ const initLanguageSwitch = () => {
             if (hrefOriginal !== '#') {
                 link.href = `/${currentLang}/${targetFile}`;
             }
+            // La página del libro vive en la raíz (/book.html), no en /ru/
+            if (key === 'book') {
+                link.href = '/book.html';
+            }
 
             if (targetFile === currentPage || (currentPage === '' && targetFile === 'index.html')) {
                 link.classList.add('active');
