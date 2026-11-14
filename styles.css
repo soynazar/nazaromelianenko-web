@@ -510,6 +510,11 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .bk-offer.is-featured h3 { color: #fff; }
 .bk-offer p { font-size: 0.95rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
 .bk-offer.is-featured p { color: rgba(242,241,239,0.72); }
+.bk-offer .bk-offer-alt { font-size: 0.82rem; margin: 0.85rem 0 0; text-align: center; letter-spacing: 0.01em; }
+.bk-offer.is-featured .bk-offer-alt { color: rgba(242,241,239,0.55); }
+.bk-offer-alt a { color: inherit; text-decoration: underline; text-decoration-color: rgba(242,241,239,0.35); text-underline-offset: 3px; }
+.bk-offer-alt a:hover { text-decoration-color: currentColor; }
+.bk-offer-alt .nw { white-space: nowrap; }
 .bk-offer ul { list-style: none; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.55rem; font-size: 0.9rem; }
 .bk-offer li { padding-left: 1.4rem; position: relative; line-height: 1.5; }
 .bk-offer li::before { content: "–"; position: absolute; left: 0; color: var(--bk-accent); }
