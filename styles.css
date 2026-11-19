@@ -525,7 +525,7 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .bk-badge { display: inline-block; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 3px; background: var(--bk-accent); color: #fff; }
 .bk-badge.is-outline { background: transparent; border: 1px solid currentColor; color: inherit; opacity: 0.8; }
 .bk-badge[hidden] { display: none; }
-.bk-isbn { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.85rem 1rem; border: 1px dashed rgba(26,26,26,0.25); border-radius: 4px; margin-bottom: 1.25rem; font-variant-numeric: tabular-nums; }
+.bk-isbn { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.4rem 1rem; padding: 0.85rem 1rem; border: 1px dashed rgba(26,26,26,0.25); border-radius: 4px; margin-bottom: 1.25rem; font-variant-numeric: tabular-nums; }
 .bk-isbn code { font-family: var(--font-body); font-size: 0.95rem; letter-spacing: 0.02em; color: var(--bk-ink); white-space: nowrap; }
 .bk-copy { background: none; border: none; font: inherit; font-size: 0.78rem; color: var(--bk-accent); cursor: pointer; padding: 0.2rem 0; border-bottom: 1px solid transparent; white-space: nowrap; }
 .bk-copy:hover { border-bottom-color: var(--bk-accent); }
