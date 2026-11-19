@@ -326,7 +326,15 @@
           <p>Печать по требованию, доставка Amazon.</p>
           <div class="bk-offer-bottom">
             <a href="https://www.amazon.es/dp/8409902486" class="bk-btn is-light is-block" target="_blank" rel="noopener">Купить на Amazon.es</a>
-            <p class="bk-offer-alt">В Испанию – через <a href="https://blackwells.co.uk/bookshop/product/9788409902484" target="_blank" rel="noopener">Blackwell’s</a>, <span class="nw">около 3–4 недель</span></p>
+          </div>
+        </article>
+
+        <article class="bk-offer">
+          <div class="bk-offer-region">Испания и ЕС</div>
+          <h3>Blackwell’s</h3>
+          <p>Оксфордский книжный магазин с 1879 года. Доставка в Испанию – <span class="nw">около 3–4 недель</span>.</p>
+          <div class="bk-offer-bottom">
+            <a href="https://blackwells.co.uk/bookshop/product/9788409902484" class="bk-btn is-ghost is-block" target="_blank" rel="noopener">Купить в Blackwell’s</a>
           </div>
         </article>
 
@@ -359,13 +367,13 @@
 
         <article class="bk-offer" id="knizhnye">
           <div class="bk-offer-region">Книжные магазины</div>
-          <h3>Любой книжный магазин Испании</h3>
+          <h3>Любой книжный магазин Испании и&nbsp;Европы</h3>
           <p>Назовите в магазине ISBN, и книгу закажут напрямую у дистрибьютора.</p>
           <div class="bk-isbn">
             <code>978-84-09-90248-4</code>
             <button type="button" class="bk-copy" data-bk-copy="978-84-09-90248-4">Скопировать</button>
           </div>
-          <p class="bk-stores-intro">Или оформите заказ онлайн:</p>
+          <p class="bk-stores-intro" data-bk-stores-intro>В Испании можно заказать и онлайн:</p>
           <ul class="bk-stores" data-bk-stores=""></ul>
         </article>
       </div>
@@ -484,9 +492,11 @@
     // Vacío: el bloque muestra el botón de respaldo (pedir el prólogo por correo).
     sampleForm: 'https://f3da5978.sibforms.com/serve/MUIFAOG4Ozouvk1rXYehaiZa7aN_pdLRiJs286c2krjFcD-6fagigQW9CU2P7n4YQM-Mfjcqk_0RtgoM9B3zk3N1cYPXhcq2eqJcDZacxQ-gTcOecRXRJg9O5j1ewWC-b-u7xPbWhGoBiki7NyYXMwmrjuy5hYNAeF2AHFcN6u1R1iBUUUyhZ_RsC-nfnNU5ynbBZoXqpbSHyO31Lw==',
     sample: '',
+    // Librerías online de España. Vacío = el bloque no se muestra.
+    // Retiradas el 19 nov 2026 (sin stock ni portada); volver a añadir cuando la ficha sea digna:
+    // { name: 'Todos tus libros', url: 'https://www.todostuslibros.com/libros/mas-alla-de-las-reglas_978-84-09-90248-4' },
+    // { name: 'Librouro',         url: 'https://www.librouro.com/libro/ver/1952253-mas-alla-de-las-reglas.html' }
     stores: [
-      { name: 'Todos tus libros', url: 'https://www.todostuslibros.com/libros/mas-alla-de-las-reglas_978-84-09-90248-4' },
-      { name: 'Librouro',         url: 'https://www.librouro.com/libro/ver/1952253-mas-alla-de-las-reglas.html' }
     ]
   };
 
@@ -540,7 +550,11 @@
     }
 
     const list = document.querySelector('[data-bk-stores]');
-    if (list) {
+    if (list && !BOOK.stores.length) {
+      list.hidden = true;
+      const intro = document.querySelector('[data-bk-stores-intro]');
+      if (intro) intro.hidden = true;
+    } else if (list) {
       BOOK.stores.forEach(function (s) {
         const li = document.createElement('li');
         const a = document.createElement('a');
