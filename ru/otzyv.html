@@ -51,7 +51,6 @@
 <main>
   <a href="/ru/index.html"><img class="logo" src="/images/logo.png" alt="Nazar Omelianenko"></a>
 
-  <p class="kicker">Пролог · ваша оценка</p>
   <h1 id="h">Как вам <em>пролог?</em></h1>
   <div class="rule"></div>
   <p id="lead">Оцените его в один клик.</p>
@@ -104,7 +103,7 @@
     send({}).then(function(){
       sv.textContent='Оценка сохранена. Спасибо.';
       document.getElementById('h').innerHTML='Спасибо<br><em>за оценку</em>';
-      document.getElementById('lead').textContent='Если хочется, добавьте пару слов. Если нет\u00a0– этого клика уже достаточно.';
+      document.getElementById('lead').textContent='Если есть желание, поделитесь впечатлениями.';
       m.style.display='block';
     }).catch(function(){sv.textContent='Не удалось сохранить. Попробуйте ещё раз.';});
   }
