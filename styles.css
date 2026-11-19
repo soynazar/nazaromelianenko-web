@@ -419,7 +419,7 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .bk-book-front img { display: block; width: 100%; height: 100%; border-radius: inherit; }
 .bk-book-front::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 6%; border-radius: 2px 0 0 2px; background: linear-gradient(90deg, rgba(0,0,0,0.18) 0%, rgba(255,255,255,0.2) 40%, rgba(0,0,0,0.06) 70%, rgba(0,0,0,0) 100%); pointer-events: none; }
 .bk-book-front::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 40%); box-shadow: inset 0 0 0 0.5px rgba(91,64,43,0.18); pointer-events: none; }
-.bk-book-back { background: #e8e0d2; transform: translateZ(calc(var(--t) / -2)) rotateY(180deg); box-shadow: 0 30px 60px -18px rgba(40,28,18,0.45), 0 10px 22px -10px rgba(40,28,18,0.3); }
+.bk-book-back { background: #e9e7e3; transform: translateZ(calc(var(--t) / -2)) rotateY(180deg); box-shadow: 0 30px 60px -18px rgba(40,28,18,0.45), 0 10px 22px -10px rgba(40,28,18,0.3); }
 .bk-book-pages { position: absolute; top: 1.1%; bottom: 1.1%; right: calc(var(--t) / -2 + 3px); width: calc(var(--t) - 4px); transform: rotateY(90deg); background:
     linear-gradient(90deg, rgba(60,44,30,0.22) 0%, rgba(60,44,30,0) 18%, rgba(60,44,30,0) 82%, rgba(60,44,30,0.16) 100%),
     repeating-linear-gradient(90deg, #f6f0e4 0 1px, #e9e0cf 1px 2px, #f3ecdf 2px 3px); }
@@ -492,7 +492,7 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .bk-sample-note { font-size: 0.78rem; color: rgba(242,241,239,0.5) !important; margin-top: 1rem; margin-bottom: 0; }
 .bk-buy-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; margin-top: 3.5rem; align-items: stretch; }
 .bk-buy-grid > .bk-offer { grid-column: span 2; scroll-margin-top: 110px; }
-.bk-buy-grid > .bk-offer:nth-child(n+4) { grid-column: span 3; }
+
 .bk-status { font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 640px; margin: 0 0 0.6rem; }
 .bk-status + .bk-lead { margin-top: 1.5rem; }
 .bk-status.bk-stores-line { color: var(--bk-ink); font-weight: 500; letter-spacing: 0.04em; }
