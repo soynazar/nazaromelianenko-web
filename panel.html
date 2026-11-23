@@ -162,6 +162,11 @@ main{flex:1;padding:28px 40px; overflow-y: auto;}
 .deb-hist summary{cursor:pointer;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .deb-hrow{display:flex;gap:12px;flex-wrap:wrap;padding:6px 0;border-top:1px solid var(--line);font-size:13px;margin-top:6px;align-items:baseline}
 .deb-hrow .t{color:var(--muted);font-size:12px}
+.em-lista{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+.em-fila{display:flex;gap:8px;align-items:center;font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.em-fila span{flex:1;word-break:break-all}.em-fila.nuevo{border-color:var(--terra-soft);background:var(--terra-soft2)}
+.em-fila button{border:none;background:none;color:var(--muted);cursor:pointer;font-size:12px}.em-fila button:hover{color:var(--red)}
+.em-add{display:flex;gap:8px}.em-add input{flex:1}
 .deb-inl{color:var(--muted);font-size:13px}
 .mbloque{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:2px 12px}
 .mfila{display:flex;gap:12px;align-items:baseline;padding:7px 0;border-top:1px solid var(--line)}
@@ -353,6 +358,9 @@ a.mchip{text-decoration:none}a.mchip:hover{border-color:var(--terra);cursor:poin
       <div><label>Tarifa por clase (€)</label><input type="number" step="0.01" id="aTarifa"></div>
       <div><label>Canal principal</label><input id="aCanal" placeholder="telegram, whatsapp…"></div>
     </div>
+    <label>Emails (para reconocerle en Calendly y Stripe)</label>
+    <div id="aEmails" class="em-lista"></div>
+    <div class="em-add"><input id="aEmailNuevo" type="email" placeholder="añadir email" onkeydown="if(event.key==='Enter'){event.preventDefault();emAnadir()}"><button type="button" class="btn btn-ghost" onclick="emAnadir()">Añadir</button></div>
     <label>Palabra clave GCAL</label><input id="aGcal">
     <label>Notas</label><textarea id="aNotas" rows="2"></textarea>
     <label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink)">
@@ -501,16 +509,20 @@ async function doLogout(){
   location.reload();
 }
 
+let EMAILS=[], emPend={add:[],del:[]};
+const emailsDe=id=>EMAILS.filter(e=>e.alumno_id===id);
 async function refresh(){
-  const [a,c,p,b,m]=await Promise.all([
+  const [a,c,p,b,m,em]=await Promise.all([
     sb.from('alumnos').select('*').order('created_at'),
     sb.from('clases').select('*').order('fecha',{ascending:false}).order('hora',{ascending:false}),
     sb.from('pagos').select('*').order('fecha',{ascending:false}),
     sb.from('bonos').select('*').order('fecha_compra',{ascending:false}),
-    sb.from('materiales_enviados').select('*').order('enviado_el',{ascending:false}).order('id',{ascending:false}).limit(3000)
+    sb.from('materiales_enviados').select('*').order('enviado_el',{ascending:false}).order('id',{ascending:false}).limit(3000),
+    sb.from('alumno_emails').select('id,alumno_id,email').order('id')
   ]);
   for(const r of [a,c,p,b]) if(r.error){toast('Error BD: '+r.error.message);console.error(r.error);return}
   D={alumnos:a.data,clases:c.data,pagos:p.data,bonos:b.data};
+  EMAILS=em.error?[]:(em.data||[]);   // si falla, el panel sigue igual sin emails
   MAT_OK=!m.error; MAT=m.error?[]:(m.data||[]);   // si falla, el panel sigue igual sin deberes
   computePaid();
   if(view==='none'){
@@ -662,6 +674,7 @@ function renderAlumno(){
     <div>
       <div class="h-title">${a.nombre}</div>
       <div class="meta">Tarifa base: <span class="mono">${eur(a.tarifa_default||0)} €/clase</span></div>
+      <div class="meta">${emailsDe(a.id).length?'Email: '+emailsDe(a.id).map(e=>escH(e.email)).join(' · '):'<span style="color:var(--muted2)">Sin email guardado</span>'}</div>
       ${a.activo?'':'<div class="bonoline" style="color:var(--red)">Alumno inactivo: no aparece en la lista principal ni en la sincronización.</div>'}
       ${bonoLinea(a)}
     </div>
@@ -1436,8 +1449,26 @@ function openAlumnoForm(id){
   aNombre.value=a.nombre||'';aAlias.value=a.alias||'';aTarifa.value=a.tarifa_default??'';
   aCanal.value=a.canal_principal||'';aGcal.value=a.gcal_keyword||'';aNotas.value=a.notas||'';
   aActivo.checked=id?!!a.activo:true;
+  emPend={add:[],del:[]}; aEmailNuevo.value=''; emRender();
   openOv('ovAlumno');
 }
+function emRender(){
+  const ya=editAlumnoId?emailsDe(editAlumnoId).filter(e=>!emPend.del.includes(e.id)):[];
+  const h=ya.map(e=>`<div class="em-fila"><span>${escH(e.email)}</span><button type="button" onclick="emQuitar(${e.id})">quitar</button></div>`).join('')
+    +emPend.add.map((x,i)=>`<div class="em-fila nuevo"><span>${escH(x)} <i style="color:var(--muted)">(se guarda al pulsar Guardar)</i></span><button type="button" onclick="emPend.add.splice(${i},1);emRender()">quitar</button></div>`).join('');
+  document.getElementById('aEmails').innerHTML=h||'<div style="font-size:13px;color:var(--muted)">Sin emails guardados</div>';
+}
+function emAnadir(){
+  const v=aEmailNuevo.value.toLowerCase().trim(); if(!v) return;
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return toast('Ese email no parece correcto');
+  const dueno=EMAILS.find(e=>e.email.toLowerCase()===v);
+  if(dueno && !emPend.del.includes(dueno.id)){
+    const o=alumno(dueno.alumno_id); return toast(dueno.alumno_id===editAlumnoId?'Ese email ya está guardado':'Ese email ya es de '+(o?o.nombre:'otro alumno'));
+  }
+  if(!emPend.add.includes(v)) emPend.add.push(v);
+  aEmailNuevo.value=''; emRender();
+}
+function emQuitar(id){ emPend.del.push(id); emRender(); }
 async function saveAlumno(e){
   e.preventDefault();
   const row={nombre:aNombre.value.trim(),alias:aAlias.value||null,
@@ -1451,7 +1482,13 @@ async function saveAlumno(e){
     err=error;if(data){alumnoSel=data.id;view='alumno'}
   }
   if(err)return toast('Error: '+err.message);
-  closeOv('ovAlumno');toast('Alumno guardado');refresh();
+  // emails: si había uno a medio escribir, se añade también
+  if(aEmailNuevo.value.trim()) emAnadir();
+  const aid=editAlumnoId||alumnoSel; let emErr=null;
+  for(const id of emPend.del){ const{error}=await sb.from('alumno_emails').delete().eq('id',id); if(error) emErr=error; }
+  for(const em of emPend.add){ const{error}=await sb.from('alumno_emails').insert({alumno_id:aid,email:em,origen:'panel'}); if(error) emErr=error; }
+  emPend={add:[],del:[]};
+  closeOv('ovAlumno');toast(emErr?'Alumno guardado, pero un email falló: '+emErr.message:'Alumno guardado');refresh();
 }
 async function delAlumno(id){
   const a=alumno(id);
