@@ -798,6 +798,7 @@ function filaEvento(x,botonIr){
   return`<div class="sem-ev"><span class="mono">${fmtDT(x.recibido_en)}</span>
     <span class="grow"><strong>${TIPO_EV[x.clasificacion]||escH(x.clasificacion)}</strong> · ${eur(Number(x.importe_eur||0))} € · ${quien}${x.motivo&&x.estado!=='sombra_ok'?'<div class="d" style="font-size:12px;color:var(--muted)">'+escH(x.motivo)+'</div>':''}</span>
     ${botonIr&&a?`<button onclick="closeOv('ovSistema');goAlumno(${a.id})">Ir al alumno</button>`:''}
+    ${!a&&x.estado==='sombra_ok'?`<select id="asig-${x.id}" style="padding:6px;border:1px solid var(--line);border-radius:8px;font-size:12px"><option value="">Asignar a…</option>${D.alumnos.filter(z=>z.activo).sort((p,q)=>p.nombre.localeCompare(q.nombre)).map(z=>`<option value="${z.id}">${escH(z.nombre)}</option>`).join('')}</select><button onclick="asignarEvento(${x.id})">Guardar</button>`:''}
     <button onclick="marcarEvento(${x.id})" title="Quita el aviso de esta lista">${x.estado==='revisar'||x.estado==='error'?'Atendido':'Ya anotado'}</button></div>`;
 }
 function renderSistema(){
@@ -811,6 +812,20 @@ function renderSistema(){
       ${x.porAnotar.map(e=>filaEvento(e,true)).join('')}`:'');
 }
 function openSistema(){openOv('ovSistema');renderSistema();cargarSistema(true)}
+async function asignarEvento(id){
+  const sel=document.getElementById('asig-'+id); const alumnoId=+(sel&&sel.value);
+  if(!alumnoId) return toast('Elige un alumno');
+  const x=SIS.eventos.find(e=>e.id===id); if(!x) return;
+  const email=(x.email_pagador||'').toLowerCase().trim();
+  if(email){
+    const{error}=await sb.from('alumno_emails').insert({alumno_id:alumnoId,email,origen:'stripe'});
+    if(error) return toast('No se pudo guardar el email: '+error.message);
+  }
+  const{data,error}=await sb.from('stripe_eventos').update({alumno_id_propuesto:alumnoId}).eq('id',id).select('id');
+  if(error||!data||!data.length) return toast('Email guardado, pero no se pudo asignar el cobro.');
+  toast(email?'Cobro asignado y email guardado':'Cobro asignado');
+  cargarSistema(true);
+}
 async function marcarEvento(id){
   const{data,error}=await sb.from('stripe_eventos').update({estado:'registrado',procesado_en:new Date().toISOString()}).eq('id',id).select('id');
   if(error)return toast('Error: '+error.message);
@@ -1105,10 +1120,19 @@ async function delBono(){
 }
 
 /* pagos sueltos */
+/* Método por defecto al anotar un pago: Stripe, salvo las clases de 20 € (Bizum, o el método del
+   último pago de ese alumno). Solo es la opción preseleccionada: siempre se puede cambiar. */
+function metodoPorDefecto(alumnoId, importe){
+  if(Number(importe)!==20) return 'stripe';
+  const ult=D.pagos.filter(p=>p.alumno_id===alumnoId)
+    .sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha))||b.id-a.id)[0];
+  return (ult && METODOS_PAGO.includes(ult.metodo)) ? ult.metodo : 'bizum';
+}
 function openPago(claseId){
   pagoClaseId=claseId;
   const c=D.clases.find(x=>x.id===claseId);
   fillSelect('pMetodo',METODOS_PAGO);
+  pMetodo.value=metodoPorDefecto(c.alumno_id, precioClase(c));
   pFecha.value=new Date().toISOString().slice(0,10);
   pImporte.value=precioClase(c);pRef.value='';
   openOv('ovPago');
@@ -1138,6 +1162,7 @@ async function unmarkPagada(id){
 /* abonos */
 function openAbono(){
   fillSelect('bMetodo',METODOS_PAGO);
+  bMetodo.value='stripe';   // los abonos se cobran casi siempre por Stripe
   bFecha.value=new Date().toISOString().slice(0,10);
   bClases.value=4;bPrecio.value=130;bRef.value='';   // abono estándar: 4 clases, 130 €
   openOv('ovAbono');
@@ -1342,11 +1367,21 @@ function durDe(ev){
 async function computeSyncPlan(){
   const emap = await emailMap();
   const ign  = await ignoredSet();
+  /* Aprender emails: si una clase del calendario tiene un invitado (el alumno, que Calendly añade
+     solo) y ese alumno aún no tiene NINGÚN email guardado, se guarda. Así los cobros de Stripe lo
+     reconocen. Nunca toca a alumnos que ya tienen email ni emails que ya son de otro alumno. */
+  const conEmail = new Set(emap.values());
+  const aprender = new Map();
+  const aprenderDe = (alumnoId, ev) => {
+    if(!alumnoId || conEmail.has(alumnoId) || aprender.has(alumnoId)) return;
+    const e = (ev.attendees||[]).map(x=>(x.email||'').toLowerCase().trim()).find(x=>x && x!==MI_EMAIL && !emap.has(x));
+    if(e && ![...aprender.values()].includes(e)) aprender.set(alumnoId, e);
+  };
   const now = new Date();
   const desde = new Date(now.getTime()-GCAL_PAST_DAYS*864e5); desde.setHours(0,0,0,0);
   const hasta = new Date(now.getTime()+GCAL_DAYS*864e5);
   const timeMin = desde.toISOString(), timeMax = hasta.toISOString();
-  const plan = { nuevas:[], movidas:[], enlazadas:[], sinAsignar:[], desaparecidas:[], ignoradas:0, omitidas:0 };
+  const plan = { nuevas:[], movidas:[], enlazadas:[], sinAsignar:[], desaparecidas:[], ignoradas:0, omitidas:0, emailsAprender:[] };
   const vistos = new Set();
   // Si falla la lectura de CUALQUIER calendario, gcalEvents lanza error y no se calcula nada:
   // así nunca se marcan desapariciones a partir de una lectura incompleta.
@@ -1364,6 +1399,7 @@ async function computeSyncPlan(){
       const modo = detectModo(ev, cal);
       const existing = D.clases.find(c=>c.gcal_event_id===gid);
       if(existing){
+        aprenderDe(existing.alumno_id, ev);
         if(existing.estado==='programada' && (existing.fecha!==fecha || (existing.hora||'').slice(0,5)!==hora)){
           plan.movidas.push({ id:existing.id, fecha, hora, dur, titulo:ev.summary||'' });
         }
@@ -1376,6 +1412,7 @@ async function computeSyncPlan(){
         plan.sinAsignar.push({ gid, serie:ev.recurringEventId||null, fecha, hora, dur, modo, titulo:ev.summary||'(sin título)', email });
         continue;
       }
+      aprenderDe(m.alumno_id, ev);
       const twin = D.clases.find(c=>c.alumno_id===m.alumno_id && c.fecha===fecha && (c.hora||'').slice(0,5)===hora && !c.gcal_event_id);
       if(twin){ plan.enlazadas.push({ id:twin.id, gid }); continue; }
       plan.nuevas.push({ gid, alumno_id:m.alumno_id, fecha, hora, dur, modo, titulo:ev.summary||'' });
@@ -1408,7 +1445,16 @@ async function computeSyncPlan(){
     if(dudoso) continue;
     plan.desaparecidas.push({ id:c.id, alumno_id:c.alumno_id, fecha:c.fecha, hora:(c.hora||'').slice(0,5), modo:c.modo });
   }
+  plan.emailsAprender = [...aprender].map(([alumno_id, email])=>({alumno_id, email}));
   return plan;
+}
+async function aprenderEmails(lista){
+  let n=0;
+  for(const x of lista||[]){
+    const{error}=await sb.from('alumno_emails').insert({ alumno_id:x.alumno_id, email:x.email, origen:'calendly' });
+    if(error) console.warn('email no guardado', x.email, error.message); else n++;
+  }
+  return n;
 }
 async function syncCalendar(interactive){
   if(!D.alumnos || !D.alumnos.length){ if(interactive) toast('Espera a que cargue el panel'); return; }
@@ -1417,6 +1463,7 @@ async function syncCalendar(interactive){
     await getToken(interactive);
     const plan = await computeSyncPlan();
     syncPlan = plan;
+    try{ const n = await aprenderEmails(plan.emailsAprender); if(n && interactive) toast('Email guardado de '+n+' alumno(s)'); }catch(err){ console.warn(err); }
     // Lo que va a Revisar se actualiza en cuanto se lee el calendario (no depende de pulsar Aplicar)
     pendingEvents = plan.sinAsignar.slice();
     desaparecidas = plan.desaparecidas.slice();
