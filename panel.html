@@ -169,6 +169,7 @@ main{flex:1;padding:28px 40px; overflow-y: auto;}
 .mtipo{flex:0 0 118px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--terra-dark)}
 .mchips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
 .mchip{font-size:12.5px;color:var(--ink);background:var(--terra-soft2);border:1px solid var(--terra-soft);border-radius:999px;padding:2px 10px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+a.mchip{text-decoration:none}a.mchip:hover{border-color:var(--terra);cursor:pointer}
 .mchip i{font-style:normal;color:var(--muted);font-size:11.5px;margin-left:4px}
 .mchip i.ok{color:#2f7a4d}
 .mchip.no{background:#fff;border-style:dashed;color:var(--muted)}
@@ -908,13 +909,14 @@ function lineaMateriales(claseId){   // lo que se manda: deberes y material de a
 }
 function bloqueMateriales(claseId){   // un bloque ordenado: una fila por tipo, un chip por PDF
   const mats=matDeClase(claseId); if(!mats.length) return '';
-  const chip=(m,extra)=>`<span class="mchip" title="${escH(m.nombre)}">${escH(m.nombre)}${extra||''}</span>`;
+  const drive=n=>'https://drive.google.com/drive/search?q='+encodeURIComponent(n);   // abre Drive buscando ese nombre
+  const chip=(m,extra)=>`<a class="mchip" href="${drive(m.nombre)}" target="_blank" rel="noopener" title="Buscar en Drive: ${escH(m.nombre)}">${escH(m.nombre)}${extra||''}</a>`;
   const filas=[['usado','Usado en clase'],['deberes','Deberes'],['material','Material de apoyo'],['proxima','Previsto próxima']].map(([t,et])=>{
     const x=mats.filter(m=>m.tipo===t); if(!x.length) return '';
     const chips=x.map(m=>{
       if(t!=='proxima') return chip(m);
       if(m.resultado==='usado') return chip(m,' <i class="ok">usado</i>');
-      if(m.resultado==='no_usado') return `<span class="mchip no" title="${escH(m.nombre)}"><s>${escH(m.nombre)}</s> <i>no usado${m.motivo?': '+escH(m.motivo):''}</i></span>`;
+      if(m.resultado==='no_usado') return `<a class="mchip no" href="${drive(m.nombre)}" target="_blank" rel="noopener" title="Buscar en Drive: ${escH(m.nombre)}"><s>${escH(m.nombre)}</s> <i>no usado${m.motivo?': '+escH(m.motivo):''}</i></a>`;
       return chip(m,' <i>pendiente</i>');
     }).join('');
     return `<div class="mfila"><span class="mtipo">${et}</span><span class="mchips">${chips}</span></div>`;
