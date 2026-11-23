@@ -143,6 +143,25 @@ main{flex:1;padding:28px 40px; overflow-y: auto;}
 .minicard{border:1px solid var(--line);border-radius:12px;padding:12px 14px;flex:1;background:#faf8f5}
 .minicard .lb{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .minicard .vl{font-family:var(--mono);font-size:21px;margin-top:4px}
+/* deberes y materiales enviados */
+.deb-checks{display:flex;gap:20px;margin-top:6px;flex-wrap:wrap}
+.deb-checks label{display:flex;align-items:center;gap:7px;margin:0;text-transform:none;letter-spacing:0;color:var(--ink);font-size:14px;cursor:pointer}
+.deb-checks input[type=checkbox]{width:auto;flex:none;margin:0;padding:0}
+.deb-box{border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:12px;background:#faf8f5}
+.deb-title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.deb-drop{border:1.5px dashed var(--muted2);border-radius:10px;padding:14px;text-align:center;color:var(--muted);font-size:13px;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;transition:.15s}
+.deb-drop.over{border-color:var(--terra);background:var(--terra-soft2);color:var(--terra-dark)}
+.deb-add{display:flex;gap:8px;margin-top:8px}.deb-add input{flex:1}
+.deb-chip{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+.deb-chip .deb-n{flex:1;min-width:150px;word-break:break-word}
+.deb-warn{color:#9a5f12;background:#fbf0dc;border-radius:6px;padding:2px 8px;font-size:12px}
+.deb-box button.mini,.deb-btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 10px;font-size:12px;color:var(--muted)}
+.deb-box button.mini:hover,.deb-btn:hover{color:var(--ink);border-color:var(--muted2)}
+.deb-linea{margin-top:6px;font-size:13px;color:var(--muted)}.deb-linea b{color:var(--terra-dark);font-weight:500}
+.deb-hist{margin:14px 0 6px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:#fff}
+.deb-hist summary{cursor:pointer;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.deb-hrow{display:flex;gap:12px;flex-wrap:wrap;padding:6px 0;border-top:1px solid var(--line);font-size:13px;margin-top:6px;align-items:baseline}
+.deb-hrow .t{color:var(--muted);font-size:12px}
 /* semáforo del sistema */
 .side-sem{margin:0 16px 12px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;display:flex;align-items:center;gap:10px;cursor:pointer;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:.2s}
 .side-sem:hover{border-color:var(--muted)}
@@ -279,12 +298,25 @@ main{flex:1;padding:28px 40px; overflow-y: auto;}
         <option value="suelta">Suelta</option><option value="bono">De bono</option>
       </select></div>
     </div>
+    <div id="debHostForm"></div>
     <div class="mfoot">
       <button type="button" class="btn btn-ghost" onclick="closeOv('ovClase')">Cancelar</button>
       <button class="btn btn-terra">Guardar</button>
     </div>
   </form>
 </div></div>
+
+<div class="overlay" id="ovDeberes"><div class="modal">
+  <button class="x" onclick="closeOv('ovDeberes')">✕</button>
+  <h2>Deberes y materiales</h2>
+  <div id="debSub" style="color:var(--muted);font-size:13px;margin-top:2px"></div>
+  <div id="debHostModal"></div>
+  <div class="mfoot">
+    <button type="button" class="btn btn-ghost" onclick="closeOv('ovDeberes')">Cancelar</button>
+    <button type="button" class="btn btn-terra" onclick="debGuardarModal()">Guardar</button>
+  </div>
+</div></div>
+<input type="file" id="debFile" multiple style="display:none" onchange="debFileCambio(this)">
 
 <div class="overlay" id="ovSync"><div class="modal">
   <button class="x" onclick="closeOv('ovSync')">✕</button>
@@ -453,14 +485,16 @@ async function doLogout(){
 }
 
 async function refresh(){
-  const [a,c,p,b]=await Promise.all([
+  const [a,c,p,b,m]=await Promise.all([
     sb.from('alumnos').select('*').order('created_at'),
     sb.from('clases').select('*').order('fecha',{ascending:false}).order('hora',{ascending:false}),
     sb.from('pagos').select('*').order('fecha',{ascending:false}),
-    sb.from('bonos').select('*').order('fecha_compra',{ascending:false})
+    sb.from('bonos').select('*').order('fecha_compra',{ascending:false}),
+    sb.from('materiales_enviados').select('*').order('enviado_el',{ascending:false}).order('id',{ascending:false}).limit(3000)
   ]);
   for(const r of [a,c,p,b]) if(r.error){toast('Error BD: '+r.error.message);console.error(r.error);return}
   D={alumnos:a.data,clases:c.data,pagos:p.data,bonos:b.data};
+  MAT_OK=!m.error; MAT=m.error?[]:(m.data||[]);   // si falla, el panel sigue igual sin deberes
   computePaid();
   if(view==='none'){
     const first=D.alumnos.find(x=>x.activo);
@@ -628,6 +662,7 @@ function renderAlumno(){
     <button class="btn btn-green" onclick="openAbono()">▤ Pago de abono</button>
     <button class="btn btn-ghost" onclick="openInforme()">🗎 Informe de pagos</button>
   </div>
+  ${histMateriales(a.id)}
   <div id="claseRows">${cs.map(claseRow).join('')||'<div class="empty">Sin clases todavía.</div>'}</div>`;
 }
 
@@ -652,10 +687,12 @@ function claseRow(c){
     <div class="body">
       <div class="tema">${c.tema||'<span style="color:var(--muted)">—</span>'}</div>
       ${c.proxima_clase?`<div class="prox"><b>Próxima:</b> ${c.proxima_clase}</div>`:''}
+      ${lineaMateriales(c.id)}
       <div class="tags">
         ${estadoSelect(c)}
         ${pagoTag}
         ${precioTag}
+        <button class="deb-btn" onclick="openDeberes(${c.id})" title="Deberes y materiales enviados">${matDeClase(c.id).length?'deberes ('+matDeClase(c.id).length+')':'+ deberes'}</button>
         <div class="rowbtns" style="margin-left:auto">
           <button class="icobtn" onclick="openClaseForm(${c.id})">editar</button>
           <button class="icobtn" onclick="delClase(${c.id})">eliminar</button>
@@ -834,6 +871,108 @@ async function marcarEvento(id){
   cargarSistema(true);
 }
 
+/* ================= DEBERES Y MATERIALES ENVIADOS =================
+   Solo se guarda el NOMBRE del fichero (el panel no sube ni lee su contenido).
+   Tabla: materiales_enviados. Si no se puede leer, el resto del panel sigue igual. */
+let MAT=[], MAT_OK=true;
+const TIPOS_MAT={deberes:'Deberes',material:'Material de apoyo'};
+let DEB={claseId:null,alumnoId:null,fecha:null,host:null,items:[],abiertos:{deberes:false,material:false}};
+function normNombre(s){
+  return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase()
+    .replace(/\.(pdf|docx?|pptx?|xlsx?|png|jpe?g|mp3|mp4|m4a|zip|txt)$/,'')
+    .replace(/[_\-.]+/g,' ').replace(/\s+/g,' ').trim();
+}
+const matDeClase=id=>MAT.filter(m=>m.clase_id===id);
+function lineaMateriales(claseId){
+  const mats=matDeClase(claseId); if(!mats.length) return '';
+  const partes=Object.keys(TIPOS_MAT).map(t=>{const x=mats.filter(m=>m.tipo===t);
+    return x.length?`<b>${TIPOS_MAT[t]}:</b> ${x.map(m=>escH(m.nombre)).join(', ')}`:''}).filter(Boolean);
+  return `<div class="deb-linea">${partes.join(' · ')}</div>`;
+}
+function histMateriales(alumnoId){
+  const mats=MAT.filter(m=>m.alumno_id===alumnoId); if(!mats.length) return '';
+  return `<details class="deb-hist"><summary>Materiales enviados (${mats.length})</summary>${mats.map(m=>{
+    const c=m.clase_id?D.clases.find(x=>x.id===m.clase_id):null;
+    return `<div class="deb-hrow"><span class="mono">${fmtDY(m.enviado_el)}</span><span>${escH(m.nombre)}</span><span class="t">${m.tipo==='material'?'material':'deberes'}${c&&c.tema?' · '+escH(c.tema):''}</span></div>`}).join('')}</details>`;
+}
+function debIniciar(claseId, alumnoId, fecha, host){
+  const ex=claseId?matDeClase(claseId):[];
+  DEB={claseId, alumnoId, fecha, host,
+    items:ex.map(m=>({id:m.id,nombre:m.nombre,norm:m.nombre_norm,tipo:m.tipo,estado:'existente'})),
+    abiertos:{deberes:ex.some(m=>m.tipo==='deberes'),material:ex.some(m=>m.tipo==='material')}};
+}
+function debPrevios(it){
+  return MAT.filter(m=>m.alumno_id===DEB.alumnoId && m.nombre_norm===it.norm && m.clase_id!==DEB.claseId)
+    .sort((a,b)=>String(b.enviado_el).localeCompare(String(a.enviado_el)))[0]||null;
+}
+function debRender(){
+  const el=document.getElementById(DEB.host==='modal'?'debHostModal':'debHostForm'); if(!el) return;
+  const lista=[...new Map(MAT.map(m=>[m.nombre_norm,m.nombre])).values()].slice(0,300);
+  const casillas=`<div class="deb-checks">${Object.keys(TIPOS_MAT).map(t=>
+    `<label><input type="checkbox" ${DEB.abiertos[t]?'checked':''} onchange="debToggle('${t}',this.checked)"> ${TIPOS_MAT[t]}</label>`).join('')}</div>`;
+  const cajas=Object.keys(TIPOS_MAT).filter(t=>DEB.abiertos[t]).map(t=>{
+    const chips=DEB.items.map((it,i)=>({it,i})).filter(x=>x.it.tipo===t&&x.it.estado!=='borrar').map(({it,i})=>{
+      const pr=debPrevios(it);
+      return `<div class="deb-chip"><span class="deb-n">${escH(it.nombre)}</span>${pr?`<span class="deb-warn">Ya mandado el ${fmtDY(pr.enviado_el)}</span>`:''}<button type="button" class="mini" onclick="debQuitar(${i})" title="Quitar">✕</button></div>`}).join('');
+    return `<div class="deb-box"><div class="deb-title">${TIPOS_MAT[t]}</div>
+      <div class="deb-drop" ondragover="event.preventDefault();this.classList.add('over')" ondragleave="this.classList.remove('over')" ondrop="this.classList.remove('over');debSoltar(event,'${t}')">
+        <span>Suelta aquí los ficheros</span><button type="button" class="mini" onclick="debElegir('${t}')">Elegir ficheros…</button></div>
+      <div class="deb-add"><input id="debTxt-${t}" list="debLista" placeholder="o escribe el nombre y pulsa Enter" onkeydown="if(event.key==='Enter'){event.preventDefault();debAddTxt('${t}')}"><button type="button" class="mini" onclick="debAddTxt('${t}')">Añadir</button></div>
+      ${chips}</div>`}).join('');
+  el.innerHTML=(MAT_OK?'':'<div class="deb-linea" style="color:var(--red)">No se puede leer el historial: los avisos de "ya mandado" no funcionarán.</div>')
+    +casillas+cajas+`<datalist id="debLista">${lista.map(n=>`<option value="${escH(n)}">`).join('')}</datalist>`;
+}
+function debToggle(t,on){
+  DEB.abiertos[t]=on;
+  if(!on) DEB.items=DEB.items.filter(i=>!(i.tipo===t&&i.estado==='nuevo'));   // lo aún no guardado se descarta
+  debRender();
+}
+function debAnadir(nombres,t){
+  for(const n of nombres){
+    const nombre=String(n||'').normalize('NFC').trim(), norm=normNombre(nombre); if(!norm) continue;
+    const ya=DEB.items.find(i=>i.tipo===t&&i.norm===norm);
+    if(ya){ if(ya.estado==='borrar') ya.estado='existente'; continue; }
+    DEB.items.push({nombre,norm,tipo:t,estado:'nuevo'});
+  }
+  debRender();
+}
+function debAddTxt(t){const el=document.getElementById('debTxt-'+t); if(el&&el.value.trim()){debAnadir([el.value],t);}}
+function debElegir(t){const f=document.getElementById('debFile'); f.dataset.t=t; f.value=''; f.click();}
+function debFileCambio(inp){debAnadir([...inp.files].map(f=>f.name),inp.dataset.t||'deberes'); inp.value='';}
+function debSoltar(ev,t){ev.preventDefault(); debAnadir([...(ev.dataTransfer&&ev.dataTransfer.files||[])].map(f=>f.name),t);}
+function debQuitar(i){
+  const it=DEB.items[i]; if(!it) return;
+  if(it.estado==='nuevo') DEB.items.splice(i,1); else it.estado='borrar';
+  debRender();
+}
+async function debPersistir(claseId,alumnoId,fecha){
+  let ok=0,dup=0,err=null;
+  for(const it of DEB.items){
+    if(it.estado==='borrar'&&it.id){
+      const{error}=await sb.from('materiales_enviados').delete().eq('id',it.id); if(error) err=error;
+    }else if(it.estado==='nuevo'){
+      const{error}=await sb.from('materiales_enviados').insert({alumno_id:alumnoId,clase_id:claseId,nombre:it.nombre,nombre_norm:it.norm,tipo:it.tipo,enviado_el:fecha});
+      if(error){ if(error.code==='23505') dup++; else err=error; } else ok++;
+    }
+  }
+  return {ok,dup,err};
+}
+function openDeberes(claseId){
+  const c=D.clases.find(x=>x.id===claseId); if(!c) return;
+  debIniciar(claseId,c.alumno_id,c.fecha,'modal');
+  DEB.abiertos.deberes=true;
+  document.getElementById('debSub').textContent=((alumno(c.alumno_id)||{}).nombre||'')+' · '+fmtDY(c.fecha)+(c.tema?' · '+c.tema:'');
+  debRender(); openOv('ovDeberes');
+}
+async function debGuardarModal(){
+  if(DEB.host!=='modal'||!DEB.claseId) return;
+  const r=await debPersistir(DEB.claseId,DEB.alumnoId,DEB.fecha);
+  if(r.err) return toast('Error: '+r.err.message);
+  closeOv('ovDeberes');
+  toast(r.ok?'Guardado':(r.dup?'Ya estaba anotado':'Sin cambios'));
+  refresh();
+}
+
 /* ================= INFORME DE PAGOS ================= */
 function openInforme(){
   const a=alumno(alumnoSel);
@@ -928,6 +1067,8 @@ function openClaseForm(id){
     cModo.value=saldoBono(alumnoSel).restantes>0?'bono':'suelta';
   }
   togglePrecioModo();
+  {const cc=id?D.clases.find(x=>x.id===id):null;
+   debIniciar(id||null, cc?cc.alumno_id:alumnoSel, cc?cc.fecha:cFecha.value, 'form'); debRender();}
   openOv('ovClase');
 }
 /* Muestra/oculta el campo Precio según el Tipo (bono no lleva precio) */
@@ -963,10 +1104,18 @@ async function saveClase(e){
   if(desvincular) row.gcal_event_id=null;
   const q=editClaseId
     ?sb.from('clases').update(row).eq('id',editClaseId)
-    :sb.from('clases').insert(row);
-  const{error}=await q;
+    :sb.from('clases').insert(row).select('id');
+  const{data:resC,error}=await q;
   if(error)return toast('Error: '+error.message);
-  closeOv('ovClase');toast(editClaseId?'Clase actualizada':'Clase registrada');refresh();
+  let extra='';
+  try{   // deberes marcados en el formulario (si los hay)
+    const claseId=editClaseId||(resC&&resC[0]&&resC[0].id);
+    if(claseId && DEB.host==='form' && DEB.items.some(i=>i.estado!=='existente')){
+      const r=await debPersistir(claseId, alumnoSel, cFecha.value);
+      if(r.err) extra=' (los deberes no se pudieron guardar: '+r.err.message+')';
+    }
+  }catch(err){ extra=' (los deberes no se pudieron guardar)'; }
+  closeOv('ovClase');toast((editClaseId?'Clase actualizada':'Clase registrada')+extra);refresh();
 }
 function bonoConSaldo(alumnoId){
   for(const b of D.bonos.filter(x=>x.alumno_id===alumnoId&&x.estado==='activo').sort((x,y)=>x.fecha_compra.localeCompare(y.fecha_compra))){
