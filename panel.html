@@ -162,6 +162,12 @@ main{flex:1;padding:28px 40px; overflow-y: auto;}
 .deb-hist summary{cursor:pointer;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .deb-hrow{display:flex;gap:12px;flex-wrap:wrap;padding:6px 0;border-top:1px solid var(--line);font-size:13px;margin-top:6px;align-items:baseline}
 .deb-hrow .t{color:var(--muted);font-size:12px}
+.deb-inl{color:var(--muted);font-size:13px}
+.deb-prev s{color:var(--muted2)}
+.deb-hint{margin-top:8px;padding:8px 12px;border-radius:10px;background:var(--terra-soft2);border:1px solid var(--terra-soft);font-size:13px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.deb-hint b{font-weight:500}
+.deb-hint button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 10px;font-size:12px;color:var(--ink)}
+.deb-hint button:hover{border-color:var(--muted)}
 /* semáforo del sistema */
 .side-sem{margin:0 16px 12px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;display:flex;align-items:center;gap:10px;cursor:pointer;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:.2s}
 .side-sem:hover{border-color:var(--muted)}
@@ -685,14 +691,15 @@ function claseRow(c){
   return`<div class="clase">
     <div class="when"><div class="d">${fmtD(c.fecha)}</div><div class="h">${hhmm(c.hora)}</div></div>
     <div class="body">
-      <div class="tema">${c.tema||'<span style="color:var(--muted)">—</span>'}</div>
-      ${c.proxima_clase?`<div class="prox"><b>Próxima:</b> ${c.proxima_clase}</div>`:''}
+      <div class="tema">${c.tema||'<span style="color:var(--muted)">—</span>'}${lineaTema(c.id)}</div>
+      ${lineaProxima(c)}
       ${lineaMateriales(c.id)}
+      ${htmlPrevistos(c.id)}
       <div class="tags">
         ${estadoSelect(c)}
         ${pagoTag}
         ${precioTag}
-        <button class="deb-btn" onclick="openDeberes(${c.id})" title="Deberes y materiales enviados">${matDeClase(c.id).length?'deberes ('+matDeClase(c.id).length+')':'+ deberes'}</button>
+        <button class="deb-btn" onclick="openDeberes(${c.id})" title="Deberes y materiales de esta clase">${matDeClase(c.id).length?'materiales ('+matDeClase(c.id).length+')':'+ materiales'}</button>
         <div class="rowbtns" style="margin-left:auto">
           <button class="icobtn" onclick="openClaseForm(${c.id})">editar</button>
           <button class="icobtn" onclick="delClase(${c.id})">eliminar</button>
@@ -875,34 +882,91 @@ async function marcarEvento(id){
    Solo se guarda el NOMBRE del fichero (el panel no sube ni lee su contenido).
    Tabla: materiales_enviados. Si no se puede leer, el resto del panel sigue igual. */
 let MAT=[], MAT_OK=true;
-const TIPOS_MAT={deberes:'Deberes',material:'Material de apoyo'};
-let DEB={claseId:null,alumnoId:null,fecha:null,host:null,items:[],abiertos:{deberes:false,material:false}};
+const TIPOS_MAT={deberes:'Deberes',material:'Material de apoyo',usado:'Usado en clase',proxima:'Previsto para la próxima'};
+let DEB={claseId:null,alumnoId:null,fecha:null,host:null,items:[],abiertos:{deberes:false,material:false,usado:false,proxima:false}};
 function normNombre(s){
   return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase()
     .replace(/\.(pdf|docx?|pptx?|xlsx?|png|jpe?g|mp3|mp4|m4a|zip|txt)$/,'')
     .replace(/[_\-.]+/g,' ').replace(/\s+/g,' ').trim();
 }
 const matDeClase=id=>MAT.filter(m=>m.clase_id===id);
-function lineaMateriales(claseId){
+function lineaMateriales(claseId){   // lo que se manda: deberes y material de apoyo
   const mats=matDeClase(claseId); if(!mats.length) return '';
-  const partes=Object.keys(TIPOS_MAT).map(t=>{const x=mats.filter(m=>m.tipo===t);
+  const partes=['deberes','material'].map(t=>{const x=mats.filter(m=>m.tipo===t);
     return x.length?`<b>${TIPOS_MAT[t]}:</b> ${x.map(m=>escH(m.nombre)).join(', ')}`:''}).filter(Boolean);
-  return `<div class="deb-linea">${partes.join(' · ')}</div>`;
+  return partes.length?`<div class="deb-linea">${partes.join(' · ')}</div>`:'';
+}
+function lineaTema(claseId){          // PDF usado en la clase, junto al tema
+  const x=matDeClase(claseId).filter(m=>m.tipo==='usado'); if(!x.length) return '';
+  return ` <span class="deb-inl" title="${escH(x.map(m=>m.nombre).join(', '))}">· PDF: ${x.map(m=>escH(m.nombre)).join(', ')}</span>`;
+}
+function textoPrevisto(m){
+  if(m.resultado==='usado') return `<span class="deb-prev">PDF previsto: ${escH(m.nombre)} ✓ usado</span>`;
+  if(m.resultado==='no_usado') return `<span class="deb-prev"><s>${escH(m.nombre)}</s> <span class="deb-inl">no usado${m.motivo?': '+escH(m.motivo):''}</span></span>`;
+  return `<span class="deb-prev">PDF previsto: ${escH(m.nombre)}</span>`;
+}
+function lineaProxima(c){             // texto de la próxima clase + PDFs previstos
+  const x=matDeClase(c.id).filter(m=>m.tipo==='proxima');
+  if(!c.proxima_clase && !x.length) return '';
+  return `<div class="prox">${c.proxima_clase?`<b>Próxima:</b> ${c.proxima_clase}`:'<b>Próxima:</b>'}${x.length?' · '+x.map(textoPrevisto).join(' · '):''}</div>`;
+}
+/* Un PDF previsto se resuelve en la clase SIGUIENTE (la primera posterior que no esté cancelada). */
+const claveClase=c=>c.fecha+' '+String(c.hora||'00:00:00').slice(0,5);
+function siguienteClase(c){
+  return D.clases.filter(x=>x.alumno_id===c.alumno_id && x.id!==c.id && claveClase(x)>claveClase(c) && !esCancelada(x))
+    .sort((a,b)=>claveClase(a).localeCompare(claveClase(b)))[0]||null;
+}
+function previstosPara(claseId){
+  return MAT.filter(m=>m.tipo==='proxima' && !m.resultado).filter(m=>{
+    const cm=D.clases.find(x=>x.id===m.clase_id); if(!cm) return false;
+    const sig=siguienteClase(cm); return sig && sig.id===claseId;
+  });
+}
+function htmlPrevistos(claseId){
+  const c=D.clases.find(x=>x.id===claseId); if(!c || esCancelada(c)) return '';
+  return previstosPara(claseId).map(m=>`<div class="deb-hint"><span>Previsto en la clase anterior: <b>${escH(m.nombre)}</b></span>
+    <button type="button" onclick="resolverPrevisto(${m.id},${claseId},'usado')">Usado</button>
+    <button type="button" onclick="resolverPrevisto(${m.id},${claseId},'no_usado')">No usado…</button></div>`).join('');
+}
+async function resolverPrevisto(matId,claseId,resultado){
+  const m=MAT.find(x=>x.id===matId), c=D.clases.find(x=>x.id===claseId); if(!m||!c) return;
+  let motivo=null;
+  if(resultado==='no_usado'){
+    const r=prompt('¿Por qué no se usó? (opcional)'); if(r===null) return;   // Cancelar: no se hace nada
+    motivo=r.trim()||null;
+  }else{
+    const{error:e1}=await sb.from('materiales_enviados').insert({alumno_id:m.alumno_id,clase_id:claseId,nombre:m.nombre,nombre_norm:m.nombre_norm,tipo:'usado',enviado_el:c.fecha});
+    if(e1 && e1.code!=='23505') return toast('Error: '+e1.message);   // 23505: ya estaba anotado como usado
+  }
+  const{data,error}=await sb.from('materiales_enviados').update({resultado,motivo}).eq('id',matId).select('id');
+  if(error||!data||!data.length) return toast('No se pudo guardar'+(error?': '+error.message:''));
+  toast(resultado==='usado'?'Anotado como usado':'Anotado como no usado');
+  await refresh();
+  // si se resuelve desde la ventana de la clase, se actualiza sin perder lo que haya a medias
+  if(DEB.host==='modal' && DEB.claseId===claseId && document.getElementById('ovDeberes').classList.contains('open')){
+    if(resultado==='usado'){
+      const nu=MAT.find(x=>x.clase_id===claseId&&x.tipo==='usado'&&x.nombre_norm===m.nombre_norm);
+      if(nu && !DEB.items.some(i=>i.id===nu.id)) DEB.items.push({id:nu.id,nombre:nu.nombre,norm:nu.nombre_norm,tipo:'usado',estado:'existente'});
+      DEB.abiertos.usado=true;
+    }
+    debRender();
+  }
 }
 function histMateriales(alumnoId){
   const mats=MAT.filter(m=>m.alumno_id===alumnoId); if(!mats.length) return '';
-  return `<details class="deb-hist"><summary>Materiales enviados (${mats.length})</summary>${mats.map(m=>{
+  const etiqueta=m=>m.tipo==='material'?'material':m.tipo==='usado'?'usado en clase':m.tipo==='proxima'?('previsto'+(m.resultado==='usado'?' · usado':m.resultado==='no_usado'?' · no usado':' · pendiente')):'deberes';
+  return `<details class="deb-hist"><summary>Materiales (${mats.length})</summary>${mats.map(m=>{
     const c=m.clase_id?D.clases.find(x=>x.id===m.clase_id):null;
-    return `<div class="deb-hrow"><span class="mono">${fmtDY(m.enviado_el)}</span><span>${escH(m.nombre)}</span><span class="t">${m.tipo==='material'?'material':'deberes'}${c&&c.tema?' · '+escH(c.tema):''}</span></div>`}).join('')}</details>`;
+    return `<div class="deb-hrow"><span class="mono">${fmtDY(m.enviado_el)}</span><span>${escH(m.nombre)}</span><span class="t">${etiqueta(m)}${c&&c.tema?' · '+escH(c.tema):''}</span></div>`}).join('')}</details>`;
 }
 function debIniciar(claseId, alumnoId, fecha, host){
   const ex=claseId?matDeClase(claseId):[];
   DEB={claseId, alumnoId, fecha, host,
     items:ex.map(m=>({id:m.id,nombre:m.nombre,norm:m.nombre_norm,tipo:m.tipo,estado:'existente'})),
-    abiertos:{deberes:ex.some(m=>m.tipo==='deberes'),material:ex.some(m=>m.tipo==='material')}};
+    abiertos:{deberes:ex.some(m=>m.tipo==='deberes'),material:ex.some(m=>m.tipo==='material'),usado:ex.some(m=>m.tipo==='usado'),proxima:ex.some(m=>m.tipo==='proxima')}};
 }
 function debPrevios(it){
-  return MAT.filter(m=>m.alumno_id===DEB.alumnoId && m.nombre_norm===it.norm && m.clase_id!==DEB.claseId)
+  return MAT.filter(m=>m.alumno_id===DEB.alumnoId && m.nombre_norm===it.norm && m.clase_id!==DEB.claseId && m.tipo!=='proxima')
     .sort((a,b)=>String(b.enviado_el).localeCompare(String(a.enviado_el)))[0]||null;
 }
 function debRender(){
@@ -913,13 +977,14 @@ function debRender(){
   const cajas=Object.keys(TIPOS_MAT).filter(t=>DEB.abiertos[t]).map(t=>{
     const chips=DEB.items.map((it,i)=>({it,i})).filter(x=>x.it.tipo===t&&x.it.estado!=='borrar').map(({it,i})=>{
       const pr=debPrevios(it);
-      return `<div class="deb-chip"><span class="deb-n">${escH(it.nombre)}</span>${pr?`<span class="deb-warn">Ya mandado el ${fmtDY(pr.enviado_el)}</span>`:''}<button type="button" class="mini" onclick="debQuitar(${i})" title="Quitar">✕</button></div>`}).join('');
+      return `<div class="deb-chip"><span class="deb-n">${escH(it.nombre)}</span>${pr?`<span class="deb-warn">${pr.tipo==='usado'?'Ya usado en clase el':'Ya mandado el'} ${fmtDY(pr.enviado_el)}</span>`:''}<button type="button" class="mini" onclick="debQuitar(${i})" title="Quitar">✕</button></div>`}).join('');
     return `<div class="deb-box"><div class="deb-title">${TIPOS_MAT[t]}</div>
       <div class="deb-drop" ondragover="event.preventDefault();this.classList.add('over')" ondragleave="this.classList.remove('over')" ondrop="this.classList.remove('over');debSoltar(event,'${t}')">
         <span>Suelta aquí los ficheros</span><button type="button" class="mini" onclick="debElegir('${t}')">Elegir ficheros…</button></div>
       <div class="deb-add"><input id="debTxt-${t}" list="debLista" placeholder="o escribe el nombre y pulsa Enter" onkeydown="if(event.key==='Enter'){event.preventDefault();debAddTxt('${t}')}"><button type="button" class="mini" onclick="debAddTxt('${t}')">Añadir</button></div>
       ${chips}</div>`}).join('');
-  el.innerHTML=(MAT_OK?'':'<div class="deb-linea" style="color:var(--red)">No se puede leer el historial: los avisos de "ya mandado" no funcionarán.</div>')
+  const previstos=(DEB.host==='modal'&&DEB.claseId)?htmlPrevistos(DEB.claseId):'';
+  el.innerHTML=previstos+(MAT_OK?'':'<div class="deb-linea" style="color:var(--red)">No se puede leer el historial: los avisos de "ya mandado" no funcionarán.</div>')
     +casillas+cajas+`<datalist id="debLista">${lista.map(n=>`<option value="${escH(n)}">`).join('')}</datalist>`;
 }
 function debToggle(t,on){
