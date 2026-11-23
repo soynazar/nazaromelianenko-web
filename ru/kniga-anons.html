@@ -42,6 +42,8 @@
     .done p:first-child{font-family:'Cormorant Garamond',serif;font-size:1.5rem;line-height:1.2;color:#2B2723}
     footer{text-align:center;font-size:.72rem;color:#8C8278;margin-top:4rem;letter-spacing:.04em}
     footer a{color:inherit;text-decoration:none}
+    .pbtn{display:block;text-align:center;font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:1.05rem;border:1px solid #2B2723;background:#2B2723;color:#F4F1ED;border-radius:2px;text-decoration:none;margin:1.2rem 0 1rem}
+    .note{font-size:.8rem;color:#8C8278}
     .cover{display:block;width:120px;margin:0 0 2rem;box-shadow:0 0 0 .5px rgba(91,64,43,.2),0 10px 22px -10px rgba(91,64,43,.35)}
   </style>
 </head>
@@ -50,20 +52,21 @@
   <a href="/ru/index.html"><img class="logo" src="/images/logo.png" alt="Nazar Omelianenko"></a>
 
   <p class="kicker">Ранний доступ</p>
-  <h1>Информация <em>о книге</em></h1>
+  <h1>Пролог <em>книги</em></h1>
   <div class="rule"></div>
-  <p>Оставьте ваш электронный адрес и получите эксклюзивную информацию о книге и об открытии продаж до официального объявления.</p>
+  <p>Оставьте электронный адрес – и прочитайте пролог прямо сейчас. Об открытии продаж вы узнаете до официального объявления.</p>
 
   <form id="f" novalidate>
     <label class="f" for="email">Электронная почта</label>
     <input id="email" name="EMAIL" type="email" autocomplete="email" required placeholder="name@example.com">
     <label class="consent"><input id="ok" type="checkbox" required><span>Я согласен(-на) на обработку адреса электронной почты для получения информации о книге. Отписаться можно в любой момент.</span></label>
-    <button id="b" type="submit">Внести в список</button>
+    <button id="b" type="submit">Получить пролог</button>
     <p class="err" id="e"></p>
   </form>
   <div class="done" id="d">
     <p>Ваш адрес внесён в список.</p>
-    <p>Подтверждение отправлено на электронную почту.</p>
+    <a class="pbtn" href="/files/prolog-f47fbe8582ae42a8.pdf">Читать пролог (PDF)</a>
+    <p class="note">Подтверждение адреса отправлено на электронную почту.</p>
   </div>
 
   <footer>© Nazar Omelianenko · <a href="https://www.nazaromelianenko.com">nazaromelianenko.com</a></footer>
