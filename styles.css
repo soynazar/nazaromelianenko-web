@@ -498,6 +498,12 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 .bk-status.bk-stores-line { color: var(--bk-ink); font-weight: 500; letter-spacing: 0.04em; }
 .bk-after-whys { margin-top: 2.5rem; }
 .bk-stores-intro { margin-bottom: 0.6rem !important; }
+.bk-offer-stack { grid-column: span 2; display: flex; flex-direction: column; gap: 1.5rem; }
+.bk-offer-stack > .bk-offer { flex: 1 1 auto; }
+.bk-offer.is-compact { padding: 1.75rem 2.25rem; }
+.bk-offer.is-compact .bk-offer-region { margin-bottom: 0.9rem; }
+.bk-offer.is-compact h3 { margin-bottom: 0.75rem; }
+.bk-offer.is-compact p { margin-bottom: 1rem; }
 .bk-buy-grid .bk-btn { padding-left: 1.1rem; padding-right: 1.1rem; gap: 0.5rem; }
 .bk-offer-bottom.is-pair { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .bk-offer-bottom.is-pair .bk-btn { flex: 1 1 9rem; white-space: nowrap; }
@@ -571,7 +577,7 @@ textarea.form-line { resize: vertical; min-height: 100px; line-height: 1.6; }
 
 @media (max-width: 960px) {
     .bk-buy-grid { grid-template-columns: 1fr; }
-    .bk-buy-grid > .bk-offer, .bk-buy-grid > .bk-offer:nth-child(n+4) { grid-column: auto; }
+    .bk-buy-grid > .bk-offer, .bk-buy-grid > .bk-offer:nth-child(n+4), .bk-offer-stack { grid-column: auto; }
     .bk-offer.is-featured { order: -1; }
 }
 @media (max-width: 768px) {
