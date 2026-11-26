@@ -138,6 +138,11 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 <script>
 (function(){
   var $=function(id){return document.getElementById(id)};
+  /* Contador anónimo: una fila por persona y paso (visita, cruce, isbn, copiar, encontrar) en Supabase. Sin datos personales. */
+  var PASO_API='https://chwbvfyyorfjyttbwtad.supabase.co/rest/v1/rpc/registrar_paso',PASO_KEY='sb_publishable_pG-IU-4E8rppZlhSt5I7bA_soRU3wOq',pasoSes=null,pasoVuelta=false;
+  try{pasoSes=localStorage.getItem('paso.sesion');}catch(_){}
+  if(!pasoSes){pasoSes=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0;return(c=='x'?r:(r&3|8)).toString(16);});try{localStorage.setItem('paso.sesion',pasoSes);}catch(_){}}
+  function pasoLog(ev){if(/^#(primera|vuelta)$/.test(location.hash))return;try{fetch(PASO_API,{method:'POST',keepalive:true,headers:{'apikey':PASO_KEY,'Content-Type':'application/json'},body:JSON.stringify({p_sesion:pasoSes,p_evento:ev,p_vuelta:pasoVuelta})}).catch(function(){});}catch(_){}}
   var stage=$('stage'),bg=$('bg'),ask=$('ask'),label=$('label'),track=$('track'),fill=$('fill'),dot=$('dot');
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   var rnd=function(a,b){return a+Math.random()*(b-a)};
@@ -148,6 +153,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
   var RETURN_ENABLED=true, visits=0, first=location.hash==='#primera';
   if(RETURN_ENABLED){try{if(first)localStorage.removeItem('paso.v');visits=parseInt(localStorage.getItem('paso.v')||'0',10)||0;localStorage.setItem('paso.v',String(visits+1));}catch(e){}}
   var back=!first&&(location.hash==='#vuelta'||(RETURN_ENABLED&&visits>0));
+  pasoVuelta=back;pasoLog('visita');
   var Q=back
     ? [['Перейти ещё раз'],[null],['по ту сторону'],[null],['правил',1],['?']]
     : [['Перейти'],[null],['по ту сторону'],[null],['правил',1],['?']];
@@ -239,7 +245,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
         else{num.setAttribute('inert','');after3.setAttribute('inert','');after.removeAttribute('inert');}
       }
       if(!on3&&seen3)stage.classList.add('known3');
-      if(on3&&!seen3){seen3=true;clearTimeout(cueT);copyT=setTimeout(function(){if(!copied&&!reduce)copyBtn.classList.add('alive');},2400);}
+      if(on3&&!seen3){seen3=true;pasoLog('isbn');clearTimeout(cueT);copyT=setTimeout(function(){if(!copied&&!reduce)copyBtn.classList.add('alive');},2400);}
     });
   }
   /* Aviso de que el camino sigue: la composición entera se inclina un poco a lo largo de la línea y vuelve, la misma gramática que el punto */
@@ -261,6 +267,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 
   function cross(){
     if(crossed)return;crossed=true;
+    pasoLog('cruce');
     clearTimeout(breathT);clearTimeout(nudgeT);
     dot.classList.remove('breath');dot.setAttribute('tabindex','-1');
     animateTo(1,reduce?1:260,function(){
@@ -331,11 +338,15 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-tap-
 
   /* Copiar el número */
   $('copy').addEventListener('click',function(){
+    pasoLog('copiar');
     var btn=this,ok=false;
     function show(){btn.textContent=ok?'скопировано':'номер выделен';copied=true;clearTimeout(copyT);stillCopy();$('findrow').classList.add('on');}
     function fallback(){var r=document.createRange();r.selectNodeContents($('isbn'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{ok=document.execCommand('copy');}catch(e){}show();}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText('9788409902484').then(function(){ok=true;show();},fallback);}else fallback();
   });
+
+  /* Contar la pulsación de «найти» */
+  document.querySelector('#findrow .find').addEventListener('click',function(){pasoLog('encontrar');});
 
   /* Secuencia de entrada: la frase; poco después llega desde la derecha un rayo que deja la línea como rastro y se condensa en el punto */
   var base=$('base'),comet=$('comet'),dotI=dot.querySelector('i');
