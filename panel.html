@@ -167,6 +167,8 @@ main{flex:1;padding:28px 40px; overflow-y: auto;}
 .em-fila span{flex:1;word-break:break-all}.em-fila.nuevo{border-color:var(--terra-soft);background:var(--terra-soft2)}
 .em-fila button{border:none;background:none;color:var(--muted);cursor:pointer;font-size:12px}.em-fila button:hover{color:var(--red)}
 .em-add{display:flex;gap:8px}.em-add input{flex:1}
+.luz{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e0a526;box-shadow:0 0 0 3px #e0a52633;margin-left:8px;vertical-align:middle}
+.sinap{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9a5f12;background:#fbf0dc;border-radius:6px;padding:2px 8px;margin-left:6px;vertical-align:middle}
 .deb-inl{color:var(--muted);font-size:13px}
 .mbloque{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:2px 12px}
 .mfila{display:flex;gap:12px;align-items:baseline;padding:7px 0;border-top:1px solid var(--line)}
@@ -641,19 +643,27 @@ function renderInactivos(){
       '<button class="icobtn" onclick="setActivo('+a.id+',true)">reactivar</button></div>').join('')
     :'<div class="empty">No hay alumnos inactivos.</div>');
 }
+/* Clase terminada (hora + 60 min) y aún sin marcar: pendiente de apuntar */
+function sinApuntar(c){
+  if(c.estado!=='programada' && c.estado!=='por_rellenar') return false;
+  const fin=new Date(c.fecha+'T'+String(c.hora||'00:00:00').slice(0,8)); fin.setMinutes(fin.getMinutes()+60);
+  return fin<new Date();
+}
+const pendientesDe=id=>D.clases.filter(c=>c.alumno_id===id && sinApuntar(c));
 function renderSidebar(){
   const ni=document.getElementById('nav-inactivos'), nInact=D.alumnos.filter(a=>!a.activo).length;
   if(ni){ni.textContent='Inactivos ('+nInact+')';ni.style.display=nInact?'block':'none'}
   const el=document.getElementById('studentList');
   el.innerHTML=D.alumnos.filter(a=>a.activo).map(a=>{
-    const sb=saldoBono(a.id), d=deudaAlumno(a.id);
+    const sb=saldoBono(a.id), d=deudaAlumno(a.id), np=pendientesDe(a.id).length;
+    const luz=np?`<span class="luz" title="${np} clase${np>1?'s':''} sin apuntar"></span>`:'';
     const saldoHtml = sb.total > 0
       ? `<div class="badge paid" style="font-size:10px; padding:2px 6px;">${sb.restantes} BONO</div>`
       : (d.clases > 0 ? `<div class="sd neg">-${d.clases}</div>` : `<div class="sd">0</div>`);
       
     return`<div class="stud ${view==='alumno'&&alumnoSel===a.id?'on':''}" onclick="goAlumno(${a.id})">
       <div class="av">${iniciales(a.nombre)}</div>
-      <div style="flex:1;"><div class="nm">${a.nombre}</div></div>
+      <div style="flex:1;"><div class="nm">${a.nombre}${luz}</div></div>
       <div>${saldoHtml}</div>
     </div>`}).join('');
 }
@@ -712,10 +722,11 @@ function claseRow(c){
     pagoTag=`<button class="badge unpaid" style="border:none;cursor:pointer" onclick="openPago(${c.id})" title="Marcar pagada">SIN PAGAR</button>`;
   }
   const precioTag=c.bono_id!=null?'':`<span class="mono" style="font-size:12px;color:var(--muted)">${eur(precioClase(c))} €</span>`;
-  return`<div class="clase">
+  const pend=sinApuntar(c);
+  return`<div class="clase${pend?' pend':''}">
     <div class="when"><div class="d">${fmtD(c.fecha)}</div><div class="h">${hhmm(c.hora)}</div></div>
     <div class="body">
-      <div class="tema">${c.tema||'<span style="color:var(--muted)">—</span>'}</div>
+      <div class="tema">${c.tema||'<span style="color:var(--muted)">—</span>'}${pend?' <span class="sinap">sin apuntar</span>':''}</div>
       ${c.proxima_clase?`<div class="prox"><b>Próxima:</b> ${c.proxima_clase}</div>`:''}
       ${htmlPrevistos(c.id)}
       ${bloqueMateriales(c.id)}
